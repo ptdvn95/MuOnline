@@ -76,7 +76,7 @@ LRESULT Controller::Mouse(int Code, WPARAM wParam, LPARAM lParam)
 			gCustomEventTime.EventPrev(wParam);
 			gInterface.EventDrawMenu_Open(wParam);
 			gInterface.EventDrawMenu_Close(wParam);
-			//gInterface.EventDrawMenu2_Close(wParam);
+			gInterface.EventDrawMenu2_Close(wParam);
 			gInterface.EventDrawMenu_Next(wParam);
 			gInterface.EventDrawMenu_Back(wParam);
 			gInterface.EventDrawMenu_Op1(wParam);
