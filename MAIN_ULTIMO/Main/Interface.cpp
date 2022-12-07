@@ -406,7 +406,8 @@ void Interface::RenderObjectSystem()
 
 	gSmithItem.Bind();
 
-	g_ExWinQuestSystem.BindImages();
+	//Remove Windows Quest
+	//g_ExWinQuestSystem.BindImages();
 }
 
 void Interface::DrawZenAndRud(int a1, int a2, int a3, int a4)
@@ -835,7 +836,7 @@ LOAD_TEXTURE:
 	gAchievements.LoadImages();
 #endif
 
-	g_ExWinQuestSystem.ImageLoad();
+	//g_ExWinQuestSystem.ImageLoad();
 	//--
 	pLoadSomeForm();
 }
@@ -927,6 +928,11 @@ void Interface::DrawGUI(short ObjectID, float PosX, float PosY)
 	}
 
 	pDrawGUI(this->Data[ObjectID].ModelID, PosX, PosY,this->Data[ObjectID].Width, this->Data[ObjectID].Height);
+}
+
+void Interface::DrawGUICustom(short ObjectID, float PosX, float PosY, float height, float width)
+{
+	pDrawGUI(this->Data[ObjectID].ModelID, PosX, PosY, width, height);
 }
 
 void Interface::DrawGUI2(short ObjectID, float PosX, float PosY)
@@ -1325,9 +1331,10 @@ void Interface::Work()
 
 	gSmithItem.DrawSmithItem();
 
-	g_ExWinQuestSystem.DrawMiniInfo();
-	g_ExWinQuestSystem.Draw();
-	g_ExWinQuestSystem.DrawOpenWQ();
+	// Remove Windows Quest
+	//g_ExWinQuestSystem.DrawMiniInfo();
+	//g_ExWinQuestSystem.Draw();
+	//g_ExWinQuestSystem.DrawOpenWQ();
 
 	gGrandResetSystem.draw_grand_reset_system();
 	gResetSystem.draw_reset_system();
@@ -1455,7 +1462,7 @@ void Interface::Work()
 		}
 		if (GetKeyState(VK_F7) & 0x4000)
 		{
-			g_ExWinQuestSystem.SwitchStatsWindowState();
+			//g_ExWinQuestSystem.SwitchStatsWindowState();
 		}
 		if (GetKeyState(VK_F6) & 0x4000) 
 		{
@@ -1493,38 +1500,39 @@ void Interface::Work()
 			// ----
 			gTrayMode.SwitchState();
 		}
+		// When Press ESC
 		if (GetKeyState(VK_ESCAPE) < 0) 
 		{
 			if (gInterface.Data[eCommand_MAIN].OnShow == true)
 			{
 				gInterface.Data[eCommand_MAIN].OnShow = false;
 				
-	if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-	{
-		pSetCursorFocus = false;
-	}
+				if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+				{
+					pSetCursorFocus = false;
+				}
 			}
 
 			if (gInterface.Data[eRankPANEL_MAIN].OnShow == true)
 			{
 				gInterface.Data[eRankPANEL_MAIN].OnShow = false;
 				
-	if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-	{
-		pSetCursorFocus = false;
-	}
+				if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+				{
+					pSetCursorFocus = false;
+				}
 			}
 
 			if (gInterface.Data[eEventTimePANEL_MAIN].OnShow == true)
 			{
 				gInterface.Data[eEventTimePANEL_MAIN].OnShow = false;
 				
-	if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-	{
-		pSetCursorFocus = false;
-	}
+				if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+				{
+					pSetCursorFocus = false;
+				}
 			}
-
+			// Exit Jewels Bank Menu
 			if (gJewelsBank.Active == true)
 			{
 				gJewelsBank.Active = false;
@@ -1534,27 +1542,77 @@ void Interface::Work()
 					pSetCursorFocus = false;
 				}
 			}
-
+			// Exit Vip Window
 			if (gInterface.CheckVipWindow())
 			{
 				gInterface.CloseVipWindow();
+				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+				{
+					pSetCursorFocus = false;
+				}
 			}
-
+			// Exit Menu 1 Window
 			if (gInterface.CheckMenuWindow())
 			{
 				gInterface.CloseMenuWindow();
+				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+				{
+					pSetCursorFocus = false;
+				}
 			}
-
+			// Exit Menu 2 Window
+			if (gInterface.CheckMenu2Window())
+			{
+				gInterface.CloseMenu2Window();
+				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+				{
+					pSetCursorFocus = false;
+				}
+			}
+			// Exit Smith Item Window
+			if (gInterface.CheckSmithItemWindow())
+			{
+				gInterface.CloseSmithItemWindow();
+				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+				{
+					pSetCursorFocus = false;
+				}
+			}
+			// Exit Lucky Wheel Window
+			if (gInterface.CheckLuckyWheelWindow())
+			{
+				gInterface.LuckyWheelStateclose();
+			}
+			// Exit Party Search Window
+			if (gInterface.CheckPartySearchWindow())
+			{
+				gInterface.PartySearchStateclose();
+			}
+			// Exit Change Class Window
+			if (gInterface.CheckChangeClassWindow())
+			{
+				gInterface.ChangeClassStateclose();
+			}
+			// Reset Change Class Window
+			if (gInterface.CheckResetChangeWindow())
+			{
+				gInterface.ResetChangeStateclose();
+			}
+			// Exit Ranking Menu
 			if (gRanking.Show == true)
 			{
 				gRanking.Show = false;
-				pSetCursorFocus = false;
+				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+				{
+					pSetCursorFocus = false;
+				}
 			}
 
 #if (ARCHIVEMENT == 1)
 			if (gInterface.Data[OBJECT_ACHIEVEMENTS_MAIN].OnShow == true)
 			{
 				gInterface.Data[OBJECT_ACHIEVEMENTS_MAIN].Close();
+				pSetCursorFocus = false;
 			}
 #endif
 		}
@@ -1563,11 +1621,13 @@ void Interface::Work()
 	if (!pCheckWindow(pWindowThis(), 13))
 	{
 		jCRenderRuud.OpeningRuud = false;
+		pSetCursorFocus = false;
 	}
 
 	if (gInterface.CheckWindow(ObjWindow::MuHelper) || gInterface.CheckWindow(ObjWindow::MuHelperSetting))
 	{
 		CloseHelper();
+		pSetCursorFocus = false;
 	}
 
 	gInterface.DrawLogo(0);
@@ -1606,8 +1666,9 @@ void Interface::DrawTimeUI()
 		return;
 	}
 	// -----
-	this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y);
-	this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y + 22);
+	//this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y);
+	//this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y + 22);
+	//this->DrawGUICustom(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y + 22, 80, 60);
 	// -----
 	time_t TimeServer, TimeLocal;
 	struct tm * ServerT, *LocalT;
@@ -1627,11 +1688,13 @@ void Interface::DrawTimeUI()
 	char LocalTime[30];
 	sprintf(LocalTime, "%2d:%02d:%02d", LocalT->tm_hour, LocalT->tm_min, LocalT->tm_sec);
 	// -----
-	this->DrawFormat(eGold, 5, 391, 50, 1, ServerTimeName);
-	this->DrawFormat(eWhite, 55, 391, 100, 1, ServerTime);
+	//this->DrawFormat(eGold, 5, 391, 50, 1, ServerTimeName);
+	//this->DrawFormat(eWhite, 40, 391, 100, 1, ServerTime);
 	// ----
-	this->DrawFormat(eGold, 5, 413, 50, 1, LocalTimeName);
-	this->DrawFormat(eWhite, 55, 413, 100, 1, LocalTime);
+	//this->DrawFormat(eGold, 5, 413, 50, 1, LocalTimeName);
+	//this->DrawFormat(eWhite, 40, 413, 100, 1, LocalTime);
+	//this->DrawFormat(eGold, 5, 413, 50, 1, ServerTimeName);
+	//this->DrawFormat(eWhite, 25, 413, 100, 1, ServerTime);
 }
 
 int Interface::DrawFormat(DWORD Color, int PosX, int PosY, int Width, int Align, LPCSTR Text, ...)
@@ -3571,7 +3634,7 @@ void Interface::UPDATE_FPS(){
 	}
 
 	//	pDrawInterfaceNumBer(630, 5, gInterface.frameRate, 0.5);
-	this->DrawFormat(eGold, 470, 16, 80, 1, gInterface.FPS_REAL);
+	this->DrawFormat(eExcellent, 600, 2, 80, 1, gInterface.FPS_REAL);
 }
 
 void Interface::guiMonitore(){
@@ -3648,8 +3711,8 @@ void Interface::SendPingRecv()
 
 	if (gInterface.msPing > 0){
 		//----
-		this->DrawFormat(eGold, 470, 2, 100, 1, gInterface.ServerRTT);
-		this->DrawFormat(eGold, 470, 9, 100, 1, gInterface.ServerPing);
+		this->DrawFormat(eExcellent, 500, 2, 50, 1, gInterface.ServerRTT);
+		this->DrawFormat(eExcellent, 550, 2, 50, 1, gInterface.ServerPing);
 		//--
 		sprintf(gInterface.ultimoRTT, gInterface.ServerRTT);
 		sprintf(gInterface.ultimoPing, gInterface.ServerPing);
@@ -3662,13 +3725,13 @@ void Interface::SendPingRecv()
 	{
 		if (gInterface.ultimo_RTT > 0)
 		{
-			this->DrawFormat(eGold, 470, 2, 60, 1, gInterface.ultimoRTT);
-			this->DrawFormat(eGold, 470, 9, 100, 1, gInterface.ultimoPing);
+			this->DrawFormat(eExcellent, 500, 2, 50, 1, gInterface.ultimoRTT);
+			this->DrawFormat(eExcellent, 550, 2, 50, 1, gInterface.ultimoPing);
 		}
 		else
 		{
-			this->DrawFormat(eGold, 470, 2, 100, 1, gInterface.ServerRTT);
-			this->DrawFormat(eGold, 470, 9, 100, 1, gInterface.ServerPing);
+			this->DrawFormat(eExcellent, 500, 2, 50, 1, gInterface.ServerRTT);
+			this->DrawFormat(eExcellent, 550, 2, 50, 1, gInterface.ServerPing);
 		}
 	}
 

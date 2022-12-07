@@ -1933,6 +1933,7 @@ void InitInter3()
 
 	//party bar en Y
 	SetByte(0x0085AF21, 25);	//<-
+	//Local calls from 007E00B1, 007E020C, 007E0298	//PetHPBarRemake
 	SetCompleteHook(0xE8, 0x007E00B1, &PetHPBarRemake);
 	SetCompleteHook(0xE8, 0x007E020C, &PetSpiritHPBarRemake);
 	SetCompleteHook(0xE8, 0x007E0298, &PetSpiritHPBarRemake);

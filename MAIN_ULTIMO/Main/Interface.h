@@ -532,6 +532,9 @@ public:
 	void OpenMenu2Window() { this->Data[eMenu_MAIN2].OnShow = true; };
 	void CloseMenu2Window() { this->Data[eMenu_MAIN2].OnShow = false; };
 	bool CheckMenu2Window() { return this->Data[eMenu_MAIN2].OnShow; };
+	void OpenSmithItemWindow() { this->Data[eSMITH_MAIN].OnShow = true; };
+	void CloseSmithItemWindow() { this->Data[eSMITH_MAIN].OnShow = false; };
+	bool CheckSmithItemWindow() { return this->Data[eSMITH_MAIN].OnShow; };
 	void DrawMenuOpen();
 	void DrawMenu2Open();
 	bool EventDrawMenu_Close(DWORD Event);
@@ -558,6 +561,7 @@ public:
 	void DrawGUI(short ObjectID, float PosX, float PosY);
 	void DrawGUI2(short ObjectID, float PosX, float PosY);
 	void DrawGUI3(short ObjectID, float PosX, float PosY, float ScaleX, float ScaleY);
+	void DrawGUICustom(short ObjectID, float PosX, float PosY, float height, float width);
 	void DrawTimeUI();
 	int DrawFormat(DWORD Color, int PosX, int PosY, int Width, int Align, LPCSTR Text, ...);
 	void DrawIMG(short ObjectID, float PosX, float PosY, float ScaleX, float ScaleY);
@@ -632,16 +636,25 @@ public:
 	bool		EventPartySettingsWindow_All(DWORD Event);
 	void		DrawPartySearchWindow();
 	void		SwitchPartySearchWindowState() { (Data[ePARTYSEARCH_MAIN].OnShow == true) ? Data[ePARTYSEARCH_MAIN].Close() : Data[ePARTYSEARCH_MAIN].Open(); };
+	void		PartySearchStateclose() { this->Data[ePARTYSETTINGS_MAIN].OnShow = false; pSetCursorFocus = false; };
+	bool		CheckPartySearchWindow() { return this->Data[ePARTYSETTINGS_MAIN].OnShow; };
 	void		EventPartySearchWindow_All(DWORD Event);
 	//Lucky Wheel
 	void		DrawLuckyWheel();
 	void		EventLuckyWheel_Main(DWORD Event);
 	void        EventLuckyWheelWindow_Close(DWORD Event);
 	void		LuckyWheelState(){ (Data[eLuckyWheelMain].OnShow == true) ? Data[eLuckyWheelMain].Close() : Data[eLuckyWheelMain].Open(); };
-	void		LuckyWheelStateclose() { Data[eLuckyWheelMain].OnShow = false; pSetCursorFocus = false; };
+	void		LuckyWheelStateclose() { this->Data[eLuckyWheelMain].OnShow = false; pSetCursorFocus = false; };
+	bool		CheckLuckyWheelWindow() { return this->Data[eLuckyWheelMain].OnShow; };
 	int			LuckyWheelNumber;
 	DWORD		LuckyWheelTime;
 	int			StartRoll;
+	// Change Class
+	void		ChangeClassStateclose() { this->Data[eCHANGE_MAIN].OnShow = false; pSetCursorFocus = false; };
+	bool		CheckChangeClassWindow() { return this->Data[eCHANGE_MAIN].OnShow; };
+	// eRESETCHANGE
+	void		ResetChangeStateclose() { this->Data[eRESETCHANGE].OnShow = false; pSetCursorFocus = false; };
+	bool		CheckResetChangeWindow() { return this->Data[eRESETCHANGE].OnShow; };
 
 	void		DrawText(DWORD Color, int PosX, int PosY, int Width, int Align, LPCSTR Text, ...);
 	void TextDrawx(int PosX, int PosY, int Width, int Arg5, int Color, int Arg7, int Align, HGDIOBJ Font, LPCTSTR Format, ...);

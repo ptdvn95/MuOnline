@@ -448,7 +448,7 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 	}
 	pSetBackgroundTextColor(pTextThis(), 0, 0, 0, 0);
 	pSetTextColor(pTextThis(), 240, 240, 240, 255);
-	pDrawText(pTextThis(), X - 30, Y + 4, Cord, 190, 0, (LPINT)3, 0);
+	pDrawText(pTextThis(), X - 30, Y + 3, Cord, 190, 0, (LPINT)3, 0);
 	pGLSwitch();
 	EnableAlphaTest(0);
 	//-- Config
@@ -1129,7 +1129,7 @@ void MapFrameBarHelper(int a1)
 	pSetFont(pTextThis(), (int)pFontNormal);
 	pSetBackgroundTextColor(pTextThis(), 0, 0, 0, 0);
 	SetTextColorByHDC(pTextThis(), -1);
-	pDrawText(pTextThis(), Return2X(x + TransForX(20.0)), ReturnY(y + TransForY(3.0)), Cord, 88, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), Return2X(x + TransForX(30.0)), ReturnY(y + TransForY(3.0)), Cord, 88, 0, (LPINT)1, 0);
 
 	 if (MiniMap == 1)
 	{

@@ -121,7 +121,7 @@ LRESULT Controller::Mouse(int Code, WPARAM wParam, LPARAM lParam)
 
 			gAchievements.Button(wParam);
 
-			g_ExWinQuestSystem.Button(wParam);
+			//g_ExWinQuestSystem.Button(wParam);
 
 			gResetSystem.EventResetWindow_Main(wParam);
 
@@ -280,9 +280,36 @@ LRESULT Controller::Keyboard(int Code, WPARAM wParam, LPARAM lParam)
 			if (gInterface.CheckMenuWindow())
 			{
 				gInterface.CloseMenuWindow();
+				pSetCursorFocus = false;
 				return -1;
 			}
-			
+
+			if (gInterface.CheckMenu2Window())
+			{
+				gInterface.CloseMenu2Window();
+				pSetCursorFocus = false;
+				return -1;
+			}
+
+			if (gInterface.CheckSmithItemWindow())
+			{
+				gInterface.CloseSmithItemWindow();
+				pSetCursorFocus = false;
+				return -1;
+			}
+
+			if (gInterface.CheckPartySearchWindow())
+			{
+				gInterface.PartySearchStateclose();
+				pSetCursorFocus = false;
+				return -1;
+			}
+
+			if (gInterface.CheckLuckyWheelWindow())
+			{
+				gInterface.LuckyWheelStateclose();
+				return -1;
+			}
 		}
 		break;
 		case VK_END:
@@ -290,6 +317,8 @@ LRESULT Controller::Keyboard(int Code, WPARAM wParam, LPARAM lParam)
 			if (gInterface.CheckVipWindow())
 			{
 				gInterface.CloseVipWindow();
+				pSetCursorFocus = false;
+				return -1;
 			}
 			else
 			{
