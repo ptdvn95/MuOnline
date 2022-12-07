@@ -51,7 +51,8 @@ void ExWinQuestSystem::ImageLoad()
 
 void ExWinQuestSystem::BindImages()
 {
-	int eWHig = 303 + 60 + 45 + 15;	
+	int eWHig = 303 + 60 + 45 + 15;
+
 	gInterface.BindObject(OBJECT_WIN_QUEST_MAIN, 0x7A5A, 222, eWHig, -1, -1);
 	gInterface.BindObject(OBJECT_WIN_QUEST_TITLE, 0x7A63, 230, 67, -1, -1);
 	gInterface.BindObject(OBJECT_WIN_QUEST_FRAME, 0x7A58, 230, 15, -1, -1);

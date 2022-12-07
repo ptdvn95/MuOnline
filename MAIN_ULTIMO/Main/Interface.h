@@ -636,7 +636,8 @@ public:
 	bool		EventPartySettingsWindow_All(DWORD Event);
 	void		DrawPartySearchWindow();
 	void		SwitchPartySearchWindowState() { (Data[ePARTYSEARCH_MAIN].OnShow == true) ? Data[ePARTYSEARCH_MAIN].Close() : Data[ePARTYSEARCH_MAIN].Open(); };
-	void		PartySearchStateclose() { this->Data[ePARTYSETTINGS_MAIN].OnShow = false; pSetCursorFocus = false; };
+	void		PartySearchStateopen() { this->Data[ePARTYSETTINGS_MAIN].OnShow = true;};
+	void		PartySearchStateclose() { this->Data[ePARTYSETTINGS_MAIN].OnShow = false;};
 	bool		CheckPartySearchWindow() { return this->Data[ePARTYSETTINGS_MAIN].OnShow; };
 	void		EventPartySearchWindow_All(DWORD Event);
 	//Lucky Wheel
@@ -644,18 +645,20 @@ public:
 	void		EventLuckyWheel_Main(DWORD Event);
 	void        EventLuckyWheelWindow_Close(DWORD Event);
 	void		LuckyWheelState(){ (Data[eLuckyWheelMain].OnShow == true) ? Data[eLuckyWheelMain].Close() : Data[eLuckyWheelMain].Open(); };
-	void		LuckyWheelStateclose() { this->Data[eLuckyWheelMain].OnShow = false; pSetCursorFocus = false; };
+	void		LuckyWheelStateopen() { this->Data[eLuckyWheelMain].OnShow = true;};
+	void		LuckyWheelStateclose() { this->Data[eLuckyWheelMain].OnShow = false;};
 	bool		CheckLuckyWheelWindow() { return this->Data[eLuckyWheelMain].OnShow; };
 	int			LuckyWheelNumber;
 	DWORD		LuckyWheelTime;
 	int			StartRoll;
 	// Change Class
-	void		ChangeClassStateclose() { this->Data[eCHANGE_MAIN].OnShow = false; pSetCursorFocus = false; };
+	void		ChangeClassStateopen() { this->Data[eCHANGE_MAIN].OnShow = true;};
+	void		ChangeClassStateclose() { this->Data[eCHANGE_MAIN].OnShow = false;};
 	bool		CheckChangeClassWindow() { return this->Data[eCHANGE_MAIN].OnShow; };
 	// eRESETCHANGE
-	void		ResetChangeStateclose() { this->Data[eRESETCHANGE].OnShow = false; pSetCursorFocus = false; };
+	void		ResetChangeStateopen() { this->Data[eRESETCHANGE].OnShow = true;};
+	void		ResetChangeStateclose() { this->Data[eRESETCHANGE].OnShow = false;};
 	bool		CheckResetChangeWindow() { return this->Data[eRESETCHANGE].OnShow; };
-
 	void		DrawText(DWORD Color, int PosX, int PosY, int Width, int Align, LPCSTR Text, ...);
 	void TextDrawx(int PosX, int PosY, int Width, int Arg5, int Color, int Arg7, int Align, HGDIOBJ Font, LPCTSTR Format, ...);
 	void		DrawMessageBox(LPCSTR Text, ...);

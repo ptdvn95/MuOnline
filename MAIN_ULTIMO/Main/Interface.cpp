@@ -406,8 +406,7 @@ void Interface::RenderObjectSystem()
 
 	gSmithItem.Bind();
 
-	//Remove Windows Quest
-	//g_ExWinQuestSystem.BindImages();
+	g_ExWinQuestSystem.BindImages();
 }
 
 void Interface::DrawZenAndRud(int a1, int a2, int a3, int a4)
@@ -836,7 +835,7 @@ LOAD_TEXTURE:
 	gAchievements.LoadImages();
 #endif
 
-	//g_ExWinQuestSystem.ImageLoad();
+	g_ExWinQuestSystem.ImageLoad();
 	//--
 	pLoadSomeForm();
 }
@@ -930,11 +929,6 @@ void Interface::DrawGUI(short ObjectID, float PosX, float PosY)
 	pDrawGUI(this->Data[ObjectID].ModelID, PosX, PosY,this->Data[ObjectID].Width, this->Data[ObjectID].Height);
 }
 
-void Interface::DrawGUICustom(short ObjectID, float PosX, float PosY, float height, float width)
-{
-	pDrawGUI(this->Data[ObjectID].ModelID, PosX, PosY, width, height);
-}
-
 void Interface::DrawGUI2(short ObjectID, float PosX, float PosY)
 {
 	this->Data[ObjectID].X		= PosX;
@@ -953,6 +947,11 @@ void Interface::DrawGUI3(short ObjectID, float PosX, float PosY, float ScaleX, f
 	this->Data[ObjectID].MaxY	= PosY + this->Data[ObjectID].Height;
 
 	pDrawImage(this->Data[ObjectID].ModelID, PosX, PosY,this->Data[ObjectID].Width, this->Data[ObjectID].Height,0,0,ScaleX,ScaleY,1,1,0);
+}
+
+void Interface::DrawGUICustom(short ObjectID, float PosX, float PosY, float height, float width)
+{
+	pDrawGUI(this->Data[ObjectID].ModelID, PosX, PosY, width, height);
 }
 
 void Interface::DrawIMG(short ObjectID, float PosX, float PosY, float ScaleX, float ScaleY)
@@ -1288,7 +1287,8 @@ void Interface::Work()
 
 	gRanking.Draw();
 
-	gInterface.DrawTimeUI();
+	//Draw Local and Server Time
+	//gInterface.DrawTimeUI();
 
 	gCustomEventTime.DrawEventTimePanelWindow();
 	
@@ -1331,10 +1331,9 @@ void Interface::Work()
 
 	gSmithItem.DrawSmithItem();
 
-	// Remove Windows Quest
 	//g_ExWinQuestSystem.DrawMiniInfo();
-	//g_ExWinQuestSystem.Draw();
-	//g_ExWinQuestSystem.DrawOpenWQ();
+	g_ExWinQuestSystem.Draw();
+	g_ExWinQuestSystem.DrawOpenWQ();
 
 	gGrandResetSystem.draw_grand_reset_system();
 	gResetSystem.draw_reset_system();
@@ -1462,7 +1461,7 @@ void Interface::Work()
 		}
 		if (GetKeyState(VK_F7) & 0x4000)
 		{
-			//g_ExWinQuestSystem.SwitchStatsWindowState();
+			g_ExWinQuestSystem.SwitchStatsWindowState();
 		}
 		if (GetKeyState(VK_F6) & 0x4000) 
 		{
@@ -1532,7 +1531,7 @@ void Interface::Work()
 					pSetCursorFocus = false;
 				}
 			}
-			// Exit Jewels Bank Menu
+
 			if (gJewelsBank.Active == true)
 			{
 				gJewelsBank.Active = false;
@@ -1546,37 +1545,21 @@ void Interface::Work()
 			if (gInterface.CheckVipWindow())
 			{
 				gInterface.CloseVipWindow();
-				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-				{
-					pSetCursorFocus = false;
-				}
 			}
 			// Exit Menu 1 Window
 			if (gInterface.CheckMenuWindow())
 			{
 				gInterface.CloseMenuWindow();
-				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-				{
-					pSetCursorFocus = false;
-				}
 			}
 			// Exit Menu 2 Window
 			if (gInterface.CheckMenu2Window())
 			{
 				gInterface.CloseMenu2Window();
-				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-				{
-					pSetCursorFocus = false;
-				}
 			}
 			// Exit Smith Item Window
 			if (gInterface.CheckSmithItemWindow())
 			{
 				gInterface.CloseSmithItemWindow();
-				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-				{
-					pSetCursorFocus = false;
-				}
 			}
 			// Exit Lucky Wheel Window
 			if (gInterface.CheckLuckyWheelWindow())
@@ -1593,26 +1576,26 @@ void Interface::Work()
 			{
 				gInterface.ChangeClassStateclose();
 			}
-			// Reset Change Class Window
+			// Exit Reset Change Class Window
 			if (gInterface.CheckResetChangeWindow())
 			{
 				gInterface.ResetChangeStateclose();
 			}
-			// Exit Ranking Menu
+			// Exit Windows Quest Window
+			if (g_ExWinQuestSystem.CheckWindowQuestWindow())
+			{
+				g_ExWinQuestSystem.WindowQuestStateclose();
+			}
 			if (gRanking.Show == true)
 			{
 				gRanking.Show = false;
-				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-				{
-					pSetCursorFocus = false;
-				}
+				pSetCursorFocus = false;
 			}
 
 #if (ARCHIVEMENT == 1)
 			if (gInterface.Data[OBJECT_ACHIEVEMENTS_MAIN].OnShow == true)
 			{
 				gInterface.Data[OBJECT_ACHIEVEMENTS_MAIN].Close();
-				pSetCursorFocus = false;
 			}
 #endif
 		}
@@ -1621,13 +1604,11 @@ void Interface::Work()
 	if (!pCheckWindow(pWindowThis(), 13))
 	{
 		jCRenderRuud.OpeningRuud = false;
-		pSetCursorFocus = false;
 	}
 
 	if (gInterface.CheckWindow(ObjWindow::MuHelper) || gInterface.CheckWindow(ObjWindow::MuHelperSetting))
 	{
 		CloseHelper();
-		pSetCursorFocus = false;
 	}
 
 	gInterface.DrawLogo(0);
@@ -1666,9 +1647,8 @@ void Interface::DrawTimeUI()
 		return;
 	}
 	// -----
-	//this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y);
-	//this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y + 22);
-	//this->DrawGUICustom(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y + 22, 80, 60);
+	this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y);
+	this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y + 22);
 	// -----
 	time_t TimeServer, TimeLocal;
 	struct tm * ServerT, *LocalT;
@@ -1688,13 +1668,11 @@ void Interface::DrawTimeUI()
 	char LocalTime[30];
 	sprintf(LocalTime, "%2d:%02d:%02d", LocalT->tm_hour, LocalT->tm_min, LocalT->tm_sec);
 	// -----
-	//this->DrawFormat(eGold, 5, 391, 50, 1, ServerTimeName);
-	//this->DrawFormat(eWhite, 40, 391, 100, 1, ServerTime);
+	this->DrawFormat(eGold, 5, 391, 50, 1, ServerTimeName);
+	this->DrawFormat(eWhite, 55, 391, 100, 1, ServerTime);
 	// ----
-	//this->DrawFormat(eGold, 5, 413, 50, 1, LocalTimeName);
-	//this->DrawFormat(eWhite, 40, 413, 100, 1, LocalTime);
-	//this->DrawFormat(eGold, 5, 413, 50, 1, ServerTimeName);
-	//this->DrawFormat(eWhite, 25, 413, 100, 1, ServerTime);
+	this->DrawFormat(eGold, 5, 413, 50, 1, LocalTimeName);
+	this->DrawFormat(eWhite, 55, 413, 100, 1, LocalTime);
 }
 
 int Interface::DrawFormat(DWORD Color, int PosX, int PosY, int Width, int Align, LPCSTR Text, ...)
