@@ -89,21 +89,21 @@ void ChatExpanded::Restore()
 
 void ChatExpanded::Switch()
 {
-	if( gChatExpanded.m_separate == 0 )
-	{
+//	if( gChatExpanded.m_separate == 0 )
+//	{
 		SetOp((LPVOID)oShowChatMessage_Call, (LPVOID)this->ShowChatMessage, ASM::CALL);
 		SetOp((LPVOID)FixSysMsg1_Hook, FixSysMsg1, ASM::JMP);
 		SetOp((LPVOID)FixSysMsg2_Hook, FixSysMsg2, ASM::JMP);
 		SetOp((LPVOID)FixSysMsg3_Hook, FixSysMsg3, ASM::JMP);
 		gChatExpanded.m_separate = 1;
-	}
-	else
-	{
-		SetOp((LPVOID)FixSysMsg1_Hook, (LPVOID)oNewCall, ASM::CALL);
-		SetOp((LPVOID)FixSysMsg2_Hook, (LPVOID)oNewCall, ASM::CALL);
-		SetOp((LPVOID)FixSysMsg3_Hook, (LPVOID)oNewCall, ASM::CALL);
-		gChatExpanded.m_separate = 0;
-	}
+//	}
+//	else
+//	{
+//		SetOp((LPVOID)FixSysMsg1_Hook, (LPVOID)oNewCall, ASM::CALL);
+//		SetOp((LPVOID)FixSysMsg2_Hook, (LPVOID)oNewCall, ASM::CALL);
+//		SetOp((LPVOID)FixSysMsg3_Hook, (LPVOID)oNewCall, ASM::CALL);
+//		gChatExpanded.m_separate = 0;
+//	}
 }
 // ----------------------------------------
 

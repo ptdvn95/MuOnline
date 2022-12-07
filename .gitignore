@@ -37,3 +37,9 @@
 *.opensdf
 *.log
 *.tlog
+*.opensdf
+*.sdf
+*.suo
+*.ipch
+*.exp
+*.pdb

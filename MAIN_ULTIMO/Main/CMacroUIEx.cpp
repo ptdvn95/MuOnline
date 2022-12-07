@@ -448,7 +448,7 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 	}
 	pSetBackgroundTextColor(pTextThis(), 0, 0, 0, 0);
 	pSetTextColor(pTextThis(), 240, 240, 240, 255);
-	pDrawText(pTextThis(), X - 30, Y + 3, Cord, 190, 0, (LPINT)3, 0);
+	pDrawText(pTextThis(), X - 25, Y + 3, Cord, 190, 0, (LPINT)3, 0);
 	pGLSwitch();
 	EnableAlphaTest(0);
 	//-- Config
@@ -456,7 +456,7 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 
 	if (gInterface.IsWorkZone(ButtonSettings))
 	{
-		gInterface.DrawToolTip(146, Y + 50, "Config Helper");
+		gInterface.DrawToolTip(146, 40, "Config Helper");
 
 		if (gInterface.Data[ButtonSettings].OnClick)
 		{
@@ -478,7 +478,7 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 		//-- Play
 		if (gInterface.IsWorkZone(ButtonStart))
 		{
-			gInterface.DrawToolTip(146 + 18, Y + 50,"Play Helper");
+			gInterface.DrawToolTip(146 + 18, 40,"Start Helper");
 
 			if (gInterface.Data[ButtonStart].OnClick)
 			{
@@ -505,7 +505,7 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 		//-- Pause
 		if (gInterface.IsWorkZone(ButtonStop))
 		{
-			gInterface.DrawToolTip(146 + 18, Y + 50,"Pause Helper");
+			gInterface.DrawToolTip(146 + 18, 40,"Stop Helper");
 
 			if (gInterface.Data[ButtonStop].OnClick)
 			{
@@ -525,19 +525,20 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 	DWORD Color;
 	if (gProtect.m_MainInfo.CustomMenuSwitch != 0)
 	{
+		// Positioning button
 		pDrawButton(30983, 146 + 37.2, 0.0, 36, 18, 0, 0);
-
+		// Render button
 		gInterface.DrawButtonRender(eMenu, 146 + 37.2, Y + 1.0 , 0, 0.0f);
 
 		if (gInterface.IsWorkZone(eMenu))
 		{
 			if (Menu == 1)
 			{
-				gInterface.DrawToolTip(146 + 37.2, 50, "Custom Menu");
+				gInterface.DrawToolTip(146 + 37.2, 40, "Custom Menu");
 			}
 			else
 			{
-				gInterface.DrawToolTip(146 + 37.2, 50, "Disable");
+				gInterface.DrawToolTip(146 + 37.2, 40, "Disable");
 			}
 			// ----
 			if (gInterface.Data[eMenu].OnClick)

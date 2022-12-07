@@ -621,10 +621,12 @@ public:
 	void OpenConfig(int type);
 	void SwitchCamera();
 	void SwitchChatExpand();
+	void SwitchWindowsQuest();
 	void CameraInit();
 	bool Button(DWORD Event, int WinID, int ButtonID, bool Type);
 	void DrawPing();
 	void SendPingRecv();
+	void InitSettings();
 
 	static void DrawZenAndRud(int a1, int a2, int a3, int a4);
 
@@ -659,6 +661,11 @@ public:
 	void		ResetChangeStateopen() { this->Data[eRESETCHANGE].OnShow = true;};
 	void		ResetChangeStateclose() { this->Data[eRESETCHANGE].OnShow = false;};
 	bool		CheckResetChangeWindow() { return this->Data[eRESETCHANGE].OnShow; };
+	// eWarehouse
+	void		WarehouseStateopen() { this->Data[eWAREHOUSE_MAIN].OnShow = true;};
+	void		WarehouseStateclose() { this->Data[eWAREHOUSE_MAIN].OnShow = false;};
+	bool		CheckWarehouseWindow() { return this->Data[eWAREHOUSE_MAIN].OnShow; };
+
 	void		DrawText(DWORD Color, int PosX, int PosY, int Width, int Align, LPCSTR Text, ...);
 	void TextDrawx(int PosX, int PosY, int Width, int Arg5, int Color, int Arg7, int Align, HGDIOBJ Font, LPCTSTR Format, ...);
 	void		DrawMessageBox(LPCSTR Text, ...);
