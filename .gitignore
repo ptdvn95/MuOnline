@@ -43,3 +43,5 @@
 *.ipch
 *.exp
 *.pdb
+*.exp
+*.pdb

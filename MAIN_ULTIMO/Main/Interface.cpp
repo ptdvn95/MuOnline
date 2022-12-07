@@ -1333,7 +1333,7 @@ void Interface::Work()
 
 	//g_ExWinQuestSystem.DrawMiniInfo();
 	g_ExWinQuestSystem.Draw();
-	g_ExWinQuestSystem.DrawOpenWQ();
+	//g_ExWinQuestSystem.DrawOpenWQ();
 
 	gGrandResetSystem.draw_grand_reset_system();
 	gResetSystem.draw_reset_system();

@@ -1,7 +1,7 @@
-﻿Build started 12/7/2022 5:50:58 PM.
+﻿Build started 08/12/2022 3:38:55 SA.
      1>Project "C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Main\Main.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Touching "Release\Main.unsuccessfulbuild".
+         Creating "Release\Main.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          All outputs are up-to-date.
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W0 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MAIN_EXPORTS /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Main.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Interface.cpp
@@ -150,4 +150,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.39
+Time Elapsed 00:00:05.61
