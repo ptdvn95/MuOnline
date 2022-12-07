@@ -102,8 +102,8 @@ Naked(Credit)
 {
 
 
-	gInterface.DrawFormat(eWhite, (MAX_WIN_WIDTH / 2) - 79, 470, 150, 3, "(c) 2021. All right reserved.");
-	gInterface.DrawFormat(eSocket, (MAX_WIN_WIDTH / 2) + 200, 470, 100, 3, "MU Discord");
+	gInterface.DrawFormat(eWhite, (MAX_WIN_WIDTH / 2) - 79, 470, 150, 3, "(c) 2021. All right reserved. =]MaxVoll[=");
+	gInterface.DrawFormat(eSocket, (MAX_WIN_WIDTH / 2) + 200, 470, 100, 3, "=:[ZXGAMES]:=");
 	_asm
 	{
 		lea eax, Test_LevelBuff

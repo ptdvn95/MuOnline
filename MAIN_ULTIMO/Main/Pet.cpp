@@ -97,43 +97,42 @@ char CustomPet::PetHPBar(int a1, int a2)
 			{
 				if (MiniMap == 0)
 				{
-					PetMuunHP(2, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
+					PetMuunHP(1, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
 				}
 				else
 				{
-					PetMuunHP(2, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
+					PetMuunHP(115, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
 				}
 			}
 			else if (gProtect.m_MainInfo.CustomInterfaceType != 1 && gProtect.m_MainInfo.CustomInterfaceType != 2)
 			{
 				if (MiniMap == 0)
 				{
-					//Hook Pet's HP Bar 
-					sub_7DFA60(2, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
+					sub_7DFA60(1, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
 				}
 				else
 				{
-					sub_7DFA60(2, gInterface.PetY + 30, (int)&PetName, PetHP, 255, 0);
+					sub_7DFA60(115, gInterface.PetY + 22, (int)&PetName, PetHP, 255, 0);
 				}
 			}
 			else
 			{
-				PetHPBarRemake(2, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
+				PetHPBarRemake(1, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
 			}
 		}
 		else
 		{
 			if (gProtect.m_MainInfo.CustomInterfaceType == 3 || gProtect.m_MainInfo.CustomInterfaceType == 4)
 			{
-					PetMuunHP(2, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
+					PetMuunHP(1, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
 			}
 			else if (gProtect.m_MainInfo.CustomInterfaceType != 1 && gProtect.m_MainInfo.CustomInterfaceType != 2)
 			{
-			   sub_7DFA60(2, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
+			   sub_7DFA60(1, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
 			}
 			else
 			{
-				PetHPBarRemake(2, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
+				PetHPBarRemake(1, gInterface.PetY, (int)&PetName, PetHP, 255, 0);
 			}
 		}
 
