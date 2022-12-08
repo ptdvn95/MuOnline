@@ -20,9 +20,9 @@
 #include "CustomRankUser.h"
 #include "InfoLog.h"
 
-int MinimizarPet;
+int MinimizarPet = 0;
 
-//-- Ingresar Dato en resolución 800 x 600
+//-- Ingresar Dato en resoluciï¿½n 800 x 600
 
 int RetangleInventory(int num)
 {
@@ -349,73 +349,73 @@ void PrintAdvanceStatus(int x, int y)
 	//-- Lado Izquierdo
 	pSetTextColor(pTextThis(), 0xFFu, 0xFFu, 0xFFu, 0xFFu);
 	v5 = y + 80; //-- 1
-	SetPrintf("· Total Dmg Reflect", x, v5, Width, 1);
+	SetPrintf("ï¿½ Total Dmg Reflect", x, v5, Width, 1);
 	v5 += v6; //-- 2
-	SetPrintf("· Full Dmg Reflect Rate", x, v5, Width, 1);
+	SetPrintf("ï¿½ Full Dmg Reflect Rate", x, v5, Width, 1);
 	v5 += v6; //-- 3
-	SetPrintf("· Crit Dmg Rate", x, v5, Width, 1);
+	SetPrintf("ï¿½ Crit Dmg Rate", x, v5, Width, 1);
 	v5 += v6; //-- 4
-	SetPrintf("· Crit Dmg (PVM)", x, v5, Width, 1);
+	SetPrintf("ï¿½ Crit Dmg (PVM)", x, v5, Width, 1);
 	v5 += v6; //-- 5
-	SetPrintf("· Crit Dmg (PVP)", x, v5, Width, 1);
+	SetPrintf("ï¿½ Crit Dmg (PVP)", x, v5, Width, 1);
 	v5 += v6; //-- 6
-	SetPrintf("· Exellent Dmg Rate", x, v5, Width, 1);
+	SetPrintf("ï¿½ Exellent Dmg Rate", x, v5, Width, 1);
 	v5 += v6; //-- 7
-	pDrawText(pTextThis(), x, v5, "· Exellent Dmg (PVM)", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Exellent Dmg (PVM)", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 8
-	pDrawText(pTextThis(), x, v5, "· Exellent Dmg (PVP)", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Exellent Dmg (PVP)", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 9
-	pDrawText(pTextThis(), x, v5, "· Double Dmg Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Double Dmg Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 10
-	pDrawText(pTextThis(), x, v5, "· Triple Dmg Rate:", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Triple Dmg Rate:", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 11
-	pDrawText(pTextThis(), x, v5, "· Dmg Reduction Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Dmg Reduction Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 12
-	pDrawText(pTextThis(), x, v5, "· Shield Skill Dmg Redc Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Shield Skill Dmg Redc Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 13
-	pDrawText(pTextThis(), x, v5, "· SD Dmg Reduction Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ SD Dmg Reduction Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 14
-	pDrawText(pTextThis(), x, v5, "· SD Decrease Dmg Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ SD Decrease Dmg Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 15
-	pDrawText(pTextThis(), x, v5, "· Ignore Def Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Ignore Def Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 16
-	pDrawText(pTextThis(), x, v5, "· Ignore SD Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Ignore SD Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 17
-	pDrawText(pTextThis(), x, v5, "· Inc Dmg PvP", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Inc Dmg PvP", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 18
-	pDrawText(pTextThis(), x, v5, "· Inc Def PvP", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Inc Def PvP", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 19
-	pDrawText(pTextThis(), x, v5, "· Resist Double Dmg Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Resist Double Dmg Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 20
-	pDrawText(pTextThis(), x, v5, "· Resist Ignore Def Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Resist Ignore Def Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 21
-	pDrawText(pTextThis(), x, v5, "· Resist Ignore SD Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Resist Ignore SD Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 22
-	pDrawText(pTextThis(), x, v5, "· Resist Crit Dmg Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Resist Crit Dmg Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 23
-	pDrawText(pTextThis(), x, v5, "· Resist Exellent Dmg Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Resist Exellent Dmg Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 24
-	pDrawText(pTextThis(), x, v5, "· Resist Stum Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Resist Stum Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 25
-	pDrawText(pTextThis(), x, v5, "· Ice Inc / Resist Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Ice Inc / Resist Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 26
-	pDrawText(pTextThis(), x, v5, "· Poison Inc / Resist Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Poison Inc / Resist Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 27
-	pDrawText(pTextThis(), x, v5, "· Lighting Ince / Resist Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Lighting Ince / Resist Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 28
-	pDrawText(pTextThis(), x, v5, "· Fire Inc / Resist Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Fire Inc / Resist Rate", Width, 0, (LPINT)1, 0);
 	v5 += v6; //-- 29
-	pDrawText(pTextThis(), x, v5, "· Earth Inc / Resist Rate", Width, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Earth Inc / Resist Rate", Width, 0, (LPINT)1, 0);
 	/*v5+= v6; //-- 30
-	pDrawText(pTextThis(), x, v5, "· Wind Inc / Resist Rate", 100, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Wind Inc / Resist Rate", 100, 0, (LPINT)1, 0);
 	v5+= v6; //-- 31
-	pDrawText(pTextThis(), x, v5, "· Water Inc / Resist Rate", 100, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ Water Inc / Resist Rate", 100, 0, (LPINT)1, 0);
 	v5+= v6; //-- 32
-	pDrawText(pTextThis(), x, v5, "· HP Restore Rate (Def, Att)", 100, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ HP Restore Rate (Def, Att)", 100, 0, (LPINT)1, 0);
 	v5+= v6; //-- 33
-	pDrawText(pTextThis(), x, v5, "· MP Rest Rate (Def, Att)", 100, 0, (LPINT)1, 0);
+	pDrawText(pTextThis(), x, v5, "ï¿½ MP Rest Rate (Def, Att)", 100, 0, (LPINT)1, 0);
 	v5+= v6; //-- 34
-	pDrawText(pTextThis(), x, v5, "· SD Rest Rate (Def, Att)", 100, 0, (LPINT)1, 0);*/
+	pDrawText(pTextThis(), x, v5, "ï¿½ SD Rest Rate (Def, Att)", 100, 0, (LPINT)1, 0);*/
 
 	//-- Lado Derecho
 	pSetTextColor(pTextThis(), 0xFFu, 0xBDu, 0x19u, 0xFFu);
@@ -3071,7 +3071,7 @@ void InitSeason15()
 		SetCompleteHook(0xE9, 0x0077F8CA, &InformationServer1); //-- Text
 		SetCompleteHook(0xE9, 0x0077FA1C, &InformationServer2); //-- Text
 		SetCompleteHook(0xE9, 0x0077FAA7, &InformationServer3); //-- Text
-		SetRange((LPVOID)0x0077F822, 5, 0x90); //-- Información 1
+		SetRange((LPVOID)0x0077F822, 5, 0x90); //-- Informaciï¿½n 1
 		//-- Stadistica Str
 		SetCompleteHook(0xE9, 0x007801D7, &InformationSTR1); //-- Text
 		SetCompleteHook(0xE9, 0x00780215, &InformationSTR2); //-- Point

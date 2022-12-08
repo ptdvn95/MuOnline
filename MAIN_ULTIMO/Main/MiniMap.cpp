@@ -103,7 +103,7 @@ char CMinimap::MapRender(int a1)
 	float v57; // [sp+B0h] [bp-4h]@3
 
 	v44 = a1;
-	v47 = 45.0;
+	v47 = 90.0;
 
 	ObjectPointer = &*(ObjectPreview*)(*(DWORD *)0x7BC4F04);
 	DIRPointer = (double) 135.0f + (45 * abs((signed int)(ObjectPointer->m_Model.WorldPos.Z / 45.0)));
@@ -173,8 +173,8 @@ char CMinimap::MapRender(int a1)
 		sub_637E80(32450,
 			325.0,
 			230.0,
-			15.0,
-			15.0,
+			10.0,
+			10.0,
 			DIRPointer,
 			0.0,
 			0.0,
@@ -251,22 +251,20 @@ void DataViewPortMapLoad()
 			&& Model != *(DWORD *)0x7BC4F04
 			&& (*(BYTE *)(Model + 800) == 1 || *(BYTE *)(Model + 800) == 2 || *(BYTE *)(Model + 800) == 4))
 		{
-			{
-				XNPC = (double)gRenderMap.DataMap.XSW_Minimap + *(DWORD *)(Model + 172) / ((Type == 1) ? 0.5 : Type - 1);
-				YNPC = (double)gRenderMap.DataMap.YSW_Minimap + (256 - *(DWORD *)(Model + 176)) / ((Type == 1) ? 0.5 : Type - 1);
+			// Hàm đéo gì đây
+			XNPC = (double)gRenderMap.DataMap.XSW_Minimap + *(DWORD *)(Model + 172) / ((Type == 1) ? 0.5 : Type - 1);
+			YNPC = (double)gRenderMap.DataMap.YSW_Minimap + (256 - *(DWORD *)(Model + 176)) / ((Type == 1) ? 0.5 : Type - 1);
 
-				XNPC = XNPC - gRenderMap.DataMap.This_108 - 5;
-				YNPC = YNPC - gRenderMap.DataMap.This_112 - 5;
-				{
-					RenderBitMapColored(31471, XNPC, YNPC, 7.0, 7.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, 255)); //Icono Monster
-				}
-			}
+			XNPC = XNPC - gRenderMap.DataMap.This_108 - 5;
+			YNPC = YNPC - gRenderMap.DataMap.This_112 - 5;
+			// Render Monster
+			RenderBitMapColored(31471, XNPC, YNPC, 10.0, 10.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, 255)); //Icono Monster
 			//Aqui agregar ID de los Guard
 			if (*(WORD *)(Model + 132) == 249
 				|| *(WORD *)(Model + 132) == 247
 				|| *(WORD *)(Model + 132) == 241)
 			{
-				RenderBitMapColored(31472, XNPC, YNPC, 7.0, 7.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(0, 0, 255, 255)); //Icono Guard
+				RenderBitMapColored(31472, XNPC, YNPC, 10.0, 10.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(0, 0, 255, 255)); //Icono Guard
 			}
 
 			else if (*(BYTE *)(Model + 800) == 4 && *(WORD *)(Model + 132) != 249)
@@ -341,22 +339,22 @@ void Interface::DrawMiniMap()
 	int Scalado;
 
 	ObjectPointer = &*(ObjectPreview*)(*(DWORD *)0x7BC4F04);
-	DIRPointer = 180 + (45 * abs((signed int)(ObjectPointer->m_Model.WorldPos.Z / 45.0)));
+	DIRPointer =  180 + ( 45 * abs((signed int)(ObjectPointer->m_Model.WorldPos.Z / 45.0)));
 
 	Type = gRenderMap.DataMap.Scale;
 
 	DataMapLoad();
 
-	v8 = (double)((Type == 1) ? 0.25f : ((Type == 2) ? 0.5f : 1.0));
-	v9 = (double)((Type == 1) ? 0.25f : ((Type == 2) ? 0.5f : 1.0));
+	v8 = (double) (( Type == 1 ) ? 0.25f : (( Type == 2 ) ? 0.5f : 1.0));
+	v9 = (double) (( Type == 1 ) ? 0.25f : (( Type == 2 ) ? 0.5f : 1.0));
 
-	v10 = (double)gRenderMap.DataMap.YSW_Minimap;
-	v11 = (double)gRenderMap.DataMap.XSW_Minimap;
+	v10 = (double) gRenderMap.DataMap.YSW_Minimap;
+	v11 = (double) gRenderMap.DataMap.XSW_Minimap;
 	//-- Fondo
-	//RenderBitmap(31464, v11 - 10, v10 - 9, 148, 148, 0.3699999452, 0.0625, 0.5779999495, 0.2889999151, 1, 1, 0.0);
+	// RenderBitmap(31464, v11 - 1, v10 + 6, 125, 125, 0.3699999452, 0.0625, 0.5779999495, 0.2889999151, 1, 1, 0.0); //Minimapa abajo
 	//-- Mapa
-	//RenderBitmap(31462, v11, v10, 128, 128, gRenderMap.DataMap.CurrentMoveX, gRenderMap.DataMap.CurrentMoveY, v9, v8, 1, 1, gRenderMap.DataMap.Alpha);
 	RenderBitmap(31462, v11, v10, 128.0, 128.0, gRenderMap.DataMap.CurrentMoveX, gRenderMap.DataMap.CurrentMoveY, v9, v8, 1, 1, 0.0);
+	// RenderBitmap(31462, v11 + 14, v10 + 18, 93, 100, gRenderMap.DataMap.CurrentMoveX, gRenderMap.DataMap.CurrentMoveY, v9, v8, 1, 1, gRenderMap.DataMap.Alpha); //Minimapa abajo
 	//-- Cabezera
 	/*RenderBitmap(31463, v11 - 10, v10 - 30, 148.0, 20.0, 0.3259999454, 0.00249999878, 0.6679999232, 0.04399995133, 1, 1, 0.0);
 	//-- Titulo
@@ -404,8 +402,8 @@ void Interface::DrawMiniMap()
 		JCPartyCoordX = JCPartyCoordX - gRenderMap.DataMap.This_108 - 5;
 		JCPartyCoordY = JCPartyCoordY - gRenderMap.DataMap.This_112 - 5;
 
-		this->DrawFormat(eWhite, JCPartyCoordX, JCPartyCoordY - 9, 35, 3, gMiniMap.gPartyInfo[i].name);
-		RenderBitMapColored(61520, JCPartyCoordX, JCPartyCoordY, 10.0, 10.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, gRenderMap.DataMap.Alpha * 255));
+		//this->DrawFormat(eWhite, JCPartyCoordX, JCPartyCoordY - 9, 35, 3, gMiniMap.gPartyInfo[i].name);
+		//RenderBitMapColored(61520, JCPartyCoordX, JCPartyCoordY, 10.0, 10.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, gRenderMap.DataMap.Alpha * 255));
 	}
 
 
@@ -628,15 +626,15 @@ void Interface::DrawMiniMap()
 
 bool MiniMapFileCheck1(int Map) // OK
 {
-	if (Map - 1 == 30){ return 0; }
-
+	if(Map - 1 == 30){return 0;}
+	
 	char Path[64];
 
-	wsprintf(Path, "Data\\Custom\\Maps\\World%d.ozt", Map);
+	wsprintf(Path, "Data\\Custom\\Maps\\World%d.ozj", Map);
 
 	int File = rFileOpen(Path, "rb");
 
-	if (File)
+	if ( File )
 	{
 		rFileClose(File);
 		return 1;
@@ -656,6 +654,26 @@ void MiniMapLoadtexture() // OK
 		wsprintf(buff, "Custom\\Maps\\World%d.tga", (pMapNumber + 1));
 
 		if (MiniMapFileCheck1(pMapNumber + 1) != 0)
+		{
+			gRenderMap.DataMap.ModelID = 31462;
+			pLoadImage(buff, 31462, 0x2601, 0x2900, 1, 0);
+		}
+		else
+		{
+			gRenderMap.DataMap.ModelID = -1;
+		}
+	}
+}
+
+void MiniMapLoad2() // OK
+{
+	if (pMapNumber < MAX_MINI_MAP && pMapNumber != 30)
+	{
+		char buff[32];
+
+		wsprintf(buff, "Custom\\Maps\\World%d.jpg", ( pMapNumber + 1 ));
+		
+		if (MiniMapFileCheck1( pMapNumber + 1 ) != 0)
 		{
 			gRenderMap.DataMap.ModelID = 31462;
 			pLoadImage(buff, 31462, 0x2601, 0x2900, 1, 0);
@@ -687,7 +705,7 @@ __declspec(naked) void LoadTexture()
 	}
 	else
 	{
-		MiniMapLoadtexture();
+		MiniMapLoad2();
 		_asm
 		{
 			JMP[Addr1_JMP]
