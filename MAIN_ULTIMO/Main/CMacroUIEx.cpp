@@ -429,14 +429,16 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 	glColor4f(1.0, 1.0, 1.0, 1.0);
 	RenderImage(31602, X, Y, 22.0, 25.0);
 
-	for(int i = 0 ; i < 5 ; i ++)
+	for(int i = 0 ; i < 4 ; i ++)
 	{
 		RenderX = (double) X + 22.0 + (i * 26.0);
 		RenderImage(31603, RenderX, Y, 26.0, 25.0);
+		if(i == 3){
+			RenderX = (double) X + 22.0 + ((i+1) * 26.0);
+			RenderImage(31604, RenderX, Y, 73.0, 20.0);
+		}
 	}
 
-	RenderImage(31604, RenderX, Y, 73.0, 20.0);
-	
 	//Mapa y Coordenadas
 	if (World >= 82 && World <= 100)
 	{
@@ -448,7 +450,7 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 	}
 	pSetBackgroundTextColor(pTextThis(), 0, 0, 0, 0);
 	pSetTextColor(pTextThis(), 240, 240, 240, 255);
-	pDrawText(pTextThis(), X - 25, Y + 3, Cord, 190, 0, (LPINT)3, 0);
+	pDrawText(pTextThis(), X - 30, Y + 3, Cord, 190, 0, (LPINT)3, 0);
 	pGLSwitch();
 	EnableAlphaTest(0);
 	//-- Config

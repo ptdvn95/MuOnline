@@ -269,6 +269,7 @@ void Interface::RenderObjectSystem()
 		this->BindObject(eCommunity, 51522, 19.5f, 19.5f, -1, -1);
 		this->BindObject(eSystem, 51522, 19.5f, 19.5f, -1, -1);
 		break;
+	//case 0
 	default:
 		if (gProtect.m_MainInfo.CustomMenuType == 1)
 		{
@@ -1287,7 +1288,7 @@ void Interface::Work()
 	gRanking.Draw();
 
 	//Draw Local and Server Time
-	//gInterface.DrawTimeUI();
+	gInterface.DrawTimeUI();
 
 	gCustomEventTime.DrawEventTimePanelWindow();
 	
@@ -1654,8 +1655,8 @@ void Interface::DrawTimeUI()
 		return;
 	}
 	// -----
-	this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y);
-	this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y + 22);
+	// this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y);
+	// this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y + 22);
 	// -----
 	time_t TimeServer, TimeLocal;
 	struct tm * ServerT, *LocalT;
@@ -1664,22 +1665,22 @@ void Interface::DrawTimeUI()
 	// ----
 	ServerT = gmtime(&TimeServer);
 	// ----
-	char ServerTimeName[25] = "Server:";
+	char ServerTimeName[25] = "Server time:";
 	char ServerTime[30];
 
 	sprintf(ServerTime, "%2d:%02d:%02d", (ServerT->tm_hour + GMT) % 24, ServerT->tm_min, ServerT->tm_sec);
 	// -----
 	LocalT = localtime(&TimeLocal);
 	// -----
-	char LocalTimeName[25] = "Local:";
+	char LocalTimeName[25] = "Local time:";
 	char LocalTime[30];
 	sprintf(LocalTime, "%2d:%02d:%02d", LocalT->tm_hour, LocalT->tm_min, LocalT->tm_sec);
 	// -----
-	this->DrawFormat(eGold, 5, 391, 50, 1, ServerTimeName);
-	this->DrawFormat(eWhite, 55, 391, 100, 1, ServerTime);
+	this->DrawFormat(eOrange, 5, 410, 25, 1, ServerTimeName);
+	this->DrawFormat(eOrange, 32, 410, 40, 1, ServerTime);
 	// ----
-	this->DrawFormat(eGold, 5, 413, 50, 1, LocalTimeName);
-	this->DrawFormat(eWhite, 55, 413, 100, 1, LocalTime);
+	this->DrawFormat(eOrange, 5, 420, 25, 1, LocalTimeName);
+	this->DrawFormat(eOrange, 32, 420, 40, 1, LocalTime);
 }
 
 int Interface::DrawFormat(DWORD Color, int PosX, int PosY, int Width, int Align, LPCSTR Text, ...)

@@ -352,7 +352,7 @@ void Centralizado::RenderCursor()
 				{
 					RenderBitmap(30014, v4, v3, ReturnX(TransForX(24.0)), ReturnY(TransForY(24.0)), 0.0, 0.0, 1.0, 1.0, 1, 1, 0.0);
 				}
-				//-- finaliza la carroña
+				//-- finaliza la carroï¿½a
 			}
 			else if (
 				(*(DWORD *)0xE61E18 || *(DWORD *)(dword_8787D58[3 * *(DWORD *)0xE61734] + 48) != 133)
