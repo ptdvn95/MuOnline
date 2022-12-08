@@ -251,7 +251,7 @@ void EventMuOffhelper(DWORD Event)
 
 void EventZenMuOffhelper(DWORD Event)
 {
-	if ((GetTickCount() - gInterface.Data[ButtonZenOff].EventTick) < 1000)
+	if ((GetTickCount() - gInterface.Data[ButtonZenOff].EventTick) < 400)
 	{
 		return;
 	}

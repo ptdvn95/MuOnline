@@ -619,6 +619,8 @@ public:
 	void DrawBarForm(float PosX,float PosY,float Width,float Height,GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 	//--
 	void OpenConfig(int type);
+	void SwitchCustomMenu();
+	void CloseAllWindows();
 	void SwitchCamera();
 	void SwitchChatExpand();
 	void SwitchWindowsQuest();
