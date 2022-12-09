@@ -264,7 +264,7 @@ void CCustomEventTime::OpenWindow()
 		return;
 	}
 
-	if((GetTickCount() - gInterface.Data[eEventTimePANEL_MAIN].EventTick) < 500 )
+	if((GetTickCount() - gInterface.Data[eEventTimePANEL_MAIN].EventTick) < 200 )
 	{
 		return;
 	}

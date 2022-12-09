@@ -594,7 +594,7 @@ public:
 	void CloseCustomWindow();
 	//Mini Map
 	void DrawMiniMap();
-//	void DrawRadar();
+	// void DrawRadar();
 	bool MiniMapCheck();
 	bool CombinedChecks();
 	bool CheckMap();
@@ -620,6 +620,7 @@ public:
 	//--
 	void OpenConfig(int type);
 	void SwitchCustomMenu();
+	void SwitchJewelsBank();
 	void CloseAllWindows();
 	void SwitchCamera();
 	void SwitchChatExpand();

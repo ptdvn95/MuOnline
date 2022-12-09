@@ -142,7 +142,7 @@ void ware::EventWarehouseWindow_Main(DWORD Event)
 
 	DWORD CurrentTick = GetTickCount();
 
-	if ((CurrentTick - gInterface.Data[eWAREHOUSE_MAIN].EventTick) < 500)
+	if ((CurrentTick - gInterface.Data[eWAREHOUSE_MAIN].EventTick) < 400)
 	{
 		return;
 	}

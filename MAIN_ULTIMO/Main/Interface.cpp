@@ -408,7 +408,7 @@ void Interface::RenderObjectSystem()
 
 	gSmithItem.Bind();
 
-	//g_ExWinQuestSystem.BindImages();
+	// g_ExWinQuestSystem.BindImages();
 }
 
 void Interface::DrawZenAndRud(int a1, int a2, int a3, int a4)
@@ -436,7 +436,7 @@ void Interface::DrawZenAndRud(int a1, int a2, int a3, int a4)
 	//--
 	gInterface.DrawGUI(eMoney1, v11 + 18, v10 + 365);
 	gInterface.DrawFormat(eBlack, v11 + 18, v10 + 367, 20, 1, "Zen");
-	gInterface.DrawFormat(eRed, v11 + 40, v10 + 367, 50, 3, "%s", MoneyBuff1);
+	gInterface.DrawFormat(eRed, v11 + 40, v10 + 367, 50, 4, "%s", MoneyBuff1);
 	//--
 	gInterface.DrawGUI(eMoney2, v11 + 102, v10 + 365);
 	gInterface.DrawFormat(eBlack, v11 + 102, v10 + 367, 20, 1, "GP");
@@ -1230,7 +1230,7 @@ void Interface::Work()
 
 	if (gProtect.m_MainInfo.MiniMapType == 2)
 	{
-		//		gInterface.DrawRadar();
+		// gInterface.DrawRadar();
 	}
 
 	if (gProtect.m_MainInfo.MiniMapType == 2)
@@ -1285,6 +1285,7 @@ void Interface::Work()
 		gInterface.DrawInterfaceDragonRS3();
 	}
 
+	// Draw Ranking Board
 	gRanking.Draw();
 
 	// Draw Local and Server Time
@@ -1464,13 +1465,18 @@ void Interface::Work()
 		}
 		if (GetKeyState(VK_F7) & 0x4000)
 		{
-			gInterface.SwitchWindowsQuest();
+			gInterface.SwitchJewelsBank();
+			// gInterface.SwitchWindowsQuest();
 		}
 		if (GetKeyState(VK_F6) & 0x4000)
 		{
 			// gInterface.SwitchChatExpand();
 		}
 		if (GetKeyState(VK_F8) & 0x4000)
+		{
+			// gInterface.SwitchCustomMenu();
+		}
+		if (GetKeyState(VK_F9) & 0x4000)
 		{
 			gInterface.SwitchCustomMenu();
 		}
@@ -3662,14 +3668,41 @@ void Interface::SwitchChatExpand()
 	gChatExpanded.Switch();
 }
 
+// Open Windows Quest
 void Interface::SwitchWindowsQuest()
 {
-	if ((GetTickCount() - gInterface.Data[OBJECT_WIN_QUEST_MAIN].EventTick) < 100 || this->CheckWindow(ChatWindow))
+	if ((GetTickCount() - gInterface.Data[OBJECT_WIN_QUEST_MAIN].EventTick) < 200)
 	{
 		return;
 	}
 	gInterface.Data[OBJECT_WIN_QUEST_MAIN].EventTick = GetTickCount();
 	g_ExWinQuestSystem.SwitchStatsWindowState();
+}
+
+// Open Jewels Bank
+void Interface::SwitchJewelsBank()
+{
+	if ((GetTickCount() - gInterface.Data[eJEWELBANK_MAIN].EventTick) < 200)
+	{
+		return;
+	}
+	gInterface.Data[eJEWELBANK_MAIN].EventTick = GetTickCount();
+
+	if (gJewelsBank.Active == true)
+	{
+		gJewelsBank.Active = false;
+		gInterface.Data[eJEWELBANK_MAIN].OnShow = false;
+		if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+		{
+			pSetCursorFocus = false;
+		}
+	}
+	else
+	{
+		CloseAllWindows();
+		gJewelsBank.Active = true;
+		gInterface.Data[eJEWELBANK_MAIN].OnShow = true;
+	}
 }
 
 void Interface::OpenConfig(int type)
@@ -3733,12 +3766,11 @@ void Interface::CloseAllWindows()
 	gInterface.Data[OBJECT_ACHIEVEMENTS_MAIN].Close();
 	gRanking.Show = false;
 	gJewelsBank.Active = false;
-	gInterface.CloseMenuWindow();
 }
 //-- Switch Custom Menu
 void Interface::SwitchCustomMenu()
 {
-	if ((GetTickCount() - gInterface.Data[eMenu_MAIN].EventTick) < 400)
+	if ((GetTickCount() - gInterface.Data[eMenu_MAIN].EventTick) < 200)
 	{
 		return;
 	}
@@ -3767,11 +3799,11 @@ void Interface::SwitchCamera()
 
 	if (gCamera.getEnabled())
 	{
-		gInterface.DrawMessage(1, "Camera3D [ON]");
+		gInterface.DrawMessage(1, "Camera 3D [BẬT]");
 	}
 	else
 	{
-		gInterface.DrawMessage(1, "Camera3D [OFF]");
+		gInterface.DrawMessage(1, "Camera 3D [TẮT]");
 	}
 }
 //-- CameraInit
@@ -3787,8 +3819,12 @@ void Interface::CameraInit()
 
 	if (gCamera.getEnabled())
 	{
-		gInterface.DrawMessage(1, "Camera Restore [DEFAULT]");
+		gInterface.DrawMessage(1, "Khôi phục Camera [MẶC ĐỊNH]");
 		gCamera.Restore();
+	}
+	else
+	{
+		gInterface.DrawMessage(1, "Vui lòng bật Camera 3D trước (F10) ");
 	}
 }
 
@@ -3839,7 +3875,7 @@ void Interface::DrawInterfaceS2Menu()
 {
 	if (IsWorkZone(eParty))
 	{
-		this->DrawToolTip(345, 420, "Party");
+		this->DrawToolTip(345, 420, "Nhóm");
 	}
 	if (this->CheckWindow(Party))
 	{
@@ -3847,7 +3883,7 @@ void Interface::DrawInterfaceS2Menu()
 	}
 	if (IsWorkZone(eCharacter))
 	{
-		this->DrawToolTip(375, 420, "Character");
+		this->DrawToolTip(375, 420, "Nhân vật");
 	}
 	if (this->CheckWindow(Character))
 	{
@@ -3855,7 +3891,7 @@ void Interface::DrawInterfaceS2Menu()
 	}
 	if (IsWorkZone(eInventory))
 	{
-		this->DrawToolTip(405, 420, "Inventory");
+		this->DrawToolTip(405, 420, "Hòm đồ");
 	}
 	if (this->CheckWindow(Inventory))
 	{
@@ -3871,7 +3907,7 @@ void Interface::DrawInterfaceS2Menu()
 	}
 	if (IsWorkZone(eFriend))
 	{
-		this->DrawToolTip(580, 420, "Friends");
+		this->DrawToolTip(580, 420, "Bạn bè");
 	}
 	if (this->CheckWindow(FriendList))
 	{
@@ -3879,7 +3915,7 @@ void Interface::DrawInterfaceS2Menu()
 	}
 	if (IsWorkZone(eGuild))
 	{
-		this->DrawToolTip(580, 444, "Guild");
+		this->DrawToolTip(580, 444, "Hội");
 	}
 	if (this->CheckWindow(Guild))
 	{
@@ -3887,7 +3923,7 @@ void Interface::DrawInterfaceS2Menu()
 	}
 	if (IsWorkZone(eFastMenu))
 	{
-		this->DrawToolTip(13, 420, "System");
+		this->DrawToolTip(13, 420, "Hệ thống");
 	}
 	if (this->CheckWindow(FastMenu))
 	{

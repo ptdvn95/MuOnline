@@ -228,7 +228,7 @@ void RenderWindowsGensBattle(int a1)	//-- incompleto
 
 void EventMuOffhelper(DWORD Event)
 {
-	if ((GetTickCount() - gInterface.Data[ButtonStartAttack].EventTick) < 1000)
+	if ((GetTickCount() - gInterface.Data[ButtonStartAttack].EventTick) < 400)
 	{
 		return;
 	}
