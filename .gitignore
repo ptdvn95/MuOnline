@@ -45,3 +45,7 @@
 *.pdb
 *.exp
 *.pdb
+*.res
+*.cache
+*.manifest
+*.lastbuildstate

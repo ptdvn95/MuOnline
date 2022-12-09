@@ -279,7 +279,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,UINT message,WPARAM wParam,LPARAM lParam) // 
 
 		SendMessage(hWndStatusBar, SB_SETTEXT, 4, (LPARAM)text);
 
-		wsprintf(text, "Licensed to: %s", "ZXGAMES");
+		wsprintf(text, "Licensed to: %s", "ZEKCROM");
 
 		SendMessage(hWndStatusBar, SB_SETTEXT, 5, (LPARAM)text);
 

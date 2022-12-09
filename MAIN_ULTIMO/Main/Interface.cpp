@@ -408,7 +408,7 @@ void Interface::RenderObjectSystem()
 
 	gSmithItem.Bind();
 
-	g_ExWinQuestSystem.BindImages();
+	//g_ExWinQuestSystem.BindImages();
 }
 
 void Interface::DrawZenAndRud(int a1, int a2, int a3, int a4)

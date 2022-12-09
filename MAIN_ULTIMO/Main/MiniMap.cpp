@@ -251,7 +251,6 @@ void DataViewPortMapLoad()
 			&& Model != *(DWORD *)0x7BC4F04
 			&& (*(BYTE *)(Model + 800) == 1 || *(BYTE *)(Model + 800) == 2 || *(BYTE *)(Model + 800) == 4))
 		{
-			// Hàm đéo gì đây
 			XNPC = (double)gRenderMap.DataMap.XSW_Minimap + *(DWORD *)(Model + 172) / ((Type == 1) ? 0.5 : Type - 1);
 			YNPC = (double)gRenderMap.DataMap.YSW_Minimap + (256 - *(DWORD *)(Model + 176)) / ((Type == 1) ? 0.5 : Type - 1);
 
@@ -630,6 +629,27 @@ bool MiniMapFileCheck1(int Map) // OK
 	
 	char Path[64];
 
+	wsprintf(Path, "Data\\Custom\\Maps\\World%d.ozt", Map);
+
+	int File = rFileOpen(Path, "rb");
+
+	if ( File )
+	{
+		rFileClose(File);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+bool MiniMapFileCheckIMG(int Map) // OK
+{
+	if(Map - 1 == 30){return 0;}
+	
+	char Path[64];
+
 	wsprintf(Path, "Data\\Custom\\Maps\\World%d.ozj", Map);
 
 	int File = rFileOpen(Path, "rb");
@@ -665,7 +685,7 @@ void MiniMapLoadtexture() // OK
 	}
 }
 
-void MiniMapLoad2() // OK
+void MiniMapLoadIMG() // OK
 {
 	if (pMapNumber < MAX_MINI_MAP && pMapNumber != 30)
 	{
@@ -673,7 +693,7 @@ void MiniMapLoad2() // OK
 
 		wsprintf(buff, "Custom\\Maps\\World%d.jpg", ( pMapNumber + 1 ));
 		
-		if (MiniMapFileCheck1( pMapNumber + 1 ) != 0)
+		if (MiniMapFileCheckIMG( pMapNumber + 1 ) != 0)
 		{
 			gRenderMap.DataMap.ModelID = 31462;
 			pLoadImage(buff, 31462, 0x2601, 0x2900, 1, 0);
@@ -705,7 +725,35 @@ __declspec(naked) void LoadTexture()
 	}
 	else
 	{
-		MiniMapLoad2();
+		MiniMapLoadtexture();
+		_asm
+		{
+			JMP[Addr1_JMP]
+		}
+	}
+}
+
+__declspec(naked) void LoadIMG()
+{
+	static DWORD Addr2_JMP = 0x0062F8A6;
+	static DWORD Addr1_JMP = 0x0062F87C;
+	static DWORD Map = 0x007AA331;
+
+	_asm
+	{
+		MOV EAX, DWORD PTR SS : [EBP - 0x78]
+			MOV Map, EAX
+	}
+	if (Map == 74 || Map == 75)
+	{
+		_asm
+		{
+			JMP[Addr2_JMP]
+		}
+	}
+	else
+	{
+		MiniMapLoadIMG();
 		_asm
 		{
 			JMP[Addr1_JMP]
@@ -720,9 +768,8 @@ bool pDisabledMouseMAP(int x, int y, int w, int h)
 
 void CMinimap::MiniMapload()
 {
-
 	SetCompleteHook(0xE8, 0x0082B772, &pDisabledMouseMAP); //ok
-
-	SetCompleteHook(0xE9, 0x0062F870, &LoadTexture); //ok
+	// SetCompleteHook(0xE9, 0x0062F870, &LoadTexture); //ok
+	SetCompleteHook(0xE9, 0x0062F870, &LoadIMG); //ok
 	SetCompleteHook(0xE9, 0x0082ABA0, &CMinimap::MapRender);
 }
