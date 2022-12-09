@@ -1374,20 +1374,7 @@ void Interface::Work()
 		}
 		if (GetKeyState(VK_END) & 0x4000)
 		{
-			if ((GetTickCount() - gInterface.Data[eVip_MAIN].EventTick) > 300)
-			{
-				if (gInterface.CheckVipWindow())
-				{
-					gInterface.Data[eVip_MAIN].EventTick = GetTickCount();
-					gInterface.CloseVipWindow();
-				}
-				else
-				{
-					gInterface.Data[eVip_MAIN].EventTick = GetTickCount();
-					gInterface.CloseCustomWindow();
-					gInterface.OpenVipWindow();
-				}
-			}
+			gInterface.SwitchMiniMap();
 		}
 		if (GetKeyState('H') & 0x4000)
 		{
@@ -1466,15 +1453,6 @@ void Interface::Work()
 		if (GetKeyState(VK_F7) & 0x4000)
 		{
 			gInterface.SwitchJewelsBank();
-			// gInterface.SwitchWindowsQuest();
-		}
-		if (GetKeyState(VK_F6) & 0x4000)
-		{
-			// gInterface.SwitchChatExpand();
-		}
-		if (GetKeyState(VK_F8) & 0x4000)
-		{
-			// gInterface.SwitchCustomMenu();
 		}
 		if (GetKeyState(VK_F9) & 0x4000)
 		{
@@ -1619,7 +1597,7 @@ void Interface::Work()
 
 void Interface::SwitchMiniMap()
 {
-	if ((GetTickCount() - gInterface.Data[eNULL_MAP].EventTick) < 1000 || this->CheckWindow(ChatWindow))
+	if ((GetTickCount() - gInterface.Data[eNULL_MAP].EventTick) < 400)
 	{
 		return;
 	}
@@ -1628,13 +1606,13 @@ void Interface::SwitchMiniMap()
 
 	if (MiniMap != 0)
 	{
-		gInterface.DrawMessage(1, "MiniMap Window [OFF]");
+		gInterface.DrawMessage(1, "Bản đồ nhỏ [TẮT]");
 		MiniMap = 0;
 		WritePrivateProfileStringA("Graphics", "MiniMap", "0", "./Settings.ini");
 	}
 	else
 	{
-		gInterface.DrawMessage(1, "MiniMap Window [ON]");
+		gInterface.DrawMessage(1, "Bản đồ nhỏ [BẬT]");
 		MiniMap = 1;
 		WritePrivateProfileStringA("Graphics", "MiniMap", "1", "./Settings.ini");
 	}
@@ -3709,7 +3687,7 @@ void Interface::OpenConfig(int type)
 {
 	if (type == 0)
 	{
-		if ((GetTickCount() - gInterface.Data[ePLAYER_POINT].EventTick) < 400 || this->CheckWindow(ChatWindow) || this->CheckWindow(MuHelper) || this->CheckWindow(Inventory) || this->CheckWindow(Store) || this->CheckWindow(Character) || this->CheckWindow(CreateGuild))
+		if ((GetTickCount() - gInterface.Data[ePLAYER_POINT].EventTick) < 200 || this->CheckWindow(ChatWindow) || this->CheckWindow(MuHelper) || this->CheckWindow(Inventory) || this->CheckWindow(Store) || this->CheckWindow(Character) || this->CheckWindow(CreateGuild))
 		{
 			return;
 		}

@@ -1,56 +1,12 @@
-﻿Build started 12/10/2022 3:10:14 AM.
+﻿Build started 12/10/2022 4:23:49 AM.
      1>Project "C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Main\Main.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\Main.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          All outputs are up-to-date.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W0 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MAIN_EXPORTS /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Main.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Achievements.cpp BuffIcon.cpp CChatClassic.cpp CChatEx.cpp CMacroUIEx.cpp CSCharacterS13.cpp Central.cpp ChangeClass.cpp Common.cpp Controller.cpp CustomCommandInfo.cpp CustomEventTime.cpp CustomFont.cpp CustomMap.cpp CustomRankUser.cpp GrandResetSystem.cpp HealthBar.cpp Inter3.cpp InterEx.cpp Interface.cpp ItemShopValue.cpp JewelryBank.cpp Main.cpp MiniMap.cpp OffTrade.cpp PartyBar.cpp PartyBuffs.cpp PartySearch.cpp Pet.cpp Protocol.cpp Radar.cpp Ranking.cpp ResetSystem.cpp ResetSystemPanel.cpp ShopSearch.cpp SmithItem.cpp StatsAdvance.cpp User.cpp WindowsQuest.cpp WindowsStruct.cpp cape.cpp postInterface.cpp post_item.cpp ware.cpp
-         Achievements.cpp
-         BuffIcon.cpp
-         CChatClassic.cpp
-         CChatEx.cpp
-         CMacroUIEx.cpp
-         CSCharacterS13.cpp
-         Central.cpp
-         ChangeClass.cpp
-         Common.cpp
-         Controller.cpp
-         CustomCommandInfo.cpp
-         CustomEventTime.cpp
-         CustomFont.cpp
-         CustomMap.cpp
-         CustomRankUser.cpp
-         GrandResetSystem.cpp
-         HealthBar.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W0 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MAIN_EXPORTS /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Main.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Inter3.cpp WindowsStruct.cpp
          Inter3.cpp
-         InterEx.cpp
-         Interface.cpp
-         Compiling...
-         ItemShopValue.cpp
-         JewelryBank.cpp
-         Main.cpp
-         MiniMap.cpp
-         OffTrade.cpp
-         PartyBar.cpp
-         PartyBuffs.cpp
-         PartySearch.cpp
-         Pet.cpp
-         Protocol.cpp
-         Radar.cpp
-         Ranking.cpp
-         ResetSystem.cpp
-         ResetSystemPanel.cpp
-         ShopSearch.cpp
-         SmithItem.cpp
-         StatsAdvance.cpp
-         User.cpp
-         WindowsQuest.cpp
          WindowsStruct.cpp
-         Compiling...
-         cape.cpp
-         postInterface.cpp
-         post_item.cpp
-         ware.cpp
        ResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -195,4 +151,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:09.16
+Time Elapsed 00:00:05.17
