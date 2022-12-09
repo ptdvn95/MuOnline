@@ -82,9 +82,9 @@ void CAchievements::Draw()
 	pSetCursorFocus = true;
 
 	gInterface.DrawGUI(OBJECT_ACHIEVEMENTS_MAIN, 0, 0);
-	gInterface.DrawText(eGold, MAX_WIN_WIDTH / 2, 23, 0, eCenter, "Achievements System");
+	gInterface.DrawText(eGold, MAX_WIN_WIDTH / 2, 23, 0, eCenter, "Bảng Thành Tích");
 
-	gInterface.DrawGUI(OBJECT_ACHIEVEMENTS_CLOSE, 630 + 15 - gInterface.Data[OBJECT_ACHIEVEMENTS_CLOSE].Width, gInterface.Data[OBJECT_ACHIEVEMENTS_CLOSE].Height + gInterface.Data[OBJECT_ACHIEVEMENTS_CLOSE].Height - 55);
+	gInterface.DrawGUI(OBJECT_ACHIEVEMENTS_CLOSE, 632 + 15 - gInterface.Data[OBJECT_ACHIEVEMENTS_CLOSE].Width, gInterface.Data[OBJECT_ACHIEVEMENTS_CLOSE].Height + gInterface.Data[OBJECT_ACHIEVEMENTS_CLOSE].Height - 60);
 	// ----
 	if (gInterface.IsWorkZone(OBJECT_ACHIEVEMENTS_CLOSE))
 	{
