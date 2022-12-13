@@ -572,7 +572,7 @@ void Interface::LoadImages()
 //	pLoadImage("Custom\\Maps\\mini_map_ui_monsterred.tga", 31471, 0x2601, 0x2900, 1, 0);
 //	pLoadImage("Custom\\Maps\\mini_map_ui_monsterblue.tga", 31472, 0x2601, 0x2900, 1, 0);
 
-	pLoadImage("Custom\\Maps\\edBtUcx.tga", 31463, 0x2601, 0x2900, 1, 0); //-- Dungeon
+	pLoadImage("Custom\\Maps\\edBtUcxv2.tga", 31463, 0x2601, 0x2900, 1, 0); //-- Dungeon
 	pLoadImage("Custom\\Maps\\time700.tga", 31458, 0x2601, 0x2900, 1, 0); //-- Dungeon
 	pLoadImage("Custom\\Maps\\edBtUcx_2.tga", 31464, 0x2601, 0x2900, 1, 0); //-- Dungeon
 	pLoadImage("Custom\\Maps\\edBtUcx_1.tga", 31459, 0x2601, 0x2900, 1, 0); //-- Dungeon
@@ -3760,6 +3760,7 @@ void Interface::SwitchCustomMenu()
 	{
 		CloseAllWindows();
 		gInterface.OpenMenuWindow();
+		pSetCursorFocus = true;
 	}
 }
 //-- SwitchCamera

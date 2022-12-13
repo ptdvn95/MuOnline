@@ -145,25 +145,25 @@ void CMacroUIEx::RenderFrame(int *This)
 		}
 	}
 	// ----
-	gInterface.DrawButtonRender(ButtonCamera, X + 96.0f + renderMenu, Y + 7.0, 0, 0.0f);
+	// gInterface.DrawButtonRender(ButtonCamera, X + 96.0f + renderMenu, Y + 7.0, 0, 0.0f);
 
-	if (gInterface.IsWorkZone(ButtonCamera))
-	{
-		gInterface.DrawToolTip(X + 96.0f + renderMenu, 50, "CAMERA ON|OFF|RESET");
-		// ----
-		if (gInterface.Data[ButtonCamera].OnClick)
-		{
-			RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.451f, 0.878, 0.225, 1, 1, 0.0);
-		}
-		else
-		{
-			RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.2255f, 0.878, 0.225, 1, 1, 0.0);
-		}
-	}
-	else
-	{
-		RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.0, 0.878, 0.225, 1, 1, 0.0);
-	}
+	// if (gInterface.IsWorkZone(ButtonCamera))
+	// {
+	// 	gInterface.DrawToolTip(X + 96.0f + renderMenu, 50, "CAMERA ON|OFF|RESET");
+	// 	// ----
+	// 	if (gInterface.Data[ButtonCamera].OnClick)
+	// 	{
+	// 		RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.451f, 0.878, 0.225, 1, 1, 0.0);
+	// 	}
+	// 	else
+	// 	{
+	// 		RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.2255f, 0.878, 0.225, 1, 1, 0.0);
+	// 	}
+	// }
+	// else
+	// {
+	// 	RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.0, 0.878, 0.225, 1, 1, 0.0);
+	// }
 	// ----
 	gInterface.DrawButtonRender(eMenu, X + 115.5f + renderMenu, Y + 7.0, 0, 0.0f);
 
@@ -1315,10 +1315,10 @@ void CMacroUIEx::Load()
 		}
 		else
 		{
-			SetCompleteHook(0xE9, 0x007D26B5, &MuHelperRemake2_01);
-			SetCompleteHook(0xE9, 0x007D2751, &MuHelperRemake2_02);
-			SetCompleteHook(0xE9, 0x007D27FC, &MuHelperRemake2_03);
-			SetCompleteHook(0xE9, 0x007D2BC0, this->RenderHelperFrame);
+			// SetCompleteHook(0xE9, 0x007D26B5, &MuHelperRemake2_01);
+			// SetCompleteHook(0xE9, 0x007D2751, &MuHelperRemake2_02);
+			// SetCompleteHook(0xE9, 0x007D27FC, &MuHelperRemake2_03);
+			// SetCompleteHook(0xE9, 0x007D2BC0, this->RenderHelperFrame);
 		}
 	}
 }

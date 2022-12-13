@@ -684,81 +684,81 @@ void Interface::DrawMiniMap()
 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, !*(BYTE*)(*(DWORD*)(0x00E8CB7C) + 0x08) ? 0.3689999878 : 0.5570000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
 	}*/
 
-	if (gProtect.m_MainInfo.CustomMenuSwitch != 0)
-	{
-	//-- Boton Especial Menu
-	x1 = InitialX + 81; //Minimapa v2 (original)
-	y1 = InitialY + 32; //Minimapa v2 (original)
-	w1 = 18;
-	h1 = 18;
-	//-- Carcaza Boton
-	//RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
-	//-- Config
-	if(pCheckMouseOver( x1, y1, w1, h1 ))
-	{
-		gInterface.DrawToolTip(v11 + 26, v10 - 20, "Especial Menu");
-		if( *(BYTE*)0x8793386 )
-		{
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-			if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
-			{
-			gInterface.Data[eMenu_MAIN].OnShow = true;
-			}	
-		}
-		else
-		{
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
-		}
-	}
-	else
-	{
-		if (gInterface.Data[eMenu_MAIN].OnShow)
-		{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-		else
-		{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-	}
-	}
+	// if (gProtect.m_MainInfo.CustomMenuSwitch != 0)
+	// {
+	// //-- Boton Especial Menu
+	// x1 = InitialX + 81; //Minimapa v2 (original)
+	// y1 = InitialY + 32; //Minimapa v2 (original)
+	// w1 = 18;
+	// h1 = 18;
+	// //-- Carcaza Boton
+	// //RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
+	// //-- Config
+	// if(pCheckMouseOver( x1, y1, w1, h1 ))
+	// {
+	// 	gInterface.DrawToolTip(v11 + 26, v10 - 20, "Especial Menu");
+	// 	if( *(BYTE*)0x8793386 )
+	// 	{
+	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 		if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
+	// 		{
+	// 		gInterface.Data[eMenu_MAIN].OnShow = true;
+	// 		}	
+	// 	}
+	// 	else
+	// 	{
+	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
+	// 	}
+	// }
+	// else
+	// {
+	// 	if (gInterface.Data[eMenu_MAIN].OnShow)
+	// 	{
+	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 	}
+	// 	else
+	// 	{
+	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 	}
+	// }
+	// }
 
 	//-- Boton Config Helper
-	x1 = InitialX + 75; //Minimapa v2
-	y1 = InitialY + 54; //Minimapa v2
-	w1 = 18;
-	h1 = 18;
-	//-- Carcaza Boton
-	//RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
+	// x1 = InitialX + 75; //Minimapa v2
+	// y1 = InitialY + 54; //Minimapa v2
+	// w1 = 18;
+	// h1 = 18;
+	// //-- Carcaza Boton
+	// //RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
 
-	if(pCheckMouseOver( x1, y1, w1, h1 ))
-	{
-		this->DrawToolTip(v11 + 26, v10 - 20, "Config Helper");
-		if( *(BYTE*)0x8793386 )
-		{
-			PlayBuffer(25, 0, 0);
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-			if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
-			{
-				gInterface.OpenWindow(MuHelper);
-			}
-		}
-		else
-		{
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
-		}
-	}
-	else
-	{
-		if(gInterface.CheckWindow(ObjWindow::MuHelper))
-		{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
-		}
-		else
-		{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-	}
+	// if(pCheckMouseOver( x1, y1, w1, h1 ))
+	// {
+	// 	this->DrawToolTip(v11 + 26, v10 - 20, "Config Helper");
+	// 	if( *(BYTE*)0x8793386 )
+	// 	{
+	// 		PlayBuffer(25, 0, 0);
+	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 		if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
+	// 		{
+	// 			gInterface.OpenWindow(MuHelper);
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
+	// 	}
+	// }
+	// else
+	// {
+	// 	if(gInterface.CheckWindow(ObjWindow::MuHelper))
+	// 	{
+	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
+	// 	}
+	// 	else
+	// 	{
+	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 	}
+	// }
 
 	//-- Boton 3D
 	x1 = InitialX - 4; //Minimapa v2
@@ -770,7 +770,7 @@ void Interface::DrawMiniMap()
 
 	if(pCheckMouseOver( x1, y1, w1, h1 ))
 	{
-		this->DrawToolTip(v11 + 26, v10 - 20, "Camera 3D");
+		this->DrawToolTip(v11 + 26, v10 - 20, "Bật camera 3D");
 		if( *(BYTE*)0x8793386 )
 		{
 			PlayBuffer(25, 0, 0);
@@ -799,101 +799,101 @@ void Interface::DrawMiniMap()
 	}
 
 	//-- Boton Full Map
-	x1 = InitialX + 66; //Minimapa v2
-	y1 = InitialY + 68; //Minimapa v2
-	w1 = 18;
-	h1 = 18;
-	//-- Carcaza Boton
-	//RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
-	if(pCheckMouseOver( x1, y1, w1, h1 ))
-	{
-		this->DrawToolTip(v11 + 26, v10 - 20, "Full Map [TAB]");
-		if( *(BYTE*)0x8793386 )
-		{
-			PlayBuffer(25, 0, 0);
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-			if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
-			{
-				gInterface.OpenWindow(FullMap);
-			}
-		}
-		else
-		{
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
-		}
-	}
-	else
-	{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
-	}
+	// x1 = InitialX + 66; //Minimapa v2
+	// y1 = InitialY + 68; //Minimapa v2
+	// w1 = 18;
+	// h1 = 18;
+	// //-- Carcaza Boton
+	// //RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
+	// if(pCheckMouseOver( x1, y1, w1, h1 ))
+	// {
+	// 	this->DrawToolTip(v11 + 26, v10 - 20, "Bản đồ lớn [TAB]");
+	// 	if( *(BYTE*)0x8793386 )
+	// 	{
+	// 		PlayBuffer(25, 0, 0);
+	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 		if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
+	// 		{
+	// 			gInterface.OpenWindow(FullMap);
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
+	// 	}
+	// }
+	// else
+	// {
+	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
+	// }
 
 	//-- Boton Armadura (Character)
-	x1 = InitialX + 75; //Minimapa v2 (Original)
-	y1 = InitialY + 10; //Minimapa v2 (Original)
-	w1 = 18;
-	h1 = 18;
-	//-- Carcaza Boton
-	//RenderBitmap(31463, x1 - 4, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
+	// x1 = InitialX + 75; //Minimapa v2 (Original)
+	// y1 = InitialY + 10; //Minimapa v2 (Original)
+	// w1 = 18;
+	// h1 = 18;
+	// //-- Carcaza Boton
+	// //RenderBitmap(31463, x1 - 4, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
 
-	if(pCheckMouseOver( x1, y1, w1, h1 ))
-	{
-		this->DrawToolTip(v11 + 26, v10 - 20, "Character Status");
-		if( *(BYTE*)0x8793386 )
-		{
-			PlayBuffer(25, 0, 0);
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.80720075948, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-			if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
-			{
-			gInterface.OpenWindow(Character);
-			}	
-		}
-		else
-		{
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.80720075948, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-	}
-	else
-	{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.80720075948, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	}
+	// if(pCheckMouseOver( x1, y1, w1, h1 ))
+	// {
+	// 	this->DrawToolTip(v11 + 26, v10 - 20, "Character Status");
+	// 	if( *(BYTE*)0x8793386 )
+	// 	{
+	// 		PlayBuffer(25, 0, 0);
+	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.80720075948, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 		if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
+	// 		{
+	// 		gInterface.OpenWindow(Character);
+	// 		}	
+	// 	}
+	// 	else
+	// 	{
+	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.80720075948, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 	}
+	// }
+	// else
+	// {
+	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.80720075948, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// }
 
 	//-- Boton Config(Opciones del juego)
-	x1 = InitialX + 66; //Minimapa v2
-	y1 = InitialY - 3; //Minimapa v2
-	w1 = 18;
-	h1 = 18;
-	//-- Carcaza Boton
-	//RenderBitmap(31463, x1 - 4, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
+	// x1 = InitialX + 66; //Minimapa v2
+	// y1 = InitialY - 3; //Minimapa v2
+	// w1 = 18;
+	// h1 = 18;
+	// //-- Carcaza Boton
+	// //RenderBitmap(31463, x1 - 4, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
 
-	if(pCheckMouseOver( x1, y1, w1, h1 ))	
-	{
-		this->DrawToolTip(v11 + 26, v10 - 20, "System Option");
-		if( *(BYTE*)0x8793386 )
-		{
-			PlayBuffer(25, 0, 0);
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-			if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
-			{
-				gInterface.OpenConfig(0);
-				gRenderMap.DataMap.TimerEventVK = GetTickCount();
-			}		
-		}
-		else
-		{
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-	}
-	else
-	{
-		if (gInterface.CheckWindow(ObjWindow::Options))
-		{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-		else
-		{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-	}
+	// if(pCheckMouseOver( x1, y1, w1, h1 ))	
+	// {
+	// 	this->DrawToolTip(v11 + 26, v10 - 20, "System Option");
+	// 	if( *(BYTE*)0x8793386 )
+	// 	{
+	// 		PlayBuffer(25, 0, 0);
+	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 		if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
+	// 		{
+	// 			gInterface.OpenConfig(0);
+	// 			gRenderMap.DataMap.TimerEventVK = GetTickCount();
+	// 		}		
+	// 	}
+	// 	else
+	// 	{
+	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 	}
+	// }
+	// else
+	// {
+	// 	if (gInterface.CheckWindow(ObjWindow::Options))
+	// 	{
+	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 	}
+	// 	else
+	// 	{
+	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+	// 	}
+	// }
 
 	//-- Boton Camara Reset
 	x1 = InitialX - 12; //Minimapa v2
@@ -905,7 +905,7 @@ void Interface::DrawMiniMap()
 
 	if(pCheckMouseOver( x1, y1, w1, h1 ))
 	{
-		this->DrawToolTip(v11 + 26, v10 - 20, "Camera 3D Reset");
+		this->DrawToolTip(v11 + 26, v10 - 20, "Khôi phục camera");
 		if( *(BYTE*)0x8793386 )
 		{
 			PlayBuffer(25, 0, 0);
