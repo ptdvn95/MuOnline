@@ -51,7 +51,8 @@ void ExWinQuestSystem::ImageLoad()
 
 void ExWinQuestSystem::BindImages()
 {
-	int eWHig = 303 + 60 + 45 + 15;	
+	int eWHig = 303 + 60 + 45 + 15;
+
 	gInterface.BindObject(OBJECT_WIN_QUEST_MAIN, 0x7A5A, 222, eWHig, -1, -1);
 	gInterface.BindObject(OBJECT_WIN_QUEST_TITLE, 0x7A63, 230, 67, -1, -1);
 	gInterface.BindObject(OBJECT_WIN_QUEST_FRAME, 0x7A58, 230, 15, -1, -1);
@@ -659,7 +660,7 @@ int ExWinQuestSystem::Button(DWORD Event)
 
 	if (gInterface.ButtonEx(Event, OBJECT_WIN_QUEST_FINISH, true))
 	{
-		this->CG_AcñeptQuest();
+		this->CG_AcceptQuest();
 
 		return true;
 	}
@@ -753,7 +754,7 @@ void ExWinQuestSystem::GC_RecvMain(GC_MainPacket* aRecv)
 }
 //// ----------------------------------------------------------------------------------------------
 //
-void ExWinQuestSystem::CG_AcñeptQuest()
+void ExWinQuestSystem::CG_AcceptQuest()
 {
 	CG_Accept_Done pReq = { 0 };
 	pReq.h.set(0xFD, 0x0D, sizeof(pReq));

@@ -198,7 +198,7 @@ void JCOptionBox::mouseClicked()
 {
 	if (pCheckMouseOver(this->JCRenderX, this->JCRenderY, this->JCWidth, this->JCHeight) && *(BYTE*)0x8793386)
 	{
-		if (GetTickCount() >= this->JCTimerEvent + 300)
+		if (GetTickCount() >= this->JCTimerEvent + 200)
 		{
 			if (this->JCActive)
 			{

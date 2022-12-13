@@ -149,47 +149,47 @@ void DrawHealthBar()
 
 				if (isPartyMember)
 				{
-					glColor4f(RGBTOGLFLOAT(63), RGBTOGLFLOAT(124), RGBTOGLFLOAT(204), 0.9); // Цвет фона для имени
+					glColor4f(RGBTOGLFLOAT(63), RGBTOGLFLOAT(124), RGBTOGLFLOAT(204), 0.9); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				}
 				else if (lpNewHealthBar->isSameGuild)
 				{
-					glColor4f(RGBTOGLFLOAT(18), RGBTOGLFLOAT(226), RGBTOGLFLOAT(131), 0.9); // Цвет фона для имени
+					glColor4f(RGBTOGLFLOAT(18), RGBTOGLFLOAT(226), RGBTOGLFLOAT(131), 0.9); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				}
 				else
 				{
-					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // Цвет фона для имени
+					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				}
 
 				if (!isTarget)
 				{
-					pDrawBarForm((float)(PosX - 1), (float)(PosY - 12), 66.95, 10, 0.0, 0); // Фон для имени
+					pDrawBarForm((float)(PosX - 1), (float)(PosY - 12), 66.95, 10, 0.0, 0); // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				}
 				else
 				{
-					pDrawBarForm((float)(PosX - 1), (float)(PosY + 12), 66.95, 20, 0.0, 0); // Фон для имени
+					pDrawBarForm((float)(PosX - 1), (float)(PosY + 12), 66.95, 20, 0.0, 0); // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				}
 
-				glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // Цвет фона для хпбара
-				pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 66.95, 6, 0.0, 0); // Фон хпбара
-				pDrawBarForm((float)(PosX - 1), (float)(PosY + 5), 66.95, 6, 0.0, 0); // Фон SD
+				glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+				pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 66.95, 6, 0.0, 0); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+				pDrawBarForm((float)(PosX - 1), (float)(PosY + 5), 66.95, 6, 0.0, 0); // пїЅпїЅпїЅ SD
 
-				glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT(ABS(((255.0f / 100.0f) * lpNewHealthBar->rate) - 255.0f)), RGBTOGLFLOAT(0), 0.8); // Цвет ХП Бара
+				glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT(ABS(((255.0f / 100.0f) * lpNewHealthBar->rate) - 255.0f)), RGBTOGLFLOAT(0), 0.8); // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 
-				pDrawBarForm((float)(PosX), (float)(PosY), BarWidth, 3, 0.0, 0); // ХпБар
+				pDrawBarForm((float)(PosX), (float)(PosY), BarWidth, 3, 0.0, 0); // пїЅпїЅпїЅпїЅпїЅ
 
-				glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT((255.0f / 100.0f) * lpNewHealthBar->SDrate), RGBTOGLFLOAT(0), 0.8); // Цвет SD Бара
+				glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT((255.0f / 100.0f) * lpNewHealthBar->SDrate), RGBTOGLFLOAT(0), 0.8); // пїЅпїЅпїЅпїЅ SD пїЅпїЅпїЅпїЅ
 
-				pDrawBarForm((float)(PosX), (float)(PosY + 7), SDBarWidth, 2.5, 0.0, 0); // SD Бар
+				pDrawBarForm((float)(PosX), (float)(PosY + 7), SDBarWidth, 2.5, 0.0, 0); // SD пїЅпїЅпїЅ
 
 				if (!isTarget)
 				{
 					if (lpNewHealthBar->isSameGuild)
 					{
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eBlack, 9, 3); // Драв имени
+						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eBlack, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					}
 					else
 					{
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // Драв имени
+						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					}
 				}
 				else
@@ -199,13 +199,13 @@ void DrawHealthBar()
 
 					if (lpNewHealthBar->isSameGuild)
 					{
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY + 23, 67, 1, eBlack, 9, 3); // Драв имени
-						DrawInterfaceText(Text, PosX - 1, PosY + 13, 67, 1, eBlack, 9, 3); // Драв инфы
+						DrawInterfaceText(lpObj->Name, PosX - 1, PosY + 23, 67, 1, eBlack, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+						DrawInterfaceText(Text, PosX - 1, PosY + 13, 67, 1, eBlack, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 					}
 					else
 					{
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY + 23, 67, 1, eWhite, 9, 3); // Драв имени
-						DrawInterfaceText(Text, PosX - 1, PosY + 13, 67, 1, eWhite, 9, 3); // Драв инфы
+						DrawInterfaceText(lpObj->Name, PosX - 1, PosY + 23, 67, 1, eWhite, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+						DrawInterfaceText(Text, PosX - 1, PosY + 13, 67, 1, eWhite, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 					}
 				}
 			}
@@ -222,35 +222,35 @@ void DrawHealthBar()
 			{
 				if (HPMonsterName == 1)
 				{
-					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // Цвет фона для имени
+					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 					if (!isTarget)
 					{
-						pDrawBarForm((float)(PosX - 1), (float)(PosY - 12), 66.95, 10, 0.0, 0); // Фон для имени
+						pDrawBarForm((float)(PosX - 1), (float)(PosY - 12), 66.95, 10, 0.0, 0); // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					}
 					else
 					{
-						pDrawBarForm((float)(PosX - 1), (float)(PosY - 22), 66.95, 20, 0.0, 0); // Фон для имени
+						pDrawBarForm((float)(PosX - 1), (float)(PosY - 22), 66.95, 20, 0.0, 0); // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					}
 
-					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // Цвет фона для хпбара
-					pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 66.95, 6, 0.0, 0); // Фон хпбара
+					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+					pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 66.95, 6, 0.0, 0); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
-					glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT(ABS(((255.0f / 100.0f) * lpNewHealthBar->rate) - 255.0f)), RGBTOGLFLOAT(0), 0.8); // Цвет ХП Бара
+					glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT(ABS(((255.0f / 100.0f) * lpNewHealthBar->rate) - 255.0f)), RGBTOGLFLOAT(0), 0.8); // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 
-					pDrawBarForm((float)(PosX), (float)(PosY), BarWidth, 3, 0.0, 0); // ХпБар
+					pDrawBarForm((float)(PosX), (float)(PosY), BarWidth, 3, 0.0, 0); // пїЅпїЅпїЅпїЅпїЅ
 
 					if (!isTarget)
 					{
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // Драв имени
+						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					}
 					else
 					{
 						char Text[100];
 						sprintf(Text, "Lvl: %d HP: %s/%s", lpNewHealthBar->Level, ParseReducedValue((int)lpNewHealthBar->Life), ParseReducedValue((int)lpNewHealthBar->MaxLife));
 
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 21, 67, 1, eWhite, 9, 3); // Драв имени
-						DrawInterfaceText(Text, PosX - 1, PosY - 11, 67, 1, eWhite, 9, 3); // Драв инфы
+						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 21, 67, 1, eWhite, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+						DrawInterfaceText(Text, PosX - 1, PosY - 11, 67, 1, eWhite, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 					}
 				}
 			}
@@ -258,30 +258,30 @@ void DrawHealthBar()
 			{
 				if (HPMonsterName == 1)
 				{
-					glColor4f(RGBTOGLFLOAT(HpBarEx->Red), RGBTOGLFLOAT(HpBarEx->Green), RGBTOGLFLOAT(HpBarEx->Blue), HpBarEx->Opacity); // Цвет фона для имени
+					glColor4f(RGBTOGLFLOAT(HpBarEx->Red), RGBTOGLFLOAT(HpBarEx->Green), RGBTOGLFLOAT(HpBarEx->Blue), HpBarEx->Opacity); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 					if (!isTarget)
 					{
-						pDrawBarForm((float)(PosX - 1), (float)(PosY - 22), 66.95, 20, 0.0, 0); // Фон для имени
+						pDrawBarForm((float)(PosX - 1), (float)(PosY - 22), 66.95, 20, 0.0, 0); // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					}
 					else
 					{
-						pDrawBarForm((float)(PosX - 1), (float)(PosY - 32), 66.95, 30, 0.0, 0); // Фон для имени
+						pDrawBarForm((float)(PosX - 1), (float)(PosY - 32), 66.95, 30, 0.0, 0); // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					}
 
-					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // Цвет фона для хпбара
-					pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 66.95, 6, 0.0, 0); // Фон хпбара
+					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+					pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 66.95, 6, 0.0, 0); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
-					glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT(ABS(((255.0f / 100.0f) * lpNewHealthBar->rate) - 255.0f)), RGBTOGLFLOAT(0), 0.8); // Цвет ХП Бара
+					glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT(ABS(((255.0f / 100.0f) * lpNewHealthBar->rate) - 255.0f)), RGBTOGLFLOAT(0), 0.8); // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 
-					pDrawBarForm((float)(PosX), (float)(PosY), BarWidth, 3, 0.0, 0); // ХпБар
+					pDrawBarForm((float)(PosX), (float)(PosY), BarWidth, 3, 0.0, 0); // пїЅпїЅпїЅпїЅпїЅ
 
 
 					if (!isTarget)
 					{
 
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // Драв имени
-						DrawInterfaceText(HpBarEx->Name, PosX - 1, PosY - 21, 66.95, 1, eWhite, 9, 3); // Драв имени
+						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+						DrawInterfaceText(HpBarEx->Name, PosX - 1, PosY - 21, 66.95, 1, eWhite, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 					}
 					else
@@ -290,9 +290,9 @@ void DrawHealthBar()
 						char Text[100];
 						sprintf(Text, "Lvl: %d HP: %s/%s", lpNewHealthBar->Level, ParseReducedValue((int)lpNewHealthBar->Life), ParseReducedValue((int)lpNewHealthBar->MaxLife));
 
-						DrawInterfaceText(HpBarEx->Name, PosX - 1, PosY - 31, 66.95, 1, eWhite, 9, 3); // Драв сабимени
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 21, 66.95, 1, eWhite, 9, 3); // Драв имени
-						DrawInterfaceText(Text, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // Драв инфы
+						DrawInterfaceText(HpBarEx->Name, PosX - 1, PosY - 31, 66.95, 1, eWhite, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 21, 66.95, 1, eWhite, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+						DrawInterfaceText(Text, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
 					}
 				}
@@ -452,7 +452,8 @@ void DrawNewHealthBar() // OK
 
 			if (*(BYTE*)(ViewPortAddr + 0x320) == 1) //Check User
 			{
-				gCustomRankUser.RenderShowLogRank(ViewPortAddr, *(WORD*)(ViewPortAddr + 0x7E), PosX - 42, PosY);
+				//Draw the Custom Rank Background
+				//gCustomRankUser.RenderShowLogRank(ViewPortAddr, *(WORD*)(ViewPortAddr + 0x7E), PosX - 42, PosY);
 			}
 
 			PosX -= (int)(LifeBarWidth / 2.0);

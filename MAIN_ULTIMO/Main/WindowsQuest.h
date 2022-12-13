@@ -181,11 +181,14 @@ public:
 	void DrawOpenWQ();
 	int Button(DWORD Event);
 	void GC_RecvMain(GC_MainPacket* aRecv);
-	void CG_AcñeptQuest();
+	void CG_AcceptQuest();
 	void GC_MiniInfoRecv(GC_ExWinMiniInfo* aRecv);
 	void GC_MiniInfoRecvEx(GC_ExWinMiniInfoEx* aRecv);
 	void GC_Start(GC_ExWinStart* aRecv);
 	void SwitchStatsWindowState() { (gInterface.Data[OBJECT_WIN_QUEST_MAIN].OnShow == true) ? gInterface.Data[OBJECT_WIN_QUEST_MAIN].Close() : gInterface.Data[OBJECT_WIN_QUEST_MAIN].Open(-226, 20); };
+	void WindowQuestopen() { gInterface.Data[OBJECT_WIN_QUEST_MAIN].OnShow = true;};
+	void WindowQuestStateclose() { gInterface.Data[OBJECT_WIN_QUEST_MAIN].OnShow = false;};
+	bool CheckWindowQuestWindow() { return gInterface.Data[OBJECT_WIN_QUEST_MAIN].OnShow; };
 	int OpenTab;
 	int DrawMiniInfoFlag;
 

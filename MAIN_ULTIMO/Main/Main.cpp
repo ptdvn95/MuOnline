@@ -244,7 +244,9 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 	SetCompleteHook(0xE9,0x0064452A,0x00644537); //-- Fix montura
 
-	SetCompleteHook(0xE9, 0x0071AE92, 0x00720894); //Fix RF Skill	SetCompleteHook(0xE9, 0x0071B1A3, 0x00720894); //Fix RF Skill
+	SetCompleteHook(0xE9, 0x0071AE92, 0x00720894); //Fix RF Skill
+
+	SetCompleteHook(0xE9, 0x0071B1A3, 0x00720894); //Fix RF Skill
 
 	SetCompleteHook(0xE9, 0x005880F0, 0x0058811F); //Fix gm wing on Blood castle
 	SetDword(0x00588444 + 3, 4095);
@@ -289,9 +291,9 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 	gCustomMessage.LoadEng(gProtect.m_MainInfo.EngCustomMessageInfo);
 
-	gCustomMessage.LoadPor(gProtect.m_MainInfo.PorCustomMessageInfo);
+	// gCustomMessage.LoadPor(gProtect.m_MainInfo.PorCustomMessageInfo);
 
-	gCustomMessage.LoadSpn(gProtect.m_MainInfo.SpnCustomMessageInfo);
+	// gCustomMessage.LoadSpn(gProtect.m_MainInfo.SpnCustomMessageInfo);
 
 	gCustomJewel.Load(gProtect.m_MainInfo.CustomJewelInfo);
 
@@ -455,7 +457,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 	if (gProtect.m_MainInfo.MiniMapType == 1)
 	{
-		gRenderMap.MiniMapload();
+		gRenderMap.MiniMapLoadNew();
 	}
 
 	if (gProtect.m_MainInfo.MiniMapType == 2)
@@ -739,8 +741,8 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	//==============================================================================
 	if (gProtect.m_MainInfo.DisableVaultExp == 1)
 	{
-		SetCompleteHook(0xE9, 0x00856FAA, 0x00856FD2); // Remove (H) Baú Aberto
-		SetCompleteHook(0xE9, 0x007D371E, 0x007D3725); // Remove botão (H)
+		SetCompleteHook(0xE9, 0x00856FAA, 0x00856FD2); // Remove (H) Baï¿½ Aberto
+		SetCompleteHook(0xE9, 0x007D371E, 0x007D3725); // Remove botï¿½o (H)
 	}
 
 	//==============================================================================

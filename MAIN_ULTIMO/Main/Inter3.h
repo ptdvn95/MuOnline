@@ -10,6 +10,5 @@ enum iInterface
 };
 
 void PetHPBarRemake(signed int x, signed int y, int nameIndex, signed int hp, signed int hpmax, char a9);
-void PetSpiritHPBarRemake(signed int x, signed int y, int nameIndex, signed int hp, signed int hpmax, char a9);
 void InitInter3();
 void RemoveSocket();

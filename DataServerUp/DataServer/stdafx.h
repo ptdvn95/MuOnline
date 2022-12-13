@@ -8,9 +8,9 @@
 #define GAMESERVER_TYPE2 1
 
 #if(GAMESERVER_TYPE2 == 1)
-#define DATASERVER_CLIENT "[MU ZXGAMES]"
+#define DATASERVER_CLIENT "[MU]"
 #else
-#define DATASERVER_CLIENT "[MU ZXGAMES]"
+#define DATASERVER_CLIENT "[MU]"
 #endif
 
 #define LEVEL_PLUS    1

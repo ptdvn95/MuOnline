@@ -76,7 +76,7 @@ LRESULT Controller::Mouse(int Code, WPARAM wParam, LPARAM lParam)
 			gCustomEventTime.EventPrev(wParam);
 			gInterface.EventDrawMenu_Open(wParam);
 			gInterface.EventDrawMenu_Close(wParam);
-			//gInterface.EventDrawMenu2_Close(wParam);
+			gInterface.EventDrawMenu2_Close(wParam);
 			gInterface.EventDrawMenu_Next(wParam);
 			gInterface.EventDrawMenu_Back(wParam);
 			gInterface.EventDrawMenu_Op1(wParam);
@@ -121,7 +121,7 @@ LRESULT Controller::Mouse(int Code, WPARAM wParam, LPARAM lParam)
 
 			gAchievements.Button(wParam);
 
-			//g_ExWinQuestSystem.Button(wParam);
+			g_ExWinQuestSystem.Button(wParam);
 
 			gResetSystem.EventResetWindow_Main(wParam);
 
@@ -280,45 +280,46 @@ LRESULT Controller::Keyboard(int Code, WPARAM wParam, LPARAM lParam)
 			if (gInterface.CheckMenuWindow())
 			{
 				gInterface.CloseMenuWindow();
-				pSetCursorFocus = false;
 				return -1;
 			}
-
 			if (gInterface.CheckMenu2Window())
 			{
 				gInterface.CloseMenu2Window();
-				pSetCursorFocus = false;
 				return -1;
 			}
-
-			if (gInterface.CheckSmithItemWindow())
+			if (gInterface.CheckChangeClassWindow())
 			{
-				gInterface.CloseSmithItemWindow();
-				pSetCursorFocus = false;
+				gInterface.ChangeClassStateclose();
 				return -1;
 			}
-
-			if (gInterface.CheckPartySearchWindow())
+			if (gInterface.CheckResetChangeWindow())
 			{
-				gInterface.PartySearchStateclose();
-				pSetCursorFocus = false;
+				gInterface.ResetChangeStateclose();
 				return -1;
 			}
-
 			if (gInterface.CheckLuckyWheelWindow())
 			{
 				gInterface.LuckyWheelStateclose();
 				return -1;
 			}
+			if (gInterface.CheckPartySearchWindow())
+			{
+				gInterface.PartySearchStateclose();
+				return -1;
+			}
+			if (gInterface.CheckSmithItemWindow())
+			{
+				gInterface.CloseSmithItemWindow();
+				return -1;
+			}
 		}
+
 		break;
 		case VK_END:
 		{
 			if (gInterface.CheckVipWindow())
 			{
 				gInterface.CloseVipWindow();
-				pSetCursorFocus = false;
-				return -1;
 			}
 			else
 			{

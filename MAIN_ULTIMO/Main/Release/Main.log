@@ -1,15 +1,15 @@
-﻿Build started 12/7/2022 11:49:54 AM.
-     1>Project "F:\MU\ZxGames V6.0 Full Premium\ZxGames_source_6.1\MAIN_ULTIMO\Main\Main.vcxproj" on node 2 (build target(s)).
+﻿Build started 12/10/2022 4:39:32 AM.
+     1>Project "C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Main\Main.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\Main.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          All outputs are up-to-date.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W0 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MAIN_EXPORTS /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Main.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt CMacroUIEx.cpp
-         CMacroUIEx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W0 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MAIN_EXPORTS /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Main.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Achievements.cpp
+         Achievements.cpp
        ResourceCompile:
          All outputs are up-to-date.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\MU\ZxGames V6.0 Full Premium\ZxGames_source_6.1\MAIN_ULTIMO\Release\Main.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Main.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\MU\ZxGames V6.0 Full Premium\ZxGames_source_6.1\MAIN_ULTIMO\Release\Main.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\MU\ZxGames V6.0 Full Premium\ZxGames_source_6.1\MAIN_ULTIMO\Release\Main.lib" /MACHINE:X86 /DLL Release\Main.res
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\Main.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Main.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\Main.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\Main.lib" /MACHINE:X86 /DLL Release\Main.res
          Release\CCRC32.obj
          Release\Achievements.obj
          Release\Antilag.obj
@@ -135,19 +135,19 @@
          Release\WindowsQuest.obj
          Release\WindowsStruct.obj
          Release\zzzmathlib.obj
-            Creating library F:\MU\ZxGames V6.0 Full Premium\ZxGames_source_6.1\MAIN_ULTIMO\Release\Main.lib and object F:\MU\ZxGames V6.0 Full Premium\ZxGames_source_6.1\MAIN_ULTIMO\Release\Main.exp
+            Creating library C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\Main.lib and object C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\Main.exp
          Generating code
          Finished generating code
-     1>detours.lib(detours.obj) : warning LNK4099: PDB 'detours.pdb' was not found with 'detours.lib(detours.obj)' or at 'F:\MU\ZxGames V6.0 Full Premium\ZxGames_source_6.1\MAIN_ULTIMO\Release\detours.pdb'; linking object as if no debug info
-     1>detours.lib(disasm.obj) : warning LNK4099: PDB 'detours.pdb' was not found with 'detours.lib(disasm.obj)' or at 'F:\MU\ZxGames V6.0 Full Premium\ZxGames_source_6.1\MAIN_ULTIMO\Release\detours.pdb'; linking object as if no debug info
-         Main.vcxproj -> F:\MU\ZxGames V6.0 Full Premium\ZxGames_source_6.1\MAIN_ULTIMO\Release\Main.dll
+     1>detours.lib(detours.obj) : warning LNK4099: PDB 'detours.pdb' was not found with 'detours.lib(detours.obj)' or at 'C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\detours.pdb'; linking object as if no debug info
+     1>detours.lib(disasm.obj) : warning LNK4099: PDB 'detours.pdb' was not found with 'detours.lib(disasm.obj)' or at 'C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\detours.pdb'; linking object as if no debug info
+         Main.vcxproj -> C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\Main.dll
        Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"F:\MU\ZxGames V6.0 Full Premium\ZxGames_source_6.1\MAIN_ULTIMO\Release\Main.dll;#2" /manifest Release\Main.dll.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\Main.dll;#2" /manifest Release\Main.dll.intermediate.manifest
        FinalizeBuildStatus:
          Deleting file "Release\Main.unsuccessfulbuild".
          Touching "Release\Main.lastbuildstate".
-     1>Done Building Project "F:\MU\ZxGames V6.0 Full Premium\ZxGames_source_6.1\MAIN_ULTIMO\Main\Main.vcxproj" (build target(s)).
+     1>Done Building Project "C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Main\Main.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.86
+Time Elapsed 00:00:05.57

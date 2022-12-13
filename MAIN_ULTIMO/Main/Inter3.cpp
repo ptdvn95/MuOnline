@@ -621,6 +621,7 @@ void PetHPBarRemake(signed int x, signed int y, int nameIndex, signed int hp, si
 	glColor3f(1.0, 1.0, 1.0);
 }
 
+//----- (007DFA60) --------------------------------------------------------
 void PetSpiritHPBarRemake(signed int x, signed int y, int nameIndex, signed int hp, signed int hpmax, char a9)
 {
 
@@ -1931,12 +1932,10 @@ void InitInter3()
 	//	MemorySet(0x007A8330, 0x90, 0x198);
 
 	//party bar en Y
-	//party bar en Y
-	SetByte(0x0085AF21,0x5);
-	//Local calls from 007E00B1, 007E020C, 007E0298	//PetHPBarRemake
+	SetByte(0x0085AF21, 25);	//<-
+	SetCompleteHook(0xE8, 0x007E00B1, &PetHPBarRemake);
 	SetCompleteHook(0xE8, 0x007E020C, &PetSpiritHPBarRemake);
 	SetCompleteHook(0xE8, 0x007E0298, &PetSpiritHPBarRemake);
-	SetCompleteHook(0xE8, 0x007E00B1, &PetHPBarRemake);
 	//-
 	SetByte((PVOID)(0x008137AF + 3), 0);
 	SetByte((PVOID)(0x008119A7), 0xEB);

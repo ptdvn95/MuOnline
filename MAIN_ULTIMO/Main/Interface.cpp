@@ -55,15 +55,16 @@ Interface::~Interface()
 
 void Interface::RenderObjectSystem()
 {
-	if(gProtect.m_MainInfo.MonitorMS == 1){
+	if (gProtect.m_MainInfo.MonitorMS == 1){
 		gInterface.lastReport = GetTickCount();
 		gInterface.frameCount = 0;
 	}
-	if(gProtect.m_MainInfo.MonitorFPS == 1){
+	if (gProtect.m_MainInfo.MonitorFPS == 1){
 		gInterface.iniciador = 1;
 	}
-	//51522
+	// 51522
 	//--
+
 	this->BindObject(eMenu_MAIN, 0x7A5A, 222, 340, 205, -1);
 	this->BindObject(eMenu_MAIN2, 0x7A5A, 222, 340, 205, -1);
 	this->BindObject(eMenu_CLOSE, 71521, 59, 28, -1, -1);
@@ -130,7 +131,7 @@ void Interface::RenderObjectSystem()
 	this->BindObject(eVip_GOLD, 0x7A5E, 108, 29, -1, -1);
 	this->BindObject(eVip_PLATINUM, 0x7A5E, 108, 29, -1, -1);
 	this->BindObject(eVip_STATUS, 0x7A5E, 108, 29, -1, -1);
-	
+
 	//--
 	this->BindObject(eCommand_MAIN, 0x7A5A, 222, 300, 205, -1);
 	this->BindObject(eCommand_TITLE, 0x7A63, 230, 67, -1, -1);
@@ -151,7 +152,7 @@ void Interface::RenderObjectSystem()
 	this->BindObject(eCONFIRM_BTN_CANCEL, 0x7A5C, 54, 30, -1, -1);
 	this->BindObject(eLogo, 0x7905, 150, 114, -1, -1);
 	this->BindObject(chatbackground, 51545, 300.0f, 128.0f, -10, 569);
-	//Custom Store
+	// Custom Store
 	this->BindObject(eOFFTRADE_JoB, 0x7908, 40, 19, -1, -1);
 	this->BindObject(eOFFTRADE_JoS, 0x7908, 40, 19, -1, -1);
 	this->BindObject(eOFFTRADE_JoC, 0x7908, 40, 19, -1, -1);
@@ -161,7 +162,7 @@ void Interface::RenderObjectSystem()
 	this->BindObject(eOFFTRADE_OPEN, 0x7BFD, 108, 30, -1, -1);
 	//-- custom
 	this->BindObject(eSTORE_CLOSE, 0x7BFD, 108, 30, -1, -1);
-	//Minimap
+	// Minimap
 	this->BindObject(eNULL_MAP, 31461, 128, 128, -1, -1);
 	this->BindObject(ePLAYER_POINT, 31460, 3, 3, -1, -1);
 
@@ -172,7 +173,7 @@ void Interface::RenderObjectSystem()
 	this->BindObject(eCamera3DInit, 31659, 17, 18, -1, -1);
 	this->BindObject(eCamera3DSwitch, 31659, 17, 18, -1, -1);
 	this->Data[eTIME].OnShow = true;
-	if(gProtect.m_MainInfo.CustomInterfaceType == 3 || gProtect.m_MainInfo.CustomInterfaceType == 4)
+	if (gProtect.m_MainInfo.CustomInterfaceType == 3 || gProtect.m_MainInfo.CustomInterfaceType == 4)
 	{
 		this->BindObject(ButtonSettings, 51522, 19, 19, -1, -1);
 		this->BindObject(ButtonStart, 51522, 19, 19, -1, -1);
@@ -193,7 +194,7 @@ void Interface::RenderObjectSystem()
 	this->BindObject(eJewelOfBankRemove, 71521, 59, 28, -1, -1);
 	this->BindObject(eJewelOfBankClose, 71521, 59, 28, -1, -1);
 
-	switch(gProtect.m_MainInfo.CustomInterfaceType)
+	switch (gProtect.m_MainInfo.CustomInterfaceType)
 	{
 	case 1:
 	case 2:
@@ -219,7 +220,7 @@ void Interface::RenderObjectSystem()
 		this->BindObject(eInventory, iNewInventory, 25, 25, 409, 449);
 		this->BindObject(eFriend, iNewWinpush, 52, 18, 581, 432);
 
-		if(gProtect.m_MainInfo.CustomInterfaceType == 2)
+		if (gProtect.m_MainInfo.CustomInterfaceType == 2)
 		{
 			this->BindObject(eFastMenu, iNewFastMenu, 53, 19, 5, 432);
 		}
@@ -259,7 +260,7 @@ void Interface::RenderObjectSystem()
 			}
 		}
 
-		//Ex700
+		// Ex700
 		this->BindObject(chatbackground, 51545, 300.0f, 128.0f, -10, 569);
 		this->BindObject(eShop, 51522, 19.5f, 19.5f, -1, -1);
 		this->BindObject(eCharacter, 51522, 19.5f, 19.5f, -1, -1);
@@ -268,6 +269,7 @@ void Interface::RenderObjectSystem()
 		this->BindObject(eCommunity, 51522, 19.5f, 19.5f, -1, -1);
 		this->BindObject(eSystem, 51522, 19.5f, 19.5f, -1, -1);
 		break;
+	// case 0
 	default:
 		if (gProtect.m_MainInfo.CustomMenuType == 1)
 		{
@@ -280,18 +282,18 @@ void Interface::RenderObjectSystem()
 		}
 		break;
 	}
-	if(gProtect.m_MainInfo.InventoryUPGRADE == 1)
+	if (gProtect.m_MainInfo.InventoryUPGRADE == 1)
 	{
 		this->BindObject(eMoney1, 0x7909, 75, 13, -1, -1);
 		this->BindObject(eMoney2, 0x7910, 75, 13, -1, -1);
 	}
-	if(gProtect.m_MainInfo.DisableAdvance == 0)
+	if (gProtect.m_MainInfo.DisableAdvance == 0)
 	{
 		gInterface.BindObject(eADVANCE_STAT_INFO, ex_INFO_3, 35, 30, -1, -1);
 	}
 
-	//customware
-#if (WARE==1)
+	// customware
+#if (WARE == 1)
 	this->BindObject(eWAREHOUSE_MAIN, 0x7A5A, 222, 370, 205, -1);
 	this->BindObject(eWAREHOUSE_CLOSE, 71521, 59, 28, -1, -1);
 	this->BindObject(eWAREHOUSE_NUM1, 71522, 108, 30.5f, -1, -1);
@@ -353,7 +355,7 @@ void Interface::RenderObjectSystem()
 	this->BindObject(eBOTON5, 71521, 59, 28, -1, -1);
 #endif
 
-	//Lucky Wheel
+	// Lucky Wheel
 	this->BindObject(eLuckyWheelStart, 71522, 108, 30.5f, -1, -1);
 	this->BindObject(eLuckyWheelPanel, 0x7A5A, 312, 292, -1, -1);
 	this->BindObject(eLuckyWheel_CLOSE, 71521, 59, 28, -1, -1);
@@ -378,14 +380,13 @@ void Interface::RenderObjectSystem()
 	this->BindObject(OBJECT_GRESET_CLOSE, 0x7EC5, 36, 29, -1, -1);
 	this->BindObject(OBJECT_GRESET_FINISH, 0x7A5E, 128, 29, -1, -1);
 
-
 	SetRange((LPVOID)0x00842086, 5, ASM::NOP);
 	SetRange((LPVOID)0x0084234F, 5, ASM::NOP);
 	SetRange((LPVOID)0x008423C3, 5, ASM::NOP);
 	SetOp((LPVOID)oLoadSomeForm_Call, this->LoadImages, ASM::CALL);
 	SetOp((LPVOID)oDrawInterface_Call, this->Work, ASM::CALL);
 
-	if(gProtect.m_MainInfo.InventoryUPGRADE == 1)
+	if (gProtect.m_MainInfo.InventoryUPGRADE == 1)
 	{
 		SetRange((LPVOID)0x00835116, 5, ASM::NOP);
 		SetOp((LPVOID)0x00835116, this->DrawZenAndRud, ASM::CALL);
@@ -405,8 +406,7 @@ void Interface::RenderObjectSystem()
 
 	gSmithItem.Bind();
 
-	//Remove Windows Quest
-	//g_ExWinQuestSystem.BindImages();
+	// g_ExWinQuestSystem.BindImages();
 }
 
 void Interface::DrawZenAndRud(int a1, int a2, int a3, int a4)
@@ -414,10 +414,10 @@ void Interface::DrawZenAndRud(int a1, int a2, int a3, int a4)
 	int v10;
 	int v11;
 	DWORD v23;
-	v10 = *(DWORD*)(a1 + 40);
-	v11 = *(DWORD*)(a1 + 36);
-	v23 = *(DWORD*)(*(DWORD*)0x8128AC4 + 5956);
-	*(float*)(0x00D24E88); //Width
+	v10 = *(DWORD *)(a1 + 40);
+	v11 = *(DWORD *)(a1 + 36);
+	v23 = *(DWORD *)(*(DWORD *)0x8128AC4 + 5956);
+	*(float *)(0x00D24E88); // Width
 
 	char MoneyBuff1[50], MoneyBuff2[50], MoneyBuff3[50], MoneyBuff4[50], test[50];
 	ZeroMemory(MoneyBuff1, sizeof(MoneyBuff1));
@@ -434,7 +434,7 @@ void Interface::DrawZenAndRud(int a1, int a2, int a3, int a4)
 	//--
 	gInterface.DrawGUI(eMoney1, v11 + 18, v10 + 365);
 	gInterface.DrawFormat(eBlack, v11 + 18, v10 + 367, 20, 1, "Zen");
-	gInterface.DrawFormat(eRed, v11 + 40, v10 + 367, 50, 3, "%s", MoneyBuff1);
+	gInterface.DrawFormat(eRed, v11 + 40, v10 + 367, 50, 4, "%s", MoneyBuff1);
 	//--
 	gInterface.DrawGUI(eMoney2, v11 + 102, v10 + 365);
 	gInterface.DrawFormat(eBlack, v11 + 102, v10 + 367, 20, 1, "GP");
@@ -463,7 +463,7 @@ void Interface::LoadModels()
 
 void Interface::LoadImages()
 {
-	if(gProtect.m_MainInfo.InventoryUPGRADE == 1)
+	if (gProtect.m_MainInfo.InventoryUPGRADE == 1)
 	{
 		pLoadImage("Custom\\Interface\\Money\\item_money.tga", 0x7909, 0x2601, 0x2901, 1, 0);
 		pLoadImage("Custom\\Interface\\Money\\item_money2.tga", 0x7910, 0x2601, 0x2901, 1, 0);
@@ -511,17 +511,17 @@ void Interface::LoadImages()
 	//--
 	pLoadImage("Interface\\mini_map_ui_party.tga", 61520, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
 
-	if(gProtect.m_MainInfo.TooltipS15 == 1)
+	if (gProtect.m_MainInfo.TooltipS15 == 1)
 	{
 		//-- itemtooltip
-		pLoadImage("Interface\\GFx\\tooltip_bg01.tga", 61511, 0x2601, 0x2901, 1, 0); //esquina arriba izquierda
+		pLoadImage("Interface\\GFx\\tooltip_bg01.tga", 61511, 0x2601, 0x2901, 1, 0); // esquina arriba izquierda
 		pLoadImage("Interface\\GFx\\tooltip_bg02.tga", 61512, 0x2601, 0x2901, 1, 0);
-		pLoadImage("Interface\\GFx\\tooltip_bg03.tga", 61513, 0x2601, 0x2901, 1, 0); //esquina arriba derecha
+		pLoadImage("Interface\\GFx\\tooltip_bg03.tga", 61513, 0x2601, 0x2901, 1, 0); // esquina arriba derecha
 		pLoadImage("Interface\\GFx\\tooltip_bg04.tga", 61514, 0x2601, 0x2901, 1, 0);
 		pLoadImage("Interface\\GFx\\tooltip_bg06.tga", 61515, 0x2601, 0x2901, 1, 0);
-		pLoadImage("Interface\\GFx\\tooltip_bg07.tga", 61516, 0x2601, 0x2901, 1, 0); //esquina abajo izquierda
+		pLoadImage("Interface\\GFx\\tooltip_bg07.tga", 61516, 0x2601, 0x2901, 1, 0); // esquina abajo izquierda
 		pLoadImage("Interface\\GFx\\tooltip_bg08.tga", 61517, 0x2601, 0x2901, 1, 0);
-		pLoadImage("Interface\\GFx\\tooltip_bg09.tga", 61518, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+		pLoadImage("Interface\\GFx\\tooltip_bg09.tga", 61518, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
 	}
 	//-- itemtooltip
 	pLoadImage("Interface\\GFx\\popupbg01.tga", 71511, 0x2601, 0x2901, 1, 0); //esquina arriba izquierda
@@ -533,19 +533,19 @@ void Interface::LoadImages()
 	pLoadImage("Interface\\GFx\\popupbg08.tga", 71517, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Interface\\GFx\\popupbg09.tga", 71518, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
 	//--
-	pLoadImage("Interface\\GFx\\popup_line_m.tga", 71519, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-	pLoadImage("Interface\\GFx\\popup_line_s.tga", 71520, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	pLoadImage("Interface\\GFx\\popup_line_m.tga", 71519, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
+	pLoadImage("Interface\\GFx\\popup_line_s.tga", 71520, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
 	//--
-	pLoadImage("Interface\\GFx\\Render_buttom_1.tga", 71521, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-	pLoadImage("Interface\\GFx\\Render_buttom_2.tga", 71522, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-	pLoadImage("Interface\\GFx\\Render_buttom_3.tga", 71524, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	pLoadImage("Interface\\GFx\\Render_buttom_1.tga", 71521, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
+	pLoadImage("Interface\\GFx\\Render_buttom_2.tga", 71522, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
+	pLoadImage("Interface\\GFx\\Render_buttom_3.tga", 71524, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
 	//--
-	pLoadImage("Interface\\GFx\\RenderBits_Sound.tga", 71523, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-	//pLoadImage("Interface\\GFx\\JewelBank.tga", 71525, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-	//pLoadImage("Interface\\GFx\\PetInventoryFrame.tga", 71526, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	pLoadImage("Interface\\GFx\\RenderBits_Sound.tga", 71523, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
+	// pLoadImage("Interface\\GFx\\JewelBank.tga", 71525, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	// pLoadImage("Interface\\GFx\\PetInventoryFrame.tga", 71526, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
 	//--
-	pLoadImage("Interface\\GFx\\newui_option_volume01.tga", 31596, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
-	pLoadImage("Interface\\GFx\\newui_option_volume02.tga", 31597, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	pLoadImage("Interface\\GFx\\newui_option_volume01.tga", 31596, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
+	pLoadImage("Interface\\GFx\\newui_option_volume02.tga", 31597, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
 	pLoadImage("Interface\\GFx\\Party\\newui_Party_Back.tga", 81520, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Interface\\GFx\\Party\\newui_Party_flag.tga", 81521, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Interface\\GFx\\Party\\newui_Party_HpBar.jpg", 81522, 0x2601, 0x2901, 1, 0);
@@ -572,7 +572,7 @@ void Interface::LoadImages()
 //	pLoadImage("Custom\\Maps\\mini_map_ui_monsterred.tga", 31471, 0x2601, 0x2900, 1, 0);
 //	pLoadImage("Custom\\Maps\\mini_map_ui_monsterblue.tga", 31472, 0x2601, 0x2900, 1, 0);
 
-	pLoadImage("Custom\\Maps\\edBtUcx.tga", 31463, 0x2601, 0x2900, 1, 0); //-- Dungeon
+	pLoadImage("Custom\\Maps\\edBtUcxv2.tga", 31463, 0x2601, 0x2900, 1, 0); //-- Dungeon
 	pLoadImage("Custom\\Maps\\time700.tga", 31458, 0x2601, 0x2900, 1, 0); //-- Dungeon
 	pLoadImage("Custom\\Maps\\edBtUcx_2.tga", 31464, 0x2601, 0x2900, 1, 0); //-- Dungeon
 	pLoadImage("Custom\\Maps\\edBtUcx_1.tga", 31459, 0x2601, 0x2900, 1, 0); //-- Dungeon
@@ -592,7 +592,7 @@ void Interface::LoadImages()
 
 	pLoadImage("Interface\\mini_map_ui_party.tga", 61520, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
 
-	switch(gProtect.m_MainInfo.CustomInterfaceType) 
+	switch (gProtect.m_MainInfo.CustomInterfaceType)
 	{
 	case 0:
 		LoadBitmapA("Interface\\GFx\\InventoryFrame_RuudShop.tga", 61560, GL_LINEAR, GL_CLAMP, 1, 0);
@@ -609,26 +609,27 @@ void Interface::LoadImages()
 		LoadBitmapA("Custom\\InterfaceS2\\DragonRight.tga", 2336, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Custom\\InterfaceS2\\DragonLeft.tga", 2337, GL_LINEAR, GL_CLAMP, 1, 0);
 		//--
-		if(gProtect.m_MainInfo.CustomInterfaceType == 1)
+		if (gProtect.m_MainInfo.CustomInterfaceType == 1)
 		{
-			LoadBitmapA("Custom\\InterfaceS2\\Menu_left97.jpg", 31292, GL_LINEAR, GL_CLAMP, 1, 0); //replace
+			LoadBitmapA("Custom\\InterfaceS2\\Menu_left97.jpg", 31292, GL_LINEAR, GL_CLAMP, 1, 0); // replace
 			LoadBitmapA("Custom\\Interface\\none.tga", 31300, GL_LINEAR, GL_CLAMP, 1, 0);
-		}else
+		}
+		else
 		{
-			LoadBitmapA("Custom\\InterfaceS2\\Menu_left.jpg", 31292, GL_LINEAR, GL_CLAMP, 1, 0); //replace
+			LoadBitmapA("Custom\\InterfaceS2\\Menu_left.jpg", 31292, GL_LINEAR, GL_CLAMP, 1, 0); // replace
 			LoadBitmapA("Custom\\InterfaceS2\\Menu_SD.jpg", 31300, GL_LINEAR, GL_CLAMP, 1, 0);
 		}
-		
-		LoadBitmapA("Custom\\InterfaceS2\\Menu_right.jpg", 31294, GL_LINEAR, GL_CLAMP, 1, 0); //replace
-		LoadBitmapA("Custom\\InterfaceS2\\Menu_middle.jpg", 31293, GL_LINEAR, GL_CLAMP, 1, 0); //replace
+
+		LoadBitmapA("Custom\\InterfaceS2\\Menu_right.jpg", 31294, GL_LINEAR, GL_CLAMP, 1, 0);  // replace
+		LoadBitmapA("Custom\\InterfaceS2\\Menu_middle.jpg", 31293, GL_LINEAR, GL_CLAMP, 1, 0); // replace
 		//--
-		LoadBitmapA("Custom\\InterfaceS2\\Menu_Red.jpg", 0x7A42, GL_LINEAR, GL_CLAMP, 1, 0);//replace
-		LoadBitmapA("Custom\\InterfaceS2\\Menu_Green.jpg", 0x7A41, GL_LINEAR, GL_CLAMP, 1, 0);//replace
-		LoadBitmapA("Custom\\InterfaceS2\\Menu_Blue.jpg", 0x7A40, GL_LINEAR, GL_CLAMP, 1, 0);//replace
+		LoadBitmapA("Custom\\InterfaceS2\\Menu_Red.jpg", 0x7A42, GL_LINEAR, GL_CLAMP, 1, 0);   // replace
+		LoadBitmapA("Custom\\InterfaceS2\\Menu_Green.jpg", 0x7A41, GL_LINEAR, GL_CLAMP, 1, 0); // replace
+		LoadBitmapA("Custom\\InterfaceS2\\Menu_Blue.jpg", 0x7A40, GL_LINEAR, GL_CLAMP, 1, 0);  // replace
 		LoadBitmapA("Custom\\InterfaceS2\\Menu_AG.jpg", 31299, GL_LINEAR, GL_CLAMP, 1, 0);
 		//--
 		LoadBitmapA("Custom\\InterfaceS2\\Boton\\Menu_fastmenu.jpg", iNewFastMenu, GL_LINEAR, GL_CLAMP, 1, 0);
-		LoadBitmapA("Custom\\Interface\\none.tga", 31295, GL_LINEAR, GL_CLAMP, 1, 0); //replace
+		LoadBitmapA("Custom\\Interface\\none.tga", 31295, GL_LINEAR, GL_CLAMP, 1, 0); // replace
 		LoadBitmapA("Custom\\InterfaceS2\\Boton\\Menu_Inventory.jpg", iNewInventory, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Custom\\InterfaceS2\\Boton\\Menu_Character.jpg", iNewCharacter, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Custom\\InterfaceS2\\Boton\\Menu_Party.jpg", iNewParty, GL_LINEAR, GL_CLAMP, 1, 0);
@@ -641,13 +642,13 @@ void Interface::LoadImages()
 		LoadBitmapA("Custom\\InterfaceS2\\newui_skill3.jpg", 31311, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Custom\\InterfaceS2\\newui_command.jpg", 31310, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Custom\\InterfaceS2\\newui_non_skill.jpg", 31314, GL_LINEAR, GL_CLAMP, 1, 0);
-		LoadBitmapA("Custom\\InterfaceS2\\newui_non_skill2.jpg", 31315, GL_LINEAR, GL_CLAMP, 1, 0); 
-		LoadBitmapA("Custom\\InterfaceS2\\newui_non_skill3.jpg", 31317, GL_LINEAR, GL_CLAMP, 1, 0); 
+		LoadBitmapA("Custom\\InterfaceS2\\newui_non_skill2.jpg", 31315, GL_LINEAR, GL_CLAMP, 1, 0);
+		LoadBitmapA("Custom\\InterfaceS2\\newui_non_skill3.jpg", 31317, GL_LINEAR, GL_CLAMP, 1, 0);
 		//--
 		LoadBitmapA("Custom\\InterfaceS2\\newui_skillbox.jpg", 31312, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Custom\\InterfaceS2\\newui_skillbox2.jpg", 31313, GL_LINEAR, GL_CLAMP, 1, 0);
 		//--
-		//Interface Character
+		// Interface Character
 		LoadBitmapA("Custom\\InterfaceS2\\Menu\\Stats.jpg", 31352, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Custom\\InterfaceS2\\Menu\\StatsDL.jpg", 51291, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Custom\\InterfaceS2\\Menu\\Stats2.jpg", 51292, GL_LINEAR, GL_CLAMP, 1, 0);
@@ -755,7 +756,7 @@ void Interface::LoadImages()
 		LoadBitmapA("Interface\\GFx\\Legends\\newui_skillbox.tga", 31312, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Interface\\GFx\\Legends\\Main_Skillbox.tga", 51500, GL_LINEAR, GL_CLAMP, 1, 0);
 		goto LOAD_TEXTURE;
-LOAD_TEXTURE:
+	LOAD_TEXTURE:
 		LoadBitmapA("Interface\\GFx\\chat_bg01.tga", 61550, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Interface\\GFx\\chat_bg02.tga", 61551, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Interface\\GFx\\chat_bg03.tga", 61534, GL_LINEAR, GL_CLAMP, 1, 0);
@@ -773,7 +774,7 @@ LOAD_TEXTURE:
 		LoadBitmapA("Interface\\GFx\\MacroUI\\MacroUI_Bar.jpg", 51549, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Interface\\GFx\\MacroUI\\MacroUI_Menu.tga", 51553, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Interface\\GFx\\MacroUI\\MacroUI_BCamera.tga", 51554, GL_LINEAR, GL_CLAMP, 1, 0);
-//-- Folder Inteface
+		//-- Folder Inteface
 		//-- Botones del Main
 		LoadBitmapA("Custom\\Interface\\none.tga", 31303, GL_LINEAR, GL_CLAMP, 1, 0);
 		LoadBitmapA("Custom\\Interface\\none.tga", 31304, GL_LINEAR, GL_CLAMP, 1, 0);
@@ -802,7 +803,7 @@ LOAD_TEXTURE:
 	}
 	pLoadImage("Custom\\Interface\\TimeBar.tga", 0x787F, 0x2601, 0x2901, 1, 0);
 
-	//partysearch
+	// partysearch
 	pLoadImage("Custom\\Interface\\PartySearch_Title.tga", 92400, 0x2601, 0x2900, 1, 0);
 	pLoadImage("Custom\\Interface\\Party_info_block.tga", 92401, 0x2601, 0x2900, 1, 0);
 	//--
@@ -814,7 +815,7 @@ LOAD_TEXTURE:
 	pLoadImage("Custom\\interface\\topmenutabbt1.tga", 0x9327, 0x2601, 0x2900, 1, 0);
 	pLoadImage("Custom\\interface\\ui_dialog_d.tga", 0x9328, 0x2601, 0x2900, 1, 0);
 
-	if(gProtect.m_MainInfo.DisableEffectRemake == 0)
+	if (gProtect.m_MainInfo.DisableEffectRemake == 0)
 	{
 		pLoadImage("Effect\\flare01.jpg", 52002, GL_LINEAR, GL_REPEAT, 1, 0);
 		pLoadImage("Effect\\flareRed.jpg", 52230, GL_LINEAR, GL_REPEAT, 1, 0);
@@ -826,7 +827,7 @@ LOAD_TEXTURE:
 		pLoadImage("Effect\\flare01.jpg", 42134, GL_LINEAR, GL_REPEAT, 1, 0);
 	}
 	//--
-	if(gProtect.m_MainInfo.DisableCustomCloack == 0)
+	if (gProtect.m_MainInfo.DisableCustomCloack == 0)
 	{
 		gCloak.LoadTexture();
 	}
@@ -835,24 +836,24 @@ LOAD_TEXTURE:
 	gAchievements.LoadImages();
 #endif
 
-	//g_ExWinQuestSystem.ImageLoad();
+	g_ExWinQuestSystem.ImageLoad();
 	//--
 	pLoadSomeForm();
 }
 
 void Interface::BindObject(short MonsterID, DWORD ModelID, float Width, float Height, float X, float Y)
 {
-	this->Data[MonsterID].EventTick	= 0;
-	this->Data[MonsterID].OnClick	= false;
-	this->Data[MonsterID].OnShow	= false;
-	this->Data[MonsterID].ModelID	= ModelID;
-	this->Data[MonsterID].Width		= Width;
-	this->Data[MonsterID].Height	= Height;
-	this->Data[MonsterID].X			= X;
-	this->Data[MonsterID].Y			= Y;
-	this->Data[MonsterID].MaxX		= X + Width;
-	this->Data[MonsterID].MaxY		= Y + Height;
-	this->Data[MonsterID].Attribute	= 0;
+	this->Data[MonsterID].EventTick = 0;
+	this->Data[MonsterID].OnClick = false;
+	this->Data[MonsterID].OnShow = false;
+	this->Data[MonsterID].ModelID = ModelID;
+	this->Data[MonsterID].Width = Width;
+	this->Data[MonsterID].Height = Height;
+	this->Data[MonsterID].X = X;
+	this->Data[MonsterID].Y = Y;
+	this->Data[MonsterID].MaxX = X + Width;
+	this->Data[MonsterID].MaxY = Y + Height;
+	this->Data[MonsterID].Attribute = 0;
 }
 
 void Interface::DrawText(DWORD Color, int PosX, int PosY, int Width, int Align, LPCSTR Text, ...) // OK
@@ -866,7 +867,7 @@ void Interface::DrawText(DWORD Color, int PosX, int PosY, int Width, int Align, 
 	vsprintf_s(Buff, BuffLen, Text, args);
 	va_end(args);
 
-	char * Line = strtok(Buff, "\n");
+	char *Line = strtok(Buff, "\n");
 
 	while (Line != nullptr)
 	{
@@ -897,7 +898,7 @@ void Interface::DrawMessageBox(LPCSTR Text, ...)
 
 void Interface::TextDrawx(int PosX, int PosY, int Width, int Arg5, int Color, int Arg7, int Align, HGDIOBJ Font, LPCTSTR Format, ...)
 {
-	char TextBuff[1024] = { 0 };
+	char TextBuff[1024] = {0};
 	va_list va;
 	va_start(va, Format);
 	vsprintf_s(TextBuff, Format, va);
@@ -911,22 +912,42 @@ void Interface::TextDrawx(int PosX, int PosY, int Width, int Arg5, int Color, in
 	SetTextColorByHDC(pTextThis(), Color);
 	sub_4200F0_Addr(pTextThis(), Arg7);
 	pSetBkColor(pTextThis(), 255, 255, 255, 0);
-	pDrawText(pTextThis(), PosX, PosY, TextBuff, Width, Arg5, (int*)Align, 0);
+	pDrawText(pTextThis(), PosX, PosY, TextBuff, Width, Arg5, (int *)Align, 0);
 	SetTextColorByHDC(pTextThis(), v13);
 	sub_4200F0_Addr(pTextThis(), v15);
 }
 
 void Interface::DrawGUI(short ObjectID, float PosX, float PosY)
 {
-	if( this->Data[ObjectID].X == -1 || this->Data[ObjectID].Y == -1 )
+	if (this->Data[ObjectID].X == -1 || this->Data[ObjectID].Y == -1)
 	{
-		this->Data[ObjectID].X		= PosX;
-		this->Data[ObjectID].Y		= PosY;
-		this->Data[ObjectID].MaxX	= PosX + this->Data[ObjectID].Width;
-		this->Data[ObjectID].MaxY	= PosY + this->Data[ObjectID].Height;
+		this->Data[ObjectID].X = PosX;
+		this->Data[ObjectID].Y = PosY;
+		this->Data[ObjectID].MaxX = PosX + this->Data[ObjectID].Width;
+		this->Data[ObjectID].MaxY = PosY + this->Data[ObjectID].Height;
 	}
 
-	pDrawGUI(this->Data[ObjectID].ModelID, PosX, PosY,this->Data[ObjectID].Width, this->Data[ObjectID].Height);
+	pDrawGUI(this->Data[ObjectID].ModelID, PosX, PosY, this->Data[ObjectID].Width, this->Data[ObjectID].Height);
+}
+
+void Interface::DrawGUI2(short ObjectID, float PosX, float PosY)
+{
+	this->Data[ObjectID].X = PosX;
+	this->Data[ObjectID].Y = PosY;
+	this->Data[ObjectID].MaxX = PosX + this->Data[ObjectID].Width;
+	this->Data[ObjectID].MaxY = PosY + this->Data[ObjectID].Height;
+
+	pDrawGUI(this->Data[ObjectID].ModelID, PosX, PosY, this->Data[ObjectID].Width, this->Data[ObjectID].Height);
+}
+
+void Interface::DrawGUI3(short ObjectID, float PosX, float PosY, float ScaleX, float ScaleY)
+{
+	this->Data[ObjectID].X = PosX;
+	this->Data[ObjectID].Y = PosY;
+	this->Data[ObjectID].MaxX = PosX + this->Data[ObjectID].Width;
+	this->Data[ObjectID].MaxY = PosY + this->Data[ObjectID].Height;
+
+	pDrawImage(this->Data[ObjectID].ModelID, PosX, PosY, this->Data[ObjectID].Width, this->Data[ObjectID].Height, 0, 0, ScaleX, ScaleY, 1, 1, 0);
 }
 
 void Interface::DrawGUICustom(short ObjectID, float PosX, float PosY, float height, float width)
@@ -934,40 +955,20 @@ void Interface::DrawGUICustom(short ObjectID, float PosX, float PosY, float heig
 	pDrawGUI(this->Data[ObjectID].ModelID, PosX, PosY, width, height);
 }
 
-void Interface::DrawGUI2(short ObjectID, float PosX, float PosY)
-{
-	this->Data[ObjectID].X		= PosX;
-	this->Data[ObjectID].Y		= PosY;
-	this->Data[ObjectID].MaxX	= PosX + this->Data[ObjectID].Width;
-	this->Data[ObjectID].MaxY	= PosY + this->Data[ObjectID].Height;
-
-	pDrawGUI(this->Data[ObjectID].ModelID, PosX, PosY,this->Data[ObjectID].Width, this->Data[ObjectID].Height);
-}
-
-void Interface::DrawGUI3(short ObjectID, float PosX, float PosY, float ScaleX, float ScaleY)
-{
-	this->Data[ObjectID].X		= PosX;
-	this->Data[ObjectID].Y		= PosY;
-	this->Data[ObjectID].MaxX	= PosX + this->Data[ObjectID].Width;
-	this->Data[ObjectID].MaxY	= PosY + this->Data[ObjectID].Height;
-
-	pDrawImage(this->Data[ObjectID].ModelID, PosX, PosY,this->Data[ObjectID].Width, this->Data[ObjectID].Height,0,0,ScaleX,ScaleY,1,1,0);
-}
-
 void Interface::DrawIMG(short ObjectID, float PosX, float PosY, float ScaleX, float ScaleY)
 {
-	if( this->Data[ObjectID].X == -1 || this->Data[ObjectID].Y == -1 )
+	if (this->Data[ObjectID].X == -1 || this->Data[ObjectID].Y == -1)
 	{
-		this->Data[ObjectID].X		= PosX;
-		this->Data[ObjectID].Y		= PosY;
-		this->Data[ObjectID].MaxX	= PosX + this->Data[ObjectID].Width;
-		this->Data[ObjectID].MaxY	= PosY + this->Data[ObjectID].Height;
+		this->Data[ObjectID].X = PosX;
+		this->Data[ObjectID].Y = PosY;
+		this->Data[ObjectID].MaxX = PosX + this->Data[ObjectID].Width;
+		this->Data[ObjectID].MaxY = PosY + this->Data[ObjectID].Height;
 	}
 
-	pDrawImage(this->Data[ObjectID].ModelID, PosX, PosY,this->Data[ObjectID].Width, this->Data[ObjectID].Height,0,0,ScaleX,ScaleY,1,1,0);
+	pDrawImage(this->Data[ObjectID].ModelID, PosX, PosY, this->Data[ObjectID].Width, this->Data[ObjectID].Height, 0, 0, ScaleX, ScaleY, 1, 1, 0);
 }
 
-void Interface::DrawWindow(int ObjMain, int ObjTitle, int ObjFrame, int ObjFooter, int Repeat, float X, float Y, char* Text)
+void Interface::DrawWindow(int ObjMain, int ObjTitle, int ObjFrame, int ObjFooter, int Repeat, float X, float Y, char *Text)
 {
 	float StartY = Y;
 	float StartX = X;
@@ -1000,10 +1001,10 @@ bool Interface::ButtonEx(DWORD Event, int ButtonID, bool Type)
 	DWORD Delay = (CurrentTick - this->Data[ButtonID].EventTick);
 	// ----
 
-	if (Event == WM_LBUTTONDOWN  && this->Data[ButtonID].OnClick == false)
+	if (Event == WM_LBUTTONDOWN && this->Data[ButtonID].OnClick == false)
 	{
 		this->Data[ButtonID].OnClick = true;
-		//return false;
+		// return false;
 	}
 
 	if (Event == WM_LBUTTONUP && this->Data[ButtonID].OnClick == true)
@@ -1026,18 +1027,19 @@ bool Interface::ButtonEx(DWORD Event, int ButtonID, bool Type)
 
 void Interface::ResetDrawIMG(short ObjectID)
 {
-	if( this->Data[ObjectID].X != -1 || this->Data[ObjectID].Y != -1 )
+	if (this->Data[ObjectID].X != -1 || this->Data[ObjectID].Y != -1)
 	{
-		this->Data[ObjectID].X		= -1;
-		this->Data[ObjectID].Y		= -1;
-		this->Data[ObjectID].MaxX	= -1;
-		this->Data[ObjectID].MaxY	= -1;
+		this->Data[ObjectID].X = -1;
+		this->Data[ObjectID].Y = -1;
+		this->Data[ObjectID].MaxX = -1;
+		this->Data[ObjectID].MaxY = -1;
 	}
 }
 
 bool Interface::IsWorkZone(float X, float Y, float MaxX, float MaxY, bool a5)
 {
-	if (a5) {
+	if (a5)
+	{
 		if ((pCursorX < X || pCursorX > X + MaxX) || (pCursorY < Y || pCursorY > Y + MaxY))
 			return false;
 		return true;
@@ -1064,7 +1066,7 @@ void Interface::CloseWindowEx(int WindowID)
 
 void Interface::TextDraw(int PosX, int PosY, int Width, int Arg5, int Color, int Arg7, int Align, HGDIOBJ Font, LPCTSTR Format, ...)
 {
-	char TextBuff[1024] = { 0 };
+	char TextBuff[1024] = {0};
 	va_list va;
 	va_start(va, Format);
 	vsprintf_s(TextBuff, Format, va);
@@ -1078,12 +1080,12 @@ void Interface::TextDraw(int PosX, int PosY, int Width, int Arg5, int Color, int
 	SetTextColorByHDC(pTextThis(), Color);
 	sub_4200F0_Addr(pTextThis(), Arg7);
 	pSetBkColor(pTextThis(), 255, 255, 255, 0);
-	pDrawText(pTextThis(), PosX, PosY, TextBuff, Width, Arg5, (int*)Align, 0);
+	pDrawText(pTextThis(), PosX, PosY, TextBuff, Width, Arg5, (int *)Align, 0);
 	SetTextColorByHDC(pTextThis(), v13);
 	sub_4200F0_Addr(pTextThis(), v15);
 }
 
-void Interface::MiniButtonDraw(int BtnID, float X, float Y, bool isHover, char* Text)
+void Interface::MiniButtonDraw(int BtnID, float X, float Y, bool isHover, char *Text)
 {
 
 	if (isHover)
@@ -1097,8 +1099,7 @@ void Interface::MiniButtonDraw(int BtnID, float X, float Y, bool isHover, char* 
 	this->DrawFormat(eWhite, X + 7, Y + 9, 50, 3, Text);
 }
 
-
-void Interface::DrawCheckLineEx(bool isChecked, int PointID, int CheckID, int LineID, float X, float Y, DWORD Color, char* Text)
+void Interface::DrawCheckLineEx(bool isChecked, int PointID, int CheckID, int LineID, float X, float Y, DWORD Color, char *Text)
 {
 	this->DrawGUI2(PointID, X + 20, Y - 4); // Point
 	this->DrawFormat(eWhite, X + 50, Y + 1, 200, 1, Text);
@@ -1125,13 +1126,13 @@ bool checkBtn(int obj)
 	return true;
 }
 
-void Interface::PartUPandDNEx(int PointID, int UpID, int DownID, int LineID, float X, float Y, DWORD Color, int Value, char* Text)
+void Interface::PartUPandDNEx(int PointID, int UpID, int DownID, int LineID, float X, float Y, DWORD Color, int Value, char *Text)
 {
 	this->DrawGUI2(PointID, X + 20, Y - 4); // Point
 
 	this->DrawFormat(eWhite, X + 50, Y + 1, 200, 1, Text);
 
-	this->DrawButtonRender(DownID, X + 150, Y - 6, 0, 0); // 
+	this->DrawButtonRender(DownID, X + 150, Y - 6, 0, 0); //
 
 	if (checkBtn(DownID))
 	{
@@ -1142,14 +1143,14 @@ void Interface::PartUPandDNEx(int PointID, int UpID, int DownID, int LineID, flo
 	}
 
 	pSetBlend(true);
-	this->DrawBarForm(X + 168, Y - 5, 19, 13, 0.0, 0.0, 0.0, 1.0);//ReqItems
+	this->DrawBarForm(X + 168, Y - 5, 19, 13, 0.0, 0.0, 0.0, 1.0); // ReqItems
 	glColor3f(1, 1, 1);
 	pSetBlend(false);
 	char szText[10];
 	sprintf(szText, "%d", Value);
 	gInterface.TextDraw(X + 128, Y - 2, 100, 1, eWhite, 0, 3, pFontNormal, "%d", Value);
 
-	this->DrawButtonRender(UpID, X + 190, Y - 6, 0, 0); // 
+	this->DrawButtonRender(UpID, X + 190, Y - 6, 0, 0); //
 
 	if (checkBtn(UpID))
 	{
@@ -1164,7 +1165,7 @@ void Interface::PartUPandDNEx(int PointID, int UpID, int DownID, int LineID, flo
 
 int Interface::DrawFormatx(DWORD Color, int PosX, int PosY, int Width, int Align, LPCSTR Text, ...)
 {
-	char Buff[2048] = { 0 };
+	char Buff[2048] = {0};
 	// ---
 	int BuffLen = sizeof(Buff) - 1;
 	// ---
@@ -1180,7 +1181,7 @@ int Interface::DrawFormatx(DWORD Color, int PosX, int PosY, int Width, int Align
 	// ---
 	int LineCount = 0;
 	// ---
-	char * Line = strtok(Buff, "\n");
+	char *Line = strtok(Buff, "\n");
 	// ---
 	while (Line != NULL)
 	{
@@ -1194,14 +1195,14 @@ int Interface::DrawFormatx(DWORD Color, int PosX, int PosY, int Width, int Align
 	return PosY;
 }
 
-#define sub_630BC0   ((bool(*)()) 0x630BC0)
+#define sub_630BC0 ((bool (*)())0x630BC0)
 
 void ChangeSize(int a1, int a2)
 {
-	int v2; // esi@1
-	DWORD v3; // edi@1
-	int v4; // eax@2
-	int v5; // eax@2
+	int v2;	   // esi@1
+	DWORD v3;  // edi@1
+	int v4;	   // eax@2
+	int v5;	   // eax@2
 	DWORD *v6; // esi@2
 
 	v2 = a2;
@@ -1228,13 +1229,12 @@ void Interface::Work()
 
 	if (gProtect.m_MainInfo.MiniMapType == 2)
 	{
-//		gInterface.DrawRadar();
+		// gInterface.DrawRadar();
 	}
 
 	if (gProtect.m_MainInfo.MiniMapType == 2)
 	{
-		if (gObjUser.lpViewPlayer->WeaponFirstSlot >= ITEM2(4, 0) && gObjUser.lpViewPlayer->WeaponFirstSlot <= ITEM2(4, 255)
-			|| gObjUser.lpViewPlayer->WeaponSecondSlot >= ITEM2(4, 0) && gObjUser.lpViewPlayer->WeaponSecondSlot <= ITEM2(4, 255))
+		if (gObjUser.lpViewPlayer->WeaponFirstSlot >= ITEM2(4, 0) && gObjUser.lpViewPlayer->WeaponFirstSlot <= ITEM2(4, 255) || gObjUser.lpViewPlayer->WeaponSecondSlot >= ITEM2(4, 0) && gObjUser.lpViewPlayer->WeaponSecondSlot <= ITEM2(4, 255))
 		{
 			if (MiniMap == 0)
 			{
@@ -1244,7 +1244,6 @@ void Interface::Work()
 			{
 				gInterface.PetY = 13.0f;
 			}
-
 		}
 		else
 		{
@@ -1260,11 +1259,9 @@ void Interface::Work()
 	}
 	else
 	{
-		if (gObjUser.lpViewPlayer->WeaponFirstSlot >= ITEM2(4, 0) && gObjUser.lpViewPlayer->WeaponFirstSlot <= ITEM2(4, 255)
-			|| gObjUser.lpViewPlayer->WeaponSecondSlot >= ITEM2(4, 0) && gObjUser.lpViewPlayer->WeaponSecondSlot <= ITEM2(4, 255))
+		if (gObjUser.lpViewPlayer->WeaponFirstSlot >= ITEM2(4, 0) && gObjUser.lpViewPlayer->WeaponFirstSlot <= ITEM2(4, 255) || gObjUser.lpViewPlayer->WeaponSecondSlot >= ITEM2(4, 0) && gObjUser.lpViewPlayer->WeaponSecondSlot <= ITEM2(4, 255))
 		{
 			gInterface.PetY = 38.0f;
-
 		}
 		else
 		{
@@ -1272,12 +1269,14 @@ void Interface::Work()
 		}
 	}
 
-	if(gProtect.m_MainInfo.CustomInterfaceType == 1 || gProtect.m_MainInfo.CustomInterfaceType == 2){
+	if (gProtect.m_MainInfo.CustomInterfaceType == 1 || gProtect.m_MainInfo.CustomInterfaceType == 2)
+	{
 
-		if(gObjUser.lpViewPlayer->PetSlot!= -1)
+		if (gObjUser.lpViewPlayer->PetSlot != -1)
 		{
 			gInterface.PetX = 61.0f;
-		}else
+		}
+		else
 		{
 			gInterface.PetX = 0;
 		}
@@ -1285,12 +1284,14 @@ void Interface::Work()
 		gInterface.DrawInterfaceDragonRS3();
 	}
 
+	// Draw Ranking Board
 	gRanking.Draw();
 
+	// Draw Local and Server Time
 	gInterface.DrawTimeUI();
 
 	gCustomEventTime.DrawEventTimePanelWindow();
-	
+
 	ReconnectMainProc();
 
 	gInterface.DrawVipWindow();
@@ -1305,7 +1306,7 @@ void Interface::Work()
 
 	gInterface.DrawConfirmOpen();
 
-#if (WARE==1)
+#if (WARE == 1)
 	gwareinterface.DrawWarehouseWindow();
 #endif
 #if (JEWEL_BANK == 1)
@@ -1316,7 +1317,7 @@ void Interface::Work()
 	gInterface.DrawPartySettingsWindow();
 
 	gChangeClass.DrawChangeWindow();
-#if (RESETCHANGE ==1)
+#if (RESETCHANGE == 1)
 	gResetChange.DrawResetChange();
 #endif
 
@@ -1330,10 +1331,9 @@ void Interface::Work()
 
 	gSmithItem.DrawSmithItem();
 
-	// Remove Windows Quest
-	//g_ExWinQuestSystem.DrawMiniInfo();
-	//g_ExWinQuestSystem.Draw();
-	//g_ExWinQuestSystem.DrawOpenWQ();
+	// g_ExWinQuestSystem.DrawMiniInfo();
+	g_ExWinQuestSystem.Draw();
+	// g_ExWinQuestSystem.DrawOpenWQ();
 
 	gGrandResetSystem.draw_grand_reset_system();
 	gResetSystem.draw_reset_system();
@@ -1345,14 +1345,14 @@ void Interface::Work()
 		gInterface.DrawInterfaceCustom();
 	}
 
-	if(gProtect.m_MainInfo.CustomInterfaceType == 1 || gProtect.m_MainInfo.CustomInterfaceType == 2)
+	if (gProtect.m_MainInfo.CustomInterfaceType == 1 || gProtect.m_MainInfo.CustomInterfaceType == 2)
 	{
-		
-		if(gProtect.m_MainInfo.CustomInterfaceType == 1)
+
+		if (gProtect.m_MainInfo.CustomInterfaceType == 1)
 		{
 			gInterface.DrawInterface97Menu();
 		}
-		if(gProtect.m_MainInfo.CustomInterfaceType == 2)
+		if (gProtect.m_MainInfo.CustomInterfaceType == 2)
 		{
 			gInterface.DrawInterfaceS2Menu();
 		}
@@ -1362,137 +1362,112 @@ void Interface::Work()
 
 	isHiddenPlayer = GetPrivateProfileIntA("AntiLag", "DisablePlayer", 0, "./Settings.ini");
 
-	if( GetForegroundWindow() == pGameWindow )
+	// Init some fixed Settings
+	gInterface.InitSettings();
+
+	if (GetForegroundWindow() == pGameWindow)
 	{
-		if (GetKeyState(VK_SNAPSHOT) < 0) 
+		if (GetKeyState(VK_SNAPSHOT) < 0)
 		{
-			gInterface.DrawLogo(1); 
+			gInterface.DrawLogo(1);
 		}
-		if (GetKeyState(VK_END) & 0x4000) 
+		if (GetKeyState(VK_END) & 0x4000)
 		{
-			if((GetTickCount()-gInterface.Data[eVip_MAIN].EventTick) > 300)
-			{
-				if (gInterface.CheckVipWindow())
-				{
-					gInterface.Data[eVip_MAIN].EventTick = GetTickCount();
-					gInterface.CloseVipWindow();
-				}
-				else
-				{
-					gInterface.Data[eVip_MAIN].EventTick = GetTickCount();
-					gInterface.CloseCustomWindow();
-					gInterface.OpenVipWindow();
-				}
-			}
+			gInterface.SwitchMiniMap();
 		}
-		if (GetKeyState('H') & 0x4000) 
+		if (GetKeyState('H') & 0x4000)
 		{
 			gCustomEventTime.OpenWindow();
 		}
-//--------
-/*		if (GetKeyState('Y') & 0x4000)
-		{
-			HKEY hKey;
-			DWORD dwType, dwSize;
-			DWORD buffer;
-			LONG result;
+		//--------
+		/*		if (GetKeyState('Y') & 0x4000)
+				{
+					HKEY hKey;
+					DWORD dwType, dwSize;
+					DWORD buffer;
+					LONG result;
 
-			int width;
-			int height;
-			float rea1;
-			unsigned long type = REG_DWORD, size = 1024;
+					int width;
+					int height;
+					float rea1;
+					unsigned long type = REG_DWORD, size = 1024;
 
-			RegOpenKeyEx(HKEY_CURRENT_USER, "SOFTWARE\\Webzen\\Mu\\Config", 0, KEY_ALL_ACCESS, &hKey);
-			DWORD value = 4;
+					RegOpenKeyEx(HKEY_CURRENT_USER, "SOFTWARE\\Webzen\\Mu\\Config", 0, KEY_ALL_ACCESS, &hKey);
+					DWORD value = 4;
 
-			RegSetValueEx(hKey, TEXT("Resolution"), 0, REG_DWORD, (const BYTE*)&value, sizeof(value));
+					RegSetValueEx(hKey, TEXT("Resolution"), 0, REG_DWORD, (const BYTE*)&value, sizeof(value));
 
-			RegCloseKey(hKey);
+					RegCloseKey(hKey);
 
-			result = RegOpenKeyEx(HKEY_CURRENT_USER, "SOFTWARE\\Webzen\\Mu\\Config", 0, KEY_READ, &hKey);
-			RegQueryValueEx(hKey, "Resolution", NULL, &type, (LPBYTE)&buffer, &size);
-			RegCloseKey(hKey);
+					result = RegOpenKeyEx(HKEY_CURRENT_USER, "SOFTWARE\\Webzen\\Mu\\Config", 0, KEY_READ, &hKey);
+					RegQueryValueEx(hKey, "Resolution", NULL, &type, (LPBYTE)&buffer, &size);
+					RegCloseKey(hKey);
 
-			switch (buffer)
-			{
-			case 0:
-				pWinWidth = 640;
-				pWinHeight = 480;
-				break;
-			case 1:
-				pWinWidth = 800;
-				pWinHeight = 600;
-				break;
-			case 2:
-				pWinWidth = 1024;
-				pWinHeight = 768;
-				break;
-			case 3:
-				pWinWidth = 1280;
-				pWinHeight = 1024;
-				break;
-			case 4:
-				pWinWidth = 1360;
-				pWinHeight = 768;
-				break;
-			case 5:
-				pWinWidth = 1440;
-				pWinHeight = 900;
-				break;
-			default:
-				break;
-			}
+					switch (buffer)
+					{
+					case 0:
+						pWinWidth = 640;
+						pWinHeight = 480;
+						break;
+					case 1:
+						pWinWidth = 800;
+						pWinHeight = 600;
+						break;
+					case 2:
+						pWinWidth = 1024;
+						pWinHeight = 768;
+						break;
+					case 3:
+						pWinWidth = 1280;
+						pWinHeight = 1024;
+						break;
+					case 4:
+						pWinWidth = 1360;
+						pWinHeight = 768;
+						break;
+					case 5:
+						pWinWidth = 1440;
+						pWinHeight = 900;
+						break;
+					default:
+						break;
+					}
 
-			ChangeSize(pWinWidth, pWinHeight);
-			pWinFontHeight = 10;
-		}*/
-//---------
-		if (GetKeyState('O') & 0x4000) 
+					ChangeSize(pWinWidth, pWinHeight);
+					pWinFontHeight = 10;
+				}*/
+		//---------
+		if (GetKeyState('O') & 0x4000)
 		{
 			gInterface.OpenConfig(0);
 		}
-		if (GetKeyState(VK_UP) & 0x4000) 
+		if (GetKeyState(VK_UP) & 0x4000)
 		{
 			gInterface.OpenConfig(1);
 		}
-		else if (GetKeyState(VK_DOWN) & 0x4000) 
+		else if (GetKeyState(VK_DOWN) & 0x4000)
 		{
 			gInterface.OpenConfig(1);
 		}
 		if (GetKeyState(VK_F7) & 0x4000)
 		{
-			//g_ExWinQuestSystem.SwitchStatsWindowState();
+			gInterface.SwitchJewelsBank();
 		}
-		if (GetKeyState(VK_F6) & 0x4000) 
+		if (GetKeyState(VK_F9) & 0x4000)
 		{
-			gInterface.SwitchChatExpand();
+			gInterface.SwitchCustomMenu();
 		}
-		if (GetKeyState(VK_F8) & 0x4000) 
-		{
-			if (Encoger == 1)
-			{
-				Encoger = 0;
-				gInterface.DrawMessage(1, "[OFF]");
-			}
-			else
-			{
-				Encoger = 1;
-				Encoger = 2;
-				Encoger = 1;
-				gInterface.DrawMessage(1, "[ON]");
-			}
-		}
-		if (GetKeyState(VK_F10) & 0x4000) 
+		if (GetKeyState(VK_F10) & 0x4000)
 		{
 			gInterface.SwitchCamera();
 		}
-		if (GetKeyState(VK_F11) & 0x4000) 
+		if (GetKeyState(VK_F11) & 0x4000)
 		{
 			gInterface.CameraInit();
 		}
-		if (GetKeyState(VK_F12) & 0x4000) 
+		if (GetKeyState(VK_F12) & 0x4000)
 		{
-			if( gTrayMode.TempWindowProc == NULL )
+			if (gTrayMode.TempWindowProc == NULL)
 			{
 				gTrayMode.TempWindowProc = SetWindowLong(pGameWindow, GWL_WNDPROC, (long)gController.Window);
 			}
@@ -1500,13 +1475,13 @@ void Interface::Work()
 			gTrayMode.SwitchState();
 		}
 		// When Press ESC
-		if (GetKeyState(VK_ESCAPE) < 0) 
+		if (GetKeyState(VK_ESCAPE) < 0)
 		{
 			if (gInterface.Data[eCommand_MAIN].OnShow == true)
 			{
 				gInterface.Data[eCommand_MAIN].OnShow = false;
-				
-				if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+
+				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
 				{
 					pSetCursorFocus = false;
 				}
@@ -1515,8 +1490,8 @@ void Interface::Work()
 			if (gInterface.Data[eRankPANEL_MAIN].OnShow == true)
 			{
 				gInterface.Data[eRankPANEL_MAIN].OnShow = false;
-				
-				if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+
+				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
 				{
 					pSetCursorFocus = false;
 				}
@@ -1525,13 +1500,13 @@ void Interface::Work()
 			if (gInterface.Data[eEventTimePANEL_MAIN].OnShow == true)
 			{
 				gInterface.Data[eEventTimePANEL_MAIN].OnShow = false;
-				
-				if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+
+				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
 				{
 					pSetCursorFocus = false;
 				}
 			}
-			// Exit Jewels Bank Menu
+
 			if (gJewelsBank.Active == true)
 			{
 				gJewelsBank.Active = false;
@@ -1545,37 +1520,21 @@ void Interface::Work()
 			if (gInterface.CheckVipWindow())
 			{
 				gInterface.CloseVipWindow();
-				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-				{
-					pSetCursorFocus = false;
-				}
 			}
 			// Exit Menu 1 Window
 			if (gInterface.CheckMenuWindow())
 			{
 				gInterface.CloseMenuWindow();
-				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-				{
-					pSetCursorFocus = false;
-				}
 			}
 			// Exit Menu 2 Window
 			if (gInterface.CheckMenu2Window())
 			{
 				gInterface.CloseMenu2Window();
-				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-				{
-					pSetCursorFocus = false;
-				}
 			}
 			// Exit Smith Item Window
 			if (gInterface.CheckSmithItemWindow())
 			{
 				gInterface.CloseSmithItemWindow();
-				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-				{
-					pSetCursorFocus = false;
-				}
 			}
 			// Exit Lucky Wheel Window
 			if (gInterface.CheckLuckyWheelWindow())
@@ -1592,26 +1551,31 @@ void Interface::Work()
 			{
 				gInterface.ChangeClassStateclose();
 			}
-			// Reset Change Class Window
+			// Exit Reset Change Class Window
 			if (gInterface.CheckResetChangeWindow())
 			{
 				gInterface.ResetChangeStateclose();
 			}
-			// Exit Ranking Menu
+			// Exit Windows Quest Window
+			if (g_ExWinQuestSystem.CheckWindowQuestWindow())
+			{
+				g_ExWinQuestSystem.WindowQuestStateclose();
+			}
+			// Exit Warehouse Window
+			if (gInterface.CheckWarehouseWindow())
+			{
+				gInterface.WarehouseStateclose();
+			}
 			if (gRanking.Show == true)
 			{
 				gRanking.Show = false;
-				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-				{
-					pSetCursorFocus = false;
-				}
+				pSetCursorFocus = false;
 			}
 
 #if (ARCHIVEMENT == 1)
 			if (gInterface.Data[OBJECT_ACHIEVEMENTS_MAIN].OnShow == true)
 			{
 				gInterface.Data[OBJECT_ACHIEVEMENTS_MAIN].Close();
-				pSetCursorFocus = false;
 			}
 #endif
 		}
@@ -1620,13 +1584,11 @@ void Interface::Work()
 	if (!pCheckWindow(pWindowThis(), 13))
 	{
 		jCRenderRuud.OpeningRuud = false;
-		pSetCursorFocus = false;
 	}
 
 	if (gInterface.CheckWindow(ObjWindow::MuHelper) || gInterface.CheckWindow(ObjWindow::MuHelperSetting))
 	{
 		CloseHelper();
-		pSetCursorFocus = false;
 	}
 
 	gInterface.DrawLogo(0);
@@ -1634,7 +1596,7 @@ void Interface::Work()
 
 void Interface::SwitchMiniMap()
 {
-	if((GetTickCount() - gInterface.Data[eNULL_MAP].EventTick) < 1000 ||this->CheckWindow(ChatWindow))
+	if ((GetTickCount() - gInterface.Data[eNULL_MAP].EventTick) < 400)
 	{
 		return;
 	}
@@ -1643,81 +1605,76 @@ void Interface::SwitchMiniMap()
 
 	if (MiniMap != 0)
 	{
-		gInterface.DrawMessage(1, "MiniMap Window [OFF]");
+		gInterface.DrawMessage(1, "Báº£n Ä‘á»“ nhá» [Táº®T]");
 		MiniMap = 0;
-		WritePrivateProfileStringA("Graphics","MiniMap","0","./Settings.ini");
+		WritePrivateProfileStringA("Graphics", "MiniMap", "0", "./Settings.ini");
 	}
-	else 
+	else
 	{
-		gInterface.DrawMessage(1, "MiniMap Window [ON]");
+		gInterface.DrawMessage(1, "Báº£n Ä‘á»“ nhá» [Báº¬T]");
 		MiniMap = 1;
-		WritePrivateProfileStringA("Graphics","MiniMap","1","./Settings.ini");
+		WritePrivateProfileStringA("Graphics", "MiniMap", "1", "./Settings.ini");
 	}
 }
-
 
 void Interface::DrawTimeUI()
 {
 
-	if(TimerBar == 0 || (this->CheckWindow(ObjWindow::CashShop)|| this->CheckWindow(ObjWindow::FullMap) || this->CheckWindow(ObjWindow::ChatWindow) || this->CheckWindow(ObjWindow::SkillTree)
-	|| this->CheckWindow(ObjWindow::MoveList) || pMapNumber == 34 || pMapNumber == 30 ))
+	if (TimerBar == 0 || (this->CheckWindow(ObjWindow::CashShop) || this->CheckWindow(ObjWindow::FullMap) || this->CheckWindow(ObjWindow::ChatWindow) || this->CheckWindow(ObjWindow::SkillTree) || this->CheckWindow(ObjWindow::MoveList) || pMapNumber == 34 || pMapNumber == 30))
 	{
 		return;
 	}
 	// -----
-	//this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y);
-	//this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y + 22);
-	//this->DrawGUICustom(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y + 22, 80, 60);
+	// this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y);
+	// this->DrawGUI(eTIME, this->Data[eTIME].X, this->Data[eTIME].Y + 22);
 	// -----
 	time_t TimeServer, TimeLocal;
-	struct tm * ServerT, *LocalT;
+	struct tm *ServerT, *LocalT;
 	time(&TimeServer);
 	time(&TimeLocal);
 	// ----
 	ServerT = gmtime(&TimeServer);
 	// ----
-	char ServerTimeName[25] = "Server:";
+	char ServerTimeName[25] = "Server time:";
 	char ServerTime[30];
 
 	sprintf(ServerTime, "%2d:%02d:%02d", (ServerT->tm_hour + GMT) % 24, ServerT->tm_min, ServerT->tm_sec);
 	// -----
 	LocalT = localtime(&TimeLocal);
 	// -----
-	char LocalTimeName[25] = "Local:";
+	char LocalTimeName[25] = "Local time:";
 	char LocalTime[30];
 	sprintf(LocalTime, "%2d:%02d:%02d", LocalT->tm_hour, LocalT->tm_min, LocalT->tm_sec);
 	// -----
-	//this->DrawFormat(eGold, 5, 391, 50, 1, ServerTimeName);
-	//this->DrawFormat(eWhite, 40, 391, 100, 1, ServerTime);
+	this->DrawFormat(eOrange, 5, 410, 25, 1, ServerTimeName);
+	this->DrawFormat(eOrange, 32, 410, 40, 1, ServerTime);
 	// ----
-	//this->DrawFormat(eGold, 5, 413, 50, 1, LocalTimeName);
-	//this->DrawFormat(eWhite, 40, 413, 100, 1, LocalTime);
-	//this->DrawFormat(eGold, 5, 413, 50, 1, ServerTimeName);
-	//this->DrawFormat(eWhite, 25, 413, 100, 1, ServerTime);
+	this->DrawFormat(eOrange, 5, 420, 25, 1, LocalTimeName);
+	this->DrawFormat(eOrange, 32, 420, 40, 1, LocalTime);
 }
 
 int Interface::DrawFormat(DWORD Color, int PosX, int PosY, int Width, int Align, LPCSTR Text, ...)
 {
 	char Buff[2048];
-	int BuffLen	= sizeof(Buff)-1;
+	int BuffLen = sizeof(Buff) - 1;
 	ZeroMemory(Buff, BuffLen);
-	
+
 	va_list args;
 	va_start(args, Text);
-	int Len	= vsprintf_s(Buff, BuffLen, Text, args);
+	int Len = vsprintf_s(Buff, BuffLen, Text, args);
 	va_end(args);
-	
+
 	int LineCount = 0;
-	
-	char * Line = strtok(Buff, "\n");
-	
-	while( Line != NULL )
+
+	char *Line = strtok(Buff, "\n");
+
+	while (Line != NULL)
 	{
 		pDrawColorText(Line, PosX, PosY, Width, 0, Color, 0, Align);
 		PosY += 10;
 		Line = strtok(NULL, "\n");
 	}
-	
+
 	return PosY;
 }
 
@@ -1748,7 +1705,6 @@ bool Interface::IsWorkZone2(float X, float Y, float MaxX, float MaxY)
 	return true;
 }
 
-
 /*bool Interface::IsWorkZone(short ObjectID)
 {
 	if( (pCursorX < this->Data[ObjectID].X || pCursorX > this->Data[ObjectID].MaxX) || (pCursorY < this->Data[ObjectID].Y || pCursorY > this->Data[ObjectID].MaxY) )
@@ -1778,41 +1734,41 @@ bool Interface::IsWorkZone(short ObjectID)
 
 float Interface::GetResizeX(short ObjectID)
 {
-	if( pWinWidth == 800 )
+	if (pWinWidth == 800)
 	{
 		return this->Data[ObjectID].X + 16.0;
 	}
-	else if( pWinWidth != 1024 )
+	else if (pWinWidth != 1024)
 	{
 		return this->Data[ObjectID].X - 16.0;
 	}
-	
+
 	return this->Data[ObjectID].X;
 }
 
 int Interface::DrawToolTip(int X, int Y, LPCSTR Text, ...)
 {
 	char Buff[2048];
-	int BuffLen	= sizeof(Buff);
+	int BuffLen = sizeof(Buff);
 	ZeroMemory(Buff, BuffLen);
-	
+
 	va_list args;
 	va_start(args, Text);
-	int Len	= vsprintf_s(Buff, BuffLen, Text, args);
+	int Len = vsprintf_s(Buff, BuffLen, Text, args);
 	va_end(args);
-	
+
 	return pDrawToolTip(X, Y, Buff);
 }
 
 int Interface::DrawMessage(int Mode, LPCSTR Text, ...)
 {
 	char Buff[2048];
-	int BuffLen	= sizeof(Buff);
+	int BuffLen = sizeof(Buff);
 	ZeroMemory(Buff, BuffLen);
 	// ----
 	va_list args;
 	va_start(args, Text);
-	int Len	= vsprintf_s(Buff, BuffLen, Text, args);
+	int Len = vsprintf_s(Buff, BuffLen, Text, args);
 	va_end(args);
 	// ----
 	return pDrawMessage(Buff, Mode);
@@ -1821,37 +1777,31 @@ int Interface::DrawMessage(int Mode, LPCSTR Text, ...)
 void Interface::DrawVipWindow()
 {
 
-	if( !this->Data[eVip_MAIN].OnShow )
+	if (!this->Data[eVip_MAIN].OnShow)
 	{
 		return;
 	}
 
-	if( gProtect.m_MainInfo.EnableVipShop != 1 )
+	if (gProtect.m_MainInfo.EnableVipShop != 1)
 	{
 		this->CloseVipWindow();
 		return;
 	}
 
-	if (this->CheckWindow(ObjWindow::MoveList) || this->CheckWindow(ObjWindow::CashShop) || this->CheckWindow(ObjWindow::SkillTree) || this->CheckWindow(ObjWindow::FullMap)
-		||  (this->CheckWindow(Inventory) 
-		&& this->CheckWindow(ExpandInventory) 
-		&& this->CheckWindow(Store)) 
-		||  (this->CheckWindow(Inventory) 
-		&& this->CheckWindow(Warehouse) 
-		&& this->CheckWindow(ExpandWarehouse)) )
+	if (this->CheckWindow(ObjWindow::MoveList) || this->CheckWindow(ObjWindow::CashShop) || this->CheckWindow(ObjWindow::SkillTree) || this->CheckWindow(ObjWindow::FullMap) || (this->CheckWindow(Inventory) && this->CheckWindow(ExpandInventory) && this->CheckWindow(Store)) || (this->CheckWindow(Inventory) && this->CheckWindow(Warehouse) && this->CheckWindow(ExpandWarehouse)))
 	{
 		CloseVipWindow();
 		return;
 	}
 
 	// ----
-	float MainWidth			= 230.0;
-	float MainHeight		= 320.0;
-	float StartBody			= ((MAX_WIN_HEIGHT - 51) / 2) - (MainHeight / 2);
-	float StartY			= ((MAX_WIN_HEIGHT - 51) / 2) - (MainHeight / 2);
-	float StartX			= (MAX_WIN_WIDTH / 2) - (MainWidth / 2);
-	float MainCenter		= StartX + (MainWidth / 3);
-	float ButtonX			= MainCenter - (float)(29.0 / 2);
+	float MainWidth = 230.0;
+	float MainHeight = 320.0;
+	float StartBody = ((MAX_WIN_HEIGHT - 51) / 2) - (MainHeight / 2);
+	float StartY = ((MAX_WIN_HEIGHT - 51) / 2) - (MainHeight / 2);
+	float StartX = (MAX_WIN_WIDTH / 2) - (MainWidth / 2);
+	float MainCenter = StartX + (MainWidth / 3);
+	float ButtonX = MainCenter - (float)(29.0 / 2);
 	// ----
 	gCentral.PrintDropBox(StartX, StartY, MainWidth, MainHeight, 0, 0);
 	// ----
@@ -1864,7 +1814,7 @@ void Interface::DrawVipWindow()
 	pDrawGUI(71520, StartX + (MainWidth / 2) - (200 / 2), StartBody + 85, 200, 1); //-- Divisor
 	//--
 	this->DrawFormat(eGold, (int)StartX + 30, (int)StartBody + 95 - 2, 210, 1, "Plan");
-	this->DrawFormat(eGold, (int)StartX + 80, (int)StartBody + 95 - 2 , 210, 1, "Exp");
+	this->DrawFormat(eGold, (int)StartX + 80, (int)StartBody + 95 - 2, 210, 1, "Exp");
 	this->DrawFormat(eGold, (int)StartX + 130, (int)StartBody + 95 - 2, 210, 1, "Drop");
 	this->DrawFormat(eGold, (int)StartX + 170, (int)StartBody + 95 - 2, 210, 1, "Time");
 	// ----
@@ -1874,7 +1824,7 @@ void Interface::DrawVipWindow()
 		gProtect.m_MainInfo.VipTypes = 3;
 	}
 
-	for( int i = 0; i < (int)gProtect.m_MainInfo.VipTypes; i++ )
+	for (int i = 0; i < (int)gProtect.m_MainInfo.VipTypes; i++)
 	{
 		this->DrawFormat(eWhite, (int)StartX + 30, (int)StartBody + 110 + (12 * i) - 5, 210, 1, gCustomBuyVip.m_CustomBuyVipInfo[i].VipName);
 		// ----
@@ -1890,73 +1840,72 @@ void Interface::DrawVipWindow()
 
 	if (gProtect.m_MainInfo.VipTypes > 0)
 	{
-	// ---- bronze start 
-	if (IsWorkZone(eVip_BRONZE))
-	{
-		if (this->Data[eVip_BRONZE].OnClick)
-			this->DrawButton(eVip_BRONZE, StartX + 64, 220, 0, 58);
+		// ---- bronze start
+		if (IsWorkZone(eVip_BRONZE))
+		{
+			if (this->Data[eVip_BRONZE].OnClick)
+				this->DrawButton(eVip_BRONZE, StartX + 64, 220, 0, 58);
+			else
+				this->DrawButton(eVip_BRONZE, StartX + 64, 220, 0, 29);
+			// ----
+			this->DrawFormat(eGold, (int)StartX + 30, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(10));
+			this->DrawFormat(eGold, (int)StartX + 70, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(11), gCustomBuyVip.m_CustomBuyVipInfo[0].Coin1);
+			this->DrawFormat(eGold, (int)StartX + 120, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(12), gCustomBuyVip.m_CustomBuyVipInfo[0].Coin2);
+			this->DrawFormat(eGold, (int)StartX + 160, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(13), gCustomBuyVip.m_CustomBuyVipInfo[0].Coin3);
+		}
 		else
-			this->DrawButton(eVip_BRONZE, StartX + 64, 220, 0, 29);
+			this->DrawButton(eVip_BRONZE, StartX + 64, 220, 0, 0);
 		// ----
-		this->DrawFormat(eGold, (int)StartX + 30, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(10));
-		this->DrawFormat(eGold, (int)StartX + 70, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(11), gCustomBuyVip.m_CustomBuyVipInfo[0].Coin1);
-		this->DrawFormat(eGold, (int)StartX + 120, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(12), gCustomBuyVip.m_CustomBuyVipInfo[0].Coin2);
-		this->DrawFormat(eGold, (int)StartX + 160, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(13), gCustomBuyVip.m_CustomBuyVipInfo[0].Coin3);
-	}
-	else
-		this->DrawButton(eVip_BRONZE, StartX + 64, 220, 0, 0);
-	// ----
-	this->DrawFormat(eWhite, (int)StartX + 90, 220 + 9, 160, 1, gCustomMessage.GetMessage(9),gCustomBuyVip.m_CustomBuyVipInfo[0].VipName);
-	// ---- bronze end ------------------------------------
+		this->DrawFormat(eWhite, (int)StartX + 90, 220 + 9, 160, 1, gCustomMessage.GetMessage(9), gCustomBuyVip.m_CustomBuyVipInfo[0].VipName);
+		// ---- bronze end ------------------------------------
 	}
 
 	if (gProtect.m_MainInfo.VipTypes > 1)
 	{
-	// ---- Silver start ------------------------------------
-	if (IsWorkZone(eVip_SILVER))
-	{
-		if (this->Data[eVip_SILVER].OnClick)
-			this->DrawButton(eVip_SILVER, StartX + 64, 250, 0, 58);
+		// ---- Silver start ------------------------------------
+		if (IsWorkZone(eVip_SILVER))
+		{
+			if (this->Data[eVip_SILVER].OnClick)
+				this->DrawButton(eVip_SILVER, StartX + 64, 250, 0, 58);
+			else
+				this->DrawButton(eVip_SILVER, StartX + 64, 250, 0, 29);
+			// ----
+			this->DrawFormat(eGold, (int)StartX + 30, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(10));
+			this->DrawFormat(eGold, (int)StartX + 70, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(11), gCustomBuyVip.m_CustomBuyVipInfo[1].Coin1);
+			this->DrawFormat(eGold, (int)StartX + 120, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(12), gCustomBuyVip.m_CustomBuyVipInfo[1].Coin2);
+			this->DrawFormat(eGold, (int)StartX + 160, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(13), gCustomBuyVip.m_CustomBuyVipInfo[1].Coin3);
+		}
 		else
-			this->DrawButton(eVip_SILVER, StartX + 64, 250, 0, 29);
-		// ----
-		this->DrawFormat(eGold, (int)StartX + 30, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(10));
-		this->DrawFormat(eGold, (int)StartX + 70, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(11), gCustomBuyVip.m_CustomBuyVipInfo[1].Coin1);
-		this->DrawFormat(eGold, (int)StartX + 120, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(12), gCustomBuyVip.m_CustomBuyVipInfo[1].Coin2);
-		this->DrawFormat(eGold, (int)StartX + 160, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(13), gCustomBuyVip.m_CustomBuyVipInfo[1].Coin3);
-	}
-	else
-		this->DrawButton(eVip_SILVER, StartX + 64, 250, 0, 0);
+			this->DrawButton(eVip_SILVER, StartX + 64, 250, 0, 0);
 
-	this->DrawFormat(eWhite, (int)StartX + 90, 250 + 9, 160, 1, gCustomMessage.GetMessage(9),gCustomBuyVip.m_CustomBuyVipInfo[1].VipName);
-	// ---- silver end ------------------------------------
+		this->DrawFormat(eWhite, (int)StartX + 90, 250 + 9, 160, 1, gCustomMessage.GetMessage(9), gCustomBuyVip.m_CustomBuyVipInfo[1].VipName);
+		// ---- silver end ------------------------------------
 	}
 
 	if (gProtect.m_MainInfo.VipTypes > 2)
 	{
-	// ---- gold start ------------------------------------
-	if (IsWorkZone(eVip_GOLD))
-	{
-		if (this->Data[eVip_GOLD].OnClick)
-			this->DrawButton(eVip_GOLD, StartX + 64, 280, 0, 58);
+		// ---- gold start ------------------------------------
+		if (IsWorkZone(eVip_GOLD))
+		{
+			if (this->Data[eVip_GOLD].OnClick)
+				this->DrawButton(eVip_GOLD, StartX + 64, 280, 0, 58);
+			else
+				this->DrawButton(eVip_GOLD, StartX + 64, 280, 0, 29);
+			// ----
+			this->DrawFormat(eGold, (int)StartX + 30, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(10));
+			this->DrawFormat(eGold, (int)StartX + 70, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(11), gCustomBuyVip.m_CustomBuyVipInfo[2].Coin1);
+			this->DrawFormat(eGold, (int)StartX + 120, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(12), gCustomBuyVip.m_CustomBuyVipInfo[2].Coin2);
+			this->DrawFormat(eGold, (int)StartX + 160, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(13), gCustomBuyVip.m_CustomBuyVipInfo[2].Coin3);
+		}
 		else
-			this->DrawButton(eVip_GOLD, StartX + 64, 280, 0, 29);
-		// ----
-		this->DrawFormat(eGold, (int)StartX + 30, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(10));
-		this->DrawFormat(eGold, (int)StartX + 70, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(11), gCustomBuyVip.m_CustomBuyVipInfo[2].Coin1);
-		this->DrawFormat(eGold, (int)StartX + 120, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(12), gCustomBuyVip.m_CustomBuyVipInfo[2].Coin2);
-		this->DrawFormat(eGold, (int)StartX + 160, (int)StartBody + 142, 210, 1, gCustomMessage.GetMessage(13), gCustomBuyVip.m_CustomBuyVipInfo[2].Coin3);
-	}
-	else
-		this->DrawButton(eVip_GOLD, StartX + 64, 280, 0, 0);
+			this->DrawButton(eVip_GOLD, StartX + 64, 280, 0, 0);
 
-	this->DrawFormat(eWhite, (int)StartX + 90, 280 + 9, 160, 1, gCustomMessage.GetMessage(9),gCustomBuyVip.m_CustomBuyVipInfo[2].VipName);
-	// ---- gold end ------------------------------------
+		this->DrawFormat(eWhite, (int)StartX + 90, 280 + 9, 160, 1, gCustomMessage.GetMessage(9), gCustomBuyVip.m_CustomBuyVipInfo[2].VipName);
+		// ---- gold end ------------------------------------
 	}
 
 	pDrawGUI(71520, StartX + (MainWidth / 2) - (200 / 2), 280 + 55, 200, 1); //-- Divisor
 }
-
 
 bool Interface::EventVipWindow_Close(DWORD Event)
 {
@@ -2004,7 +1953,8 @@ bool Interface::EventVipWindow_Bronze(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eVip_BRONZE].OnClick = false;;
+	this->Data[eVip_BRONZE].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2039,7 +1989,8 @@ bool Interface::EventVipWindow_Silver(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eVip_SILVER].OnClick = false;;
+	this->Data[eVip_SILVER].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2074,7 +2025,8 @@ bool Interface::EventVipWindow_Gold(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eVip_GOLD].OnClick = false;;
+	this->Data[eVip_GOLD].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2103,10 +2055,10 @@ float Interface::DrawRepeatGUI(short MonsterID, float X, float Y, int Count)
 {
 	float StartY = Y;
 	// ----
-	for( int i = 0; i < Count; i++ )
+	for (int i = 0; i < Count; i++)
 	{
 		pDrawGUI(this->Data[MonsterID].ModelID, X, StartY,
-			this->Data[MonsterID].Width, this->Data[MonsterID].Height);
+				 this->Data[MonsterID].Width, this->Data[MonsterID].Height);
 		// ----
 		StartY += this->Data[MonsterID].Height;
 	}
@@ -2114,13 +2066,13 @@ float Interface::DrawRepeatGUI(short MonsterID, float X, float Y, int Count)
 	return StartY;
 }
 
-float Interface::DrawRepeatGUIScale(short MonsterID, float X, float Y,float ScaleX, float ScaleY, int Count)
+float Interface::DrawRepeatGUIScale(short MonsterID, float X, float Y, float ScaleX, float ScaleY, int Count)
 {
 	float StartY = Y;
 	// ----
-	for( int i = 0; i < Count; i++ )
+	for (int i = 0; i < Count; i++)
 	{
-		this->DrawIMG(this->Data[MonsterID].ModelID, X, StartY,ScaleX,ScaleY);
+		this->DrawIMG(this->Data[MonsterID].ModelID, X, StartY, ScaleX, ScaleY);
 		// ----
 		StartY += this->Data[MonsterID].Height;
 	}
@@ -2130,7 +2082,7 @@ float Interface::DrawRepeatGUIScale(short MonsterID, float X, float Y,float Scal
 
 void Interface::DrawButton(short ObjectID, float PosX, float PosY, float ScaleX, float ScaleY)
 {
-	if( this->Data[ObjectID].X == -1 || this->Data[ObjectID].Y == -1 )
+	if (this->Data[ObjectID].X == -1 || this->Data[ObjectID].Y == -1)
 	{
 		this->Data[ObjectID].X = PosX;
 		this->Data[ObjectID].Y = PosY;
@@ -2139,7 +2091,7 @@ void Interface::DrawButton(short ObjectID, float PosX, float PosY, float ScaleX,
 	}
 	// ----
 	pDrawButton(this->Data[ObjectID].ModelID, PosX, PosY,
-		this->Data[ObjectID].Width, this->Data[ObjectID].Height, ScaleX, ScaleY);
+				this->Data[ObjectID].Width, this->Data[ObjectID].Height, ScaleX, ScaleY);
 }
 
 void Interface::DrawButtonRender(short ObjectID, float PosX, float PosY, float ScaleX, float ScaleY)
@@ -2150,9 +2102,8 @@ void Interface::DrawButtonRender(short ObjectID, float PosX, float PosY, float S
 	this->Data[ObjectID].MaxY = PosY + this->Data[ObjectID].Height;
 	// ----
 	pDrawButton(this->Data[ObjectID].ModelID, PosX, PosY,
-		this->Data[ObjectID].Width, this->Data[ObjectID].Height, ScaleX, ScaleY);
+				this->Data[ObjectID].Width, this->Data[ObjectID].Height, ScaleX, ScaleY);
 }
-
 
 void Interface::DrawColoredButton(short ObjectID, float PosX, float PosY, float ScaleX, float ScaleY, DWORD Color)
 {
@@ -2165,21 +2116,21 @@ void Interface::DrawColoredButton(short ObjectID, float PosX, float PosY, float 
 	}
 	// ----
 	pDrawColorButton(this->Data[ObjectID].ModelID, PosX, PosY,
-		this->Data[ObjectID].Width, this->Data[ObjectID].Height, ScaleX, ScaleY, Color);
+					 this->Data[ObjectID].Width, this->Data[ObjectID].Height, ScaleX, ScaleY, Color);
 }
 
 void Interface::DrawColoredGUI(short ObjectID, float X, float Y, DWORD Color)
 {
-	if( this->Data[ObjectID].X == -1 || this->Data[ObjectID].Y == -1 )
+	if (this->Data[ObjectID].X == -1 || this->Data[ObjectID].Y == -1)
 	{
-		this->Data[ObjectID].X		= X;
-		this->Data[ObjectID].Y		= Y;
-		this->Data[ObjectID].MaxX	= X + this->Data[ObjectID].Width;
-		this->Data[ObjectID].MaxY	= Y + this->Data[ObjectID].Height;
+		this->Data[ObjectID].X = X;
+		this->Data[ObjectID].Y = Y;
+		this->Data[ObjectID].MaxX = X + this->Data[ObjectID].Width;
+		this->Data[ObjectID].MaxY = Y + this->Data[ObjectID].Height;
 	}
 	// ----
-	pDrawColorButton(this->Data[ObjectID].ModelID, X, Y, 
-		this->Data[ObjectID].Width, this->Data[ObjectID].Height, 0, 0, Color);
+	pDrawColorButton(this->Data[ObjectID].ModelID, X, Y,
+					 this->Data[ObjectID].Width, this->Data[ObjectID].Height, 0, 0, Color);
 }
 
 void Interface::DrawLogo(bool active)
@@ -2189,7 +2140,7 @@ void Interface::DrawLogo(bool active)
 
 		if (active == 1)
 		{
-			this->Data[eLogo].EventTick = GetTickCount()+1500;
+			this->Data[eLogo].EventTick = GetTickCount() + 1500;
 		}
 
 		if (gInterface.Data[eLogo].EventTick > GetTickCount())
@@ -2202,7 +2153,6 @@ void Interface::DrawLogo(bool active)
 			if (gProtect.m_MainInfo.PrintLogo == 2)
 			{
 				this->DrawGUI(eLogo, MAX_WIN_WIDTH - 160, 10);
-
 			}
 
 			if (gProtect.m_MainInfo.PrintLogo == 3)
@@ -2217,7 +2167,7 @@ void Interface::DrawLogo(bool active)
 
 			if (gProtect.m_MainInfo.PrintLogo == 5)
 			{
-				this->DrawGUI(eLogo, (MAX_WIN_WIDTH/2)-(150/2), (MAX_WIN_HEIGHT/2)-(114/2));
+				this->DrawGUI(eLogo, (MAX_WIN_WIDTH / 2) - (150 / 2), (MAX_WIN_HEIGHT / 2) - (114 / 2));
 			}
 		}
 	}
@@ -2235,21 +2185,12 @@ void Interface::DrawMenu()
 		this->Data[eMenu].OnShow = false;
 	}
 
-	if (this->CheckWindow(ObjWindow::MoveList) || this->CheckWindow(ObjWindow::CashShop) || this->CheckWindow(ObjWindow::SkillTree) || this->CheckWindow(ObjWindow::FullMap)
-		||  (this->CheckWindow(Inventory) 
-		&& this->CheckWindow(ExpandInventory) 
-		&& this->CheckWindow(Store))
-		||  (this->CheckWindow(Inventory) 
-		&& this->CheckWindow(ExpandInventory) 
-		&& this->CheckWindow(Character))
-		||  (this->CheckWindow(Inventory) 
-		&& this->CheckWindow(Warehouse) 
-		&& this->CheckWindow(ExpandWarehouse)) )
+	if (this->CheckWindow(ObjWindow::MoveList) || this->CheckWindow(ObjWindow::CashShop) || this->CheckWindow(ObjWindow::SkillTree) || this->CheckWindow(ObjWindow::FullMap) || (this->CheckWindow(Inventory) && this->CheckWindow(ExpandInventory) && this->CheckWindow(Store)) || (this->CheckWindow(Inventory) && this->CheckWindow(ExpandInventory) && this->CheckWindow(Character)) || (this->CheckWindow(Inventory) && this->CheckWindow(Warehouse) && this->CheckWindow(ExpandWarehouse)))
 	{
 		CloseMenuWindow();
 		return;
 	}
-	
+
 	this->Data[eMenu].OnShow = true;
 
 	if (gProtect.m_MainInfo.CustomInterfaceType == 3 || gProtect.m_MainInfo.CustomInterfaceType == 4)
@@ -2277,11 +2218,11 @@ bool Interface::EventDrawMenu_Open(DWORD Event)
 	// ----
 	if (Event == WM_LBUTTONDOWN)
 	{
-		
-	if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
-	{
-		pSetCursorFocus = true;
-	}
+
+		if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+		{
+			pSetCursorFocus = true;
+		}
 		this->Data[eMenu].OnClick = true;
 		return true;
 	}
@@ -2292,10 +2233,10 @@ bool Interface::EventDrawMenu_Open(DWORD Event)
 	{
 		return false;
 	}
-	
+
 	// ----
 	this->Data[eMenu].EventTick = GetTickCount();
-	
+
 	if (Menu == 1)
 	{
 		if (CheckMenuWindow())
@@ -2333,8 +2274,6 @@ void Interface::DrawMenuOpen()
 	gCentral.PrintDropBox(StartX, StartY, MainWidth, MainHeight, 0, 0);
 
 	this->DrawFormat(eGold, (int)StartX + 10, (int)StartY + 10, 210, 3, "Menu");
-
-	
 
 	if (gProtect.m_MainInfo.EnableCoinStatus == 1)
 	{
@@ -2377,15 +2316,15 @@ void Interface::DrawMenuOpen()
 	int BtStart = StartY + 88;
 
 	int ObjectIDs[7] =
-	{
-		eMenu_OPT1,
-		eMenu_OPT2,
-		eMenu_OPT3,
-		eMenu_OPT4,
-		eMenu_OPT5,
-		eMenu_OPT6,
-		eMenu_OPT7,
-	};
+		{
+			eMenu_OPT1,
+			eMenu_OPT2,
+			eMenu_OPT3,
+			eMenu_OPT4,
+			eMenu_OPT5,
+			eMenu_OPT6,
+			eMenu_OPT7,
+		};
 
 	for (int n = 0; n < 7; n++)
 	{
@@ -2453,8 +2392,6 @@ void Interface::DrawMenu2Open()
 
 	this->DrawFormat(eGold, (int)StartX + 10, (int)StartY + 10, 210, 3, "Menu");
 
-	
-
 	if (gProtect.m_MainInfo.EnableCoinStatus == 1)
 	{
 		this->DrawFormat(eGold, (int)StartX + 10, (int)StartY + 35, 210, 3, gCustomMessage.GetMessage(50));
@@ -2496,12 +2433,12 @@ void Interface::DrawMenu2Open()
 	int BtStart = StartY + 88;
 
 	int ObjectIDs[4] =
-	{
-		eMenu_OPT8,
-		eMenu_OPT9,
-		eMenu_OPT10,
-		eMenu_OPT11,
-	};
+		{
+			eMenu_OPT8,
+			eMenu_OPT9,
+			eMenu_OPT10,
+			eMenu_OPT11,
+		};
 
 	for (int n = 0; n < 4; n++)
 	{
@@ -2626,7 +2563,8 @@ bool Interface::EventDrawMenu_Next(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eSAMPLEBUTTON].OnClick = false;;
+	this->Data[eSAMPLEBUTTON].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2657,7 +2595,8 @@ bool Interface::EventDrawMenu_Back(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eSAMPLEBUTTON2].OnClick = false;;
+	this->Data[eSAMPLEBUTTON2].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2690,7 +2629,8 @@ bool Interface::EventDrawMenu_Op1(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eMenu_OPT1].OnClick = false;;
+	this->Data[eMenu_OPT1].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2722,7 +2662,8 @@ bool Interface::EventDrawMenu_Op2(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eMenu_OPT2].OnClick = false;;
+	this->Data[eMenu_OPT2].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2754,7 +2695,8 @@ bool Interface::EventDrawMenu_Op3(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eMenu_OPT3].OnClick = false;;
+	this->Data[eMenu_OPT3].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2767,7 +2709,7 @@ bool Interface::EventDrawMenu_Op3(DWORD Event)
 
 	UP_SEND_REQ pRequest;
 	pRequest.h.set(0xFD, 0x21, sizeof(pRequest));
-	DataSend((BYTE*)&pRequest, pRequest.h.size);
+	DataSend((BYTE *)&pRequest, pRequest.h.size);
 	gRanking.Show = true;
 	// ----
 	return false;
@@ -2789,7 +2731,8 @@ bool Interface::EventDrawMenu_Op4(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eMenu_OPT4].OnClick = false;;
+	this->Data[eMenu_OPT4].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2821,7 +2764,8 @@ bool Interface::EventDrawMenu_Op20(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eMenu_OPT5].OnClick = false;;
+	this->Data[eMenu_OPT5].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2841,7 +2785,7 @@ bool Interface::EventDrawMenu_Op20(DWORD Event)
 		gJewelsBank.Active = false;
 	}
 
-//	this->OpenWindow(ObjWindow::Options);
+	//	this->OpenWindow(ObjWindow::Options);
 	// ----
 	return false;
 }
@@ -2862,7 +2806,8 @@ bool Interface::EventDrawMenu_Op6(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eMenu_OPT6].OnClick = false;;
+	this->Data[eMenu_OPT6].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2894,7 +2839,8 @@ bool Interface::EventDrawMenu_Op7(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eMenu_OPT7].OnClick = false;;
+	this->Data[eMenu_OPT7].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2926,7 +2872,8 @@ bool Interface::EventDrawMenu_Op8(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eMenu_OPT8].OnClick = false;;
+	this->Data[eMenu_OPT8].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2957,7 +2904,8 @@ bool Interface::EventDrawMenu_Op9(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eMenu_OPT9].OnClick = false;;
+	this->Data[eMenu_OPT9].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2991,7 +2939,8 @@ bool Interface::EventDrawMenu_Op10(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eMenu_OPT10].OnClick = false;;
+	this->Data[eMenu_OPT10].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -3024,7 +2973,8 @@ bool Interface::EventDrawMenu_Op11(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eMenu_OPT11].OnClick = false;;
+	this->Data[eMenu_OPT11].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -3049,15 +2999,7 @@ bool Interface::MiniMapCheck()
 		gProtect.m_MainInfo.CustomInterfaceType == 1 ||
 		gProtect.m_MainInfo.CustomInterfaceType == 2)
 	{
-		if (gInterface.CheckWindow(13) && gInterface.CheckWindow(Character)
-			|| gInterface.CheckWindow(8)
-			|| gInterface.CheckWindow(12)
-			|| gInterface.CheckWindow(9)
-			|| gInterface.CheckWindow(7)
-			|| gInterface.CheckWindow(14)
-			|| gInterface.CheckWindow(15)
-			|| gInterface.CheckWindow(60)
-			|| gInterface.CheckWindow(76))
+		if (gInterface.CheckWindow(13) && gInterface.CheckWindow(Character) || gInterface.CheckWindow(8) || gInterface.CheckWindow(12) || gInterface.CheckWindow(9) || gInterface.CheckWindow(7) || gInterface.CheckWindow(14) || gInterface.CheckWindow(15) || gInterface.CheckWindow(60) || gInterface.CheckWindow(76))
 		{
 			visual = true;
 		}
@@ -3081,32 +3023,7 @@ bool Interface::MiniMapCheck()
 					}
 					else
 					{
-						if (gInterface.CheckWindow(13)
-							|| gInterface.CheckWindow(16)
-							|| gInterface.CheckWindow(3)
-							|| gInterface.CheckWindow(21)
-							|| gInterface.CheckWindow(6)
-							|| gInterface.CheckWindow(22)
-							|| gInterface.CheckWindow(23)
-							|| gInterface.CheckWindow(24)
-							|| gInterface.CheckWindow(4)
-							|| gInterface.CheckWindow(18)
-							|| gInterface.CheckWindow(10)
-							|| gInterface.CheckWindow(5)
-							|| gInterface.CheckWindow(25)
-							|| gInterface.CheckWindow(26)
-							|| gInterface.CheckWindow(19)
-							|| gInterface.CheckWindow(20)
-							|| gInterface.CheckWindow(58)
-							|| gInterface.CheckWindow(59)
-							|| gInterface.CheckWindow(62)
-							|| gInterface.CheckWindow(73)
-							|| gInterface.CheckWindow(68)
-							|| gInterface.CheckWindow(69)
-							|| gInterface.CheckWindow(70)
-							|| gInterface.CheckWindow(66)
-							|| gInterface.CheckWindow(75)
-							|| gInterface.CheckWindow(74))
+						if (gInterface.CheckWindow(13) || gInterface.CheckWindow(16) || gInterface.CheckWindow(3) || gInterface.CheckWindow(21) || gInterface.CheckWindow(6) || gInterface.CheckWindow(22) || gInterface.CheckWindow(23) || gInterface.CheckWindow(24) || gInterface.CheckWindow(4) || gInterface.CheckWindow(18) || gInterface.CheckWindow(10) || gInterface.CheckWindow(5) || gInterface.CheckWindow(25) || gInterface.CheckWindow(26) || gInterface.CheckWindow(19) || gInterface.CheckWindow(20) || gInterface.CheckWindow(58) || gInterface.CheckWindow(59) || gInterface.CheckWindow(62) || gInterface.CheckWindow(73) || gInterface.CheckWindow(68) || gInterface.CheckWindow(69) || gInterface.CheckWindow(70) || gInterface.CheckWindow(66) || gInterface.CheckWindow(75) || gInterface.CheckWindow(74))
 						{
 							visual = true;
 						}
@@ -3150,78 +3067,46 @@ bool Interface::MiniMapCheck()
 		}
 	}
 	else if (gProtect.m_MainInfo.CustomInterfaceType == 3 && gProtect.m_MainInfo.NewPanelCharacterS10 == 1 ||
-		gProtect.m_MainInfo.CustomInterfaceType == 4 && gProtect.m_MainInfo.NewPanelCharacterS10 == 1 )
+			 gProtect.m_MainInfo.CustomInterfaceType == 4 && gProtect.m_MainInfo.NewPanelCharacterS10 == 1)
 	{
-		if (gInterface.CheckWindow(13)
-			|| gInterface.CheckWindow(8)
-			|| gInterface.CheckWindow(12)
-			|| gInterface.CheckWindow(9)
-			|| gInterface.CheckWindow(7)
-			|| gInterface.CheckWindow(14)
-			|| gInterface.CheckWindow(15)
-			|| gInterface.CheckWindow(60)
-			|| gInterface.CheckWindow(76))
+		if (gInterface.CheckWindow(13) || gInterface.CheckWindow(8) || gInterface.CheckWindow(12) || gInterface.CheckWindow(9) || gInterface.CheckWindow(7) || gInterface.CheckWindow(14) || gInterface.CheckWindow(15) || gInterface.CheckWindow(60) || gInterface.CheckWindow(76))
 		{
 			visual = true;
 		}
 		else
 		{
 			if (gInterface.CheckWindow(11))
+			{
+				visual = true;
+			}
+			else
+			{
+				if (gInterface.CheckWindow(27))
 				{
 					visual = true;
 				}
 				else
 				{
-					if (gInterface.CheckWindow(27))
+					if (gInterface.CheckWindow(13) || gInterface.CheckWindow(3) || gInterface.CheckWindow(21) || gInterface.CheckWindow(6) || gInterface.CheckWindow(22) || gInterface.CheckWindow(23) || gInterface.CheckWindow(24) || gInterface.CheckWindow(4) || gInterface.CheckWindow(18) || gInterface.CheckWindow(10) || gInterface.CheckWindow(5) || gInterface.CheckWindow(25) || gInterface.CheckWindow(26) || gInterface.CheckWindow(19) || gInterface.CheckWindow(20) || gInterface.CheckWindow(58) || gInterface.CheckWindow(59) || gInterface.CheckWindow(62) || gInterface.CheckWindow(73) || gInterface.CheckWindow(68) || gInterface.CheckWindow(69) || gInterface.CheckWindow(70) || gInterface.CheckWindow(66) || gInterface.CheckWindow(75) || gInterface.CheckWindow(74))
 					{
 						visual = true;
 					}
 					else
 					{
-						if (gInterface.CheckWindow(13)
-							|| gInterface.CheckWindow(3)
-							|| gInterface.CheckWindow(21)
-							|| gInterface.CheckWindow(6)
-							|| gInterface.CheckWindow(22)
-							|| gInterface.CheckWindow(23)
-							|| gInterface.CheckWindow(24)
-							|| gInterface.CheckWindow(4)
-							|| gInterface.CheckWindow(18)
-							|| gInterface.CheckWindow(10)
-							|| gInterface.CheckWindow(5)
-							|| gInterface.CheckWindow(25)
-							|| gInterface.CheckWindow(26)
-							|| gInterface.CheckWindow(19)
-							|| gInterface.CheckWindow(20)
-							|| gInterface.CheckWindow(58)
-							|| gInterface.CheckWindow(59)
-							|| gInterface.CheckWindow(62)
-							|| gInterface.CheckWindow(73)
-							|| gInterface.CheckWindow(68)
-							|| gInterface.CheckWindow(69)
-							|| gInterface.CheckWindow(70)
-							|| gInterface.CheckWindow(66)
-							|| gInterface.CheckWindow(75)
-							|| gInterface.CheckWindow(74))
+						if (gInterface.CheckWindow(79))
 						{
-							visual = true;
-						}
-						else
-						{
-							if (gInterface.CheckWindow(79))
+							if (gInterface.CheckWindow(80))
 							{
-								if (gInterface.CheckWindow(80))
-								{
-									visual = true;
-								}
-								else
-								{
-									visual = true;
-								}
+								visual = true;
+							}
+							else
+							{
+								visual = true;
 							}
 						}
 					}
 				}
+			}
 		}
 
 		if (gInterface.CheckWindow(77))
@@ -3248,88 +3133,82 @@ bool Interface::MiniMapCheck()
 
 bool Interface::CombinedChecks()
 {
-	if ((this->CheckWindow(Inventory)
-		&& this->CheckWindow(ExpandInventory)
-		&& this->CheckWindow(Store)) ||
-		(this->CheckWindow(Inventory)
-		&& this->CheckWindow(Warehouse)
-		&& this->CheckWindow(ExpandWarehouse)) ||
-		(this->CheckWindow(Inventory)
-		&& this->CheckWindow(Character)
-		&& this->CheckWindow(Store)))
+	if ((this->CheckWindow(Inventory) && this->CheckWindow(ExpandInventory) && this->CheckWindow(Store)) ||
+		(this->CheckWindow(Inventory) && this->CheckWindow(Warehouse) && this->CheckWindow(ExpandWarehouse)) ||
+		(this->CheckWindow(Inventory) && this->CheckWindow(Character) && this->CheckWindow(Store)))
 		return true;
 	return false;
 }
 
 bool Interface::CheckMap()
 {
-	switch(gObjUser.m_MapNumber)
+	switch (gObjUser.m_MapNumber)
 	{
-		case eMapNumber::Lorencia:
-			return false;
-			break;
-		case eMapNumber::Dungeon:
-			return false;
-			break;
-		case eMapNumber::Devias:
-			return false;
-			break;
-		case eMapNumber::Noria:
-			return false;
-			break;
-		case eMapNumber::LostTower:
-			return false;
-			break;
-		case eMapNumber::Stadium:
-			return false;
-		case eMapNumber::Atlans:
-			return false;
-			break;
-		case eMapNumber::Tarkan:
-			return false;
-			break;
-		case eMapNumber::Elbeland:
-			return false;
-			break;
-		case eMapNumber::Icarus:
-			return false;
-			break;
-		case eMapNumber::Trials:
-			return false;
-			break;
-		case eMapNumber::Aida:
-			return false;
-			break;
-		case eMapNumber::Crywolf:
-			return false;
-			break;
-		case eMapNumber::Kanturu1:
-			return false;
-			break;
-		case eMapNumber::Kanturu3:
-			return false;
-			break;
-		case eMapNumber::Barracks:
-			return false;
-			break;
-		case eMapNumber::Calmness:
-			return false;
-			break;
-		case eMapNumber::Raklion:
-			return false;
-			break;
-		case eMapNumber::Vulcanus:
-			return false;
-			break;
-		case eMapNumber::Karutan1:
-			return false;
-			break;
-		case eMapNumber::Karutan2:
-			return false;
-			break;
-		default:
-			return true;
-			break;
+	case eMapNumber::Lorencia:
+		return false;
+		break;
+	case eMapNumber::Dungeon:
+		return false;
+		break;
+	case eMapNumber::Devias:
+		return false;
+		break;
+	case eMapNumber::Noria:
+		return false;
+		break;
+	case eMapNumber::LostTower:
+		return false;
+		break;
+	case eMapNumber::Stadium:
+		return false;
+	case eMapNumber::Atlans:
+		return false;
+		break;
+	case eMapNumber::Tarkan:
+		return false;
+		break;
+	case eMapNumber::Elbeland:
+		return false;
+		break;
+	case eMapNumber::Icarus:
+		return false;
+		break;
+	case eMapNumber::Trials:
+		return false;
+		break;
+	case eMapNumber::Aida:
+		return false;
+		break;
+	case eMapNumber::Crywolf:
+		return false;
+		break;
+	case eMapNumber::Kanturu1:
+		return false;
+		break;
+	case eMapNumber::Kanturu3:
+		return false;
+		break;
+	case eMapNumber::Barracks:
+		return false;
+		break;
+	case eMapNumber::Calmness:
+		return false;
+		break;
+	case eMapNumber::Raklion:
+		return false;
+		break;
+	case eMapNumber::Vulcanus:
+		return false;
+		break;
+	case eMapNumber::Karutan1:
+		return false;
+		break;
+	case eMapNumber::Karutan2:
+		return false;
+		break;
+	default:
+		return true;
+		break;
 	}
 }
 
@@ -3337,11 +3216,11 @@ void Interface::CloseCustomWindow()
 {
 	this->CloseMenuWindow();
 	this->CloseVipWindow();
-	this->Data[eRankPANEL_MAIN].OnShow		= false;
+	this->Data[eRankPANEL_MAIN].OnShow = false;
 	this->Data[eEventTimePANEL_MAIN].OnShow = false;
-	this->Data[eCommand_MAIN].OnShow		= false;
-	
-	if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+	this->Data[eCommand_MAIN].OnShow = false;
+
+	if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
 	{
 		pSetCursorFocus = false;
 	}
@@ -3355,13 +3234,13 @@ void testfunc()
 	glPopMatrix();
 }
 
-#define sub_636720_Addr ((int(*)())0x636720)
-#define sub_6363D0_Addr ((void(__cdecl*)(GLint x, int a2, GLsizei width, GLsizei height)) 0x6363D0)
-#define sub_6358A0_Addr ((int(__cdecl*)(float a1, float a2, float a3, float a4)) 0x6358A0)
-#define sub_635830_Addr ((void(__cdecl*)(LPVOID a1)) 0x635830)
-#define sub_635DE0_Addr ((void(*)()) 0x635DE0)
-#define sub_635E40_Addr ((void(*)()) 0x635E40)
-#define sub_637770_Addr ((void(*)()) 0x637770)
+#define sub_636720_Addr ((int (*)())0x636720)
+#define sub_6363D0_Addr ((void(__cdecl *)(GLint x, int a2, GLsizei width, GLsizei height))0x6363D0)
+#define sub_6358A0_Addr ((int(__cdecl *)(float a1, float a2, float a3, float a4))0x6358A0)
+#define sub_635830_Addr ((void(__cdecl *)(LPVOID a1))0x635830)
+#define sub_635DE0_Addr ((void (*)())0x635DE0)
+#define sub_635E40_Addr ((void (*)())0x635E40)
+#define sub_637770_Addr ((void (*)())0x637770)
 
 void Interface::DrawItemIMG(float PosX, float PosY, float Width, float Height, int ItemID, int Level, int Excl, int Anc, bool OnMouse) // code hien thi item
 {
@@ -3370,9 +3249,9 @@ void Interface::DrawItemIMG(float PosX, float PosY, float Width, float Height, i
 	glPushMatrix();
 	glLoadIdentity();
 
-	sub_6363D0_Addr(0, 0, *(GLsizei*)MAIN_RESOLUTION_X, *(GLsizei*)MAIN_RESOLUTION_Y);
-	float v2 = *(float*)MAIN_RESOLUTION_X / *(float*)MAIN_RESOLUTION_Y;
-	sub_6358A0_Addr(1.0, v2, *(float*)0xE61E38, *(float*)0xE61E3C);
+	sub_6363D0_Addr(0, 0, *(GLsizei *)MAIN_RESOLUTION_X, *(GLsizei *)MAIN_RESOLUTION_Y);
+	float v2 = *(float *)MAIN_RESOLUTION_X / *(float *)MAIN_RESOLUTION_Y;
+	sub_6358A0_Addr(1.0, v2, *(float *)0xE61E38, *(float *)0xE61E3C);
 
 	glMatrixMode(0x1700);
 	glPushMatrix();
@@ -3392,7 +3271,7 @@ void Interface::DrawItemIMG(float PosX, float PosY, float Width, float Height, i
 
 void Interface::DrawConfirmOpen()
 {
-	if(!this->CheckWindow(Shop) && this->Data[eCONFIRM_MAIN].OnShow == true)
+	if (!this->CheckWindow(Shop) && this->Data[eCONFIRM_MAIN].OnShow == true)
 	{
 		this->Data[eCONFIRM_MAIN].OnShow = false;
 	}
@@ -3407,11 +3286,11 @@ void Interface::DrawConfirmOpen()
 		this->Data[eCONFIRM_MAIN].OnShow = false;
 	}
 
-	if( !this->Data[eCONFIRM_MAIN].OnShow )
+	if (!this->Data[eCONFIRM_MAIN].OnShow)
 	{
 		return;
 	}
-	
+
 	if (gProtect.m_MainInfo.CustomInterfaceType == 3 || gProtect.m_MainInfo.CustomInterfaceType == 4)
 	{
 		float MainWidth = 230.0;
@@ -3504,9 +3383,7 @@ void Interface::DrawConfirmOpen()
 			this->DrawButton(eCONFIRM_BTN_CANCEL, (int)StartX + 140, (int)StartBody + 70, 0, ScaleY);
 		}
 	}
-
 }
-
 
 bool Interface::EventConfirm_OK(DWORD Event)
 {
@@ -3524,7 +3401,8 @@ bool Interface::EventConfirm_OK(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eCONFIRM_BTN_OK].OnClick = false;;
+	this->Data[eCONFIRM_BTN_OK].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -3535,15 +3413,15 @@ bool Interface::EventConfirm_OK(DWORD Event)
 
 	PMSG_ITEM_BUY_RECV pMsg;
 
-	pMsg.header.set(0xF3, 0xED,sizeof(pMsg));
+	pMsg.header.set(0xF3, 0xED, sizeof(pMsg));
 
 	pMsg.slot = this->ConfirmSlot;
 
-	DataSend((BYTE*)&pMsg,pMsg.header.size);
+	DataSend((BYTE *)&pMsg, pMsg.header.size);
 
 	this->Data[eCONFIRM_MAIN].OnShow = false;
-	
-	if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+
+	if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
 	{
 		pSetCursorFocus = false;
 	}
@@ -3567,7 +3445,8 @@ bool Interface::EventConfirm_CANCEL(DWORD Event)
 		return true;
 	}
 	// ----
-	this->Data[eCONFIRM_BTN_CANCEL].OnClick = false;;
+	this->Data[eCONFIRM_BTN_CANCEL].OnClick = false;
+	;
 	// ----
 	if (Delay < 500)
 	{
@@ -3578,7 +3457,7 @@ bool Interface::EventConfirm_CANCEL(DWORD Event)
 
 	this->Data[eCONFIRM_MAIN].OnShow = false;
 
-	if(gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+	if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
 	{
 		pSetCursorFocus = false;
 	}
@@ -3609,7 +3488,8 @@ bool Interface::CheckWindowEx(int WindowID)
 
 //---- cosas peladas
 
-void Interface::UPDATE_FPS(){
+void Interface::UPDATE_FPS()
+{
 	gInterface.frameCount++;
 	if (GetTickCount() - gInterface.lastReport >= 1000)
 	{
@@ -3636,7 +3516,8 @@ void Interface::UPDATE_FPS(){
 	this->DrawFormat(eExcellent, 600, 2, 80, 1, gInterface.FPS_REAL);
 }
 
-void Interface::guiMonitore(){
+void Interface::guiMonitore()
+{
 	if (this->MiniMapCheck() || this->CombinedChecks() || this->CheckWindow(FullMap) || this->CheckWindow(FriendList) || this->CheckWindow(SkillTree) || this->CheckWindow(CashShop))
 	{
 		return;
@@ -3671,19 +3552,22 @@ struct PMSG_PING
 
 void Interface::SendPingRecv()
 {
-	if (gInterface.iniciador == 1){
+	if (gInterface.iniciador == 1)
+	{
 		PMSG_PING pMsgPing;
 		pMsgPing.h.set(0xFF, sizeof(pMsgPing));
 		gInterface.lastSend = GetTickCount();
-		DataSend((BYTE*)&pMsgPing, sizeof(pMsgPing));
+		DataSend((BYTE *)&pMsgPing, sizeof(pMsgPing));
 		gInterface.iniciador = 2;
 	}
-	else if (gInterface.iniciador == 3){
-		if (GetTickCount() >= gInterface.lastSend + 1000){
+	else if (gInterface.iniciador == 3)
+	{
+		if (GetTickCount() >= gInterface.lastSend + 1000)
+		{
 			PMSG_PING pMsgPing;
 			pMsgPing.h.set(0xFF, sizeof(pMsgPing));
 			gInterface.lastSend = GetTickCount();
-			DataSend((BYTE*)&pMsgPing, sizeof(pMsgPing));
+			DataSend((BYTE *)&pMsgPing, sizeof(pMsgPing));
 			gInterface.iniciador = 2;
 		}
 	}
@@ -3708,7 +3592,8 @@ void Interface::SendPingRecv()
 	// ----
 	gInterface.validar = 0;
 
-	if (gInterface.msPing > 0){
+	if (gInterface.msPing > 0)
+	{
 		//----
 		this->DrawFormat(eExcellent, 500, 2, 50, 1, gInterface.ServerRTT);
 		this->DrawFormat(eExcellent, 550, 2, 50, 1, gInterface.ServerPing);
@@ -3733,46 +3618,75 @@ void Interface::SendPingRecv()
 			this->DrawFormat(eExcellent, 550, 2, 50, 1, gInterface.ServerPing);
 		}
 	}
-
-
 }
 
 void Interface::SwitchChatExpand()
 {
 
-	if((GetTickCount() - gInterface.Data[chatbackground].EventTick) < 1000 ||this->CheckWindow(ChatWindow))
+	// if((GetTickCount() - gInterface.Data[chatbackground].EventTick) < 1000 ||this->CheckWindow(ChatWindow))
+	// {
+	// 	return;
+	// }
+
+	// gInterface.Data[chatbackground].EventTick = GetTickCount();
+
+	// if (SeparateChat != 0)
+	// {
+	// 	gInterface.DrawMessage(1, "Chat Window Separate [OFF]");
+	// 	SeparateChat = 0;
+	// 	WritePrivateProfileStringA("Setting","SeparateChat","0","./Settings.ini");
+	// }
+	// else
+	// {
+	// 	gInterface.DrawMessage(1, "Chat Window Separate [ON]");
+	// 	SeparateChat = 1;
+	WritePrivateProfileStringA("Setting", "SeparateChat", "1", "./Settings.ini");
+	// }
+	gChatExpanded.Switch();
+}
+
+// Open Windows Quest
+void Interface::SwitchWindowsQuest()
+{
+	if ((GetTickCount() - gInterface.Data[OBJECT_WIN_QUEST_MAIN].EventTick) < 200)
 	{
 		return;
 	}
+	gInterface.Data[OBJECT_WIN_QUEST_MAIN].EventTick = GetTickCount();
+	g_ExWinQuestSystem.SwitchStatsWindowState();
+}
 
-	gInterface.Data[chatbackground].EventTick = GetTickCount();
+// Open Jewels Bank
+void Interface::SwitchJewelsBank()
+{
+	if ((GetTickCount() - gInterface.Data[eJEWELBANK_MAIN].EventTick) < 200)
+	{
+		return;
+	}
+	gInterface.Data[eJEWELBANK_MAIN].EventTick = GetTickCount();
 
-	if (SeparateChat != 0)
+	if (gJewelsBank.Active == true)
 	{
-		gInterface.DrawMessage(1, "Chat Window Separate [OFF]");
-		SeparateChat = 0;
-		WritePrivateProfileStringA("Setting","SeparateChat","0","./Settings.ini");
+		gJewelsBank.Active = false;
+		gInterface.Data[eJEWELBANK_MAIN].OnShow = false;
+		if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+		{
+			pSetCursorFocus = false;
+		}
 	}
-	else 
+	else
 	{
-		gInterface.DrawMessage(1, "Chat Window Separate [ON]");
-		SeparateChat = 1;
-		WritePrivateProfileStringA("Setting","SeparateChat","1","./Settings.ini");
+		CloseAllWindows();
+		gJewelsBank.Active = true;
+		gInterface.Data[eJEWELBANK_MAIN].OnShow = true;
 	}
-	gChatExpanded.Switch();
 }
 
 void Interface::OpenConfig(int type)
 {
-	if(type == 0)
+	if (type == 0)
 	{
-		if( (GetTickCount() - gInterface.Data[ePLAYER_POINT].EventTick) < 400 
-			|| this->CheckWindow(ChatWindow) 
-			|| this->CheckWindow(MuHelper) 
-			|| this->CheckWindow(Inventory) 
-			|| this->CheckWindow(Store) 
-			|| this->CheckWindow(Character) 
-			|| this->CheckWindow(CreateGuild) )
+		if ((GetTickCount() - gInterface.Data[ePLAYER_POINT].EventTick) < 200 || this->CheckWindow(ChatWindow) || this->CheckWindow(MuHelper) || this->CheckWindow(Inventory) || this->CheckWindow(Store) || this->CheckWindow(Character) || this->CheckWindow(CreateGuild))
 		{
 			return;
 		}
@@ -3783,14 +3697,14 @@ void Interface::OpenConfig(int type)
 		{
 			pCloseWindow(pWindowThis(), 35);
 		}
-		else 
+		else
 		{
 			pOpenWindow(pWindowThis(), 35);
 		}
 	}
-	else if(type = 1 )
+	else if (type = 1)
 	{
-		if( (GetTickCount() - gInterface.Data[ePLAYER_POINT].EventTick) < 400 || OpenSwicthSkill == 0)
+		if ((GetTickCount() - gInterface.Data[ePLAYER_POINT].EventTick) < 400 || OpenSwicthSkill == 0)
 		{
 			return;
 		}
@@ -3809,10 +3723,50 @@ void Interface::OpenConfig(int type)
 
 	PlayBuffer(25, 0, 0);
 }
+//-- CloseAllWindows
+void Interface::CloseAllWindows()
+{
+	gInterface.CloseMenuWindow();
+	gInterface.CloseMenu2Window();
+	gInterface.CloseSmithItemWindow();
+	gInterface.ChangeClassStateclose();
+	gInterface.ResetChangeStateclose();
+	gInterface.WarehouseStateclose();
+	gInterface.LuckyWheelStateclose();
+	gInterface.PartySearchStateclose();
+	gInterface.CloseVipWindow();
+	gInterface.Data[eCommand_MAIN].OnShow = false;
+	gInterface.Data[eRankPANEL_MAIN].OnShow = false;
+	gInterface.Data[eEventTimePANEL_MAIN].OnShow = false;
+	gInterface.Data[eJEWELBANK_MAIN].OnShow = false;
+	gInterface.Data[ePARTYSETTINGS_MAIN].Close();
+	gInterface.Data[OBJECT_ACHIEVEMENTS_MAIN].Close();
+	gRanking.Show = false;
+	gJewelsBank.Active = false;
+}
+//-- Switch Custom Menu
+void Interface::SwitchCustomMenu()
+{
+	if ((GetTickCount() - gInterface.Data[eMenu_MAIN].EventTick) < 200)
+	{
+		return;
+	}
+	gInterface.Data[eMenu_MAIN].EventTick = GetTickCount();
+	if (gInterface.CheckMenuWindow() == true)
+	{
+		gInterface.CloseMenuWindow();
+	}
+	else
+	{
+		CloseAllWindows();
+		gInterface.OpenMenuWindow();
+		pSetCursorFocus = true;
+	}
+}
 //-- SwitchCamera
 void Interface::SwitchCamera()
 {
-	if((GetTickCount() - gInterface.Data[eCamera3DSwitch].EventTick) < 1000)
+	if ((GetTickCount() - gInterface.Data[eCamera3DSwitch].EventTick) < 400)
 	{
 		return;
 	}
@@ -3823,17 +3777,18 @@ void Interface::SwitchCamera()
 
 	if (gCamera.getEnabled())
 	{
-		gInterface.DrawMessage(1, "Camera3D [ON]");
+		gInterface.DrawMessage(1, "Camera 3D [Báº¬T]");
 	}
 	else
 	{
-		gInterface.DrawMessage(1, "Camera3D [OFF]");
+		gInterface.DrawMessage(1, "Camera 3D [Táº®T]");
 	}
 }
 //-- CameraInit
-void Interface::CameraInit(){
+void Interface::CameraInit()
+{
 
-	if((GetTickCount() - gInterface.Data[eCamera3DInit].EventTick) < 1000)
+	if ((GetTickCount() - gInterface.Data[eCamera3DInit].EventTick) < 400)
 	{
 		return;
 	}
@@ -3842,8 +3797,12 @@ void Interface::CameraInit(){
 
 	if (gCamera.getEnabled())
 	{
-		gInterface.DrawMessage(1, "Camera Restore [DEFAULT]");
+		gInterface.DrawMessage(1, "KhÃ´i phá»¥c Camera [Máº¶C Äá»ŠNH]");
 		gCamera.Restore();
+	}
+	else
+	{
+		gInterface.DrawMessage(1, "Vui lÃ²ng báº­t Camera 3D trÆ°á»›c (F10) ");
 	}
 }
 
@@ -3867,7 +3826,7 @@ bool Interface::Button(DWORD Event, int WinID, int ButtonID, bool Type)
 	DWORD Delay = (CurrentTick - this->Data[ButtonID].EventTick);
 	// ----
 
-	if (Event == WM_LBUTTONDOWN  && this->Data[ButtonID].OnClick == false)
+	if (Event == WM_LBUTTONDOWN && this->Data[ButtonID].OnClick == false)
 	{
 		this->Data[ButtonID].OnClick = true;
 	}
@@ -3894,7 +3853,7 @@ void Interface::DrawInterfaceS2Menu()
 {
 	if (IsWorkZone(eParty))
 	{
-		this->DrawToolTip(345, 420, "Party");
+		this->DrawToolTip(345, 420, "NhÃ³m");
 	}
 	if (this->CheckWindow(Party))
 	{
@@ -3902,7 +3861,7 @@ void Interface::DrawInterfaceS2Menu()
 	}
 	if (IsWorkZone(eCharacter))
 	{
-		this->DrawToolTip(375, 420, "Character");
+		this->DrawToolTip(375, 420, "NhÃ¢n váº­t");
 	}
 	if (this->CheckWindow(Character))
 	{
@@ -3910,7 +3869,7 @@ void Interface::DrawInterfaceS2Menu()
 	}
 	if (IsWorkZone(eInventory))
 	{
-		this->DrawToolTip(405, 420, "Inventory");
+		this->DrawToolTip(405, 420, "HÃ²m Ä‘á»“");
 	}
 	if (this->CheckWindow(Inventory))
 	{
@@ -3926,7 +3885,7 @@ void Interface::DrawInterfaceS2Menu()
 	}
 	if (IsWorkZone(eFriend))
 	{
-		this->DrawToolTip(580, 420, "Friends");
+		this->DrawToolTip(580, 420, "Báº¡n bÃ¨");
 	}
 	if (this->CheckWindow(FriendList))
 	{
@@ -3934,7 +3893,7 @@ void Interface::DrawInterfaceS2Menu()
 	}
 	if (IsWorkZone(eGuild))
 	{
-		this->DrawToolTip(580, 444, "Guild");
+		this->DrawToolTip(580, 444, "Há»™i");
 	}
 	if (this->CheckWindow(Guild))
 	{
@@ -3942,7 +3901,7 @@ void Interface::DrawInterfaceS2Menu()
 	}
 	if (IsWorkZone(eFastMenu))
 	{
-		this->DrawToolTip(13, 420, "System");
+		this->DrawToolTip(13, 420, "Há»‡ thá»‘ng");
 	}
 	if (this->CheckWindow(FastMenu))
 	{
@@ -4002,172 +3961,81 @@ void Interface::DrawInterface97Menu()
 	}
 }
 //--------------------------------------
-void Interface::EventNewInterface_All(DWORD Event){
+void Interface::EventNewInterface_All(DWORD Event)
+{
 	DWORD CurrentTick = GetTickCount();
 	if (this->CheckWindow(ChaosBox))
 	{
 		return;
 	}
-	
+
 	if (IsWorkZone(eFastMenu))
 	{
 		DWORD Delay = (CurrentTick - this->Data[eFastMenu].EventTick);
-		if (Event == WM_LBUTTONDOWN) {
+		if (Event == WM_LBUTTONDOWN)
+		{
 			this->Data[eFastMenu].OnClick = true;
 			return;
 		}
 		this->Data[eFastMenu].OnClick = false;
-		if (Delay < 500) {
+		if (Delay < 500)
+		{
 			return;
 		}
 		this->Data[eFastMenu].EventTick = GetTickCount();
-		if (this->CheckWindow(FastMenu)) {
-				this->CloseWindow(FastMenu);
+		if (this->CheckWindow(FastMenu))
+		{
+			this->CloseWindow(FastMenu);
 		}
-		else {
+		else
+		{
 			this->OpenWindow(FastMenu);
 		}
 	}
 	else if (IsWorkZone(eParty))
 	{
 		DWORD Delay = (CurrentTick - this->Data[eParty].EventTick);
-		if (Event == WM_LBUTTONDOWN) {
+		if (Event == WM_LBUTTONDOWN)
+		{
 			this->Data[eParty].OnClick = true;
 			return;
 		}
 		this->Data[eParty].OnClick = false;
-		if (Delay < 500) {
+		if (Delay < 500)
+		{
 			return;
 		}
 		this->Data[eParty].EventTick = GetTickCount();
-		if (this->CheckWindow(Party)) {
+		if (this->CheckWindow(Party))
+		{
 			this->CloseWindow(Party);
 		}
-		else {
+		else
+		{
 			this->OpenWindow(Party);
 		}
 	}
-	
+
 	else if (IsWorkZone(eCharacter))
 	{
 		DWORD Delay = (CurrentTick - this->Data[eCharacter].EventTick);
-		if (Event == WM_LBUTTONDOWN) {
+		if (Event == WM_LBUTTONDOWN)
+		{
 			this->Data[eCharacter].OnClick = true;
 			return;
 		}
 		this->Data[eCharacter].OnClick = false;
-		if (Delay < 500) {
+		if (Delay < 500)
+		{
 			return;
 		}
 		this->Data[eCharacter].EventTick = GetTickCount();
-		if (this->CheckWindow(Character)) {
+		if (this->CheckWindow(Character))
+		{
 			this->CloseWindow(Character);
 		}
-		else {
-			this->OpenWindow(Character);
-		}
-	}
-	else if (IsWorkZone(eInventory))
-	{
-		DWORD Delay = (CurrentTick - this->Data[eInventory].EventTick);
-		if (Event == WM_LBUTTONDOWN) {
-			this->Data[eInventory].OnClick = true;
-			return;
-		}
-		this->Data[eInventory].OnClick = false;
-		if (Delay < 500) {
-			return;
-		}
-		this->Data[eInventory].EventTick = GetTickCount();
-		if (this->CheckWindow(Inventory)) {
-			this->CloseWindow(Inventory);
-		}
-		else {
-			this->OpenWindow(Inventory);
-		}
-	}
-	else if (IsWorkZone(eFriend))
-	{
-		DWORD Delay = (CurrentTick - this->Data[eFriend].EventTick);
-		if (Event == WM_LBUTTONDOWN) {
-			this->Data[eFriend].OnClick = true;
-			return;
-		}
-		this->Data[eFriend].OnClick = false;
-		if (Delay < 500) {
-			return;
-		}
-		this->Data[eFriend].EventTick = GetTickCount();
-		if (this->CheckWindow(FriendList)) {
-			this->CloseWindow(FriendList);
-		}
-		else {
-			this->OpenWindow(FriendList);
-		}
-	}
-	else if (IsWorkZone(eGuild))
-	{
-		DWORD Delay = (CurrentTick - this->Data[eGuild].EventTick);
-		if (Event == WM_LBUTTONDOWN) {
-			this->Data[eGuild].OnClick = true;
-			return;
-		}
-		this->Data[eGuild].OnClick = false;
-		if (Delay < 500) {
-			return;
-		}
-		this->Data[eGuild].EventTick = GetTickCount();
-		if (this->CheckWindow(Guild)) {
-			this->CloseWindow(Guild);
-		}
-		else {
-			this->OpenWindow(Guild);
-		}
-	}
-}
-void Interface::EventNewInterface97_All(DWORD Event){
-	DWORD CurrentTick = GetTickCount();
-	if (this->CheckWindow(ChaosBox))
-	{
-		return;
-	}
-	
-	if (IsWorkZone(eParty))
-	{
-		DWORD Delay = (CurrentTick - this->Data[eParty].EventTick);
-		if (Event == WM_LBUTTONDOWN) {
-			this->Data[eParty].OnClick = true;
-			return;
-		}
-		this->Data[eParty].OnClick = false;
-		if (Delay < 500) {
-			return;
-		}
-		this->Data[eParty].EventTick = GetTickCount();
-		if (this->CheckWindow(Party)) {
-			this->CloseWindow(Party);
-		}
-		else {
-			this->OpenWindow(Party);
-		}
-	}
-	
-	else if (IsWorkZone(eCharacter))
-	{
-		DWORD Delay = (CurrentTick - this->Data[eCharacter].EventTick);
-		if (Event == WM_LBUTTONDOWN) {
-			this->Data[eCharacter].OnClick = true;
-			return;
-		}
-		this->Data[eCharacter].OnClick = false;
-		if (Delay < 500) {
-			return;
-		}
-		this->Data[eCharacter].EventTick = GetTickCount();
-		if (this->CheckWindow(Character)) {
-			this->CloseWindow(Character);
-		}
-		else {
+		else
+		{
 			this->OpenWindow(Character);
 		}
 	}
@@ -4189,7 +4057,8 @@ void Interface::EventNewInterface97_All(DWORD Event){
 		{
 			this->CloseWindow(Inventory);
 		}
-		else {
+		else
+		{
 			this->OpenWindow(Inventory);
 		}
 	}
@@ -4211,7 +4080,8 @@ void Interface::EventNewInterface97_All(DWORD Event){
 		{
 			this->CloseWindow(FriendList);
 		}
-		else {
+		else
+		{
 			this->OpenWindow(FriendList);
 		}
 	}
@@ -4233,7 +4103,133 @@ void Interface::EventNewInterface97_All(DWORD Event){
 		{
 			this->CloseWindow(Guild);
 		}
-		else {
+		else
+		{
+			this->OpenWindow(Guild);
+		}
+	}
+}
+void Interface::EventNewInterface97_All(DWORD Event)
+{
+	DWORD CurrentTick = GetTickCount();
+	if (this->CheckWindow(ChaosBox))
+	{
+		return;
+	}
+
+	if (IsWorkZone(eParty))
+	{
+		DWORD Delay = (CurrentTick - this->Data[eParty].EventTick);
+		if (Event == WM_LBUTTONDOWN)
+		{
+			this->Data[eParty].OnClick = true;
+			return;
+		}
+		this->Data[eParty].OnClick = false;
+		if (Delay < 500)
+		{
+			return;
+		}
+		this->Data[eParty].EventTick = GetTickCount();
+		if (this->CheckWindow(Party))
+		{
+			this->CloseWindow(Party);
+		}
+		else
+		{
+			this->OpenWindow(Party);
+		}
+	}
+
+	else if (IsWorkZone(eCharacter))
+	{
+		DWORD Delay = (CurrentTick - this->Data[eCharacter].EventTick);
+		if (Event == WM_LBUTTONDOWN)
+		{
+			this->Data[eCharacter].OnClick = true;
+			return;
+		}
+		this->Data[eCharacter].OnClick = false;
+		if (Delay < 500)
+		{
+			return;
+		}
+		this->Data[eCharacter].EventTick = GetTickCount();
+		if (this->CheckWindow(Character))
+		{
+			this->CloseWindow(Character);
+		}
+		else
+		{
+			this->OpenWindow(Character);
+		}
+	}
+	else if (IsWorkZone(eInventory))
+	{
+		DWORD Delay = (CurrentTick - this->Data[eInventory].EventTick);
+		if (Event == WM_LBUTTONDOWN)
+		{
+			this->Data[eInventory].OnClick = true;
+			return;
+		}
+		this->Data[eInventory].OnClick = false;
+		if (Delay < 500)
+		{
+			return;
+		}
+		this->Data[eInventory].EventTick = GetTickCount();
+		if (this->CheckWindow(Inventory))
+		{
+			this->CloseWindow(Inventory);
+		}
+		else
+		{
+			this->OpenWindow(Inventory);
+		}
+	}
+	else if (IsWorkZone(eFriend))
+	{
+		DWORD Delay = (CurrentTick - this->Data[eFriend].EventTick);
+		if (Event == WM_LBUTTONDOWN)
+		{
+			this->Data[eFriend].OnClick = true;
+			return;
+		}
+		this->Data[eFriend].OnClick = false;
+		if (Delay < 500)
+		{
+			return;
+		}
+		this->Data[eFriend].EventTick = GetTickCount();
+		if (this->CheckWindow(FriendList))
+		{
+			this->CloseWindow(FriendList);
+		}
+		else
+		{
+			this->OpenWindow(FriendList);
+		}
+	}
+	else if (IsWorkZone(eGuild))
+	{
+		DWORD Delay = (CurrentTick - this->Data[eGuild].EventTick);
+		if (Event == WM_LBUTTONDOWN)
+		{
+			this->Data[eGuild].OnClick = true;
+			return;
+		}
+		this->Data[eGuild].OnClick = false;
+		if (Delay < 500)
+		{
+			return;
+		}
+		this->Data[eGuild].EventTick = GetTickCount();
+		if (this->CheckWindow(Guild))
+		{
+			this->CloseWindow(Guild);
+		}
+		else
+		{
 			this->OpenWindow(Guild);
 		}
 	}
@@ -4241,12 +4237,7 @@ void Interface::EventNewInterface97_All(DWORD Event){
 
 void Interface::DrawInterfaceDragonLS3()
 {
-	if (this->CheckWindow(ObjWindow::CashShop)
-		|| this->CheckWindow(ObjWindow::FullMap)
-		|| this->CheckWindow(ObjWindow::SkillTree)
-		|| this->CheckWindow(ObjWindow::MoveList)
-		|| TimerBar == 1
-		)
+	if (this->CheckWindow(ObjWindow::CashShop) || this->CheckWindow(ObjWindow::FullMap) || this->CheckWindow(ObjWindow::SkillTree) || this->CheckWindow(ObjWindow::MoveList) || TimerBar == 1)
 	{
 		return;
 	}
@@ -4254,52 +4245,50 @@ void Interface::DrawInterfaceDragonLS3()
 }
 
 void Interface::DrawInterfaceDragonRS3()
-{	
-	if (this->MiniMapCheck()||(this->CheckWindow(SkillTree)|| this->CheckWindow(CashShop) || this->CheckWindow(FullMap)
-		|| this->CheckWindow(FastMenu) || this->CheckWindow(FriendList))
-		|| pMapNumber == 39 //Kanturu
-		|| pMapNumber == 58 //Selupam
-		|| pMapNumber == 64 //Duel Arena
-		|| pMapNumber == 65 //Doppelganger
-		|| pMapNumber == 66 //Doppelganger
-		|| pMapNumber == 67 //Doppelganger
-		|| pMapNumber == 68 //Doppelganger
-		|| pMapNumber == 69 //Imperial Guardian
-		|| pMapNumber == 70 //Imperial Guardian
-		|| pMapNumber == 71 //Imperial Guardian
-		|| pMapNumber == 72 //Imperial Guardian
-		|| pMapNumber == 11	//Blood Castle
-		|| pMapNumber == 12	//Blood Castle
-		|| pMapNumber == 13	//Blood Castle
-		|| pMapNumber == 14	//Blood Castle
-		|| pMapNumber == 15	//Blood Castle
-		|| pMapNumber == 16	//Blood Castle
-		|| pMapNumber == 17	//Blood Castle
-		|| pMapNumber == 52	//Blood Castle
-		|| pMapNumber == 9	//Devil Square
-		|| pMapNumber == 32	//Devil Square
-		|| pMapNumber == 18	//Chaos Castle
-		|| pMapNumber == 19	//Chaos Castle
-		|| pMapNumber == 20	//Chaos Castle
-		|| pMapNumber == 21	//Chaos Castle
-		|| pMapNumber == 22	//Chaos Castle
-		|| pMapNumber == 23	//Chaos Castle
-		|| pMapNumber == 53	//Chaos Castle
-		|| pMapNumber == 45	//Illusion Temple
-		|| pMapNumber == 46	//Illusion Temple
-		|| pMapNumber == 47	//Illusion Temple
-		|| pMapNumber == 48	//Illusion Temple
-		|| pMapNumber == 49	//Illusion Temple
-		|| pMapNumber == 50	//Illusion Temple
-		|| pMapNumber == 18	//Chaos Castle
-		|| pMapNumber == 19	//Chaos Castle
-		|| pMapNumber == 20	//Chaos Castle
-		|| pMapNumber == 21	//Chaos Castle
-		|| pMapNumber == 22	//Chaos Castle
-		|| pMapNumber == 23	//Chaos Castle
-		|| pMapNumber == 53	//Chaos Castle
-		|| pMapNumber == 34 //Crywolf
-		|| pMapNumber == 30 //Valley/CastleSiege
+{
+	if (this->MiniMapCheck() || (this->CheckWindow(SkillTree) || this->CheckWindow(CashShop) || this->CheckWindow(FullMap) || this->CheckWindow(FastMenu) || this->CheckWindow(FriendList)) || pMapNumber == 39 // Kanturu
+		|| pMapNumber == 58																																														// Selupam
+		|| pMapNumber == 64																																														// Duel Arena
+		|| pMapNumber == 65																																														// Doppelganger
+		|| pMapNumber == 66																																														// Doppelganger
+		|| pMapNumber == 67																																														// Doppelganger
+		|| pMapNumber == 68																																														// Doppelganger
+		|| pMapNumber == 69																																														// Imperial Guardian
+		|| pMapNumber == 70																																														// Imperial Guardian
+		|| pMapNumber == 71																																														// Imperial Guardian
+		|| pMapNumber == 72																																														// Imperial Guardian
+		|| pMapNumber == 11																																														// Blood Castle
+		|| pMapNumber == 12																																														// Blood Castle
+		|| pMapNumber == 13																																														// Blood Castle
+		|| pMapNumber == 14																																														// Blood Castle
+		|| pMapNumber == 15																																														// Blood Castle
+		|| pMapNumber == 16																																														// Blood Castle
+		|| pMapNumber == 17																																														// Blood Castle
+		|| pMapNumber == 52																																														// Blood Castle
+		|| pMapNumber == 9																																														// Devil Square
+		|| pMapNumber == 32																																														// Devil Square
+		|| pMapNumber == 18																																														// Chaos Castle
+		|| pMapNumber == 19																																														// Chaos Castle
+		|| pMapNumber == 20																																														// Chaos Castle
+		|| pMapNumber == 21																																														// Chaos Castle
+		|| pMapNumber == 22																																														// Chaos Castle
+		|| pMapNumber == 23																																														// Chaos Castle
+		|| pMapNumber == 53																																														// Chaos Castle
+		|| pMapNumber == 45																																														// Illusion Temple
+		|| pMapNumber == 46																																														// Illusion Temple
+		|| pMapNumber == 47																																														// Illusion Temple
+		|| pMapNumber == 48																																														// Illusion Temple
+		|| pMapNumber == 49																																														// Illusion Temple
+		|| pMapNumber == 50																																														// Illusion Temple
+		|| pMapNumber == 18																																														// Chaos Castle
+		|| pMapNumber == 19																																														// Chaos Castle
+		|| pMapNumber == 20																																														// Chaos Castle
+		|| pMapNumber == 21																																														// Chaos Castle
+		|| pMapNumber == 22																																														// Chaos Castle
+		|| pMapNumber == 23																																														// Chaos Castle
+		|| pMapNumber == 53																																														// Chaos Castle
+		|| pMapNumber == 34																																														// Crywolf
+		|| pMapNumber == 30																																														// Valley/CastleSiege
 		|| pMapNumber == 65 /*DuelArena*/)
 	{
 		return;
@@ -4311,12 +4300,11 @@ void Interface::DrawCoord()
 {
 	gObjUser.Refresh();
 
-	if (*(DWORD*)MAIN_SCREEN_STATE == 5)
+	if (*(DWORD *)MAIN_SCREEN_STATE == 5)
 	{
 		glColor3f(1.0f, 1.0f, 1.0f);
 		pDrawInterfaceNumBer(22, 461, gObjUser.lpViewPlayer->MapPosX, 1);
 		pDrawInterfaceNumBer(46, 461, gObjUser.lpViewPlayer->MapPosY, 1);
-
 	}
 }
 
@@ -4367,22 +4355,22 @@ void Interface::DrawPartySettingsWindow()
 	{
 		this->DrawButton(ePARTYSETTINGS_SYSTEM_ACTIVE, ButtonX + 110, this->Data[ePARTYSETTINGS_MAIN].Y + 30, 0, 15);
 	}
-	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSETTINGS_MAIN].Y + 40); // Äåëèòåëü áîëüøîé
+	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSETTINGS_MAIN].Y + 40); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	/////////////////////////////////////////ACTIVE SYSTEM END/////////////////////////////////////////
 
 	/////////////////////////////////////////////MAX LEVEL/////////////////////////////////////////////
 	this->DrawFormat(eWhite, StartX + 40, this->Data[ePARTYSETTINGS_MAIN].Y + 60, 200, 1, "Max Level");
-	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSETTINGS_MAIN].Y + 67); // Äåëèòåëü áîëüøîé
+	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSETTINGS_MAIN].Y + 67); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	this->DrawToolTip(StartX + 174, this->Data[ePARTYSETTINGS_MAIN].Y + 62, "%d", gPartySearchSettings.m_Level);
 
 	if (gPartySearchSettings.m_SystemActive == 0)
 	{
-		this->DrawColoredButton(ePARTYSETTINGS_LEVEL_MINUS, StartX + 150, this->Data[ePARTYSETTINGS_MAIN].Y + 57, 0, 0, eGray150); // 
+		this->DrawColoredButton(ePARTYSETTINGS_LEVEL_MINUS, StartX + 150, this->Data[ePARTYSETTINGS_MAIN].Y + 57, 0, 0, eGray150); //
 	}
 	else
 	{
-		this->DrawButton(ePARTYSETTINGS_LEVEL_MINUS, StartX + 150, this->Data[ePARTYSETTINGS_MAIN].Y + 57, 0, 0); // 
+		this->DrawButton(ePARTYSETTINGS_LEVEL_MINUS, StartX + 150, this->Data[ePARTYSETTINGS_MAIN].Y + 57, 0, 0); //
 
 		if (this->IsWorkZone(ePARTYSETTINGS_LEVEL_MINUS))
 		{
@@ -4432,8 +4420,8 @@ void Interface::DrawPartySettingsWindow()
 		this->DrawButton(ePARTYSETTINGS_ONLY_GUILD, ButtonX + 110, this->Data[ePARTYSETTINGS_MAIN].Y + 83, 0, 30);
 	}
 
-	pDrawGUI(0x7B5E, StartX + 30, this->Data[ePARTYSETTINGS_MAIN].Y + 100, 82.0, 2.0); // Äåëèòåëü ìåëêèé 1
-	pDrawGUI(0x7B5E, StartX + 30 + 82, this->Data[ePARTYSETTINGS_MAIN].Y + 100, 82.0, 2.0); // Äåëèòåëü ìåëêèé 2
+	pDrawGUI(0x7B5E, StartX + 30, this->Data[ePARTYSETTINGS_MAIN].Y + 100, 82.0, 2.0);		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1
+	pDrawGUI(0x7B5E, StartX + 30 + 82, this->Data[ePARTYSETTINGS_MAIN].Y + 100, 82.0, 2.0); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2
 
 	this->DrawFormat(eWhite, StartX + 40, this->Data[ePARTYSETTINGS_MAIN].Y + 109, 200, 1, "Only One Class");
 
@@ -4453,31 +4441,29 @@ void Interface::DrawPartySettingsWindow()
 		this->DrawButton(ePARTYSETTINGS_ONE_CLASS, ButtonX + 110, this->Data[ePARTYSETTINGS_MAIN].Y + 105, 0, 30);
 	}
 
-	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSETTINGS_MAIN].Y + 115);// 94 // Äåëèòåëü áîëüøîé
+	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSETTINGS_MAIN].Y + 115); // 94 // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	/////////////////////////////////////////////GUILD END/////////////////////////////////////////////
 	char szCharNames[7][32] =
-	{
-		"Dark Wizard",
-		"Dard Knight",
-		"Elf",
-		"Magic Gladiator",
-		"Dark Lord",
-		"Summoner",
-		"Rage Fighter"
-	};
+		{
+			"Dark Wizard",
+			"Dard Knight",
+			"Elf",
+			"Magic Gladiator",
+			"Dark Lord",
+			"Summoner",
+			"Rage Fighter"};
 
 	int ObjectIDs[7] =
-	{
-		ePARTYSETTINGS_DARK_WIZARD,
-		ePARTYSETTINGS_DARK_KNIGHT,
-		ePARTYSETTINGS_ELF,
-		ePARTYSETTINGS_MAGIC_GLADIATOR,
-		ePARTYSETTINGS_DARK_LORD,
-		ePARTYSETTINGS_SUMMONER,
-		ePARTYSETTINGS_RAGE_FIGHTER
-	};
+		{
+			ePARTYSETTINGS_DARK_WIZARD,
+			ePARTYSETTINGS_DARK_KNIGHT,
+			ePARTYSETTINGS_ELF,
+			ePARTYSETTINGS_MAGIC_GLADIATOR,
+			ePARTYSETTINGS_DARK_LORD,
+			ePARTYSETTINGS_SUMMONER,
+			ePARTYSETTINGS_RAGE_FIGHTER};
 
-	for (int i = 0; i<7; i++)
+	for (int i = 0; i < 7; i++)
 	{
 		this->DrawFormat(eWhite, StartX + 40, this->Data[ePARTYSETTINGS_MAIN].Y + 135 + (i * 22), 200, 1, szCharNames[i]);
 
@@ -4523,13 +4509,13 @@ void Interface::DrawPartySettingsWindow()
 			this->DrawButton(ObjectIDs[i], ButtonX + 110, this->Data[ePARTYSETTINGS_MAIN].Y + 131 + (i * 22), 0, 30);
 		}
 
-		pDrawGUI(0x7B5E, StartX + 30, this->Data[ePARTYSETTINGS_MAIN].Y + 148 + (i * 22), 82.0, 2.0); // Äåëèòåëü ìåëêèé 1
-		pDrawGUI(0x7B5E, StartX + 30 + 82, this->Data[ePARTYSETTINGS_MAIN].Y + 148 + (i * 22), 82.0, 2.0); // Äåëèòåëü ìåëêèé 2
+		pDrawGUI(0x7B5E, StartX + 30, this->Data[ePARTYSETTINGS_MAIN].Y + 148 + (i * 22), 82.0, 2.0);	   // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1
+		pDrawGUI(0x7B5E, StartX + 30 + 82, this->Data[ePARTYSETTINGS_MAIN].Y + 148 + (i * 22), 82.0, 2.0); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2
 	}
 
-	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSETTINGS_MAIN].Y + 290); // Äåëèòåëü áîëüøîé
+	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSETTINGS_MAIN].Y + 290); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-	//if (gPartySearchSettings.m_SystemActive)
+	// if (gPartySearchSettings.m_SystemActive)
 	//{
 	this->DrawButton(ePARTYSETTINGS_OK, StartX + this->Data[ePARTYSETTINGS_MAIN].Width / 2 - this->Data[ePARTYSETTINGS_OK].Width / 2, this->Data[ePARTYSETTINGS_MAIN].Y + 310, 0, 0);
 
@@ -4545,7 +4531,6 @@ void Interface::DrawPartySettingsWindow()
 		this->DrawButton(ePARTYSETTINGS_OK, StartX + this->Data[ePARTYSETTINGS_MAIN].Width / 2 - this->Data[ePARTYSETTINGS_OK].Width / 2, this->Data[ePARTYSETTINGS_MAIN].Y + 310, 0, ScaleY);
 	}
 	//}
-
 }
 // ----------------------------------------------------------------------------------------------
 
@@ -4588,7 +4573,7 @@ bool Interface::EventPartySettingsWindow_All(DWORD Event)
 		this->Data[ePARTYSETTINGS_SYSTEM_ACTIVE].EventTick = GetTickCount();
 		gPartySearchSettings.m_SystemActive ^= 1;
 
-		for (int i = 0; i<7; i++)
+		for (int i = 0; i < 7; i++)
 		{
 			gPartySearchSettings.m_SystemActive == true ? gPartySearchSettings.SetClassValue(i, true) : gPartySearchSettings.SetClassValue(i, false);
 		}
@@ -4697,7 +4682,7 @@ bool Interface::EventPartySettingsWindow_All(DWORD Event)
 		this->Data[ePARTYSETTINGS_ONE_CLASS].EventTick = GetTickCount();
 		gPartySearchSettings.m_OneClass ^= 1;
 
-		for (int i = 0; i<7; i++)
+		for (int i = 0; i < 7; i++)
 		{
 			gPartySearchSettings.m_OneClass == false ? gPartySearchSettings.SetClassValue(i, true) : gPartySearchSettings.SetClassValue(i, false);
 		}
@@ -4727,17 +4712,16 @@ bool Interface::EventPartySettingsWindow_All(DWORD Event)
 	}
 
 	int ObjectIDs[7] =
-	{
-		ePARTYSETTINGS_DARK_WIZARD,
-		ePARTYSETTINGS_DARK_KNIGHT,
-		ePARTYSETTINGS_ELF,
-		ePARTYSETTINGS_MAGIC_GLADIATOR,
-		ePARTYSETTINGS_DARK_LORD,
-		ePARTYSETTINGS_SUMMONER,
-		ePARTYSETTINGS_RAGE_FIGHTER
-	};
+		{
+			ePARTYSETTINGS_DARK_WIZARD,
+			ePARTYSETTINGS_DARK_KNIGHT,
+			ePARTYSETTINGS_ELF,
+			ePARTYSETTINGS_MAGIC_GLADIATOR,
+			ePARTYSETTINGS_DARK_LORD,
+			ePARTYSETTINGS_SUMMONER,
+			ePARTYSETTINGS_RAGE_FIGHTER};
 
-	for (int i = 0; i<7; i++)
+	for (int i = 0; i < 7; i++)
 	{
 		if (IsWorkZone(ObjectIDs[i]))
 		{
@@ -4848,7 +4832,7 @@ void Interface::DrawPartySearchWindow()
 	}
 
 	// ----
-	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSEARCH_MAIN].Y + 40); // Äåëèòåëü áîëüøîé
+	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSEARCH_MAIN].Y + 40); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	// ----
 	this->DrawFormat(eWhite, StartX + 5, this->Data[ePARTYSEARCH_MAIN].Y + 56, 50, 3, "Player");
 	// ----
@@ -4862,9 +4846,9 @@ void Interface::DrawPartySearchWindow()
 	// ----
 	this->DrawFormat(eWhite, StartX + 170, this->Data[ePARTYSEARCH_MAIN].Y + 56, 50, 3, "Join");
 	// ----
-	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSEARCH_MAIN].Y + 60); // Äåëèòåëü áîëüøîé
+	this->DrawGUI(ePARTYSETTINGS_DIV, StartX, this->Data[ePARTYSEARCH_MAIN].Y + 60); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	// ----
-	if (gPartySearch.CountPages>1)
+	if (gPartySearch.CountPages > 1)
 	{
 		this->DrawFormat(eGold, StartX + 104, 379, 20, 3, "%d/%d", gPartySearch.Page + 1, gPartySearch.CountPages);
 	}
@@ -4881,14 +4865,14 @@ void Interface::DrawPartySearchWindow()
 
 	int DrawnItems = 0;
 
-	for (int i = 0; i<gPartySearch.ListsCount; i++)
+	for (int i = 0; i < gPartySearch.ListsCount; i++)
 	{
 		if (DrawnItems >= 10)
 		{
 			break;
 		}
 
-		PARTYLIST* info = gPartySearch.GetPartyList(i + (10 * gPartySearch.Page));
+		PARTYLIST *info = gPartySearch.GetPartyList(i + (10 * gPartySearch.Page));
 
 		if (info == 0)
 		{
@@ -4932,14 +4916,14 @@ void Interface::DrawPartySearchWindow()
 
 	DrawnItems = 0;
 
-	for (int i = 0; i<gPartySearch.ListsCount; i++)
+	for (int i = 0; i < gPartySearch.ListsCount; i++)
 	{
 		if (DrawnItems >= 10)
 		{
 			break;
 		}
 
-		PARTYLIST* info = gPartySearch.GetPartyList(i + (10 * gPartySearch.Page));
+		PARTYLIST *info = gPartySearch.GetPartyList(i + (10 * gPartySearch.Page));
 
 		if (info == 0)
 		{
@@ -4991,10 +4975,9 @@ void Interface::DrawPartySearchWindow()
 
 			strcat(szText, "\n_____________________");
 
-			//this->DrawToolTipEx(eWhite, StartX + 230, this->Data[ePARTYSEARCH_MAIN].Y + 62 + (i * 20), 100, 30, 3, szText);
+			// this->DrawToolTipEx(eWhite, StartX + 230, this->Data[ePARTYSEARCH_MAIN].Y + 62 + (i * 20), 100, 30, 3, szText);
 			glColor4f(0.0, 0.0, 0.0, 0.8);
 			pDrawBarForm((float)(StartX + 230), (float)(this->Data[ePARTYSEARCH_MAIN].Y + 62 + (i * 20)), 100.0f, 110.0f, 0.0f, 0);
-
 
 			this->DrawFormatx(eWhite, StartX + 230, this->Data[ePARTYSEARCH_MAIN].Y + 62 + (i * 20), 100, 3, szText);
 		}
@@ -5102,7 +5085,7 @@ void Interface::EventPartySearchWindow_All(DWORD Event)
 
 	int DrawnItems = 0;
 
-	for (int i = 0; i<gPartySearch.ListsCount; i++)
+	for (int i = 0; i < gPartySearch.ListsCount; i++)
 	{
 		if (DrawnItems >= 10)
 		{
@@ -5162,21 +5145,21 @@ void Interface::DrawLuckyWheel()
 	// ---
 	//	pDrawGUI(0x7A5A, 145, 55, 312, 292); //1
 	//
-	pDrawGUI(0x9326, 180, 100, 70, 57); //1
-	pDrawGUI(0x9326, 250, 100, 70, 57); //2
-	pDrawGUI(0x9326, 320, 100, 70, 57); //3
-	pDrawGUI(0x9326, 390, 100, 70, 57); //4
+	pDrawGUI(0x9326, 180, 100, 70, 57); // 1
+	pDrawGUI(0x9326, 250, 100, 70, 57); // 2
+	pDrawGUI(0x9326, 320, 100, 70, 57); // 3
+	pDrawGUI(0x9326, 390, 100, 70, 57); // 4
 	//
-	pDrawGUI(0x9326, 390, 157, 70, 57); //5
-	pDrawGUI(0x9326, 390, 214, 70, 57); //6
+	pDrawGUI(0x9326, 390, 157, 70, 57); // 5
+	pDrawGUI(0x9326, 390, 214, 70, 57); // 6
 	//
-	pDrawGUI(0x9326, 390, 271, 70, 57); //7
-	pDrawGUI(0x9326, 320, 271, 70, 57); //8
-	pDrawGUI(0x9326, 250, 271, 70, 57); //9
-	pDrawGUI(0x9326, 180, 271, 70, 57); //10
+	pDrawGUI(0x9326, 390, 271, 70, 57); // 7
+	pDrawGUI(0x9326, 320, 271, 70, 57); // 8
+	pDrawGUI(0x9326, 250, 271, 70, 57); // 9
+	pDrawGUI(0x9326, 180, 271, 70, 57); // 10
 	//
-	pDrawGUI(0x9326, 180, 157, 70, 57); //11
-	pDrawGUI(0x9326, 180, 214, 70, 57); //12
+	pDrawGUI(0x9326, 180, 157, 70, 57); // 11
+	pDrawGUI(0x9326, 180, 214, 70, 57); // 12
 
 	if (this->LuckyWheelNumber >= 0)
 	{
@@ -5289,7 +5272,7 @@ void Interface::DrawLuckyWheel()
 	DrawItemIMG(190, 157, 70, 50, ITEM(gLuckyWheel.m_LuckyWheelInfo[10].ItemType, gLuckyWheel.m_LuckyWheelInfo[10].ItemIndex), SET_ITEMOPT_LEVEL(gLuckyWheel.m_LuckyWheelInfo[10].Level), gLuckyWheel.m_LuckyWheelInfo[10].Exc, 0, 0);
 	DrawItemIMG(190, 214, 70, 50, ITEM(gLuckyWheel.m_LuckyWheelInfo[11].ItemType, gLuckyWheel.m_LuckyWheelInfo[11].ItemIndex), SET_ITEMOPT_LEVEL(gLuckyWheel.m_LuckyWheelInfo[11].Level), gLuckyWheel.m_LuckyWheelInfo[11].Exc, 0, 0);
 
-	//this->DrawFormat(eWhite, 270, 165, 50.0f, 1.0f, "You Wind!");
+	// this->DrawFormat(eWhite, 270, 165, 50.0f, 1.0f, "You Wind!");
 
 	if (this->LuckyWheelNumber >= 0)
 	{
@@ -5427,10 +5410,15 @@ void Interface::EventLuckyWheel_Main(DWORD Event)
 				return;
 			}
 		}
-		//Func
+		// Func
 		UP_SEND_REQ pMsg;
 		pMsg.h.set(0xF3, 0xF1, sizeof(pMsg));
-		DataSend((BYTE*)&pMsg, pMsg.h.size);
+		DataSend((BYTE *)&pMsg, pMsg.h.size);
 		StartRoll = 1;
 	}
+}
+
+void Interface::InitSettings()
+{
+	gInterface.SwitchChatExpand();
 }

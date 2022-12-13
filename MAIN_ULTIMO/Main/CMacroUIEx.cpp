@@ -145,25 +145,25 @@ void CMacroUIEx::RenderFrame(int *This)
 		}
 	}
 	// ----
-	gInterface.DrawButtonRender(ButtonCamera, X + 96.0f + renderMenu, Y + 7.0, 0, 0.0f);
+	// gInterface.DrawButtonRender(ButtonCamera, X + 96.0f + renderMenu, Y + 7.0, 0, 0.0f);
 
-	if (gInterface.IsWorkZone(ButtonCamera))
-	{
-		gInterface.DrawToolTip(X + 96.0f + renderMenu, 50, "CAMERA ON|OFF|RESET");
-		// ----
-		if (gInterface.Data[ButtonCamera].OnClick)
-		{
-			RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.451f, 0.878, 0.225, 1, 1, 0.0);
-		}
-		else
-		{
-			RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.2255f, 0.878, 0.225, 1, 1, 0.0);
-		}
-	}
-	else
-	{
-		RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.0, 0.878, 0.225, 1, 1, 0.0);
-	}
+	// if (gInterface.IsWorkZone(ButtonCamera))
+	// {
+	// 	gInterface.DrawToolTip(X + 96.0f + renderMenu, 50, "CAMERA ON|OFF|RESET");
+	// 	// ----
+	// 	if (gInterface.Data[ButtonCamera].OnClick)
+	// 	{
+	// 		RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.451f, 0.878, 0.225, 1, 1, 0.0);
+	// 	}
+	// 	else
+	// 	{
+	// 		RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.2255f, 0.878, 0.225, 1, 1, 0.0);
+	// 	}
+	// }
+	// else
+	// {
+	// 	RenderBitmap1(51554, X + 96.0f + renderMenu, Y + 7.0, 19, 19, 0.0, 0.0, 0.878, 0.225, 1, 1, 0.0);
+	// }
 	// ----
 	gInterface.DrawButtonRender(eMenu, X + 115.5f + renderMenu, Y + 7.0, 0, 0.0f);
 
@@ -429,14 +429,16 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 	glColor4f(1.0, 1.0, 1.0, 1.0);
 	RenderImage(31602, X, Y, 22.0, 25.0);
 
-	for(int i = 0 ; i < 5 ; i ++)
+	for(int i = 0 ; i < 4 ; i ++)
 	{
 		RenderX = (double) X + 22.0 + (i * 26.0);
 		RenderImage(31603, RenderX, Y, 26.0, 25.0);
+		if(i == 3){
+			RenderX = (double) X + 22.0 + ((i+1) * 26.0);
+			RenderImage(31604, RenderX, Y, 73.0, 20.0);
+		}
 	}
 
-	RenderImage(31604, RenderX, Y, 73.0, 20.0);
-	
 	//Mapa y Coordenadas
 	if (World >= 82 && World <= 100)
 	{
@@ -456,7 +458,7 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 
 	if (gInterface.IsWorkZone(ButtonSettings))
 	{
-		gInterface.DrawToolTip(146, Y + 50, "Config Helper");
+		gInterface.DrawToolTip(146, 40, "Config Helper");
 
 		if (gInterface.Data[ButtonSettings].OnClick)
 		{
@@ -478,7 +480,7 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 		//-- Play
 		if (gInterface.IsWorkZone(ButtonStart))
 		{
-			gInterface.DrawToolTip(146 + 18, Y + 50,"Play Helper");
+			gInterface.DrawToolTip(146 + 18, 40,"Start Helper");
 
 			if (gInterface.Data[ButtonStart].OnClick)
 			{
@@ -505,7 +507,7 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 		//-- Pause
 		if (gInterface.IsWorkZone(ButtonStop))
 		{
-			gInterface.DrawToolTip(146 + 18, Y + 50,"Pause Helper");
+			gInterface.DrawToolTip(146 + 18, 40,"Stop Helper");
 
 			if (gInterface.Data[ButtonStop].OnClick)
 			{
@@ -525,19 +527,20 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 	DWORD Color;
 	if (gProtect.m_MainInfo.CustomMenuSwitch != 0)
 	{
+		// Positioning button
 		pDrawButton(30983, 146 + 37.2, 0.0, 36, 18, 0, 0);
-
+		// Render button
 		gInterface.DrawButtonRender(eMenu, 146 + 37.2, Y + 1.0 , 0, 0.0f);
 
 		if (gInterface.IsWorkZone(eMenu))
 		{
 			if (Menu == 1)
 			{
-				gInterface.DrawToolTip(146 + 37.2, 50, "Custom Menu");
+				gInterface.DrawToolTip(146 + 37.2, 40, "Custom Menu");
 			}
 			else
 			{
-				gInterface.DrawToolTip(146 + 37.2, 50, "Disable");
+				gInterface.DrawToolTip(146 + 37.2, 40, "Disable");
 			}
 			// ----
 			if (gInterface.Data[eMenu].OnClick)
@@ -1312,10 +1315,10 @@ void CMacroUIEx::Load()
 		}
 		else
 		{
-			//SetCompleteHook(0xE9, 0x007D26B5, &MuHelperRemake2_01);
-			//SetCompleteHook(0xE9, 0x007D2751, &MuHelperRemake2_02);
-			//SetCompleteHook(0xE9, 0x007D27FC, &MuHelperRemake2_03);
-			//SetCompleteHook(0xE9, 0x007D2BC0, this->RenderHelperFrame);
+			// SetCompleteHook(0xE9, 0x007D26B5, &MuHelperRemake2_01);
+			// SetCompleteHook(0xE9, 0x007D2751, &MuHelperRemake2_02);
+			// SetCompleteHook(0xE9, 0x007D27FC, &MuHelperRemake2_03);
+			// SetCompleteHook(0xE9, 0x007D2BC0, this->RenderHelperFrame);
 		}
 	}
 }
