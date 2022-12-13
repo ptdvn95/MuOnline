@@ -457,7 +457,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 	if (gProtect.m_MainInfo.MiniMapType == 1)
 	{
-		gRenderMap.MiniMapload();
+		gRenderMap.MiniMapLoadNew();
 	}
 
 	if (gProtect.m_MainInfo.MiniMapType == 2)

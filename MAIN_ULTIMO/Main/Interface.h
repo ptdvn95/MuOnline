@@ -594,6 +594,7 @@ public:
 	void CloseCustomWindow();
 	//Mini Map
 	void DrawMiniMap();
+	void Interface::MiniMapMini();
 	// void DrawRadar();
 	bool MiniMapCheck();
 	bool CombinedChecks();
