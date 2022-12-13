@@ -1,0 +1,21 @@
+
+Server
+1. Create MuOnline database & restore from MUSERVER_V6\DB\ZxGamesUp6.bak
+2. Run ODBC script MuOnline & MuOnline64 from MUSERVER_V6\DB\
+3. Edit IP in MUSERVER_V6\ConnectServer\ServerList.dat
+4. Edit IP in MUSERVER_V6\Data\MapServerInfo.dat
+5. Go to MUSERVER_V6\StartUp\Configuration > right click on Configuration.xml > unselect read-only > apply.
+6. Open Configuration.xml & replace D:\MuOnline\MuEmu\[PG]WAR_X\xPROYECTOx\MuServer\ path with your own -> save file.
+
+Client
+1. Go to MUSERVER_V6\Tools\MAIN_INFO & Edit IP in Maininfo.ini then run EncryptBMD.exe
+2. Copy generated files from MUSERVER_V6\Tools\MAIN_INFO\ZxRelease & paste in CLIENTE_V6\Data\Local
+
+Editor
+1. Go to MUSERVER_V6\Tools\[ZX]Editor[TEST] Funcional\ & open Config.ini
+2. Edit SQL Password in Config.ini > [Connection]
+3. Run MUSERVER_V6\Tools\[ZX]Editor[TEST] Funcional\TitanEditorForZxGames.exe & create account.
+
+Start
+1. Run MUSERVER_V6\StartUp\ServerStartUp.exe > make sure cs/js/ds/gs is selected & press start (green button)
+2. Run CLIENTE_V6\Main.exe
