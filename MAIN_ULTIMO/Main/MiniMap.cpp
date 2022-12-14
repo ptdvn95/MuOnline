@@ -29,8 +29,8 @@ CMinimap::CMinimap()
 	//this->DataMap.YSW_Minimap = 14; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
 	//this->DataMap.XSW_Minimap = 463; //-- MiniMapX (Mover Minimapa Izquierda o Derecha)
 	//this->DataMap.YSW_Minimap = 8; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
-	this->DataMap.XSW_Minimap = 535.0; //-- MiniMapX (Mover Minimapa Izquierda o Derecha)
-	this->DataMap.YSW_Minimap = 310.0; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
+	this->DataMap.XSW_Minimap = 545; //-- MiniMapX (Mover Minimapa Izquierda o Derecha)
+	this->DataMap.YSW_Minimap = 15.0; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
 	this->DataMap.XSW_Time_Frame = 0.0; //-- Time_FrameX
 	this->DataMap.YSW_Time_Frame = 0.0; //-- Time_FrameY
 	this->DataMap.This_92 = 0.0;
@@ -45,8 +45,8 @@ CMinimap::CMinimap()
 	this->DataMap.TimerEventVK = 0; //-- Scale
 	this->DataMap.Alpha = 1.0f; //-- Alpha
     this->Moving = false;
-    this->ultimoX = 535.0;//Example of initial coordinate {X}. Coordinate that will be constantly modified.
-    this->ultimoY = 310.0;//Example of initial coordinate {Y}. Coordinate that will be constantly modified.
+    this->ultimoX = 545.0;//Example of initial coordinate {X}. Coordinate that will be constantly modified.
+    this->ultimoY = 15.0;//Example of initial coordinate {Y}. Coordinate that will be constantly modified.
 }
 
 CMinimap::~CMinimap()
@@ -306,10 +306,9 @@ void DataViewPortMapLoad()
 				{
 					RenderBitMapColored(32452,  XNPC, YNPC, 7.0, 7.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, 255)); //Icono Potion
 				}
-
-				//if( pCheckMouseOver((int) XNPC, (int) YNPC, (int) 10, (int) 10) ) //Nombre NPC
+				if( pCheckMouseOver((int) XNPC, (int) YNPC, (int) 10, (int) 10) ) //Nombre NPC
 				{
-				//pDrawToolTip((int) XNPC, (int) YNPC - 10, (char *)(Model + 56)); //Nombre NPC
+					pDrawToolTip((int) XNPC, (int) YNPC - 10, (char *)(Model + 56)); //Nombre NPC
 				}
 			}
 		}
@@ -361,8 +360,8 @@ void Interface::DrawMiniMap()
 
 	DataMapLoad();
 
-	v8 = (double) (( Type == 1 ) ? 0.18f : (( Type == 2 ) ? 0.36f : 0.72));
-	v9 = (double) (( Type == 1 ) ? 0.18f : (( Type == 2 ) ? 0.36f : 0.72));
+	v8 = 0.18f;
+	v9 = 0.18f;
 
 	v10 = (double) gRenderMap.DataMap.YSW_Minimap + 10;
 	v11 = (double) gRenderMap.DataMap.XSW_Minimap;
@@ -385,9 +384,9 @@ void Interface::DrawMiniMap()
 			InitialX = v11 + (cursorX - gRenderMap.maxX);
 			InitialY = v10 + (cursorY - gRenderMap.maxY);
 			InitialX = InitialX < 20 ? 20 : InitialX;
-			InitialX = InitialX > 535 ? 535 : InitialX;
+			InitialX = InitialX > 545 ? 545 : InitialX;
 			InitialY = InitialY < 5 ? 5 : InitialY;
-			InitialY = InitialY > 310 ? 310 : InitialY;
+			InitialY = InitialY > 320 ? 320 : InitialY;
 			gRenderMap.ultimoX = InitialX;
 			gRenderMap.ultimoY = InitialY;
 		}
@@ -398,42 +397,14 @@ void Interface::DrawMiniMap()
 			gRenderMap.ultimoX = InitialX;
 			gRenderMap.ultimoY = InitialY;
 		}
-	//-- Mover Barra MiniMapa Termina
 
 	//-- Fondo
 	RenderBitmap(31459, InitialX - 8, InitialY - 9, 100, 100, 0.3699999452, 0.0625, 0.5779999495, 0.2889999151, 1, 1, 0.0); //Minimapa v2
 	//-- Mapa
 	RenderBitmap(31462, InitialX, InitialY, 80, 80, gRenderMap.DataMap.CurrentMoveX, gRenderMap.DataMap.CurrentMoveY, v9, v8, 1, 1, 0.0); //Minimapa v2
-	//-- Cabezera
-	//pDrawButton(31458, InitialX + 15, InitialY + 87, 53, 26, 0, 0);
-	//RenderBitmap(31463, v11 + 25.5, v10 + 87, 28, 12, 0.3259999454, 0.00249999878, 0.6679999232, 0.04399995133, 1, 1, 0.0); //Minimapa v2 Coordenada
-	/*RenderBitmap(31463, v11 + 11, v10 - 23, 60, 13, 0.3259999454, 0.00249999878, 0.6679999232, 0.04399995133, 1, 1, 0.0); //Minimapa v2 Nombre Mapas
-	//--Nombre Mapas Minimapa v2
-	pSetFont(pTextThis(), (int)pFontBold);
-	wsprintf(Cord, "%s", ((World >= 82 && World <= 100) ? pGetTextLine(pTextLineThis, (3810 + World - 82)) : pMapName(World)));
-	pSetBackgroundTextColor(pTextThis(), 0, 0, 0, 0);
-	//pSetTextColor(pTextThis(), 240, 240, 240, 255); //Texto blanco
-	pSetTextColor(pTextThis(), 87, 174, 255, 255); //Texto azul
-	//pSetTextColor(pTextThis(), 255, 210, 87, 255); //Texto amarillo
-	pDrawText(pTextThis(), v11 + 25, v10 - 19, Cord, 148.0, 0, (LPINT)1, 0); //Minimapa v2*/
-	/*//-- Coordenadas Minimapa v2
-	pSetFont(pTextThis(), (int)pFontBold);
-	wsprintf(Cord, "%d , %d", ObjectPointer->MapPosX, ObjectPointer->MapPosY);
-	pSetBackgroundTextColor(pTextThis(), 0, 0, 0, 0);
-	//pSetTextColor(pTextThis(), 240, 240, 240, 255); //Texto blanco
-	//pSetTextColor(pTextThis(), 87, 174, 255, 255); //Texto azul
-	pSetTextColor(pTextThis(), 255, 210, 87, 255); //Texto amarillo
-	pDrawText(pTextThis(), v11 + 30, v10 + 90, Cord, 148.0, 0, (LPINT)1, 0); //Minimapa v2*/
-
 	//-- Usuario
 	if ( gProtect.m_MainInfo.CustomInterfaceType == 1 || gProtect.m_MainInfo.CustomInterfaceType == 2 )
-	{	/*//Puntero jugador clasico para 97/99 (Punto amarillo)
-		pSetBlend(true);
-		glColor4f(1.0, 1.0, 0.0, gRenderMap.DataMap.Alpha);
-		pDrawBarForm((double)gRenderMap.DataMap.DropMoveUserX, (double)gRenderMap.DataMap.DropMoveUserY, 4.0, 4.0, 0.0, 0);
-		pGLSwitch();*/
-
-		//Puntero jugador ex700 para 97/99
+	{
 		gRenderMap.DataMap.DropMoveUserX = gRenderMap.ultimoX + gRenderMap.DataMap.This_92 - gRenderMap.DataMap.This_108; //Minimapa v2
 		gRenderMap.DataMap.DropMoveUserY = gRenderMap.ultimoY + gRenderMap.DataMap.This_96 - gRenderMap.DataMap.This_112; //Minimapa v2
 		sub_637E80( 32450,(double)gRenderMap.DataMap.DropMoveUserX,(double)gRenderMap.DataMap.DropMoveUserY,7.5,7.5, DIRPointer, 0.0, 0.0, 0.546875, 0.546875); //Puntero personaje 97/99/s1/s2
@@ -445,7 +416,8 @@ void Interface::DrawMiniMap()
 		gRenderMap.DataMap.DropMoveUserY = gRenderMap.ultimoY + gRenderMap.DataMap.This_96 - gRenderMap.DataMap.This_112; //Minimapa v2
 		sub_637E80( 32450, (double)gRenderMap.DataMap.DropMoveUserX, (double)gRenderMap.DataMap.DropMoveUserY, 7.5, 7.5, DIRPointer, 0.0, 0.0, 0.546875, 0.546875); //Puntero personaje s3/s6/ex700/legends
 	}
-	/*//Party
+
+	//Party
 	float JCPartyCoordX;
 	float JCPartyCoordY;
 	
@@ -461,7 +433,7 @@ void Interface::DrawMiniMap()
 		JCPartyCoordY = JCPartyCoordY - gRenderMap.DataMap.This_112 - 5;
 	
 		RenderBitMapColored(61520, JCPartyCoordX, JCPartyCoordY, 7.5, 7.5, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, gRenderMap.DataMap.Alpha * 255));
-	}*/
+	}
 
 	EnableAlphaTest(1);
 	glColor4f(1.0, 1.0, 1.0, gRenderMap.DataMap.Alpha);
@@ -469,101 +441,9 @@ void Interface::DrawMiniMap()
 	DataViewPortMapLoad();
 	int textAlpha;
 
-	if ( gProtect.m_MainInfo.CustomInterfaceType == 1 || gProtect.m_MainInfo.CustomInterfaceType == 2 )
-	{
-		//Interface minimapa 97/99 original
-		/*pSetBlend(true);
-		glColor4f(1.0, 1.0, 1.0, gRenderMap.DataMap.Alpha);
-		pDrawGUI(31608, gRenderMap.DataMap.XSW_Minimap_Frame, gRenderMap.DataMap.YSW_Minimap_Frame, 154.0, 162.0);
-		pDrawGUI(31609, gRenderMap.DataMap.XSW_Time_Frame, gRenderMap.DataMap.YSW_Time_Frame, 134.0, 37.0);
-		pGLSwitch();*/
-
-		if(CheckButtonPressed( 618, 240, 15, 15 ))
-		{
-			PlayBuffer(25, 0, 0);
-			
-			if (GetTickCount() >= TimerEvent + 200) 
-			{
-				if ( gRenderMap.DataMap.Scale == 1 ) 
-				{
-					gRenderMap.DataMap.Scale = 2;
-				}
-				else if ( gRenderMap.DataMap.Scale == 2 ) 
-				{
-					gRenderMap.DataMap.Scale = 3;
-				}
-				else if ( gRenderMap.DataMap.Scale == 3 ) 
-				{ 
-					gRenderMap.DataMap.Scale = 1; 
-				}
-
-				TimerEvent = GetTickCount();
-			}
-		}
-
-		if(CheckButtonPressed( 546, 239, 35, 20 ))
-		{
-			PlayBuffer(25, 0, 0);
-			
-			if (GetTickCount() >= TimerEvent + 200) 
-			{
-				if ( gRenderMap.DataMap.Alpha == 1.0 ) 
-				{
-					gRenderMap.DataMap.Alpha = (double) 0.90f;
-				}
-				else if ( gRenderMap.DataMap.Alpha == 0.90f ) 
-				{
-					gRenderMap.DataMap.Alpha = (double)0.80;
-				}
-				else if ( gRenderMap.DataMap.Alpha == 0.80f ) 
-				{ 
-					gRenderMap.DataMap.Alpha = (double)0.70f;
-				}
-				else
-				{
-					gRenderMap.DataMap.Alpha = (double)1.0f;
-				}
-
-				TimerEvent = GetTickCount();
-			}
-		}
-		//Opacidad para Interface 97/99 original
-		/*if ( gRenderMap.DataMap.Alpha == 1.0 ) 
-		{
-			textAlpha = 100;
-		}
-		else if ( gRenderMap.DataMap.Alpha == 0.90f ) 
-		{
-			textAlpha = 90;
-		}
-		else if ( gRenderMap.DataMap.Alpha == 0.80f ) 
-		{ 
-			textAlpha = 80;
-		}
-		else
-		{
-			textAlpha = 70;
-		}*/
-
-		
-	}
-
 	pGLSwitch();
 	EnableAlphaTest(0);
 	glColor4f(1.0, 1.0, 1.0, 1.0);
-	//Menu Opacidad Interface 97/99 original
-	/*if ( gProtect.m_MainInfo.CustomInterfaceType == 1 || gProtect.m_MainInfo.CustomInterfaceType == 2 )
-	{
-		char Info[20];
-		wsprintf(Info, "%d", textAlpha);
-		pSetBackgroundTextColor(pTextThis(), 0, 0, 0, 0);
-		pSetTextColor(pTextThis(), 240, 240, 240, 255);
-		pDrawText(pTextThis(), 546, 245, Info, 35, 0, (LPINT)3, 0);
-	}*/
-
-	//-- Carcasa Mapa
-	//RenderBitmap(31465, InitialX - 10, InitialY - 9, 100, 100, 0.01299999747, 0.02999999747, 0.3105553985, 0.6109998822, 1, 1, 0.0); //Minimapa v2 Marco Negro
-	// RenderBitmap(31464, InitialX - 9, InitialY - 9, 100, 100, 0.3699999452, 0.0625, 0.5779999495, 0.2889999151, 1, 1, 0.0); //Minimapa v2 Circulo Azul
 	RenderBitmap(31463, InitialX - 9, InitialY - 9, 100, 100, 0.3599999452, 0.0625, 0.5779999495, 0.2889999151, 1, 1, 0.0); //Minimapa v2 Marco Dorado
 	if(TimerBar != 0)
 	{
@@ -587,103 +467,6 @@ void Interface::DrawMiniMap()
 
 	int x1, y1, w1, h1;
 
-	//-- Boton Acercar
-	x1 = InitialX - 5; //Minimapa v2
-	y1 = InitialY + 67; //Minimapa v2
-	w1 = 18;
-	h1 = 18;
-	//-- Carcaza Boton
-	//RenderBitmap(31463, x1 - 4, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
-
-	if(pCheckMouseOver( x1, y1, w1, h1 ))
-	{
-		this->DrawToolTip(v11 + 26, v10 - 20, "Zoom (-)");
-		if( *(BYTE*)0x8793386 )
-		{
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.43160009804, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-			PlayBuffer(25, 0, 0);
-			if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 ){
-				if ( gRenderMap.DataMap.Scale == 3 ) { 
-					gRenderMap.DataMap.Scale = 2; 
-				}else if ( gRenderMap.DataMap.Scale == 2 ) { 
-					gRenderMap.DataMap.Scale = 1; 
-				}
-				gRenderMap.DataMap.TimerEventVK = GetTickCount();
-			}
-		}
-		else
-		{
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.43160009804, 0.1219998896, 0.06599189341, 1, 1, 0.0); //0,3689999878 + 0,06260011024
-		}
-		
-	}
-	else
-	{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.43160009804, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	}
-
-	//-- Boton Alejar
-	x1 = InitialX - 13; //Minimapa v2
-	y1 = InitialY + 54; //Minimapa v2
-	w1 = 18;
-	h1 = 18;
-	//-- Carcaza Boton
-	//RenderBitmap(31463, x1 - 4, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
-
-	if(pCheckMouseOver( x1, y1, w1, h1 ))
-	{
-		this->DrawToolTip(v11 + 26, v10 - 20, "Zoom (+)");
-		if( *(BYTE*)0x8793386 )
-		{
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.3689999878, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-			PlayBuffer(25, 0, 0);
-			if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 ){
-				if ( gRenderMap.DataMap.Scale == 1 ) { 
-					gRenderMap.DataMap.Scale = 2; 
-				}else if ( gRenderMap.DataMap.Scale == 2 ) { 
-					gRenderMap.DataMap.Scale = 3; 
-				}
-				gRenderMap.DataMap.TimerEventVK = GetTickCount();
-			}
-		}
-		else
-		{
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.3689999878, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-		
-	}
-	else
-	{
-		if( gRenderMap.DataMap.Scale == 2 )
-		{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.3689999878, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-		else if( gRenderMap.DataMap.Scale == 3 )
-		{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.3689999878, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-		else
-		{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.3689999878, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-	}
-	/*if(pCheckMouseOver( x1, y1, w1, h1 ))
-	{
-		if( *(BYTE*)0x8793386 )
-		{
-			PlayBuffer(25, 0, 0);
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, !*(BYTE*)(*(DWORD*)(0x00E8CB7C) + 0x08) ? 0.3689999878 : 0.5570000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-		else
-		{
-			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, !*(BYTE*)(*(DWORD*)(0x00E8CB7C) + 0x08) ? 0.3689999878 : 0.5570000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-		}
-	}
-	else
-	{
-		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, !*(BYTE*)(*(DWORD*)(0x00E8CB7C) + 0x08) ? 0.3689999878 : 0.5570000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	}*/
-
 	if (gProtect.m_MainInfo.CustomMenuSwitch != 0)
 	{
 	//-- Boton Especial Menu
@@ -691,8 +474,7 @@ void Interface::DrawMiniMap()
 	y1 = InitialY + 68; //Minimapa v2
 	w1 = 18;
 	h1 = 18;
-	//-- Carcaza Boton
-	//RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
+
 	//-- Config
 	if(pCheckMouseOver( x1, y1, w1, h1 ))
 	{
@@ -709,7 +491,7 @@ void Interface::DrawMiniMap()
 					pSetCursorFocus = true;
 				}else{
 					gInterface.Data[eMenu_MAIN].OnShow = false;
-					pSetCursorFocus = false;
+					pSetCursorFocus = true;
 				}
 				gRenderMap.DataMap.TimerEventVK = GetTickCount();
 			}	
@@ -731,43 +513,6 @@ void Interface::DrawMiniMap()
 		}
 	}
 	}
-
-	// -- Boton Config Helper
-	// x1 = InitialX + 75; //Minimapa v2
-	// y1 = InitialY + 54; //Minimapa v2
-	// w1 = 18;
-	// h1 = 18;
-	// //-- Carcaza Boton
-	// //RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
-
-	// if(pCheckMouseOver( x1, y1, w1, h1 ))
-	// {
-	// 	this->DrawToolTip(v11 + 26, v10 - 20, "Config Helper");
-	// 	if( *(BYTE*)0x8793386 )
-	// 	{
-	// 		PlayBuffer(25, 0, 0);
-	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 		if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
-	// 		{
-	// 			gInterface.OpenWindow(MuHelper);
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
-	// 	}
-	// }
-	// else
-	// {
-	// 	if(gInterface.CheckWindow(ObjWindow::MuHelper))
-	// 	{
-	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
-	// 	}
-	// 	else
-	// 	{
-	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.55680031852, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 	}
-	// }
 
 	//-- Boton 3D
 	x1 = InitialX - 4; //Minimapa v2
@@ -808,63 +553,34 @@ void Interface::DrawMiniMap()
 	}
 
 	// -- Boton Full Map
-	// x1 = InitialX + 66; //Minimapa v2
-	// y1 = InitialY + 68; //Minimapa v2
-	// w1 = 18;
-	// h1 = 18;
-	// //-- Carcaza Boton
-	// //RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
-	// if(pCheckMouseOver( x1, y1, w1, h1 ))
-	// {
-	// 	this->DrawToolTip(v11 + 26, v10 - 20, "Bản đồ lớn [TAB]");
-	// 	if( *(BYTE*)0x8793386 )
-	// 	{
-	// 		PlayBuffer(25, 0, 0);
-	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 		if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
-	// 		{
-	// 			gInterface.OpenWindow(FullMap);
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
-	// 	}
-	// }
-	// else
-	// {
-	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
-	// }
-
-	// -- Boton Armadura (Character)
-	// x1 = InitialX + 75; //Minimapa v2 (Original)
-	// y1 = InitialY + 10; //Minimapa v2 (Original)
-	// w1 = 18;
-	// h1 = 18;
-	// //-- Carcaza Boton
-	// //RenderBitmap(31463, x1 - 4, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
-
-	// if(pCheckMouseOver( x1, y1, w1, h1 ))
-	// {
-	// 	this->DrawToolTip(v11 + 26, v10 - 20, "Character Status");
-	// 	if( *(BYTE*)0x8793386 )
-	// 	{
-	// 		PlayBuffer(25, 0, 0);
-	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.80720075948, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 		if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
-	// 		{
-	// 		gInterface.OpenWindow(Character);
-	// 		}	
-	// 	}
-	// 	else
-	// 	{
-	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.80720075948, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 	}
-	// }
-	// else
-	// {
-	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.80720075948, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// }
+	x1 = InitialX - 5; //Minimapa v2
+	y1 = InitialY + 67; //Minimapa v2
+	w1 = 18;
+	h1 = 18;
+	//-- Carcaza Boton
+	//RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
+	if(pCheckMouseOver( x1, y1, w1, h1 ))
+	{
+		this->DrawToolTip(v11 + 26, v10 - 20, "Bản đồ lớn [TAB]");
+		if( *(BYTE*)0x8793386 )
+		{
+			PlayBuffer(25, 0, 0);
+			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+			if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
+			{
+				gInterface.OpenWindow(FullMap);
+				pSetCursorFocus = true;
+			}
+		}
+		else
+		{
+			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
+		}
+	}
+	else
+	{
+		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
+	}
 
 	//-- Boton Config(Opciones del juego)
 	x1 = InitialX + 66; //Minimapa v2

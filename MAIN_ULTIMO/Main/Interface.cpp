@@ -3513,7 +3513,7 @@ void Interface::UPDATE_FPS()
 	}
 
 	//	pDrawInterfaceNumBer(630, 5, gInterface.frameRate, 0.5);
-	this->DrawFormat(eExcellent, 600, 2, 80, 1, gInterface.FPS_REAL);
+	this->DrawFormat(eMonitor, 600, 2, 80, 1, gInterface.FPS_REAL);
 }
 
 void Interface::guiMonitore()
@@ -3595,8 +3595,8 @@ void Interface::SendPingRecv()
 	if (gInterface.msPing > 0)
 	{
 		//----
-		this->DrawFormat(eExcellent, 500, 2, 50, 1, gInterface.ServerRTT);
-		this->DrawFormat(eExcellent, 550, 2, 50, 1, gInterface.ServerPing);
+		this->DrawFormat(eMonitor, 500, 2, 50, 1, gInterface.ServerRTT);
+		this->DrawFormat(eMonitor, 550, 2, 50, 1, gInterface.ServerPing);
 		//--
 		sprintf(gInterface.ultimoRTT, gInterface.ServerRTT);
 		sprintf(gInterface.ultimoPing, gInterface.ServerPing);
@@ -3609,13 +3609,13 @@ void Interface::SendPingRecv()
 	{
 		if (gInterface.ultimo_RTT > 0)
 		{
-			this->DrawFormat(eExcellent, 500, 2, 50, 1, gInterface.ultimoRTT);
-			this->DrawFormat(eExcellent, 550, 2, 50, 1, gInterface.ultimoPing);
+			this->DrawFormat(eMonitor, 500, 2, 50, 1, gInterface.ultimoRTT);
+			this->DrawFormat(eMonitor, 550, 2, 50, 1, gInterface.ultimoPing);
 		}
 		else
 		{
-			this->DrawFormat(eExcellent, 500, 2, 50, 1, gInterface.ServerRTT);
-			this->DrawFormat(eExcellent, 550, 2, 50, 1, gInterface.ServerPing);
+			this->DrawFormat(eMonitor, 500, 2, 50, 1, gInterface.ServerRTT);
+			this->DrawFormat(eMonitor, 550, 2, 50, 1, gInterface.ServerPing);
 		}
 	}
 }
