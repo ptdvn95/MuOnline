@@ -29,8 +29,8 @@ CMinimap::CMinimap()
 	//this->DataMap.YSW_Minimap = 14; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
 	//this->DataMap.XSW_Minimap = 463; //-- MiniMapX (Mover Minimapa Izquierda o Derecha)
 	//this->DataMap.YSW_Minimap = 8; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
-	this->DataMap.XSW_Minimap = 539.0; //-- MiniMapX (Mover Minimapa Izquierda o Derecha)
-	this->DataMap.YSW_Minimap = 8.0; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
+	this->DataMap.XSW_Minimap = 535.0; //-- MiniMapX (Mover Minimapa Izquierda o Derecha)
+	this->DataMap.YSW_Minimap = 310.0; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
 	this->DataMap.XSW_Time_Frame = 0.0; //-- Time_FrameX
 	this->DataMap.YSW_Time_Frame = 0.0; //-- Time_FrameY
 	this->DataMap.This_92 = 0.0;
@@ -45,8 +45,8 @@ CMinimap::CMinimap()
 	this->DataMap.TimerEventVK = 0; //-- Scale
 	this->DataMap.Alpha = 1.0f; //-- Alpha
     this->Moving = false;
-    this->ultimoX = 539;//Example of initial coordinate {X}. Coordinate that will be constantly modified.
-    this->ultimoY = 8;//Example of initial coordinate {Y}. Coordinate that will be constantly modified.
+    this->ultimoX = 535.0;//Example of initial coordinate {X}. Coordinate that will be constantly modified.
+    this->ultimoY = 310.0;//Example of initial coordinate {Y}. Coordinate that will be constantly modified.
 }
 
 CMinimap::~CMinimap()
@@ -563,7 +563,7 @@ void Interface::DrawMiniMap()
 
 	//-- Carcasa Mapa
 	//RenderBitmap(31465, InitialX - 10, InitialY - 9, 100, 100, 0.01299999747, 0.02999999747, 0.3105553985, 0.6109998822, 1, 1, 0.0); //Minimapa v2 Marco Negro
-	RenderBitmap(31464, InitialX - 9, InitialY - 9, 100, 100, 0.3699999452, 0.0625, 0.5779999495, 0.2889999151, 1, 1, 0.0); //Minimapa v2 Circulo Azul
+	// RenderBitmap(31464, InitialX - 9, InitialY - 9, 100, 100, 0.3699999452, 0.0625, 0.5779999495, 0.2889999151, 1, 1, 0.0); //Minimapa v2 Circulo Azul
 	RenderBitmap(31463, InitialX - 9, InitialY - 9, 100, 100, 0.3599999452, 0.0625, 0.5779999495, 0.2889999151, 1, 1, 0.0); //Minimapa v2 Marco Dorado
 	if(TimerBar != 0)
 	{
@@ -684,46 +684,55 @@ void Interface::DrawMiniMap()
 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, !*(BYTE*)(*(DWORD*)(0x00E8CB7C) + 0x08) ? 0.3689999878 : 0.5570000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
 	}*/
 
-	// if (gProtect.m_MainInfo.CustomMenuSwitch != 0)
-	// {
-	// //-- Boton Especial Menu
-	// x1 = InitialX + 81; //Minimapa v2 (original)
-	// y1 = InitialY + 32; //Minimapa v2 (original)
-	// w1 = 18;
-	// h1 = 18;
-	// //-- Carcaza Boton
-	// //RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
-	// //-- Config
-	// if(pCheckMouseOver( x1, y1, w1, h1 ))
-	// {
-	// 	gInterface.DrawToolTip(v11 + 26, v10 - 20, "Especial Menu");
-	// 	if( *(BYTE*)0x8793386 )
-	// 	{
-	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 		if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
-	// 		{
-	// 		gInterface.Data[eMenu_MAIN].OnShow = true;
-	// 		}	
-	// 	}
-	// 	else
-	// 	{
-	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
-	// 	}
-	// }
-	// else
-	// {
-	// 	if (gInterface.Data[eMenu_MAIN].OnShow)
-	// 	{
-	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 	}
-	// 	else
-	// 	{
-	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 	}
-	// }
-	// }
+	if (gProtect.m_MainInfo.CustomMenuSwitch != 0)
+	{
+	//-- Boton Especial Menu
+	x1 = InitialX + 66; //Minimapa v2
+	y1 = InitialY + 68; //Minimapa v2
+	w1 = 18;
+	h1 = 18;
+	//-- Carcaza Boton
+	//RenderBitmap(31463, x1 - 3, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
+	//-- Config
+	if(pCheckMouseOver( x1, y1, w1, h1 ))
+	{
+		gInterface.DrawToolTip(v11 + 26, v10 - 20, "Especial Menu");
+		if( *(BYTE*)0x8793386 )
+		{
+			PlayBuffer(25, 0, 0);
+			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+			if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
+			{
+				if(!gInterface.Data[eMenu_MAIN].OnShow){
+					gInterface.CloseAllWindows();
+					gInterface.Data[eMenu_MAIN].OnShow = true;
+					pSetCursorFocus = true;
+				}else{
+					gInterface.Data[eMenu_MAIN].OnShow = false;
+					pSetCursorFocus = false;
+				}
+				gRenderMap.DataMap.TimerEventVK = GetTickCount();
+			}	
+		}
+		else
+		{
+			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
+		}
+	}
+	else
+	{
+		if (gInterface.Data[eMenu_MAIN].OnShow)
+		{
+		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+		}
+		else
+		{
+		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.682000539, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+		}
+	}
+	}
 
-	//-- Boton Config Helper
+	// -- Boton Config Helper
 	// x1 = InitialX + 75; //Minimapa v2
 	// y1 = InitialY + 54; //Minimapa v2
 	// w1 = 18;
@@ -798,7 +807,7 @@ void Interface::DrawMiniMap()
 		}
 	}
 
-	//-- Boton Full Map
+	// -- Boton Full Map
 	// x1 = InitialX + 66; //Minimapa v2
 	// y1 = InitialY + 68; //Minimapa v2
 	// w1 = 18;
@@ -827,7 +836,7 @@ void Interface::DrawMiniMap()
 	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.49420020828, 0.1219998896, 0.06599189341, 1, 1, 0.0); 
 	// }
 
-	//-- Boton Armadura (Character)
+	// -- Boton Armadura (Character)
 	// x1 = InitialX + 75; //Minimapa v2 (Original)
 	// y1 = InitialY + 10; //Minimapa v2 (Original)
 	// w1 = 18;
@@ -858,42 +867,43 @@ void Interface::DrawMiniMap()
 	// }
 
 	//-- Boton Config(Opciones del juego)
-	// x1 = InitialX + 66; //Minimapa v2
-	// y1 = InitialY - 3; //Minimapa v2
-	// w1 = 18;
-	// h1 = 18;
-	// //-- Carcaza Boton
-	// //RenderBitmap(31463, x1 - 4, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
+	x1 = InitialX + 66; //Minimapa v2
+	y1 = InitialY - 3; //Minimapa v2
+	w1 = 18;
+	h1 = 18;
+	//-- Carcaza Boton
+	//RenderBitmap(31463, x1 - 4, y1 - 5, 26, 26, 0.8360000253, 0.4990000129, 0.1519999206, 0.073999919, 1, 1, 0.0); //Circulo
 
-	// if(pCheckMouseOver( x1, y1, w1, h1 ))	
-	// {
-	// 	this->DrawToolTip(v11 + 26, v10 - 20, "System Option");
-	// 	if( *(BYTE*)0x8793386 )
-	// 	{
-	// 		PlayBuffer(25, 0, 0);
-	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 		if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
-	// 		{
-	// 			gInterface.OpenConfig(0);
-	// 			gRenderMap.DataMap.TimerEventVK = GetTickCount();
-	// 		}		
-	// 	}
-	// 	else
-	// 	{
-	// 		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 	}
-	// }
-	// else
-	// {
-	// 	if (gInterface.CheckWindow(ObjWindow::Options))
-	// 	{
-	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 	}
-	// 	else
-	// 	{
-	// 	RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
-	// 	}
-	// }
+	if(pCheckMouseOver( x1, y1, w1, h1 ))	
+	{
+		this->DrawToolTip(v11 + 26, v10 - 20, "System Option");
+		if( *(BYTE*)0x8793386 )
+		{
+			PlayBuffer(25, 0, 0);
+			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.2499999553, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+			if( GetTickCount() >= gRenderMap.DataMap.TimerEventVK + 200 )
+			{
+				gInterface.OpenConfig(0);
+				gRenderMap.DataMap.TimerEventVK = GetTickCount();
+				pSetCursorFocus = true;
+			}		
+		}
+		else
+		{
+			RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+		}
+	}
+	else
+	{
+		if (gInterface.CheckWindow(ObjWindow::Options))
+		{
+		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.1239999682, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+		}
+		else
+		{
+		RenderBitmap(31463, x1, y1, 18.29999924, 18.29999924, 0.0, 0.93240097996, 0.1219998896, 0.06599189341, 1, 1, 0.0);
+		}
+	}
 
 	//-- Boton Camara Reset
 	x1 = InitialX - 12; //Minimapa v2
