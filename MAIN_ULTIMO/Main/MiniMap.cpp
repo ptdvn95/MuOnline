@@ -361,8 +361,8 @@ void Interface::DrawMiniMap()
 
 	DataMapLoad();
 
-	v8 = (double) (( Type == 1 ) ? 0.18f : (( Type == 2 ) ? 0.5f : 1.0));
-	v9 = (double) (( Type == 1 ) ? 0.18f : (( Type == 2 ) ? 0.5f : 1.0));
+	v8 = (double) (( Type == 1 ) ? 0.18f : (( Type == 2 ) ? 0.36f : 0.72));
+	v9 = (double) (( Type == 1 ) ? 0.18f : (( Type == 2 ) ? 0.36f : 0.72));
 
 	v10 = (double) gRenderMap.DataMap.YSW_Minimap + 10;
 	v11 = (double) gRenderMap.DataMap.XSW_Minimap;
