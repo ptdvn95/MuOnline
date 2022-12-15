@@ -176,6 +176,7 @@ void InitCommon() // OK
 	SetCompleteHook(0xE9, 0x0082A983, 0x0082A9F3); //-- Fix Dupe
 	// SetCompleteHook(0xE8,0x007D2B0C,&FixHelperMouseClick); // Fix Dupe
 	// SetCompleteHook(0xE8,0x007C32F9,&FixHelperMouseClick); // S8
+	SetFloat(0xD477AC,0.0); //Fix ItemStack in Itemtoolip/Shop   
 
 	Encoger = GetPrivateProfileIntA("Setting", "Encoger", 0, "./Settings.ini");
 
@@ -297,7 +298,7 @@ void InitCommon() // OK
 			SetByte(0x00507AFD, 0xEB); //[0-9A-Za-z] Guild
 			SetByte((0x00507AEA + 1), 0x72); //[0-9A-Za-z] Name
 
-	//		SetByte((0x00958D56 + 0x3), 0x04); // message limit
+			SetByte((0x00958D56 + 0x3), 0x04); // message limit
 	
 
 	gChatExpanded.m_separate = SeparateChat;

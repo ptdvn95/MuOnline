@@ -109,6 +109,24 @@ __declspec(naked) void FixAttackSpeed()
 				STR_SPEED = 1368;
 			}
 		}
+		if( gObjUser.MagickAttack == 56 ||
+         	gObjUser.MagickAttack == 482)
+      	{
+			if(STR_SPEED > 801)
+			{
+				STR_SPEED = 801;
+			}
+   		}
+		if( gObjUser.MagickAttack == 262 ||
+			gObjUser.MagickAttack == 558 ||
+			gObjUser.MagickAttack == 264 ||
+			gObjUser.MagickAttack == 560)
+		{
+			if (STR_SPEED > 5002)
+			{
+				STR_SPEED = 5002;
+			}
+		}
 		if( gObjUser.MagickAttack == 9 ||
 			gObjUser.MagickAttack == 8	||
 			gObjUser.MagickAttack == 13	||
@@ -140,6 +158,16 @@ __declspec(naked) void FixAttackSpeed()
 			if(MAG_SPEED > 3276)
 			{
 				MAG_SPEED = 3276;
+			}
+		}
+		if (gObjUser.MagickAttack == 262 ||
+			gObjUser.MagickAttack == 558 ||
+			gObjUser.MagickAttack == 264 ||
+			gObjUser.MagickAttack == 560)
+		{
+			if (STR_SPEED > 5002)
+			{
+				STR_SPEED = 5002;
 			}
 		}
 	}
@@ -226,6 +254,8 @@ __declspec(naked) void FixAttackSpeed2()
 
 void InitAttackSpeed()
 {
+	SetByte(0x00649E24 + 3, 14);   //-> Test 1
+   	SetByte(0x00556C32 + 6, 2);   //-> Test 2
 	SetOp((LPVOID)0x005509CE, (LPVOID)FixAttackSpeed, ASM::JMP);
 	SetOp((LPVOID)0x00551573, (LPVOID)FixAttackSpeed2, ASM::JMP);
 }
