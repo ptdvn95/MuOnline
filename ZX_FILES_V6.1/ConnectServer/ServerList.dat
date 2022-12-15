@@ -1,0 +1,5 @@
+//ServerCode	ServerName	ServerAddress		ServerPort	ServerType
+0		"MUMexico"	"169.254.7.44"		55901		"SHOW"
+1		"MUMexico2"	"169.254.7.44"		55902		"SHOW"
+19		"MUMexicoCS"	"169.254.7.44"		55919		"HIDE"
+end
