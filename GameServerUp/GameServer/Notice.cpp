@@ -73,7 +73,12 @@ void CNotice::Load(char* path) // OK
 
 			info.Delay = lpMemScript->GetAsNumber();
 
-			info.Color = RGB(lpMemScript->GetAsNumber(),lpMemScript->GetAsNumber(),lpMemScript->GetAsNumber());
+			// info.Color = RGB(lpMemScript->GetAsNumber(),lpMemScript->GetAsNumber(),lpMemScript->GetAsNumber());
+			info.Color = 0;
+			info.Color |= lpMemScript->GetAsNumber();
+			info.Color |= (lpMemScript->GetAsNumber() << 8);
+			info.Color |= (lpMemScript->GetAsNumber() << 16);
+			info.Color |= (info.Opacity << 24);
 
 			info.Speed = lpMemScript->GetAsNumber();
 

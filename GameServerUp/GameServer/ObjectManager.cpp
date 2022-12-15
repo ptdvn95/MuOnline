@@ -741,7 +741,8 @@ bool CObjectManager::CharacterGameClose(int aIndex) // OK
 		}
 		else
 		{
-			gObjInventoryRollback(aIndex);
+			//-- fix chaos dupe -> prevent player from rollback item
+			// gObjInventoryRollback(aIndex);
 		}
 	}
 
