@@ -68,6 +68,7 @@ bool IsCustomWings(WORD ItemID, bool Preview);
 bool IsCustomItem(WORD ItemID, bool Preview);
 void SetItemEffect();
 void SetColorEffect();
+int PreviewCharSetChangeUp(lpViewObj lpObj);
 
 class cItem
 {

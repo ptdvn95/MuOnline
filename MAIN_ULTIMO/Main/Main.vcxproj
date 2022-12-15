@@ -108,6 +108,7 @@
     <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="CSCharacterS13.h" />
     <ClInclude Include="CSmithItem.h" />
+    <ClInclude Include="CUIMng.h" />
     <ClInclude Include="CustomBow.h" />
     <ClInclude Include="CustomBuyVip.h" />
     <ClInclude Include="CustomCloak.h" />
@@ -250,6 +251,7 @@
     <ClCompile Include="CriticalSection.cpp" />
     <ClCompile Include="CSCharacterS13.cpp" />
     <ClCompile Include="CSmithItem.cpp" />
+    <ClCompile Include="CUIMng.cpp" />
     <ClCompile Include="CustomBow.cpp" />
     <ClCompile Include="CustomBuyVip.cpp" />
     <ClCompile Include="CustomCloak.cpp" />

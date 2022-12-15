@@ -693,6 +693,9 @@
     <ClInclude Include="HWID.h">
       <Filter>Source Files\Main\Hwid</Filter>
     </ClInclude>
+    <ClInclude Include="CUIMng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1069,6 +1072,9 @@
     </ClCompile>
     <ClCompile Include="HWID.cpp">
       <Filter>Source Files\Main\Hwid</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIMng.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

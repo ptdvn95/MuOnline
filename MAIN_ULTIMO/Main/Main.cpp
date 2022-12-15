@@ -89,6 +89,8 @@
 #include "proah..h"
 #include "SceneCreate.h"
 
+#include "CUIMng.h"
+
 HINSTANCE hins;
 
 void StartAddress(LPVOID lpThreadParameter)
@@ -187,6 +189,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 
 //	gInfoLog.Load();
+	gCUIMng.Load();
 	SetByte(0x00E61144,0xA0); // Accent
 	SetByte(0x004D1E69,0xEB); // Crack (mu.exe)
 	SetByte(0x004D228D,0xE9); // Crack (GameGuard)

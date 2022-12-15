@@ -213,6 +213,10 @@
 #define pPlayStaticEffect		((int(__cdecl*)(DWORD ModelID, DWORD * Arg1, float Scale, float * Color, int Model, float a6, int a7)) 0x771310)
 #define pPlayDynamicEffect		((int(__cdecl*)(DWORD ModelID, DWORD * Arg1, int Arg2, float * Color, int Arg4, float Arg5, int Arg6)) 0x74CD30)
 
+#define pSetPlayerStop			((int(__cdecl*)(lpViewObj lpObj)) 0x0054EA80)
+#define SetCharacterScale		((int(__cdecl*)(int index)) 0x0057F020)
+#define pGetClassModel			((char(__cdecl*)(BYTE))0x00587500)
+
 #define pItemBmdStruct			*(ItemBmdStruct*)0x8128AC0
 #define pGetItemBmdStruct(ItemId)	(ItemBmdStruct*)(*(DWORD*)0x8128AC0 + sizeof(ItemBmdStruct) * ItemId)
 
