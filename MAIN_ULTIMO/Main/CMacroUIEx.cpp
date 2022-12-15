@@ -524,41 +524,41 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 		}
 	}
 //=======================================================
-	DWORD Color;
-	if (gProtect.m_MainInfo.CustomMenuSwitch != 0)
-	{
-		// Positioning button
-		pDrawButton(30983, 146 + 37.2, 0.0, 36, 18, 0, 0);
-		// Render button
-		gInterface.DrawButtonRender(eMenu, 146 + 37.2, Y + 1.0 , 0, 0.0f);
+	// DWORD Color;
+	// if (gProtect.m_MainInfo.CustomMenuSwitch != 0)
+	// {
+	// 	// Positioning button
+	// 	pDrawButton(30983, 146 + 37.2, 0.0, 36, 18, 0, 0);
+	// 	// Render button
+	// 	gInterface.DrawButtonRender(eMenu, 146 + 37.2, Y + 1.0 , 0, 0.0f);
 
-		if (gInterface.IsWorkZone(eMenu))
-		{
-			if (Menu == 1)
-			{
-				gInterface.DrawToolTip(146 + 37.2, 40, "Custom Menu");
-			}
-			else
-			{
-				gInterface.DrawToolTip(146 + 37.2, 40, "Disable");
-			}
-			// ----
-			if (gInterface.Data[eMenu].OnClick)
-			{
-				Color = eGray150;
+	// 	if (gInterface.IsWorkZone(eMenu))
+	// 	{
+	// 		if (Menu == 1)
+	// 		{
+	// 			gInterface.DrawToolTip(146 + 37.2, 40, "Custom Menu");
+	// 		}
+	// 		else
+	// 		{
+	// 			gInterface.DrawToolTip(146 + 37.2, 40, "Disable");
+	// 		}
+	// 		// ----
+	// 		if (gInterface.Data[eMenu].OnClick)
+	// 		{
+	// 			Color = eGray150;
 
-				gInterface.DrawColoredGUI(eMenu, 146 + 37.2, Y + 1.0, Color);
-			}
-			else
-			{
-				gInterface.DrawButtonRender(eMenu, 146 + 37.2, Y + 1.0 , 0, 0.0f);
-			}
-		}
-		else
-		{
-			gInterface.DrawButtonRender(eMenu, 146 + 37.2, Y + 1.0 , 0, 0.0f);
-		}
-	}
+	// 			gInterface.DrawColoredGUI(eMenu, 146 + 37.2, Y + 1.0, Color);
+	// 		}
+	// 		else
+	// 		{
+	// 			gInterface.DrawButtonRender(eMenu, 146 + 37.2, Y + 1.0 , 0, 0.0f);
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		gInterface.DrawButtonRender(eMenu, 146 + 37.2, Y + 1.0 , 0, 0.0f);
+	// 	}
+	// }
 }
 
 __declspec(naked) void MuHelperRemake2_01()  //<- ConfigHelper
@@ -1315,10 +1315,10 @@ void CMacroUIEx::Load()
 		}
 		else
 		{
-			// SetCompleteHook(0xE9, 0x007D26B5, &MuHelperRemake2_01);
-			// SetCompleteHook(0xE9, 0x007D2751, &MuHelperRemake2_02);
-			// SetCompleteHook(0xE9, 0x007D27FC, &MuHelperRemake2_03);
-			// SetCompleteHook(0xE9, 0x007D2BC0, this->RenderHelperFrame);
+			SetCompleteHook(0xE9, 0x007D26B5, &MuHelperRemake2_01);
+			SetCompleteHook(0xE9, 0x007D2751, &MuHelperRemake2_02);
+			SetCompleteHook(0xE9, 0x007D27FC, &MuHelperRemake2_03);
+			SetCompleteHook(0xE9, 0x007D2BC0, this->RenderHelperFrame);
 		}
 	}
 }
