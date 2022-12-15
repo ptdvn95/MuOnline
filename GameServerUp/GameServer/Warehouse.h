@@ -29,6 +29,14 @@ struct PMSG_WAREHOUSE_PASSWORD_RECV
 	char PersonalCode[10];
 };
 
+struct SDHP_WAREHOUSE_GUILD_STATUS_UPDATE_SEND
+{
+	PSBMSG_HEAD header; // C1:05:00
+	WORD index;
+	char Name[9];
+	int Status;
+};
+
 //**********************************************//
 //************ GameServer -> Client ************//
 //**********************************************//
@@ -66,6 +74,20 @@ struct SDHP_WAREHOUSE_FREE_RECV
 	PSBMSG_HEAD header; // C1:05:01
 	WORD index;
 	char account[11];
+};
+
+struct SDHP_WAREHOUSE_GUILD_STATUS_RECV
+{
+	PSBMSG_HEAD header; // C1:05:00
+	WORD index;
+	int Status;
+};
+
+struct SDHP_WAREHOUSE_GUILD_STATUS_SEND
+{
+	PSBMSG_HEAD header; // C1:05:00
+	WORD index;
+	char Name[9];
 };
 
 //**********************************************//
@@ -115,6 +137,8 @@ public:
 	void DGWarehouseGuildFreeRecv(SDHP_WAREHOUSE_FREE_RECV* lpMsg);
 	void GDWarehouseGuildItemSend(int aIndex,char* account);
 	void GDWarehouseGuildItemSaveSend(int aIndex);
+	void GDWarehouseGuildConsult(int aIndex, char* account); // OK
+	void DGWarehouseGuildOpenRecv(SDHP_WAREHOUSE_GUILD_STATUS_RECV* lpMsg); // OK
 };
 
 extern CWarehouse gWarehouse;

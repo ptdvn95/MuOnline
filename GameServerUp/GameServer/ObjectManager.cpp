@@ -93,6 +93,9 @@
 #include "MonsterCoins.h"
 #include "WindowsQuest.h"
 #include "InvokerHelper.h"
+#include "Warehouse.h"
+#include "GuildClass.h"
+#include "GameMain.h"
 
 CObjectManager gObjectManager;
 //////////////////////////////////////////////////////////////////////
