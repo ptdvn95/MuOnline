@@ -10,6 +10,7 @@ void InitCommon();
 BOOL CheckIsLuckyItem(int ItemID);
 BOOL CheckGensBattleMap(int map);
 BOOL CheckGensMoveIndex(int idx);
+char FixHelperMouseClick(int a1);
 void LoginTab();
 void CheckMasterLevel();
 void CompareGensMoveIndex();

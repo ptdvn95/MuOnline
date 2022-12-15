@@ -1316,6 +1316,12 @@ void CDuel::CGDuelOkRecv(PMSG_DUEL_OK_RECV* lpMsg,int aIndex) // OK
 {
 	LPOBJ lpObj = &gObj[aIndex];
 
+	if (lpObj->Interface.type == INTERFACE_CHAOS_BOX || lpObj->Interface.type == INTERFACE_TRADE || lpObj->Interface.type == INTERFACE_PERSONAL_SHOP)
+	{
+		gNotice.GCNoticeSend(aIndex,1,0,0,0,0,0,"Hành động bất hợp lệ.");
+		return ;
+	}
+
 	if(gObjIsConnectedGP(aIndex) == 0)
 	{
 		return;
@@ -1329,6 +1335,12 @@ void CDuel::CGDuelOkRecv(PMSG_DUEL_OK_RECV* lpMsg,int aIndex) // OK
 	}
 
 	LPOBJ lpTarget = &gObj[bIndex];
+
+	if (lpTarget->Interface.type == INTERFACE_CHAOS_BOX || lpTarget->Interface.type == INTERFACE_TRADE || lpTarget->Interface.type == INTERFACE_PERSONAL_SHOP)
+	{
+		gNotice.GCNoticeSend(bIndex,1,0,0,0,0,0,"Hành động bất hợp lệ.");
+		return ;
+	}
 
 	if(lpMsg->flag == 0)
 	{
@@ -1454,6 +1466,12 @@ void CDuel::CGDuelOkRecv(PMSG_DUEL_OK_RECV* lpMsg, int aIndex) // OK
 {
 	LPOBJ lpObj = &gObj[aIndex];
 
+	if (lpObj->Interface.type == INTERFACE_CHAOS_BOX || lpObj->Interface.type == INTERFACE_TRADE || lpObj->Interface.type == INTERFACE_PERSONAL_SHOP)
+	{
+		gNotice.GCNoticeSend(aIndex,1,0,0,0,0,0,"Hành động bất hợp lệ.");
+		return ;
+	}
+
 	if (gObjIsConnectedGP(aIndex) == 0)
 	{
 		return;
@@ -1467,6 +1485,12 @@ void CDuel::CGDuelOkRecv(PMSG_DUEL_OK_RECV* lpMsg, int aIndex) // OK
 	}
 
 	LPOBJ lpTarget = &gObj[bIndex];
+
+	if (lpTarget->Interface.type == INTERFACE_CHAOS_BOX || lpTarget->Interface.type == INTERFACE_TRADE || lpTarget->Interface.type == INTERFACE_PERSONAL_SHOP)
+		{
+			gNotice.GCNoticeSend(bIndex,1,0,0,0,0,0,"Hành động bất hợp lệ.");
+			return ;
+		}
 
 	if (lpMsg->flag == 0)
 	{
@@ -2467,8 +2491,8 @@ void CDuel::CGDueloDespuesDelTrade(LPOBJ lpObj, LPOBJ lpTarget)
 
 void CDuel::CGTradeAntesDelDuelo(LPOBJ lpObj, LPOBJ lpTarget)
 {
-	gNotice.GCNoticeSend(lpObj->Index, 0, 0, 0, 0, 0, 0, "Si deseas apostar alg�n item en el duelo, ingresalo ahora. Si no, cancela el trade");
-	gNotice.GCNoticeSend(lpTarget->Index, 0, 0, 0, 0, 0, 0, "Si deseas apostar alg�n item en el duelo, ingresalo ahora. Si no, cancela el trade");
+	gNotice.GCNoticeSend(lpObj->Index, 0, 0, 0, 0, 0, 0, "If you want to bet any item in the duel, enter it now. If not, cancel the trade");
+	gNotice.GCNoticeSend(lpTarget->Index, 0, 0, 0, 0, 0, 0, "If you want to bet any item in the duel, enter it now. If not, cancel the trade");
 	lpObj->DueloEspecial = 1;
 	lpTarget->DueloEspecial = 1;
 	lpObj->Interface.use = 1;
@@ -2519,6 +2543,12 @@ void CDuel::CGDuelOkRecvCUSTOM(PMSG_DUEL_OK_RECV_CUSTOM* lpMsg, int aIndex) // O
 {
 	LPOBJ lpObj = &gObj[aIndex];
 
+	if (lpObj->Interface.type == INTERFACE_CHAOS_BOX || lpObj->Interface.type == INTERFACE_TRADE || lpObj->Interface.type == INTERFACE_PERSONAL_SHOP)
+	{
+		gNotice.GCNoticeSend(aIndex,1,0,0,0,0,0,"Hành động bất hợp lệ.");
+		return ;
+	}
+
 	if (gObjIsConnectedGP(aIndex) == 0)
 	{
 		return;
@@ -2526,12 +2556,17 @@ void CDuel::CGDuelOkRecvCUSTOM(PMSG_DUEL_OK_RECV_CUSTOM* lpMsg, int aIndex) // O
 
 	int bIndex = MAKE_NUMBERW(lpMsg->index[0], lpMsg->index[1]);
 
-
 	if (gObjIsConnectedGP(bIndex) == 0)
 	{
 		return;
 	}
 	LPOBJ lpTarget = &gObj[bIndex];
+
+	if (lpTarget->Interface.type == INTERFACE_CHAOS_BOX || lpTarget->Interface.type == INTERFACE_TRADE || lpTarget->Interface.type == INTERFACE_PERSONAL_SHOP)
+	{
+		gNotice.GCNoticeSend(bIndex,1,0,0,0,0,0,"Hành động bất hợp lệ.");
+		return ;
+	}
 
 	if (lpMsg->flag == 0)
 	{

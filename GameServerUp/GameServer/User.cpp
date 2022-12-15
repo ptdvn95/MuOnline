@@ -2218,12 +2218,15 @@ void gObjInterfaceCheckTime(LPOBJ lpObj) // OK
 		{
 			if(OBJECT_RANGE(lpObj->TargetNumber) != 0)
 			{
-				gObj[lpObj->TargetNumber].Interface.use = 0;
-				gObj[lpObj->TargetNumber].Interface.type = INTERFACE_NONE;
-				gObj[lpObj->TargetNumber].Interface.state = 0;
-				gObj[lpObj->TargetNumber].TargetNumber = -1;
+				if (gObj[lpObj->TargetNumber].Interface.type == INTERFACE_TRADE)
+				{
+					gObj[lpObj->TargetNumber].Interface.use = 0;
+					gObj[lpObj->TargetNumber].Interface.type = INTERFACE_NONE;
+					gObj[lpObj->TargetNumber].Interface.state = 0;
+					gObj[lpObj->TargetNumber].TargetNumber = -1;
 
-				gTrade.GCTradeResultSend(lpObj->TargetNumber,3);
+					gTrade.GCTradeResultSend(lpObj->TargetNumber,3);
+				}
 			}
 
 			lpObj->Interface.use = 0;
@@ -2241,13 +2244,16 @@ void gObjInterfaceCheckTime(LPOBJ lpObj) // OK
 		{
 			if(OBJECT_RANGE(lpObj->TargetNumber) != 0)
 			{
-				gObj[lpObj->TargetNumber].Interface.use = 0;
-				gObj[lpObj->TargetNumber].Interface.type = INTERFACE_NONE;
-				gObj[lpObj->TargetNumber].Interface.state = 0;
-				gObj[lpObj->TargetNumber].TargetNumber = -1;
-				gObj[lpObj->TargetNumber].PartyTargetUser = -1;
+				if (gObj[lpObj->TargetNumber]. Interface.type == INTERFACE_PARTY)
+				{
+					gObj[lpObj->TargetNumber].Interface.use = 0;
+					gObj[lpObj->TargetNumber].Interface.type = INTERFACE_NONE;
+					gObj[lpObj->TargetNumber].Interface.state = 0;
+					gObj[lpObj->TargetNumber].TargetNumber = -1;
+					gObj[lpObj->TargetNumber].PartyTargetUser = -1;
 
-				gParty.GCPartyResultSend(lpObj->TargetNumber,0);
+					gParty.GCPartyResultSend(lpObj->TargetNumber,0);
+				}
 			}
 
 			lpObj->Interface.use = 0;

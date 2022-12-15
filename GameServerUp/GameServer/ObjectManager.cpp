@@ -736,11 +736,12 @@ bool CObjectManager::CharacterGameClose(int aIndex) // OK
 		{
 			gChaosBox.ChaosBoxItemSave(lpObj);
 		}
-		//-- fix chaos dupe -> prevent player from rollback item
-		// else
-		// {
-		// 	gObjInventoryRollback(aIndex);
-		// }
+		//-- fix chaos dupe -> prevent player from rollback item in chaos mix window -> comment these line xD
+		else
+		{
+			gObjInventoryRollback(aIndex);
+		}
+		//-- fix chaos dupe -> prevent player from rollback item in chaos mix window -> comment these line xD
 	}
 
 	if (OBJECT_RANGE(lpObj->TargetNumber) != 0)

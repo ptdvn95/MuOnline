@@ -173,6 +173,9 @@ void InitCommon() // OK
 
 	SetCompleteHook(0xE9,0x008317BD,&CompareGensMoveIndex);
 
+	SetCompleteHook(0xE9, 0x0082A983, 0x0082A9F3); //-- Fix Dupe
+	// SetCompleteHook(0xE8,0x007D2B0C,&FixHelperMouseClick); // Fix Dupe
+	// SetCompleteHook(0xE8,0x007C32F9,&FixHelperMouseClick); // S8
 
 	Encoger = GetPrivateProfileIntA("Setting", "Encoger", 0, "./Settings.ini");
 
@@ -365,6 +368,12 @@ BOOL CheckGensMoveIndex(int idx) // OK
 	}
 
 	return 0;
+}
+
+char FixHelperMouseClick(int a1)
+{
+	if(gInterface.CheckWindow(ChaosBox)|| gInterface.CheckWindow(Warehouse)) {return 0;}
+	return pHelperMouseClick(a1);
 }
 
 __declspec(naked) void LoginTab() // OK
