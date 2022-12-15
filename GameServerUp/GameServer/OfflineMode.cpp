@@ -21,6 +21,8 @@
 #include "CustomAttack.h"
 #include "ItemManager.h"
 #include "MapManager.h"
+#include "Log.h"
+#include "ItemLevel.h"
 
 OfflineMode g_OfflineMode;
 
@@ -143,10 +145,15 @@ void OfflineMode::Start(CG_OFFMODE_RESULT* aRecv, int aIndex)
 	lpObj->ObtainPickSelected = aRecv->ObtainPickSelected;
 	lpObj->ObtainPickJewels = (aRecv->ObtainPickJewels != 0) ? 1 : 0;
 	lpObj->ObtainPickAncient = (aRecv->ObtainPickAncient != 0) ? 1 : 0;
-	lpObj->ObtainPickMoney = aRecv->ObtainPickMoney;
+	lpObj->ObtainPickMoney = (aRecv->ObtainPickMoney != 0) ? 1 : 0;
 	lpObj->ObtainPickExcellent = (aRecv->ObtainPickExcellent != 0) ? 1 : 0;
 	lpObj->ObtainPickExtra = (aRecv->ObtainPickExtra != 0) ? 1 : 0;
-	*(BYTE*)lpObj->ObtainPickItemList = *(BYTE*)aRecv->ObtainPickItemList;
+	lpObj->ObtainPickExtraCount = aRecv->ObtainPickExtraCount;
+	
+	for(int i = 0 ; i < lpObj->ObtainPickExtraCount ; ++i)
+	{
+		memcpy(lpObj->ObtainPickItemList[ i ], aRecv->ObtainPickItemList[ i ], sizeof(lpObj->ObtainPickItemList[ i ]));
+	}
 	//===========
 	lpObj->m_OfflineCoordX = lpObj->X;
 	lpObj->m_OfflineCoordY = lpObj->Y;
@@ -157,6 +164,7 @@ void OfflineMode::Start(CG_OFFMODE_RESULT* aRecv, int aIndex)
 	CloseClient(aIndex);
 	lpObj->m_OfflineSocket = false;
 	lpObj->m_OfflineMode = 1;
+	lpObj->orderskill = 0;
 }
 
 void OfflineMode::OnAttackSecondProcHelper(LPOBJ lpObj) // OK
@@ -784,6 +792,18 @@ bool isJewels(int index)
 	return false;
 }
 
+bool itemListPickUp(int Index, int Level, LPOBJ lpObj)
+{
+	for( int i = 0 ; i < lpObj->ObtainPickExtraCount ; i++ )
+	{
+		if( strstr(gItemLevel.GetItemName(Index, Level), lpObj->ObtainPickItemList[ i ]) != NULL )
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 int OfflineMode::PickUP(int aIndex)
 {
 	if (OBJMAX_RANGE(aIndex) == FALSE)
@@ -867,6 +887,14 @@ int OfflineMode::PickUP(int aIndex)
 				{
 					PickItem = true;
 					AnimationMove(lpObj->Index, lpMapItem->m_X, lpMapItem->m_Y);
+				}
+				else if(lpObj->ObtainPickExtra == 1)
+				{
+					if( itemListPickUp(lpMapItem->m_Index, lpMapItem->m_Level, lpObj) == true )
+					{
+						PickItem = true;
+						AnimationMove(lpObj->Index, lpMapItem->m_X, lpMapItem->m_Y);
+					}
 				}
 				else
 				{

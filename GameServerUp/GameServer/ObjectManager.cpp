@@ -794,6 +794,28 @@ bool CObjectManager::CharacterGameClose(int aIndex) // OK
 		}
 	}
 
+	if (lpObj->LoadGuildWarehouse == 1)
+	{
+		GUILD_INFO_STRUCT * lpGuild = gGuildClass.SearchGuild(lpObj->GuildName);
+
+		if ( lpGuild != NULL )
+		{
+			lpObj->LoadGuildWarehouse = 0;
+
+			SDHP_WAREHOUSE_GUILD_STATUS_UPDATE_SEND pWareHouseUpdate;
+
+			pWareHouseUpdate.header.set(0x05, 0x77,sizeof(pWareHouseUpdate));
+
+			pWareHouseUpdate.index = aIndex;
+
+			memcpy(pWareHouseUpdate.Name,lpGuild->Name,sizeof(pWareHouseUpdate.Name));
+
+			pWareHouseUpdate.Status = lpObj->LoadGuildWarehouse;
+
+			gDataServerConnection.DataSend((BYTE*)&pWareHouseUpdate, pWareHouseUpdate.header.size);
+		}
+	}
+	
 	if (lpObj->Guild != 0 && lpObj->Guild->WarState == 1)
 	{
 		gObjGuildWarMasterClose(lpObj);
@@ -3616,6 +3638,7 @@ void CObjectManager::CharacterCalcAttribute(int aIndex) // OK
 		//--
 		gCustomPet.CalcCustomPetOption(lpObj, 1);
 		//--
+		gCustomWing.CalcItemCustomOption(lpObj, 1);
 
 #if(GAMESERVER_UPDATE>=701)
 		gPentagramSystem.CalcPentagramOption(lpObj, 1);

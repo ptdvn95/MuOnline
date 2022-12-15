@@ -221,9 +221,8 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	SetByte(0x007E1C44,0xB7); // Item Type Limit
 	SetByte(0x0052100D,0xEB); // Ctrl Fix
 	SetByte(0x009543C4,0x00); // Move Vulcanus
+	SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU); //-- New ReduceCPU
 	SetCompleteHook(0xE9, 0x004D1CF0, 0x004D1DC2); //-- Remoce MuError.DMP
-	//New ReduceCPU
-	SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU);
 	MemorySet(0x00D20170, 0x90, 0x1B); //-- Remove Creation MuError.log
 	SetByte(0x0064CBD1,((gProtect.m_MainInfo.HelperActiveAlert==0) ? 0xEB : 0x75)); //-- Helper Message Box
 	SetByte(0x0064CBD0,(BYTE)gProtect.m_MainInfo.HelperActiveLevel); //-- Helper Active Level

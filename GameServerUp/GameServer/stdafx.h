@@ -98,7 +98,7 @@
 
 #define ARCA_WAR			 2	// Mix nomas!!
 #define GOLDEN_ARCHER		 2	// 
-
+#define BOT_BUFFER			 1
 
 //-- Need All Types
 #define PG_CUSTOM			 1
@@ -113,7 +113,7 @@
 #define ANTIFLOOD              1
 #define ARCHIVEMENT            1
 #define LEVEL_PLUS             1
-#define WINDOWSQUEST           1
+#define WINDOWSQUEST           0
 #define HPTYPE                 0  // type 0: classic || type 1: custom
 
 // System Include
