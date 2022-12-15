@@ -38,6 +38,7 @@ public:
 	bool GetRandomItemDropLocation(int map,int* ox,int* oy,int tx,int ty,int count);
 	bool GetItem(LPOBJ lpObj,CItem* lpItem);
 	bool DropItem(LPOBJ lpObj,int map,int x,int y);
+	bool DropInventoryItem(LPOBJ lpObj,int map,int x,int y); // OK
 private:
 	char m_EventName[32];
 	int m_DropZen;

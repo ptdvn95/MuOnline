@@ -4,12 +4,9 @@
 
 struct STATS_ADVANCE_DATA
 {
-	//int WX;
 	int Level;
-	//int MasterLevel;
 	int Reset;
 	int GrandReset;
-	//int Defense;
 	int TotalDamageReflect;
 	int FullDamageReflectRate;
 	int CriticalDamageRate;
@@ -54,6 +51,13 @@ struct STATS_ADVANCE_DATA
 	int FullHPRestoreRate;
 	int FullMPRestoreRate;
 	int FullSDRestoreRate;
+	//--
+	int AttackPhysispeed;
+	int AttackMagicspeed;
+	//--
+	int PhysiDamageMin;
+	int PhysiDamageMax;
+	int AttackSuccessRate;
 };
 
 struct PMSG_STATS_ADVANCE
