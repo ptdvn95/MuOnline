@@ -567,7 +567,7 @@ void DrawNewHealthBar() // OK
 		EnableAlphaTest(0);
 	}
 
-	gCustomRankUser.DrawInfo();
+	// gCustomRankUser.DrawInfo();
 
 	pGLSwitch();
 
