@@ -109,10 +109,10 @@ bool CNpcTalk::NpcTalk(LPOBJ lpNpc,LPOBJ lpObj) // OK
 	}
 
 #if (WINDOWSQUEST==1)
-	if (g_ExWinQuestSystem.Dialog(lpObj->Index, lpNpc->Index))
-	{
-		return 1;
-	}
+//	if (g_ExWinQuestSystem.Dialog(lpObj->Index, lpNpc->Index))
+//	{
+//		return 1;
+//	}
 #endif
 	if (gPartySearch.Dialog(lpObj, lpNpc) != 0)
 	{

@@ -902,12 +902,6 @@ void CEffectManager::InsertEffect(LPOBJ lpObj,CEffect* lpEffect) // OK
 			lpObj->EffectOption.AddPhysiSpeed += lpEffect->m_value[0];
 			lpObj->EffectOption.AddMagicSpeed += lpEffect->m_value[0];
 			break;
-		case EFFECT_DAME_ITEM_SWICH:
-			lpObj->EffectOption.AddPhysiDamage += lpEffect->m_value[0];
-			lpObj->EffectOption.AddMagicDamage += lpEffect->m_value[0];
-			lpObj->EffectOption.AddCurseDamage += lpEffect->m_value[0];
-			lpObj->EffectOption.AddDefense += lpEffect->m_value[1];
-		break;
 	}
 
 	gObjectManager.CharacterCalcAttribute(lpObj->Index);
@@ -1446,12 +1440,6 @@ void CEffectManager::RemoveEffect(LPOBJ lpObj,CEffect* lpEffect) // OK
 			lpObj->EffectOption.AddPhysiSpeed -= lpEffect->m_value[0];
 			lpObj->EffectOption.AddMagicSpeed -= lpEffect->m_value[0];
 			break;
-		case EFFECT_DAME_ITEM_SWICH:
-			lpObj->EffectOption.AddPhysiDamage -= lpEffect->m_value[0];
-			lpObj->EffectOption.AddMagicDamage -= lpEffect->m_value[0];
-			lpObj->EffectOption.AddCurseDamage -= lpEffect->m_value[0];
-			lpObj->EffectOption.AddDefense -= lpEffect->m_value[1];
-		break;
 	}
 
 	if(lpEffect->m_index == EFFECT_ORDER_OF_PROTECTION || lpEffect->m_index == EFFECT_ORDER_OF_RESTRAINT)

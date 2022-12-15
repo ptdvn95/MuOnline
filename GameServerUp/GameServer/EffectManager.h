@@ -191,7 +191,6 @@ enum eEffectNumber
 	EFFECT_MASTER_SCROLL_OF_BATTLE = 202,
 	EFFECT_MASTER_SCROLL_OF_STRENGTH = 203,
 	EFFECT_MASTER_SCROLL_OF_QUICK = 204,
-	EFFECT_DAME_ITEM_SWICH = 205,
 };
 
 //**********************************************//
