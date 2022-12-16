@@ -651,7 +651,7 @@ LRESULT CALLBACK UserOnline(HWND hDlg,UINT message,WPARAM wParam,LPARAM lParam) 
 
 							CloseClient(lpObj->Index);
 
-							MessageBox(hDlg, "Account disconnect sucefully", "Confirm", MB_OK);
+							MessageBox(hDlg, "Tài khoản đăng xuất thành công.", "Confirm", MB_OK);
 							break;
 						}
 					}

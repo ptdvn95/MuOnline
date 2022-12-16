@@ -190,7 +190,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 //	gInfoLog.Load();
 	gCUIMng.Load(); //-- Custom Loading Screen
-	SetByte((PVOID)(0x81C03FA), 0x01); //-- Show all player's name
+	// SetByte((PVOID)(0x81C03FA), 0x01); //-- Show all player's name
 	SetByte(0x00E61144,0xA0); // Accent
 	SetByte(0x004D1E69,0xEB); // Crack (mu.exe)
 	SetByte(0x004D228D,0xE9); // Crack (GameGuard)
@@ -225,6 +225,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	SetByte(0x007E1C44,0xB7); // Item Type Limit
 	SetByte(0x0052100D,0xEB); // Ctrl Fix
 	SetByte(0x009543C4,0x00); // Move Vulcanus
+	// SetCompleteHook(0xE9, 0x0095DFBE, 0x0095DFD3); // MUHelper Open Inventory
 	SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU); //-- New ReduceCPU
 	SetCompleteHook(0xE9, 0x004D1CF0, 0x004D1DC2); //-- Remoce MuError.DMP
 	MemorySet(0x00D20170, 0x90, 0x1B); //-- Remove Creation MuError.log
