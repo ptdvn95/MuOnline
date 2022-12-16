@@ -328,7 +328,7 @@ void CServerInfo::ReadCustomInfo() // OK
 {
 	// ------------------------------------------------------------
 	// ADVANCE STATS
-	g_StatsAdvance.Load(); //Estatísticas de atributo
+	g_StatsAdvance.Load(); //Estatï¿½sticas de atributo
 	// ------------------------------------------------------------
 
 	this->ReadCustomInfo("GameServerInfo",".\\Data\\GameServerInfo - Custom.dat");
@@ -2944,6 +2944,8 @@ void CServerInfo::ReadCommonInfo(char* section,char* path) // OK
 	this->m_PersonalCodeCheck = GetPrivateProfileInt(section,"PersonalCodeCheck",0,path);
 
 	this->m_SetItemAcceptHarmonySwitch = GetPrivateProfileInt(section,"SetItemAcceptHarmonySwitch",0,path);
+
+	this->m_CharacterCloseCount = GetPrivateProfileInt(section,"CharacterCloseCount",0,path);
 
 	this->m_MonsterLifeRate = GetPrivateProfileInt(section,"MonsterLifeRate",0,path);
 

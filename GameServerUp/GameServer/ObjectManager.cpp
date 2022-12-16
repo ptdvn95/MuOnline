@@ -937,7 +937,7 @@ void CObjectManager::CharacterGameCloseSet(int aIndex, int type) // OK
 		}
 	}
 
-	lpObj->CloseCount = 6;
+	lpObj->CloseCount = gServerInfo.m_CharacterCloseCount;
 
 	lpObj->CloseType = type;
 

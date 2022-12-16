@@ -90,6 +90,7 @@ public:
 	int m_MaxIpConnection;
 	int m_PersonalCodeCheck;
 	int m_SetItemAcceptHarmonySwitch;
+	int m_CharacterCloseCount;
 	int m_MonsterLifeRate;
 	int m_MonsterHealthBarSwitch;
 	int m_UserHealthBarSwitch;
