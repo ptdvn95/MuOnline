@@ -1731,14 +1731,27 @@ void CItemManager::ItemByteConvert(BYTE* lpMsg,CItem item) // OK
 	lpMsg[5] |= ((item.m_IsPeriodicItem & 1) << 1);
 	lpMsg[5] |= ((item.m_IsExpiredItem & 1) << 2);
 
-//	if(item.IsSocketItem() == 0 && item.IsPentagramItem() == 0 && item.IsPentagramJewel() == 0 && item.IsPentagramMithril() == 0 && item.IsMuunItem() == 0)
-//	{
+#if (SOKED_HARMONY_FIX == 1)
+
+	if (item.IsPentagramItem() == 0 && item.IsPentagramJewel() == 0 && item.IsPentagramMithril() == 0 && item.IsMuunItem() == 0)
+	{
 		lpMsg[6] = item.m_JewelOfHarmonyOption;
-//	}
-//	else
-//	{
-//		lpMsg[6] = item.m_SocketOptionBonus;
-//	}
+	}
+	else
+	{
+		lpMsg[6] = item.m_SocketOptionBonus;
+	}
+
+#else
+	if (item.IsSocketItem() == 0 && item.IsPentagramItem() == 0 && item.IsPentagramJewel() == 0 && item.IsPentagramMithril() == 0 && item.IsMuunItem() == 0)
+	{
+		lpMsg[6] = item.m_JewelOfHarmonyOption;
+	}
+	else
+	{
+		lpMsg[6] = item.m_SocketOptionBonus;
+	}
+#endif
 
 	memcpy(&lpMsg[7],item.m_SocketOption,MAX_SOCKET_OPTION);
 }
@@ -1786,14 +1799,29 @@ void CItemManager::DBItemByteConvert(BYTE* lpMsg,CItem* lpItem) // OK
 	lpMsg[9] |= ((lpItem->m_IsPeriodicItem & 1) << 1);
 	lpMsg[9] |= ((lpItem->m_IsExpiredItem & 1) << 2);
 
-//	if(lpItem->IsSocketItem() == 0 && lpItem->IsPentagramItem() == 0 && lpItem->IsPentagramJewel() == 0 && lpItem->IsPentagramMithril() == 0 && lpItem->IsMuunItem() == 0)
-//	{
+#if (SOKED_HARMONY_FIX == 1)
+
+	if (lpItem->IsPentagramItem() == 0 && lpItem->IsPentagramJewel() == 0 && lpItem->IsPentagramMithril() == 0 && lpItem->IsMuunItem() == 0)
+	{
 		lpMsg[10] = lpItem->m_JewelOfHarmonyOption;
-//	}
-//	else
-//	{
-//		lpMsg[10] = lpItem->m_SocketOptionBonus;
-//	}
+	}
+	else
+	{
+		lpMsg[10] = lpItem->m_SocketOptionBonus;
+	}
+
+#else
+
+	if (lpItem->IsSocketItem() == 0 && lpItem->IsPentagramItem() == 0 && lpItem->IsPentagramJewel() == 0 && lpItem->IsPentagramMithril() == 0 && lpItem->IsMuunItem() == 0)
+	{
+		lpMsg[10] = lpItem->m_JewelOfHarmonyOption;
+	}
+	else
+	{
+		lpMsg[10] = lpItem->m_SocketOptionBonus;
+	}
+
+#endif
 
 	memcpy(&lpMsg[11],lpItem->m_SocketOption,MAX_SOCKET_OPTION);
 }

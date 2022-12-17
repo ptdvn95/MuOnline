@@ -303,7 +303,7 @@ void InitCommon() // OK
 			SetByte(0x00507AFD, 0xEB); //[0-9A-Za-z] Guild
 			SetByte((0x00507AEA + 1), 0x72); //[0-9A-Za-z] Name
 
-			SetByte((0x00958D56 + 0x3), 0x04); // message limit
+			// SetByte((0x00958D56 + 0x3), 0x04); // message limit
 	
 
 	gChatExpanded.m_separate = SeparateChat;

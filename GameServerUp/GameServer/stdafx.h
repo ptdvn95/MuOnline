@@ -78,7 +78,7 @@
 #define OFFLINE_MODE				1
 #define ADD_OFFMODE_PICKUP			0
 #define MONSTER_COINS               1
-
+#define SOKED_HARMONY_FIX			1
 //MC bot
 //----------------------------
 //	 ZG-Defines			     -

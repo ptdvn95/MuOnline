@@ -166,7 +166,7 @@ bool CJewelOfHarmonyOption::IsJewelOfHarmonyItem(CItem* lpItem) // OK
 		return 0;
 	}
 
-	if (((lpItem->m_JewelOfHarmonyOption & 0xF0) >> 4) != JEWEL_OF_HARMONY_OPTION_NONE)
+	if(((lpItem->m_JewelOfHarmonyOption & 0xF0) >> 4) != JEWEL_OF_HARMONY_OPTION_NONE)
 	{
 		return 1;
 	}
