@@ -1954,7 +1954,6 @@ bool Interface::EventVipWindow_Bronze(DWORD Event)
 	}
 	// ----
 	this->Data[eVip_BRONZE].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -1990,7 +1989,6 @@ bool Interface::EventVipWindow_Silver(DWORD Event)
 	}
 	// ----
 	this->Data[eVip_SILVER].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2026,7 +2024,6 @@ bool Interface::EventVipWindow_Gold(DWORD Event)
 	}
 	// ----
 	this->Data[eVip_GOLD].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2564,7 +2561,6 @@ bool Interface::EventDrawMenu_Next(DWORD Event)
 	}
 	// ----
 	this->Data[eSAMPLEBUTTON].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2596,7 +2592,6 @@ bool Interface::EventDrawMenu_Back(DWORD Event)
 	}
 	// ----
 	this->Data[eSAMPLEBUTTON2].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2630,7 +2625,6 @@ bool Interface::EventDrawMenu_Op1(DWORD Event)
 	}
 	// ----
 	this->Data[eMenu_OPT1].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2663,7 +2657,6 @@ bool Interface::EventDrawMenu_Op2(DWORD Event)
 	}
 	// ----
 	this->Data[eMenu_OPT2].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2696,7 +2689,6 @@ bool Interface::EventDrawMenu_Op3(DWORD Event)
 	}
 	// ----
 	this->Data[eMenu_OPT3].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2732,7 +2724,6 @@ bool Interface::EventDrawMenu_Op4(DWORD Event)
 	}
 	// ----
 	this->Data[eMenu_OPT4].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2765,7 +2756,6 @@ bool Interface::EventDrawMenu_Op20(DWORD Event)
 	}
 	// ----
 	this->Data[eMenu_OPT5].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2807,7 +2797,6 @@ bool Interface::EventDrawMenu_Op6(DWORD Event)
 	}
 	// ----
 	this->Data[eMenu_OPT6].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2840,7 +2829,6 @@ bool Interface::EventDrawMenu_Op7(DWORD Event)
 	}
 	// ----
 	this->Data[eMenu_OPT7].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2873,7 +2861,6 @@ bool Interface::EventDrawMenu_Op8(DWORD Event)
 	}
 	// ----
 	this->Data[eMenu_OPT8].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2905,7 +2892,6 @@ bool Interface::EventDrawMenu_Op9(DWORD Event)
 	}
 	// ----
 	this->Data[eMenu_OPT9].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2940,7 +2926,6 @@ bool Interface::EventDrawMenu_Op10(DWORD Event)
 	}
 	// ----
 	this->Data[eMenu_OPT10].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -2974,7 +2959,6 @@ bool Interface::EventDrawMenu_Op11(DWORD Event)
 	}
 	// ----
 	this->Data[eMenu_OPT11].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -3402,7 +3386,6 @@ bool Interface::EventConfirm_OK(DWORD Event)
 	}
 	// ----
 	this->Data[eCONFIRM_BTN_OK].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{
@@ -3446,7 +3429,6 @@ bool Interface::EventConfirm_CANCEL(DWORD Event)
 	}
 	// ----
 	this->Data[eCONFIRM_BTN_CANCEL].OnClick = false;
-	;
 	// ----
 	if (Delay < 500)
 	{

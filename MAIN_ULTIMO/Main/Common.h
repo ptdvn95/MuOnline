@@ -11,6 +11,7 @@ BOOL CheckIsLuckyItem(int ItemID);
 BOOL CheckGensBattleMap(int map);
 BOOL CheckGensMoveIndex(int idx);
 char FixHelperMouseClick(int a1);
+void CRenderBoolean(int a1, int a2, char *a3);
 void LoginTab();
 void CheckMasterLevel();
 void CompareGensMoveIndex();

@@ -335,12 +335,15 @@
 #define CreateParticle2			((int(__cdecl*)(int a1, vec3_t Bone1, int a3, vec3_t color, int a5, float size, int a7)) 0x0074CD30)
 #define BoneTransform			*(int*)0x7BC09C0
 #define RenderCryingWolf2ndObjectVisual		((void(__cdecl*)(int a1, int a2)) 0x008D1C00)
-#define RenderBitmap						((void(__cdecl*)(int ImageID, float PosX, float PosY, float Width, float Height, float Arg6, float Arg7, float ScaleX, float ScaleY, bool ScaleSize, bool ScalePosition, bool ScaleAlpha)) 0x637C60)
-#define EnableAlphaBlend					((void(__cdecl*)()) 0x636070)
-#define EnableAlphaTest						((void(__cdecl*)(BYTE Mode)) 0x635FD0)
-#define RenderInfomationR					((int(*)()) 0x4D5EC0)
-#define pModelThis							((LPVOID(*)())0x004CDA10)
-#define pGetModel							((LPVOID(__thiscall*)(LPVOID This, signed int a2)) 0x00969C50)
+#define RenderBitmap			((void(__cdecl*)(int ImageID, float PosX, float PosY, float Width, float Height, float Arg6, float Arg7, float ScaleX, float ScaleY, bool ScaleSize, bool ScalePosition, bool ScaleAlpha)) 0x637C60)
+#define EnableAlphaBlend		((void(__cdecl*)()) 0x636070)
+#define EnableAlphaTest			((void(__cdecl*)(BYTE Mode)) 0x635FD0)
+#define RenderInfomationR		((int(*)()) 0x4D5EC0)
+#define pModelThis				((LPVOID(*)())0x004CDA10)
+#define pGetModel				((LPVOID(__thiscall*)(LPVOID This, signed int a2)) 0x00969C50)
+#define RenderBoolean			((void(__cdecl*)(int a1, int a2, char *a3)) 0x005985F0)
+#define CreateGuildMark			((void(__cdecl*)(int a1, bool a2)) 0x005D30F0)
+#define RenderBitmap			((void(__cdecl*)(int a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8, float a9, char a10, char a11, float a12)) 0x00637C60)
 
 #define pGLSupremo ((void(__cdecl*)())0x00637A30)
 //=====
