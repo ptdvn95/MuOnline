@@ -139,10 +139,10 @@ void gObjMonsterDieGiveItem(LPOBJ lpObj,LPOBJ lpTarget) // OK
 		return;
 	}
 
-	/*if(gQuestWorldObjective.MonsterItemDrop(lpObj) != 0)
+	if(gQuestWorldObjective.MonsterItemDrop(lpObj) != 0)
 	{
 		return;
-	}*/
+	}
 
 	if(gItemDrop.DropItem(lpObj,lpTarget) != 0)
 	{
@@ -532,7 +532,7 @@ bool gObjSetMonster(int aIndex,int MonsterClass) // OK
 			gSkillManager.AddSkill(lpObj,SKILL_BIRDS,0);
 		}
 
-		CUSTOM_MONSTER_SKILL* MonsterAttackSkill = gCustomMonsterSkill.GetSkillMonster(MonsterClass);	//<- aquí custommonsterskill
+		CUSTOM_MONSTER_SKILL* MonsterAttackSkill = gCustomMonsterSkill.GetSkillMonster(MonsterClass);	//<- aquï¿½ custommonsterskill
 
 		if(MonsterAttackSkill){
 			gSkillManager.AddSkill(lpObj,MonsterAttackSkill->m_Skill1,0);
@@ -1529,7 +1529,7 @@ void gObjMonsterAttack(LPOBJ lpObj,LPOBJ lpTarget) // OK
 
 		gSkillManager.CGDurationSkillAttackRecv(&pMsg,lpObj->Index);
 	}
-	else if(lpObj->Class == 561 || gCustomMonsterSkill.GetSkillMonster(lpObj->Class))	//<- aquí custommonsterskill
+	else if(lpObj->Class == 561 || gCustomMonsterSkill.GetSkillMonster(lpObj->Class))	//<- aquï¿½ custommonsterskill
 	{
 		PMSG_DURATION_SKILL_ATTACK_RECV pMsg;
 

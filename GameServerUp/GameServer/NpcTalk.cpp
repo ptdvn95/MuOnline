@@ -333,6 +333,9 @@ bool CNpcTalk::NpcTalk(LPOBJ lpNpc,LPOBJ lpObj) // OK
 		case 582:
 			this->NpcAdniel(lpNpc,lpObj);
 			break;
+		// case 584:
+		// 	this->NpcLesnar(lpNpc,lpObj);
+		// 	break;
 		case 651:
 			this->NpcPersonalShopBoard(lpNpc,lpObj);
 			break;
@@ -1425,7 +1428,9 @@ void CNpcTalk::NpcAdniel(LPOBJ lpNpc,LPOBJ lpObj) // OK
 
 void CNpcTalk::NpcLesnar(LPOBJ lpNpc,LPOBJ lpObj) // OK
 {
+#if(GAMESERVER_UPDATE>=702)
 	gArcaBattle.NpcLesnar(lpNpc,lpObj);
+#endif
 }
 
 void CNpcTalk::NpcTercia(LPOBJ lpNpc, LPOBJ lpObj) // OK
@@ -1475,23 +1480,21 @@ void CNpcTalk::NpcVeina(LPOBJ lpNpc, LPOBJ lpObj) // OK
 void CNpcTalk::NpcZyro(LPOBJ lpNpc, LPOBJ lpObj) // OK
 {
 #if(GAMESERVER_UPDATE>=602)
-
 	lpObj->Interface.use = 1;
 	lpObj->Interface.type = INTERFACE_QUEST_WORLD;
 	lpObj->Interface.state = 0;
 	lpObj->QuestWorldMonsterClass = lpNpc->Class;
-
+ 
 	PMSG_QUEST_WORLD_NPC_TALK_SEND pMsg;
-
+ 
 	pMsg.header.set(0xF9, 0x01, sizeof(pMsg));
-
+ 
 	pMsg.MonsterClass = lpNpc->Class;
-
+ 
 	pMsg.contribution = 0;
-
+ 
 	DataSend(lpObj->Index, (BYTE*)&pMsg, pMsg.header.size);
-	// ----
-	return;
+
 #endif
 }
 
