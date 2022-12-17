@@ -89,8 +89,9 @@ public:
 	static char		PetHPBar(int a1, int a2);
 	static void		RefreshViewPortItem(int a1);
 	static void		PetFollowCharacter(int a1, float MaxPos);
-
 	DWORD PetTickCount;
 };
 
+char SetPetItemConvert(int a1, int a2);
+int HorseText(int a1, int a2);
 extern CustomPet gCustomPet;

@@ -200,7 +200,7 @@ __declspec(naked) void FixAttackSpeed()
 		}
 	}
 	/*FirstMaster*/
-	/*if( CLASS == Monk || CLASS == 22 )
+	if( CLASS == Monk || CLASS == 22 )
 	{
 		if( gObjUser.MagickAttack == 261 || 
 			gObjUser.MagickAttack == 490 || 
@@ -216,7 +216,7 @@ __declspec(naked) void FixAttackSpeed()
 				STR_SPEED = 754;
 			}
 		}
-	}*/
+	}
 	// --------------------------------------------
 	_asm
 	{
@@ -254,8 +254,6 @@ __declspec(naked) void FixAttackSpeed2()
 
 void InitAttackSpeed()
 {
-	SetByte(0x00649E24 + 3, 14);   //-> Test 1
-   	SetByte(0x00556C32 + 6, 2);   //-> Test 2
 	SetOp((LPVOID)0x005509CE, (LPVOID)FixAttackSpeed, ASM::JMP);
 	SetOp((LPVOID)0x00551573, (LPVOID)FixAttackSpeed2, ASM::JMP);
 }

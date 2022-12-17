@@ -130,19 +130,45 @@ __declspec(naked) void ResolutionSwitchFont() // OK
 	}
 }
 
-__declspec(naked) void ResolutionMoveList() // OK
+__declspec(naked) void ResolutionMoveList()
 {
 	static DWORD ResolutionMoveListAddress1 = 0x00830CE2;
-	static DWORD ResolutionMoveListAddress2 = 0x00830C43;
+	static DWORD ResolutionMoveListAddress2 = 0x00830D1B;
+	static DWORD ResolutionMoveListAddress3 = 0x00830C43;
 
 	_asm
 	{
-		Mov Ecx,Dword Ptr Ds:[MAIN_RESOLUTION_X]
-		Mov Dword Ptr Ss:[Ebp-0x08],Ecx
-		Cmp Dword Ptr Ss:[Ebp-0x08],0x500
-		Jbe EXIT
-		Jmp [ResolutionMoveListAddress1]
-		EXIT:
-		Jmp [ResolutionMoveListAddress2]
+		Mov Ecx, Dword Ptr Ds : [MAIN_RESOLUTION_X] ;
+		Mov Dword Ptr Ss : [Ebp - 0x08] , Ecx;
+		Cmp Dword Ptr Ss : [Ebp - 0x08] , 0x500;
+		Jbe CHECK640;
+		Jmp[ResolutionMoveListAddress1];
+	CHECK640:
+		Cmp Dword Ptr Ss : [Ebp - 0x08] , 0x280; //640
+		Jnz EXIT;
+		Mov Edx, [Ebp - 0x04];
+		Mov Dword Ptr Ss : [Edx + 0x48] , 0xFF;		//Background X Size
+		Mov Dword Ptr Ss : [Edx + 0x50] , 0x22;		//Battle Zone
+		Mov Dword Ptr Ss : [Edx + 0x58] , 0x62;		//Map Name
+		Mov Dword Ptr Ss : [Edx + 0x60] , 0xB0;		//Required Level
+		Mov Dword Ptr Ss : [Edx + 0x68] , 0xE0;		//Money Cost
+		Push 0x1A;	//Background Y Size
+		Push 0x00830D66;
+		Call[SetByte];
+		Push 0x1A;	//Size Maps 1
+		Push 0x0083245D;
+		Call[SetByte];
+		Push 0x1A;	//Size Maps 2
+		Push 0x00830ED5;
+		Call[SetByte];
+		Push 0x1A;	//Size Maps 3
+		Push 0X00830FD8;
+		Call[SetByte];
+		Push 0x1A;	//Scroll Maps Size
+		Push 0x00830E57;
+		Call[SetByte];
+		Jmp[ResolutionMoveListAddress2];
+	EXIT :
+		Jmp[ResolutionMoveListAddress3];
 	}
 }

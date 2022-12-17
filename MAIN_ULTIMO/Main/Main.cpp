@@ -224,8 +224,6 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	SetByte(0x007E1C44,0xB7); // Item Type Limit
 	SetByte(0x0052100D,0xEB); // Ctrl Fix
 	SetByte(0x009543C4,0x00); // Move Vulcanus
-	// SetCompleteHook(0xE9, 0x0095DFBE, 0x0095DFD3); // MUHelper Open Inventory
-	SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU); //-- New ReduceCPU
 	SetCompleteHook(0xE9, 0x004D1CF0, 0x004D1DC2); //-- Remoce MuError.DMP
 	MemorySet(0x00D20170, 0x90, 0x1B); //-- Remove Creation MuError.log
 	SetByte(0x0064CBD1,((gProtect.m_MainInfo.HelperActiveAlert==0) ? 0xEB : 0x75)); //-- Helper Message Box
@@ -257,7 +255,8 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	SetDword(0x009540E2 + 1, (DWORD)gProtect.m_MainInfo.ServerName3); //-> (Non-PVP)
 	SetDword(0x009540AC + 1, (DWORD)gProtect.m_MainInfo.ServerName4); //-> Sem Nada
 
-	SetCompleteHook(0xE9, 0x0095DFBE, 0x0095DFD3);
+	SetCompleteHook(0xE9, 0x0095DFBE, 0x0095DFD3); // MUHelper Open Inventory
+	SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU); //-- New ReduceCPU
 
 	MemorySet(0x0063E908,0x90,20); //-- C1:F3:04
 

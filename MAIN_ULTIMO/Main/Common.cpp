@@ -184,6 +184,7 @@ void InitCommon() // OK
 	// SetCompleteHook(0xE9, 0x008369FA, 0x00836A23);  // Remove botão (K)
 	// SetCompleteHook(0xE9, 0x007D36B8, 0x007D36BF); // Função (K) Inventário aberto
 	// SetCompleteHook(0xE9, 0x007D3F9C, 0x007D3FA3); // Função (K) Baú Aberto
+	SetByte(0x004D128F, 0x1D); // Fix Resolution 640x480 1.04e - kayito
 
 	Encoger = GetPrivateProfileIntA("Setting", "Encoger", 0, "./Settings.ini");
 

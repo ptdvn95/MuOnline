@@ -11,6 +11,8 @@
 #include "Common.h"
 #include "WindowsStruct.h"
 
+DWORD HorseDefense;
+
 CustomPet gCustomPet;
 
 CustomPet::CustomPet() //OK
@@ -666,4 +668,56 @@ void CustomPet::Load()
 	SetOp((LPVOID)0x65EA2D, CustomPet::PreviewCharSet, ASM::CALL);
 
 	SetOp((LPVOID)0x664267, CustomPet::RefreshViewPortItem, ASM::CALL);
+
+	SetCompleteHook(0xE8, 0x004FA5AE, &SetPetItemConvert);
+	SetCompleteHook(0xE8, 0x004F9905, &SetPetItemConvert);
+	SetCompleteHook(0xE8, 0x0058DCCC, &SetPetItemConvert);
+
+	SetCompleteHook(0xE8, 0x005C36C6, &HorseText);
+}
+
+char SetPetItemConvert(int a1, int a2)
+{
+  char result; // al
+  signed int i; // [esp+0h] [ebp-8h]
+  signed int v4; // [esp+4h] [ebp-4h]
+
+  result = a1;
+  if ( *(WORD *)a1 == 6660 )  //Dark Horse
+  {
+    v4 = 0;
+    for ( i = 0; i < *(unsigned __int8 *)(a1 + 37); ++i )
+    {
+      if ( *(WORD *)(a1 + 2 * i + 38) == 178 )
+      {
+        v4 = i;
+        break;
+      }
+    }
+    if ( v4 )
+    {					//Formula Defense Dark Horse ( Dexterity / 20 + 5 + Helper->m_PetItem_Level * 2 )
+      *(BYTE *)(v4 + a1 + 54) = *(unsigned __int16 *)(oUserObjectStruct + 26) / 20 + 2 * *(unsigned __int16 *)(a2 + 12) + 5;
+	  HorseDefense = *(unsigned __int16 *)(oUserObjectStruct + 26) / 20 + 2 * *(unsigned __int16 *)(a2 + 12) + 5;
+	  
+																  
+	  
+      result = a1;
+      *(WORD *)(a1 + 2 * v4 + 38) = 178;
+    }
+    else
+    {
+      *(BYTE *)(a1 + *(unsigned __int8 *)(a1 + 37) + 54) = *(unsigned __int16 *)(oUserObjectStruct + 26) / 20 + 2 * *(unsigned __int16 *)(a2 + 12) + 5;
+	  HorseDefense = *(unsigned __int16 *)(oUserObjectStruct + 26) / 20 + 2 * *(unsigned __int16 *)(a2 + 12) + 5;
+      *(WORD *)(a1 + 2 * *(unsigned __int8 *)(a1 + 37) + 38) = 178;
+      result = *(BYTE *)(a1 + 37) + 1;
+      *(BYTE *)(a1 + 37) = result;
+    }
+  }
+  return result;
+}
+
+int HorseText(int a1, int a2)
+{
+	pSetItemTextLine(a1, pGetTextLine(pTextLineThis, 959), HorseDefense);
+	return 0;
 }

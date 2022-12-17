@@ -43,6 +43,15 @@ void User::Refresh()
 	this->m_CursorY			= pCursorY;
 	this->m_MapNumber		= pMapNumber;
 
+	if( (lpPlayer->Class & 7) != 6 )
+	{
+		SetByte((PVOID)(0x00556C32 + 6), 2);
+	}
+	else
+	{
+		SetByte((PVOID)(0x00556C32 + 6), 15);
+	}
+
 	if (pMapNumber == 62)
 	{
 		gInterface.DrawMessage(1, "Camera Restore [DEFAULT]");
