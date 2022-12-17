@@ -109,10 +109,10 @@ bool CNpcTalk::NpcTalk(LPOBJ lpNpc,LPOBJ lpObj) // OK
 	}
 
 #if (WINDOWSQUEST==1)
-//	if (g_ExWinQuestSystem.Dialog(lpObj->Index, lpNpc->Index))
-//	{
-//		return 1;
-//	}
+	if (g_ExWinQuestSystem.Dialog(lpObj->Index, lpNpc->Index))
+	{
+		return 1;
+	}
 #endif
 	if (gPartySearch.Dialog(lpObj, lpNpc) != 0)
 	{
@@ -721,8 +721,7 @@ void CNpcTalk::NpcCastleSiegeSenior(LPOBJ lpNpc,LPOBJ lpObj) // OK
 
 void CNpcTalk::NpcGuardTalk(LPOBJ lpNpc,LPOBJ lpObj) // OK
 {
-	GCChatTargetSend(lpObj,lpNpc->Index,gMessage.GetMessage(514));
-
+	GCChatTargetSend(lpObj,lpNpc->Index,gMessage.GetMessage(1150));
 }
 
 void CNpcTalk::NpcCastleSiegeGuardsman(LPOBJ lpNpc,LPOBJ lpObj) // OK
@@ -1431,46 +1430,46 @@ void CNpcTalk::NpcLesnar(LPOBJ lpNpc,LPOBJ lpObj) // OK
 
 void CNpcTalk::NpcTercia(LPOBJ lpNpc, LPOBJ lpObj) // OK
 {
-#if(GAMESERVER_UPDATE>=602)
-
-lpObj->Interface.use = 1;
-lpObj->Interface.type = INTERFACE_QUEST_WORLD;
-lpObj->Interface.state = 0;
-lpObj->QuestWorldMonsterClass = lpNpc->Class;
-
-PMSG_QUEST_WORLD_NPC_TALK_SEND pMsg;
-
-pMsg.header.set(0xF9, 0x01, sizeof(pMsg));
-
-pMsg.MonsterClass = lpNpc->Class;
-
-pMsg.contribution = 0;
-
-DataSend(lpObj->Index, (BYTE*)&pMsg, pMsg.header.size);
-
-#endif
+	#if(GAMESERVER_UPDATE>=602)
+ 
+	lpObj->Interface.use = 1;
+	lpObj->Interface.type = INTERFACE_QUEST_WORLD;
+	lpObj->Interface.state = 0;
+	lpObj->QuestWorldMonsterClass = lpNpc->Class;
+ 
+	PMSG_QUEST_WORLD_NPC_TALK_SEND pMsg;
+ 
+	pMsg.header.set(0xF9, 0x01, sizeof(pMsg));
+ 
+	pMsg.MonsterClass = lpNpc->Class;
+ 
+	pMsg.contribution = 0;
+ 
+	DataSend(lpObj->Index, (BYTE*)&pMsg, pMsg.header.size);
+ 
+	#endif
 }
 
 void CNpcTalk::NpcVeina(LPOBJ lpNpc, LPOBJ lpObj) // OK
 {
-#if(GAMESERVER_UPDATE>=602)
+	#if(GAMESERVER_UPDATE>=602)
+ 
+	lpObj->Interface.use = 1;
+	lpObj->Interface.type = INTERFACE_QUEST_WORLD;
+	lpObj->Interface.state = 0;
+	lpObj->QuestWorldMonsterClass = lpNpc->Class;
+ 
+	PMSG_QUEST_WORLD_NPC_TALK_SEND pMsg;
+ 
+	pMsg.header.set(0xF9, 0x01, sizeof(pMsg));
+ 
+	pMsg.MonsterClass = lpNpc->Class;
+ 
+	pMsg.contribution = 0;
+ 
+	DataSend(lpObj->Index, (BYTE*)&pMsg, pMsg.header.size);
 
-lpObj->Interface.use = 1;
-lpObj->Interface.type = INTERFACE_QUEST_WORLD;
-lpObj->Interface.state = 0;
-lpObj->QuestWorldMonsterClass = lpNpc->Class;
-
-PMSG_QUEST_WORLD_NPC_TALK_SEND pMsg;
-
-pMsg.header.set(0xF9, 0x01, sizeof(pMsg));
-
-pMsg.MonsterClass = lpNpc->Class;
-
-pMsg.contribution = 0;
-
-DataSend(lpObj->Index, (BYTE*)&pMsg, pMsg.header.size);
-
-#endif
+	#endif
 }
 
 void CNpcTalk::NpcZyro(LPOBJ lpNpc, LPOBJ lpObj) // OK

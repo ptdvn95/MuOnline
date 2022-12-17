@@ -89,6 +89,16 @@ void CQuestWorldObjective::Load(char* path) // OK
 
 			info.NewOption = lpMemScript->GetAsNumber();
 
+			info.MapNumber = lpMemScript->GetAsNumber();
+
+			info.MonsterClass = lpMemScript->GetAsNumber();
+
+			info.DropMinLevel = lpMemScript->GetAsNumber();
+
+			info.DropMaxLevel = lpMemScript->GetAsNumber();
+
+			info.ItemDropRate = lpMemScript->GetAsNumber();
+
 			info.RequireIndex = lpMemScript->GetAsNumber();
 
 			info.RequireGroup = lpMemScript->GetAsNumber();
@@ -396,6 +406,7 @@ void CQuestWorldObjective::RemoveQuestWorldObjective(LPOBJ lpObj,int QuestIndex,
 
 		if(lpInfo->Type == QUEST_WORLD_OBJECTIVE_ITEM)
 		{
+			gItemManager.DeleteInventoryItemCount(lpObj,lpInfo->Index,lpInfo->Level,lpInfo->Value);
 			continue;
 		}
 
@@ -454,6 +465,124 @@ void CQuestWorldObjective::PressButton(LPOBJ lpObj,int QuestIndex,int QuestGroup
 	}
 
 	#endif
+}
+
+bool CQuestWorldObjective::MonsterItemDrop(LPOBJ lpMonster) // OK
+{
+	int aIndex = gObjMonsterGetTopHitDamageUser(lpMonster);
+
+	if(OBJECT_RANGE(aIndex) == 0)
+	{
+		return 0;
+	}
+
+	LPOBJ lpObj = &gObj[aIndex];
+
+	if(OBJECT_RANGE(lpObj->PartyNumber) != 0)
+	{
+		return this->MonsterItemDropParty(lpMonster,lpObj->PartyNumber);
+	}
+
+	for(int n=0;n < this->m_count;n++)
+	{
+		QUEST_WORLD_OBJECTIVE_INFO* lpInfo = this->GetInfo(n);
+
+		if(lpInfo == 0)
+		{
+			continue;
+		}
+
+		if(this->CheckQuestWorldObjectiveRequisite(lpObj,lpInfo) == 0)
+		{
+			continue;
+		}
+
+		if(lpInfo->Type != QUEST_WORLD_OBJECTIVE_ITEM)
+		{
+			continue;
+		}
+
+		if(lpInfo->MapNumber != -1 && lpInfo->MapNumber != lpMonster->Map)
+		{
+			continue;
+		}
+
+		if(lpInfo->MonsterClass != -1 && lpInfo->MonsterClass != lpMonster->Class)
+		{
+			continue;
+		}
+
+		if(lpInfo->DropMinLevel != -1 && lpInfo->DropMinLevel > lpMonster->Level)
+		{
+			continue;
+		}
+
+		if(lpInfo->DropMaxLevel != -1 && lpInfo->DropMaxLevel < lpMonster->Level)
+		{
+			continue;
+		}
+
+		/*if((lpInfo->DropMinLevel == -1 && lpInfo->DropMaxLevel != lpMonster->Class) || (lpInfo->DropMinLevel != -1 && (lpInfo->DropMinLevel > lpMonster->Level || lpInfo->DropMaxLevel < lpMonster->Level)))
+		{
+			continue;
+		}*/
+
+		if(lpInfo->ItemDropRate > (GetLargeRand()%10000) && lpInfo->Value > this->GetQuestWorldObjectiveCount(lpObj,lpInfo))
+		{
+			GDCreateItemSend(aIndex,lpMonster->Map,(BYTE)lpMonster->X,(BYTE)lpMonster->Y,lpInfo->Index,lpInfo->Level,0,lpInfo->Option1,lpInfo->Option2,lpInfo->Option3,aIndex,lpInfo->NewOption,0,0,0,0,0xFF,0);
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+bool CQuestWorldObjective::MonsterItemDropParty(LPOBJ lpMonster,int PartyNumber) // OK
+{
+	for(int n=0;n < MAX_PARTY_USER;n++)
+	{
+		int aIndex = gParty.m_PartyInfo[PartyNumber].Index[n];
+
+		if(OBJECT_RANGE(aIndex) == 0)
+		{
+			continue;
+		}
+
+		LPOBJ lpObj = &gObj[aIndex];
+
+		for(int i=0;i < this->m_count;i++)
+		{
+			QUEST_WORLD_OBJECTIVE_INFO* lpInfo = this->GetInfo(i);
+
+			if(lpInfo == 0)
+			{
+				continue;
+			}
+
+			if(this->CheckQuestWorldObjectiveRequisite(lpObj,lpInfo) == 0)
+			{
+				continue;
+			}
+
+			if(lpInfo->Type != QUEST_WORLD_OBJECTIVE_ITEM)
+			{
+				continue;
+			}
+
+			if((lpInfo->DropMinLevel == -1 && lpInfo->DropMaxLevel != lpMonster->Class) || (lpInfo->DropMinLevel != -1 && (lpInfo->DropMinLevel > lpMonster->Level || lpInfo->DropMaxLevel < lpMonster->Level)))
+			{
+				continue;
+			}
+
+			if(lpInfo->ItemDropRate > (GetLargeRand()%10000) && lpInfo->Value > this->GetQuestWorldObjectiveCount(lpObj,lpInfo))
+			{
+				GDCreateItemSend(aIndex,lpMonster->Map,(BYTE)lpMonster->X,(BYTE)lpMonster->Y,lpInfo->Index,lpInfo->Level,0,lpInfo->Option1,lpInfo->Option2,lpInfo->Option3,aIndex,lpInfo->NewOption,0,0,0,0,0xFF,0);
+				return 1;
+			}
+		}
+	}
+
+	return 0;
 }
 
 void CQuestWorldObjective::MonsterKill(LPOBJ lpMonster) // OK

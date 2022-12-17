@@ -43,6 +43,11 @@ struct QUEST_WORLD_OBJECTIVE_INFO
 	int Option2;
 	int Option3;
 	int NewOption;
+	int MapNumber;
+	int MonsterClass;
+	int DropMinLevel;
+	int DropMaxLevel;
+	int ItemDropRate;
 	int RequireIndex;
 	int RequireGroup;
 	int RequireState;
@@ -65,9 +70,10 @@ public:
 	void AddQuestWorldObjectiveKillCount(LPOBJ lpObj,QUEST_WORLD_OBJECTIVE_INFO* lpInfo);
 	void RemoveQuestWorldObjective(LPOBJ lpObj,int QuestIndex,int QuestGroup);
 	void PressButton(LPOBJ lpObj,int QuestIndex,int QuestGroup);
+	bool MonsterItemDrop(LPOBJ lpMonster);
+	bool MonsterItemDropParty(LPOBJ lpMonster,int PartyNumber);
 	void MonsterKill(LPOBJ lpMonster);
 	void MonsterKillParty(LPOBJ lpMonster,int PartyNumber);
-	//bool MonsterItemDrop(LPOBJ lpMonster);
 private:
 	QUEST_WORLD_OBJECTIVE_INFO m_QuestWorldObjectiveInfo[MAX_QUEST_WORLD_OBJECTIVE];
 	int m_count;

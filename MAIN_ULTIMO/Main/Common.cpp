@@ -173,7 +173,7 @@ void InitCommon() // OK
 
 	SetCompleteHook(0xE9,0x008317BD,&CompareGensMoveIndex);
 
-	// SetByte((PVOID)(0x81C03FA), 0x01); //-- Show all player's name
+	SetByte((PVOID)(0x81C03FA), 0x01); //-- Show all player's name
 	SetCompleteHook(0xE8, 0x005BAFAB, &CRenderBoolean); // Show Guild Logo Name Player
 	SetCompleteHook(0xE9, 0x0082A983, 0x0082A9F3); //-- Fix Dupe
 	// SetCompleteHook(0xE8,0x007D2B0C,&FixHelperMouseClick); // Fix Dupe
@@ -488,7 +488,7 @@ void CRenderBoolean(int a1, int a2, char *a3)
 	if ( *(BYTE *)(result + 800) == 1 )
 	{
 		CreateGuildMark(*(WORD *)(result + 124), 1);
-		RenderBitmap(31740, a1 - 15, a2 + 2, 16.0, 16.0, 0.0, 0.0, 1.0, 1.0, 1, 1, 0.0);
+		RenderBitmap(31740, a1 - 15, a2 + 2, 4.0, 4.0, 0.0, 0.0, 1.0, 1.0, 1, 1, 0.0);
 	}
 	RenderBoolean(a1,a2,a3);
 }

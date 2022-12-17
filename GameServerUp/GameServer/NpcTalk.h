@@ -164,7 +164,7 @@ public:
 	void GDNpcSantaClausSend(int aIndex);
 	void GDNpcLeoTheHelperSaveSend(int aIndex,BYTE status);
 	void GDNpcSantaClausSaveSend(int aIndex,BYTE status);
-	void CNpcTalk::NpcGuardTalk(LPOBJ lpNpc,LPOBJ lpObj);
+	void NpcGuardTalk(LPOBJ lpNpc,LPOBJ lpObj);
 	void SpiritNixie(LPOBJ lpNpc, LPOBJ lpObj);
 	void PriestJames(LPOBJ lpNpc, LPOBJ lpObj);
 };
