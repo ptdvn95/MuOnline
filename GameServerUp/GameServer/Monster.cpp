@@ -62,12 +62,12 @@ void gObjMonsterDieGiveItem(LPOBJ lpObj,LPOBJ lpTarget) // OK
 	{
 		return;
 	}
-
+#if (WINDOWSQUEST==1)
 	if (g_ExWinQuestSystem.MonsterKiller(lpObj->Index, lpTarget->Index))
 	{
 		return;
 	}
-
+#endif
 	gMonsterKillCount.CheckMonsterKillCount(lpTarget, lpObj->Class);
 
 	if(lpObj->Class == 247 || lpObj->Class == 249 || lpObj->Class == 277 || lpObj->Class == 283 || lpObj->Class == 288 || lpObj->Class == 460 || lpObj->Class == 461 || lpObj->Class == 462 || lpObj->Class == 524 || lpObj->Class == 525 || lpObj->Class == 527 || lpObj->Class == 528 || lpObj->Class == 605 || lpObj->Class == 606 || lpObj->Class == 607)

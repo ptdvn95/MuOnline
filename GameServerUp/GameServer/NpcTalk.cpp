@@ -1637,8 +1637,8 @@ void CNpcTalk::CGNpcTalkCloseRecv(int aIndex) // OK
 		|| lpObj->Interface.type == INTERFACE_NONE
 		|| lpObj->Interface.type == INTERFACE_CHAOS_BOX
 		// || (lpObj->Interface.type==INTERFACE_TRADE && lpObj->Interface.state==0)
-		|| lpObj->Interface.DuelUserReserved != -1
-		|| lpObj->Interface.DuelUserRequested != -1
+		|| lpObj->DuelUserReserved != -1
+		|| lpObj->DuelUserRequested != -1
 		|| lpObj->Interface.type == INTERFACE_TRADE
 		|| lpObj->Interface.type == INTERFACE_PARTY
 		|| lpObj->Interface.type == INTERFACE_GUILD
