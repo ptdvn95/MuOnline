@@ -110,20 +110,6 @@ void StartAddress(LPVOID lpThreadParameter)
 	}
 }
 
-//New ReduceCPU
-__declspec(naked) void ReduceComsumeCPU()
-{
-	static DWORD JmpBack = 0x00662725;
-
-	__asm
-	{
-		Push 1;
-		Call Dword Ptr Ds : [0x0075615C] ;
-		Call Dword Ptr Ds : [0x00756140] ;
-		Jmp[JmpBack];
-	}
-}
-
 __declspec(naked) void OffButtonQuestInStats()
 {
 	static DWORD ButtonAddress = 0x0077EBB5;
@@ -254,9 +240,6 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	SetDword(0x00954115 + 1, (DWORD)gProtect.m_MainInfo.ServerName2); //-> (Gold PVP)
 	SetDword(0x009540E2 + 1, (DWORD)gProtect.m_MainInfo.ServerName3); //-> (Non-PVP)
 	SetDword(0x009540AC + 1, (DWORD)gProtect.m_MainInfo.ServerName4); //-> Sem Nada
-
-	SetCompleteHook(0xE9, 0x0095DFBE, 0x0095DFD3); // MUHelper Open Inventory
-	SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU); //-- New ReduceCPU
 
 	MemorySet(0x0063E908,0x90,20); //-- C1:F3:04
 

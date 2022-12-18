@@ -16,6 +16,7 @@ void LoginTab();
 void CheckMasterLevel();
 void CompareGensMoveIndex();
 void DrawEffectsPic(int &EffectID, float StartX, float StartY, float StartWidth, float StartHeight );
+void ReduceComsumeCPU();
 
 
 extern BYTE GensBattleMapCount;

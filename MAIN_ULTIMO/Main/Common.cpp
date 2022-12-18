@@ -320,9 +320,14 @@ void InitCommon() // OK
 	// Custom separate chat
 	SeparateChatN.Init();
 
-	//Item set option 512
+	// Item set option 512
 	g_csItemOption.Init();
 
+	// MUHelper Open Inventory
+	SetCompleteHook(0xE9, 0x0095DFBE, 0x0095DFD3);
+
+	// New ReduceCPU
+	SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU);
 
 	SetRange((PVOID)0x004D7DAD, 0x0f, ASM::NOP);
 	SetOp((LPVOID)0x004D7D13, (LPVOID)Credit, ASM::JMP);
@@ -494,4 +499,18 @@ void CRenderBoolean(int a1, int a2, char *a3)
 		RenderBitmap(31740, a1 - 15, a2 + 2, 16.0, 16.0, 0.0, 0.0, 1.0, 1.0, 1, 1, 0.0);
 	}
 	RenderBoolean(a1,a2,a3);
+}
+
+//New ReduceCPU
+__declspec(naked) void ReduceComsumeCPU()
+{
+	static DWORD JmpBack = 0x00662725;
+
+	__asm
+	{
+		Push 1;
+		Call Dword Ptr Ds : [0x0075615C] ;
+		Call Dword Ptr Ds : [0x00756140] ;
+		Jmp[JmpBack];
+	}
 }
