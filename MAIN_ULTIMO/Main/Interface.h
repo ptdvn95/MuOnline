@@ -630,7 +630,6 @@ public:
 	bool Button(DWORD Event, int WinID, int ButtonID, bool Type);
 	void DrawPing();
 	void SendPingRecv();
-	void InitSettings();
 
 	static void DrawZenAndRud(int a1, int a2, int a3, int a4);
 

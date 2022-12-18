@@ -7,6 +7,7 @@
 #include "Util.h"
 #include "TMemory.h"
 #include "ChatExpanded.h"
+#include "SeparateChat.h"
 
 BYTE GensBattleMapCount = 0;
 BYTE GensMoveIndexCount = 0;
@@ -186,7 +187,7 @@ void InitCommon() // OK
 
 	Encoger = GetPrivateProfileIntA("Setting", "Encoger", 0, "./Settings.ini");
 
-	SeparateChat = GetPrivateProfileIntA("Setting", "SeparateChat", 0, "./Settings.ini");
+	// SeparateChat = GetPrivateProfileIntA("Setting", "SeparateChat", 0, "./Settings.ini");
 	HpMonsterBar = GetPrivateProfileIntA("Setting", "HpMonsterBar", 0, "./Settings.ini");
 	HPMonsterName = GetPrivateProfileIntA("Setting", "HPMonsterName", 0, "./Settings.ini");
 	TimerBar = GetPrivateProfileIntA("Setting", "TimerBar", 0, "./Settings.ini");
@@ -307,12 +308,17 @@ void InitCommon() // OK
 			// SetByte((0x00958D56 + 0x3), 0x04); // message limit
 	
 
-	gChatExpanded.m_separate = SeparateChat;
+	// Default Separate Chat
+	// gChatExpanded.m_separate = SeparateChat;
 
-	if(SeparateChat == 1)
-	{
-		gChatExpanded.Load();
-	}
+	// if(SeparateChat == 1)
+	// {
+	// 	gChatExpanded.Load();
+	// }
+
+	// Custom separate chat
+	SeparateChatN.Init();
+
 
 	SetRange((PVOID)0x004D7DAD, 0x0f, ASM::NOP);
 	SetOp((LPVOID)0x004D7D13, (LPVOID)Credit, ASM::JMP);

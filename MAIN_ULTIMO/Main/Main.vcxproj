@@ -206,6 +206,7 @@
     <ClInclude Include="Ruud.h" />
     <ClInclude Include="SceneCreate.h" />
     <ClInclude Include="SelectChar.h" />
+    <ClInclude Include="SeparateChat.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="SetEffect.h" />
     <ClInclude Include="ShopSearch.h" />
@@ -337,6 +338,7 @@
     <ClCompile Include="Ruud.cpp" />
     <ClCompile Include="SceneCreate.cpp" />
     <ClCompile Include="SelectChar.cpp" />
+    <ClCompile Include="SeparateChat.cpp" />
     <ClCompile Include="ServerInfo.cpp" />
     <ClCompile Include="SetEffect.cpp" />
     <ClCompile Include="ShopSearch.cpp" />

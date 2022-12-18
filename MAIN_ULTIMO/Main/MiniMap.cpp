@@ -24,13 +24,8 @@ CMinimap::CMinimap()
 	this->DataMap.ModelID = -1;
 	this->DataMap.XSW_Minimap_Frame = 0;  //-- Minimap_FrameX
 	this->DataMap.YSW_Minimap_Frame = 0;  //-- Minimap_FrameY
-	//this->DataMap.XSW_Minimap = 535; //-- MiniMapX (Mover Minimapa Izquierda o Derecha)
-	//this->DataMap.YSW_Minimap = 306; //-- MiniMapY (Minimapa Abajo) (Mover Minimapa Arriba o Abajo)
-	//this->DataMap.YSW_Minimap = 14; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
-	//this->DataMap.XSW_Minimap = 463; //-- MiniMapX (Mover Minimapa Izquierda o Derecha)
-	//this->DataMap.YSW_Minimap = 8; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
 	this->DataMap.XSW_Minimap = 545; //-- MiniMapX (Mover Minimapa Izquierda o Derecha)
-	this->DataMap.YSW_Minimap = 15.0; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
+	this->DataMap.YSW_Minimap = 10.0; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
 	this->DataMap.XSW_Time_Frame = 0.0; //-- Time_FrameX
 	this->DataMap.YSW_Time_Frame = 0.0; //-- Time_FrameY
 	this->DataMap.This_92 = 0.0;
@@ -46,7 +41,7 @@ CMinimap::CMinimap()
 	this->DataMap.Alpha = 1.0f; //-- Alpha
     this->Moving = false;
     this->ultimoX = 545.0;//Example of initial coordinate {X}. Coordinate that will be constantly modified.
-    this->ultimoY = 15.0;//Example of initial coordinate {Y}. Coordinate that will be constantly modified.
+    this->ultimoY = 10.0;//Example of initial coordinate {Y}. Coordinate that will be constantly modified.
 }
 
 CMinimap::~CMinimap()

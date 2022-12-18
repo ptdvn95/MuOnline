@@ -1362,9 +1362,6 @@ void Interface::Work()
 
 	isHiddenPlayer = GetPrivateProfileIntA("AntiLag", "DisablePlayer", 0, "./Settings.ini");
 
-	// Init some fixed Settings
-	gInterface.InitSettings();
-
 	if (GetForegroundWindow() == pGameWindow)
 	{
 		if (GetKeyState(VK_SNAPSHOT) < 0)
@@ -1448,6 +1445,10 @@ void Interface::Work()
 		else if (GetKeyState(VK_DOWN) & 0x4000)
 		{
 			gInterface.OpenConfig(1);
+		}
+		if (GetKeyState(VK_F6) & 0x4000) 
+		{
+			// gInterface.SwitchChatExpand();
 		}
 		if (GetKeyState(VK_F7) & 0x4000)
 		{
@@ -3605,25 +3606,25 @@ void Interface::SendPingRecv()
 void Interface::SwitchChatExpand()
 {
 
-	// if((GetTickCount() - gInterface.Data[chatbackground].EventTick) < 1000 ||this->CheckWindow(ChatWindow))
-	// {
-	// 	return;
-	// }
+	if((GetTickCount() - gInterface.Data[chatbackground].EventTick) < 1000 ||this->CheckWindow(ChatWindow))
+	{
+		return;
+	}
 
-	// gInterface.Data[chatbackground].EventTick = GetTickCount();
+	gInterface.Data[chatbackground].EventTick = GetTickCount();
 
-	// if (SeparateChat != 0)
-	// {
-	// 	gInterface.DrawMessage(1, "Chat Window Separate [OFF]");
-	// 	SeparateChat = 0;
-	// 	WritePrivateProfileStringA("Setting","SeparateChat","0","./Settings.ini");
-	// }
-	// else
-	// {
-	// 	gInterface.DrawMessage(1, "Chat Window Separate [ON]");
-	// 	SeparateChat = 1;
-	WritePrivateProfileStringA("Setting", "SeparateChat", "1", "./Settings.ini");
-	// }
+	if (SeparateChat != 0)
+	{
+		gInterface.DrawMessage(1, "Chat Window Separate [OFF]");
+		SeparateChat = 0;
+		WritePrivateProfileStringA("Setting","SeparateChat","0","./Settings.ini");
+	}
+	else 
+	{
+		gInterface.DrawMessage(1, "Chat Window Separate [ON]");
+		SeparateChat = 1;
+		WritePrivateProfileStringA("Setting","SeparateChat","1","./Settings.ini");
+	}
 	gChatExpanded.Switch();
 }
 
@@ -5398,9 +5399,4 @@ void Interface::EventLuckyWheel_Main(DWORD Event)
 		DataSend((BYTE *)&pMsg, pMsg.h.size);
 		StartRoll = 1;
 	}
-}
-
-void Interface::InitSettings()
-{
-	gInterface.SwitchChatExpand();
 }
