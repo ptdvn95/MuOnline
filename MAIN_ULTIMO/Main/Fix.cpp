@@ -97,6 +97,13 @@ __declspec(naked) void FixAttackSpeed()
 				STR_SPEED = 600;
 			}
 		}
+		if(gObjUser.MagickAttack == 418)
+		{
+			if(STR_SPEED > 508 /*&& STR_SPEED < 550*/)
+			{
+				STR_SPEED = 500;
+			}
+		}
 	}
 	// -> Magic Gladiator
 	if( CLASS == MagicGladiator || CLASS == DuelMaster )

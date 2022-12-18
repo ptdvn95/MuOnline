@@ -320,7 +320,7 @@ void InitCommon() // OK
 	// Custom separate chat
 	SeparateChatN.Init();
 
-	// Item set option 512
+	// Item set option 512 line (file in Local\eng)
 	g_csItemOption.Init();
 
 	// MUHelper Open Inventory
@@ -328,6 +328,9 @@ void InitCommon() // OK
 
 	// New ReduceCPU
 	SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU);
+
+	// Fix RF buff skill got white texture
+	SetByte(0x0050F68C + 1, 0); //origin
 
 	SetRange((PVOID)0x004D7DAD, 0x0f, ASM::NOP);
 	SetOp((LPVOID)0x004D7D13, (LPVOID)Credit, ASM::JMP);
