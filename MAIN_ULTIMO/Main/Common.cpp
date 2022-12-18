@@ -8,6 +8,7 @@
 #include "TMemory.h"
 #include "ChatExpanded.h"
 #include "SeparateChat.h"
+#include "SItemSetOption.h"
 
 BYTE GensBattleMapCount = 0;
 BYTE GensMoveIndexCount = 0;
@@ -318,6 +319,9 @@ void InitCommon() // OK
 
 	// Custom separate chat
 	SeparateChatN.Init();
+
+	//Item set option 512
+	g_csItemOption.Init();
 
 
 	SetRange((PVOID)0x004D7DAD, 0x0f, ASM::NOP);

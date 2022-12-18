@@ -211,6 +211,7 @@
     <ClInclude Include="SetEffect.h" />
     <ClInclude Include="ShopSearch.h" />
     <ClInclude Include="SItemOption.h" />
+    <ClInclude Include="SItemSetOption.h" />
     <ClInclude Include="SmithItem.h" />
     <ClInclude Include="StaticEffect.h" />
     <ClInclude Include="StatsAdvance.h" />
@@ -344,6 +345,7 @@
     <ClCompile Include="ShopSearch.cpp" />
     <ClCompile Include="SItemOption.cpp" />
     <ClCompile Include="MasterSkill.cpp" />
+    <ClCompile Include="SItemSetOption.cpp" />
     <ClCompile Include="SmithItem.cpp" />
     <ClCompile Include="StaticEffect.cpp" />
     <ClCompile Include="StatsAdvance.cpp" />
