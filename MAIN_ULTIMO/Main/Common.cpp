@@ -489,7 +489,7 @@ void CRenderBoolean(int a1, int a2, char *a3)
 	if ( *(BYTE *)(result + 800) == 1 )
 	{
 		CreateGuildMark(*(WORD *)(result + 124), 1);
-		RenderBitmap(31740, a1 - 15, a2 + 2, 4.0, 4.0, 0.0, 0.0, 1.0, 1.0, 1, 1, 0.0);
+		RenderBitmap(31740, a1 - 15, a2 + 2, 16.0, 16.0, 0.0, 0.0, 1.0, 1.0, 1, 1, 0.0);
 	}
 	RenderBoolean(a1,a2,a3);
 }
