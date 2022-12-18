@@ -143,7 +143,7 @@ void CProtect::CheckCRCJS() // OK
 
 	if (this->m_FilesCrc.PluginCRC32JS != PluginCRC32)
 	{
-		MessageBoxA(NULL, "THE JOINSERVER HAS BEEN MANIPULATED", "[ZX]GAMES WARNING", NULL);
+		MessageBoxA(NULL, "THE JOINSERVER HAS BEEN MANIPULATED", "WARNING", NULL);
 		ExitProcess(0);
 	}
 	PROTECT_FINAL
