@@ -73,7 +73,7 @@
 #define pGLSwitch				((void(__cdecl*)()) 0x635F50)
 #define pCharacterBuf			((int(__thiscall*)(void *This, int a2)) 0x0040FCA0)
 #define pDrawGUFULL				((int(__cdecl*)(int a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8, float a9, char a10, char a11, float a12)) 0x637C60)
-#define pHelperMouseClick 		((char(__cdecl*)(int a1)) 0x7D2920) // Fix dupe
+#define pHelperMouseClick		((char(__thiscall*)(int a1)) 0x007D2920) // Fix dupe
 // #define pHelperMouseClick 		((char(__thiscall*)(int a1)) 0x007C3184)
 #define FULL_X_IN_GAME_X(x)		( (640 * x) / pWinWidth)
 #define FULL_Y_IN_GAME_Y(x)		( (480 * x) / pWinHeight)

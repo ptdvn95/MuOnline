@@ -1281,9 +1281,18 @@ BYTE __thiscall CMacroUIEx::lpUI_HelperMonster(int thisa, int PosX, int __DirY)
 	return EquipedHelperLife(thisa, (int)PosX, __DirY);
 }
 
+char FixHelperMouseClick(int a1)
+{
+	if(gInterface.CheckWindow(ChaosBox) || gInterface.CheckWindow(Warehouse))
+		return 0;
+
+	return pHelperMouseClick(a1);
+}
+
 void CMacroUIEx::Load()
 {
 	SetCompleteHook(0xE8, 0x007F76CD, &OffHelper);
+	SetCompleteHook(0xE8,0x007D2B0C,&FixHelperMouseClick); // Fix Dupe
 
 	if (gProtect.m_MainInfo.MiniMapType == 2)
 	{

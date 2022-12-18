@@ -175,8 +175,6 @@ void InitCommon() // OK
 
 	SetByte((PVOID)(0x81C03FA), 0x01); //-- Show all player's name
 	SetCompleteHook(0xE8, 0x005BAFAB, &CRenderBoolean); // Show Guild Logo Name Player
-	SetCompleteHook(0xE9, 0x0082A983, 0x0082A9F3); //-- Fix Dupe
-	// SetCompleteHook(0xE8,0x007D2B0C,&FixHelperMouseClick); // Fix Dupe
 	// SetCompleteHook(0xE8,0x007C32F9,&FixHelperMouseClick); // S8
 	// SetFloat(0xD477AC,0.0); //Fix ItemStack in Itemtoolip/Shop
 	SetCompleteHook(0xE9, 0x00856FAA, 0x00856FD2); // Remove (H) Baú Aberto
@@ -377,12 +375,6 @@ BOOL CheckGensMoveIndex(int idx) // OK
 	}
 
 	return 0;
-}
-
-char FixHelperMouseClick(int a1)
-{
-	if(gInterface.CheckWindow(ChaosBox)|| gInterface.CheckWindow(Warehouse)) {return 0;}
-	return pHelperMouseClick(a1);
 }
 
 __declspec(naked) void LoginTab() // OK
