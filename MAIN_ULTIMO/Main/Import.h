@@ -463,3 +463,10 @@ signed int sub_9CEBF0(double a1);
 #define Hero										*(DWORD*)0x007BC4F04
 
 #define JCBeginOpengl				((void(__cdecl*)(GLint x, int a2, GLsizei width, GLsizei height)) 0x00636480)
+
+#define pWinWidth				*(GLsizei*)0x0E61E58
+#define pWinHeight				*(GLsizei*)0x0E61E5C
+#define WriteJpeg				((bool(__cdecl*)(char*,int,int,BYTE*,int)) 0x00771B00)
+#define SAFE_DELETE(p)  { if(p) { delete (p);     (p)=NULL; } }
+#define SAFE_DELETE_ARRAY(p)  { if(p) { delete [] (p);     (p)=NULL; } }
+#define SAFE_RELEASE(p) { if(p) { (p)->Release(); (p)=NULL; } }

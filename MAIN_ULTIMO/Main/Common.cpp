@@ -328,11 +328,14 @@ void InitCommon() // OK
 	// MUHelper Open Inventory
 	SetCompleteHook(0xE9, 0x0095DFBE, 0x0095DFD3);
 
-	// New ReduceCPU
-	SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU);
+	// New ReduceCPU, but only works for 1.04J
+	// SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU);
 
 	// Fix RF buff skill got white texture
 	SetByte(0x0050F68C + 1, 0); //origin
+
+	// Fix SaveScreen crash on big resolutions 1.04E
+	SetCompleteHook(0xE8, 0x004D9CF0 + 0x609, &SaveScreen_fix);
 
 	SetRange((PVOID)0x004D7DAD, 0x0f, ASM::NOP);
 	SetOp((LPVOID)0x004D7D13, (LPVOID)Credit, ASM::JMP);
@@ -586,4 +589,33 @@ void __declspec(naked) DarkLordWithRaven(int a1)
 	PUSH EDX                                 
 	JMP [Return_Adress]
 	}
+}
+
+void SaveScreen_fix()
+{
+	*reinterpret_cast<bool*>(0x87933FB) = true; // GrabFirst = true;
+
+	auto Buffer = new unsigned char[pWinWidth * pWinHeight * 4];
+
+	glReadPixels(0, 0, pWinWidth, pWinHeight, GL_RGBA, GL_UNSIGNED_BYTE, &Buffer[0]);
+
+	auto BufferNew = new unsigned char[pWinWidth * pWinHeight * 3];
+
+	int counter = 0;
+	for (int i = 0; i < pWinWidth * pWinHeight * 4; i += 4)
+	{
+		BufferNew[counter + 0] = Buffer[i + 0];
+		BufferNew[counter + 1] = Buffer[i + 1];
+		BufferNew[counter + 2] = Buffer[i + 2];
+
+		counter += 3;
+	}
+
+	WriteJpeg(reinterpret_cast<char*>(0x8793278), pWinWidth, pWinHeight, BufferNew, 100);
+
+	SAFE_DELETE_ARRAY(Buffer)
+	SAFE_DELETE_ARRAY(BufferNew)
+
+	*reinterpret_cast<int*>(0x8793404) = *reinterpret_cast<int*>(0x8793404) + 1; // GrabScreen++;
+	*reinterpret_cast<int*>(0x8793404) = *reinterpret_cast<int*>(0x8793404) % 10000; // GrabScreen %= 10000;
 }
