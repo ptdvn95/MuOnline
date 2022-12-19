@@ -1,10 +1,10 @@
 [GameServerInfo]
 
-CustomerName = MUZXGAMES
+CustomerName = MUDISCORD
 ;==================================================
 ; Server Settings
 ;==================================================
-ServerName = MUGAMES_CS
+ServerName = MUDISCORD_CS
 ServerCode = 19
 ServerLock = 0
 ServerPort = 55919
@@ -16,7 +16,7 @@ ServerMaxUserNumber = 100
 ; Select Language Message.txt
 ; ENG = 1  // SPN = 2  // POR = 3  // VIET = 4
 ;==================================================
-Message_Language = 1
+Message_Language = 4
 
 ;==================================================
 ; Connection Settings
@@ -42,7 +42,7 @@ WriteChaosMixLog = 0
 ;==================================================
 ; AntiFlood Settings
 ;==================================================
-MaxIpConnection = 10
+MaxIpConnection = 100
 BannedDuration = 60000
 MaxHwidConnection = 5
 
@@ -76,9 +76,10 @@ SpeedHackSkillDebug = 1
 ; Common Settings
 ;==================================================
 MaxItemOption = 7
-MaxIpConnection = 2
+MaxIpConnection = 10
 PersonalCodeCheck = 0
 SetItemAcceptHarmonySwitch = 1
+CharacterCloseCount = 1
 
 ;==================================================
 ; Monster Settings
@@ -151,68 +152,68 @@ ElfBufferDefenseConstB = 3
 ;==================================================
 ; Experience Settings
 ;==================================================
-AddExperienceRate_AL0 = 1000
-AddExperienceRate_AL1 = 1000
-AddExperienceRate_AL2 = 1000
-AddExperienceRate_AL3 = 1500
-AddMasterExperienceRate_AL0 = 400
-AddMasterExperienceRate_AL1 = 400
-AddMasterExperienceRate_AL2 = 400
-AddMasterExperienceRate_AL3 = 500
+AddExperienceRate_AL0 = 5
+AddExperienceRate_AL1 = 5
+AddExperienceRate_AL2 = 5
+AddExperienceRate_AL3 = 5
+AddMasterExperienceRate_AL0 = 3
+AddMasterExperienceRate_AL1 = 3
+AddMasterExperienceRate_AL2 = 3
+AddMasterExperienceRate_AL3 = 3
 MinMasterExperienceMonsterLevel_AL0 = 95
 MinMasterExperienceMonsterLevel_AL1 = 95
 MinMasterExperienceMonsterLevel_AL2 = 95
 MinMasterExperienceMonsterLevel_AL3 = 95
-AddEventExperienceRate_AL0 = 0
-AddEventExperienceRate_AL1 = 0
-AddEventExperienceRate_AL2 = 0
-AddEventExperienceRate_AL3 = 0
-AddQuestExperienceRate_AL0 = 0
-AddQuestExperienceRate_AL1 = 0
-AddQuestExperienceRate_AL2 = 0
-AddQuestExperienceRate_AL3 = 0
-OffAttackExperienceRate_AL0 = 0
-OffAttackExperienceRate_AL1 = 0
-OffAttackExperienceRate_AL2 = 0
-OffAttackExperienceRate_AL3 = 0
-AutoResetExperienceRate_AL0 = 0
-AutoResetExperienceRate_AL1 = 0
-AutoResetExperienceRate_AL2 = 0
-AutoResetExperienceRate_AL3 = 0
+AddEventExperienceRate_AL0 = 1
+AddEventExperienceRate_AL1 = 1
+AddEventExperienceRate_AL2 = 1
+AddEventExperienceRate_AL3 = 1
+AddQuestExperienceRate_AL0 = 1
+AddQuestExperienceRate_AL1 = 1
+AddQuestExperienceRate_AL2 = 1
+AddQuestExperienceRate_AL3 = 1
+OffAttackExperienceRate_AL0 = 1
+OffAttackExperienceRate_AL1 = 1
+OffAttackExperienceRate_AL2 = 1
+OffAttackExperienceRate_AL3 = 1
+AutoResetExperienceRate_AL0 = 1
+AutoResetExperienceRate_AL1 = 1
+AutoResetExperienceRate_AL2 = 1
+AutoResetExperienceRate_AL3 = 1
 
 ;==================================================
 ; Item Drop Settings
 ;==================================================
-ItemDropTime = 20
+ItemDropTime = 15
 ItemDropPickUpTime = 10
 ItemDropRate_AL0 = 30
 ItemDropRate_AL1 = 30
 ItemDropRate_AL2 = 30
-ItemDropRate_AL3 = 45
+ItemDropRate_AL3 = 30
 
 ;==================================================
 ; Money Drop Settings
 ;==================================================
-MoneyDropTime = 20
-MoneyAmountDropRate_AL0 = 70
-MoneyAmountDropRate_AL1 = 70
-MoneyAmountDropRate_AL2 = 70
-MoneyAmountDropRate_AL3 = 90
+MoneyDropTime = 15
+MoneyAmountDropRate_AL0 = 40
+MoneyAmountDropRate_AL1 = 40
+MoneyAmountDropRate_AL2 = 40
+MoneyAmountDropRate_AL3 = 40
 
 ;==================================================
 ; Advanced Money Drop Settings
 ; If > 0 enable the system
 ; Money Drop = (MoneyValue*MonterLevel) + % ItemBonus
 ;==================================================
-MoneyValue_AL0 = 1000
-MoneyValue_AL1 = 1000
-MoneyValue_AL2 = 1000
-MoneyValue_AL3 = 1000
+MoneyValue_AL0 = 10
+MoneyValue_AL1 = 10
+MoneyValue_AL2 = 10
+MoneyValue_AL3 = 10
 
 ;==================================================
 ; Item Durability Settings
 ;==================================================
-WeaponDurabilityRate = 50000
+WeaponDurabilityRate = 100
 ArmorDurabilityRate = 100
 WingDurabilityRate = 100
 GuardianDurabilityRate = 100
@@ -226,9 +227,9 @@ PetDurabilityRate = 100
 TradeItemBlock = 0
 TradeItemBlockExc = 0
 TradeItemBlockSet = 0
-TradeItemBlockHarmony = 1
+TradeItemBlockHarmony = 0
 TradeItemBlockSell = 0
-TradeItemBlockLucky = 1
+TradeItemBlockLucky = 0
 
 ;==================================================
 ; Level Up Settings
@@ -236,10 +237,10 @@ TradeItemBlockLucky = 1
 MaxLevelUp = 1
 MaxLevelUpEvent = 1
 MaxLevelUpQuest = 1
-MaxStatPoint_AL0 = 32767
-MaxStatPoint_AL1 = 32767
-MaxStatPoint_AL2 = 32767
-MaxStatPoint_AL3 = 32767
+MaxStatPoint_AL0 = 65535
+MaxStatPoint_AL1 = 65535
+MaxStatPoint_AL2 = 65535
+MaxStatPoint_AL3 = 65535
 MaxStatPointCMD_AL0 = 32767
 MaxStatPointCMD_AL1 = 32767
 MaxStatPointCMD_AL2 = 32767
@@ -261,10 +262,10 @@ MGCreateType = 0
 DLCreateType = 0		
 SUCreateType = 0
 RFCreateType = 0
-MGCreateLevel_AL0 = 220
-MGCreateLevel_AL1 = 220
-MGCreateLevel_AL2 = 220
-MGCreateLevel_AL3 = 220
+MGCreateLevel_AL0 = 0
+MGCreateLevel_AL1 = 0
+MGCreateLevel_AL2 = 0
+MGCreateLevel_AL3 = 0
 MGCreateReset_AL0 = 0
 MGCreateReset_AL1 = 0
 MGCreateReset_AL2 = 0
@@ -273,10 +274,10 @@ MGCreateMasterReset_AL0 = 0
 MGCreateMasterReset_AL1 = 0
 MGCreateMasterReset_AL2 = 0
 MGCreateMasterReset_AL3 = 0
-DLCreateLevel_AL0 = 250
-DLCreateLevel_AL1 = 250
-DLCreateLevel_AL2 = 250
-DLCreateLevel_AL3 = 250
+DLCreateLevel_AL0 = 0
+DLCreateLevel_AL1 = 0
+DLCreateLevel_AL2 = 0
+DLCreateLevel_AL3 = 0
 DLCreateReset_AL0 = 0
 DLCreateReset_AL1 = 0
 DLCreateReset_AL2 = 0
@@ -297,10 +298,10 @@ SUCreateMasterReset_AL0 = 0
 SUCreateMasterReset_AL1 = 0
 SUCreateMasterReset_AL2 = 0
 SUCreateMasterReset_AL3 = 0
-RFCreateLevel_AL0 = 150
-RFCreateLevel_AL1 = 150
-RFCreateLevel_AL2 = 150
-RFCreateLevel_AL3 = 150
+RFCreateLevel_AL0 = 0
+RFCreateLevel_AL1 = 0
+RFCreateLevel_AL2 = 0
+RFCreateLevel_AL3 = 0
 RFCreateReset_AL0 = 0
 RFCreateReset_AL1 = 0
 RFCreateReset_AL2 = 0
@@ -332,7 +333,7 @@ MasterSkillTreeMaxLevel = 600
 ; Formula: level max 400 + level plus 1000 = 1400 lvl.
 ; DownGrade: Activar si usaras una config stilo downgrade.
 ;==================================================
-Max_LevelPlus = 600
+Max_LevelPlus = 0
 DownGrade = 0
 
 ;==================================================
@@ -385,16 +386,23 @@ CashShopGoblinPointValue_AL3 = 1
 ;==================================================
 PartyReconnectTime = 300
 PartyGeneralExperience1 = 100
-PartyGeneralExperience2 = 80
-PartyGeneralExperience3 = 75
-PartyGeneralExperience4 = 65
-PartyGeneralExperience5 = 60
+PartyGeneralExperience2 = 130
+PartyGeneralExperience3 = 160
+PartyGeneralExperience4 = 190
+PartyGeneralExperience5 = 200
+PartyGeneralExperience6 = 200
+PartyGeneralExperience7 = 200
 PartySpecialExperience1 = 100
-PartySpecialExperience2 = 80
-PartySpecialExperience3 = 75
-PartySpecialExperience4 = 65
-PartySpecialExperience5 = 60
+PartySpecialExperience2 = 130
+PartySpecialExperience3 = 160
+PartySpecialExperience4 = 190
+PartySpecialExperience5 = 200
+PartySpecialExperience6 = 200
+PartySpecialExperience7 = 200
+PartyMaxMembers = 7
 PartyDisablePK = 1
+RestrictRequest = 1
+DifferenceMaxLevel = 120
 
 ;==================================================
 ; Potion Settings
@@ -491,7 +499,7 @@ HpBonus_MAX = 1
 ; Die System
 ; Mostra mensagem no chat quando o personagem morre.
 ;==================================================
-DieUserSwitch = 0
+DieUserSwitch = 1
 DieMonsterSwitch = 0
 
 ;==================================================
@@ -499,7 +507,7 @@ DieMonsterSwitch = 0
 ; Exibe mensagem de conexão Gm/Player.
 ;==================================================
 OnlineGmSwitch = 1
-OnlineUserSwitch = 0
+OnlineUserSwitch = 1
 
 ;==================================================
 ; Disable exp message (Premium)
@@ -549,7 +557,7 @@ PkItemDropExecellent = 0
 PkItemDropSocketItem = 0
 PkItemDropSetItem = 0
 PkItemDropHarmony = 0
-PkItemDropRate = 10
+PkItemDropRate = 0
 
 ;==================================================
 ; Disconnect Online Account
@@ -560,7 +568,7 @@ DisconnectOnlineAccount = 1
 ;==================================================
 ; Enable CS Skills in All Maps
 ;==================================================
-EnableCsSkillsAllMaps = 1
+EnableCsSkillsAllMaps = 0
 
 ;==================================================
 ; Enable Combo Skills in All Class
@@ -570,4 +578,4 @@ EnableComboToAllSwitch = 1
 ;==================================================
 ; Socket + Joh
 ;==================================================
-SocketItemAcceptHarmonySwitch = 0
+SocketItemAcceptHarmonySwitch = 1

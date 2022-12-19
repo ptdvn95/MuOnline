@@ -1,7 +1,7 @@
 //Index   Level   OpExe   Zen Value	Coin1	Coin2	Coin3	SellValue	Comment
-26	  0       *       15            30	0	0	7		//Sword
-26	  10      *       150000        0	0	0	0		//Sword  
-7168	  0       *       15            0	0	12	6		//Sword 
+26	  	  0       *       15        30	0	0	7		//Sword
+26	  	  10      *       150000    0	0	0	0		//Sword  
+7168	  0       *       15        0	0	12	6		//Sword 
 2055      0       *       100		0	0	0	0		//Bolt
 2055      1       *       1400		0	0	0	0		//Bolt
 2055      2       *       2200		0	0	0	0		//Bolt

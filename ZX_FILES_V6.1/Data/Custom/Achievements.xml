@@ -20,11 +20,11 @@
 
 <achievements enable="1">
 	<mission>
-		<info index="0" count="1000000" rewardType="4" rewardValue="10" Name="Monster Kill"/> <!-- MonsterKill -->
-		<info index="1" count="100" rewardType="1" rewardValue="0" Name="Golden Kill"/> <!-- GoldenKill -->
+		<info index="0" count="500000" rewardType="4" rewardValue="10" Name="Monster Kill"/> <!-- MonsterKill -->
+		<info index="1" count="50" rewardType="1" rewardValue="0" Name="Golden Kill"/> <!-- GoldenKill -->
 		<info index="2" count="250000" rewardType="2" rewardValue="0" Name="Kalima Monster Kill"/> <!-- KalimaMonserKill -->
 		<info index="3" count="10" rewardType="3" rewardValue="0" Name="White Wizard Kill"/> <!-- WhiteWizardKill -->
-		<info index="4" count="1000" rewardType="4" rewardValue="0" Name="Player Kill"/> <!-- PlayerKill -->
+		<info index="4" count="100" rewardType="4" rewardValue="0" Name="Player Kill"/> <!-- PlayerKill -->
 		<info index="5" count="25" rewardType="0" rewardValue="0" Name="Red Dragon Kill"/> <!-- RedDragonKill -->
 		<info index="6" count="50" rewardType="0" rewardValue="0" Name="Orc Kill"/> <!-- OrcKill -->
 		<info index="7" count="25" rewardType="0" rewardValue="0" Name="Kill gate BC"/> <!-- KillGateBC -->
@@ -37,12 +37,12 @@
 		<info index="14" count="500" rewardType="0" rewardValue="0" Name="Failed Chaos Mix"/> <!-- FailedChaosMix -->
 		<info index="15" count="2000000000" rewardType="0" rewardValue="0" Name="Pick up Zen"/> <!-- PickUpZen -->
 		<info index="16" count="50" rewardType="0" rewardValue="0" Name="Pick up Excellent"/> <!-- PickUpExellent -->
-		<info index="17" count="35" rewardType="0" rewardValue="0" Name="Pick up Ancent"/> <!-- PickUpAncient -->
+		<info index="17" count="25" rewardType="0" rewardValue="0" Name="Pick up Ancent"/> <!-- PickUpAncient -->
 		<info index="18" count="25" rewardType="0" rewardValue="0" Name="Duel Win"/> <!-- DuelWin -->
-		<info index="19" count="10000" rewardType="0" rewardValue="0" Name="Level up"/> <!-- LevelUp -->
+		<info index="19" count="300" rewardType="0" rewardValue="0" Name="Level up"/> <!-- LevelUp -->
 		<info index="20" count="100" rewardType="0" rewardValue="0" Name="Reset up"/> <!-- ResetUp -->
 		<info index="21" count="20" rewardType="0" rewardValue="0" Name="Kanturu Boss Kill"/> <!-- KanturuBossKill -->
-		<info index="22" count="500000" rewardType="0" rewardValue="0" Name="Monster 100lvl Kill"/> <!-- Monster100LvlKill -->
+		<info index="22" count="1000" rewardType="0" rewardValue="0" Name="Monster 100lvl Kill"/> <!-- Monster100LvlKill -->
 		<info index="23" count="50" rewardType="0" rewardValue="0" Name="Mootop vote"/> <!-- MmotopVote -->
 		<info index="24" count="100" rewardType="0" rewardValue="0" Name="Phonoman Kill"/> <!-- PhonomanKill -->
 		<info index="25" count="25" rewardType="0" rewardValue="0" Name="CryWolf Event Monster"/> <!-- CryWolfEventMonster -->
@@ -73,11 +73,11 @@
 		
 	</mission>
 	<power>
-		<damageMax>5000</damageMax>
-		<defenseMax>5000</defenseMax>
+		<damageMax>10000</damageMax>
+		<defenseMax>10000</defenseMax>
 		<lifeMax>10000</lifeMax>
-		<excellentDamageMax>25</excellentDamageMax>
-		<criticalDamageMax>25</criticalDamageMax>
+		<excellentDamageMax>10000</excellentDamageMax>
+		<criticalDamageMax>10000</criticalDamageMax>
 		
 		<divDamage>100</divDamage>
 		<divDefense>100</divDefense>

@@ -53,7 +53,7 @@ ChaosCastleBlowUserRate = 50
 ;==================================================
 ; Crywolf Event Settings
 ;==================================================
-CrywolfEvent = 1
+CrywolfEvent = 0
 CrywolfBenefitSwitch = 1
 CrywolfBenefitChaosRate = 10
 CrywolfBenefitMonsterLife = 80
@@ -70,20 +70,20 @@ DevilSquareMaxUser = 15
 ;==================================================
 ; Double Goer Event Settings
 ;==================================================
-DoubleGoerEvent = 1
+DoubleGoerEvent = 0
 DoubleGoerDifficultRate = 100
 
 ;==================================================
 ; Illusion Temple Event Settings
 ;==================================================
-IllusionTempleEvent = 1
+IllusionTempleEvent = 0
 IllusionTempleMinUser = 1
 IllusionTempleRewardFenrirRate = 5
 
 ;==================================================
 ; Imperial Guardian Event Settings
 ;==================================================
-ImperialGuardianEvent = 1
+ImperialGuardianEvent = 0
 ImperialGuardianDifficultRate = 100
 
 ;==================================================
@@ -99,7 +99,7 @@ KanturuEvent = 1
 ;==================================================
 ; Moss Merchant Event Settings
 ;==================================================
-MossMerchantEvent = 1
+MossMerchantEvent = 0
 MossMerchantEventTime = 220
 
 ;==================================================
@@ -110,7 +110,7 @@ RaklionEvent = 1
 ;==================================================
 ; Quickly Event (Veloz - Premium)
 ;==================================================
-QuicklyEvent = 1
+QuicklyEvent = 0
 
 ;==================================================
 ; Event Start (Iniciar evento - Premium)
@@ -121,20 +121,20 @@ EventStartTime   = 15
 ;==================================================
 ; Event Hide and Seek (Esconde-Esconde - Premium)
 ;==================================================
-EventHideAndSeekSwitch = 1
+EventHideAndSeekSwitch = 0
 EventHideAndSeekMaxTime= 5
 
 ;==================================================
 ; Event Run And Catch (Pega-Pega - Premium)
 ;==================================================
-EventRunAndCatchSwitch = 1
+EventRunAndCatchSwitch = 0
 EventRunAndCatchTimeToEnter = 10
 EventRunAndCatchMaxTime= 10
 
 ;==================================================
 ; Event Russian Roulette (Roleta Russa)
 ;==================================================
-EventRussianRouletteSwitch 	= 1
+EventRussianRouletteSwitch 	= 0
 EventRussianRouletteTimeToEnter	= 10
 EventRussianRouletteMaxTime	= 10
 EventRussianRouletteMaxPlayer	= 8
@@ -142,7 +142,7 @@ EventRussianRouletteMaxPlayer	= 8
 ;==================================================
 ; Event PvP  (1x1)
 ;==================================================
-EventPvPSwitch = 1
+EventPvPSwitch = 0
 EventPvPMaxScore = 3
 EventPvPMaxTime= 3
 EventPvPAutoReward1 = 0
@@ -152,7 +152,7 @@ EventPvPAutoReward3 = 100
 ;==================================================
 ; Event Kill All (Mata-Mata Geral)
 ;==================================================
-EventKillAllSwitch = 1
+EventKillAllSwitch = 0
 EventKillAllTimeToEnter = 20
 EventKillAllDeadDecrease = 1
 EventKillAllKillIncrease = 2
@@ -173,7 +173,7 @@ EventKillAllAutoReward3Rank3 = 30
 ;==================================================
 ; Event Team vs Team
 ;==================================================
-EventTvtSwitch = 1
+EventTvtSwitch = 0
 EventTvtNpc = 380
 EventTvtNpcMap = 0
 EventTvtNpcX = 130

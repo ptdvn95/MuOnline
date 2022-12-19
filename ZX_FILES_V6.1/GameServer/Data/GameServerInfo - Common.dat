@@ -1,10 +1,10 @@
 [GameServerInfo]
 
-CustomerName = MUZXGAMES
+CustomerName = MUDISCORD
 ;==================================================
 ; Server Settings
 ;==================================================
-ServerName = MUZXGAMES
+ServerName = MUDISCORD
 ServerCode = 0
 ServerLock = 0
 ServerPort = 55901
@@ -22,7 +22,7 @@ ServerMaxMasterReset = 0
 ; Select Language Message.txt
 ; ENG = 1  // SPN = 2  // POR = 3  // VIET = 4
 ;==================================================
-Message_Language = 1
+Message_Language = 4
 
 ;==================================================
 ; Connection Settings
@@ -85,6 +85,7 @@ SpeedHackSkillDebug = 1
 MaxItemOption = 7
 PersonalCodeCheck = 0
 SetItemAcceptHarmonySwitch = 1
+CharacterCloseCount = 1
 
 ;==================================================
 ; Monster Settings
@@ -158,14 +159,14 @@ ElfBufferDefenseConstB = 3
 ;==================================================
 ; Experience Settings
 ;==================================================
-AddExperienceRate_AL0 = 9000
-AddExperienceRate_AL1 = 9000
-AddExperienceRate_AL2 = 9000
-AddExperienceRate_AL3 = 9500
-AddMasterExperienceRate_AL0 = 9000
-AddMasterExperienceRate_AL1 = 9000
-AddMasterExperienceRate_AL2 = 9000
-AddMasterExperienceRate_AL3 = 9000
+AddExperienceRate_AL0 = 80
+AddExperienceRate_AL1 = 80
+AddExperienceRate_AL2 = 80
+AddExperienceRate_AL3 = 80
+AddMasterExperienceRate_AL0 = 10
+AddMasterExperienceRate_AL1 = 10
+AddMasterExperienceRate_AL2 = 10
+AddMasterExperienceRate_AL3 = 10
 MinMasterExperienceMonsterLevel_AL0 = 5
 MinMasterExperienceMonsterLevel_AL1 = 5
 MinMasterExperienceMonsterLevel_AL2 = 5
@@ -190,36 +191,36 @@ AutoResetExperienceRate_AL3 = 1
 ;==================================================
 ; Item Drop Settings
 ;==================================================
-ItemDropTime = 30
+ItemDropTime = 20
 ItemDropPickUpTime = 10
-ItemDropRate_AL0 = 90
-ItemDropRate_AL1 = 90
-ItemDropRate_AL2 = 90
-ItemDropRate_AL3 = 100
+ItemDropRate_AL0 = 30
+ItemDropRate_AL1 = 30
+ItemDropRate_AL2 = 30
+ItemDropRate_AL3 = 30
 
 ;==================================================
 ; Money Drop Settings
 ;==================================================
-MoneyDropTime = 30
-MoneyAmountDropRate_AL0 = 70
-MoneyAmountDropRate_AL1 = 70
-MoneyAmountDropRate_AL2 = 70
-MoneyAmountDropRate_AL3 = 90
+MoneyDropTime = 15
+MoneyAmountDropRate_AL0 = 40
+MoneyAmountDropRate_AL1 = 40
+MoneyAmountDropRate_AL2 = 40
+MoneyAmountDropRate_AL3 = 40
 
 ;==================================================
 ; Advanced Money Drop Settings
 ; If > 0 enable the system
 ; Money Drop = (MoneyValue*MonterLevel) + % ItemBonus
 ;==================================================
-MoneyValue_AL0 = 1000
-MoneyValue_AL1 = 1000
-MoneyValue_AL2 = 1000
-MoneyValue_AL3 = 1000
+MoneyValue_AL0 = 20
+MoneyValue_AL1 = 20
+MoneyValue_AL2 = 20
+MoneyValue_AL3 = 20
 
 ;==================================================
 ; Item Durability Settings
 ;==================================================
-WeaponDurabilityRate = 50000
+WeaponDurabilityRate = 100
 ArmorDurabilityRate = 100
 WingDurabilityRate = 100
 GuardianDurabilityRate = 100
@@ -244,44 +245,46 @@ MaxLevelUp = 1
 MaxLevelUpEvent = 1
 MaxLevelUpQuest = 1
 
-DW_MaxStatPoint_STR = 100
-DW_MaxStatPoint_AGI = 80
-DW_MaxStatPoint_VIT = 150
-DW_MaxStatPoint_ENE = 300
+DW_MaxStatPoint_STR = 65535
+DW_MaxStatPoint_AGI = 65535
+DW_MaxStatPoint_VIT = 65535
+DW_MaxStatPoint_ENE = 65535
 
-DK_MaxStatPoint_STR = 65000
-DK_MaxStatPoint_AGI = 65000
-DK_MaxStatPoint_VIT = 65000
-DK_MaxStatPoint_ENE = 65000
+DK_MaxStatPoint_STR = 65535
+DK_MaxStatPoint_AGI = 65535
+DK_MaxStatPoint_VIT = 65535
+DK_MaxStatPoint_ENE = 65535
 
-ELF_MaxStatPoint_STR = 65000
-ELF_MaxStatPoint_AGI = 65000
-ELF_MaxStatPoint_VIT = 65000
-ELF_MaxStatPoint_ENE = 65000
+ELF_MaxStatPoint_STR = 65535
+ELF_MaxStatPoint_AGI = 65535
+ELF_MaxStatPoint_VIT = 65535
+ELF_MaxStatPoint_ENE = 65535
 
-MG_MaxStatPoint_STR = 65000
-MG_MaxStatPoint_AGI = 65000
-MG_MaxStatPoint_VIT = 65000
-MG_MaxStatPoint_ENE = 65000
+MG_MaxStatPoint_STR = 65535
+MG_MaxStatPoint_AGI = 65535
+MG_MaxStatPoint_VIT = 65535
+MG_MaxStatPoint_ENE = 65535
 
-DL_MaxStatPoint_STR = 65000
-DL_MaxStatPoint_AGI = 65000
-DL_MaxStatPoint_VIT = 65000
-DL_MaxStatPoint_ENE = 65000
+DL_MaxStatPoint_STR = 65535
+DL_MaxStatPoint_AGI = 65535
+DL_MaxStatPoint_VIT = 65535
+DL_MaxStatPoint_ENE = 65535
 
-SU_MaxStatPoint_STR = 65000
-SU_MaxStatPoint_AGI = 65000
-SU_MaxStatPoint_VIT = 65000
-SU_MaxStatPoint_ENE = 65000
+SU_MaxStatPoint_STR = 65535
+SU_MaxStatPoint_AGI = 65535
+SU_MaxStatPoint_VIT = 65535
+SU_MaxStatPoint_ENE = 65535
 
-RF_MaxStatPoint_STR = 65000
-RF_MaxStatPoint_AGI = 65000
-RF_MaxStatPoint_VIT = 65000
-RF_MaxStatPoint_ENE = 65000
+RF_MaxStatPoint_STR = 65535
+RF_MaxStatPoint_AGI = 65535
+RF_MaxStatPoint_VIT = 65535
+RF_MaxStatPoint_ENE = 65535
+
 MaxStatPointCMD_AL0 = 32767
 MaxStatPointCMD_AL1 = 32767
 MaxStatPointCMD_AL2 = 32767
 MaxStatPointCMD_AL3 = 32767
+
 DWLevelUpPoint = 5
 DKLevelUpPoint = 5
 FELevelUpPoint = 5
@@ -295,14 +298,14 @@ PlusStatPoint = 1
 ; Create Character Settings
 ;==================================================
 CharacterCreateSwitch = 1
-MGCreateType = 0				
+MGCreateType = 0
 DLCreateType = 0		
 SUCreateType = 0
 RFCreateType = 0
-MGCreateLevel_AL0 = 220
-MGCreateLevel_AL1 = 220
-MGCreateLevel_AL2 = 220
-MGCreateLevel_AL3 = 220
+MGCreateLevel_AL0 = 0
+MGCreateLevel_AL1 = 0
+MGCreateLevel_AL2 = 0
+MGCreateLevel_AL3 = 0
 MGCreateReset_AL0 = 0
 MGCreateReset_AL1 = 0
 MGCreateReset_AL2 = 0
@@ -311,10 +314,10 @@ MGCreateMasterReset_AL0 = 0
 MGCreateMasterReset_AL1 = 0
 MGCreateMasterReset_AL2 = 0
 MGCreateMasterReset_AL3 = 0
-DLCreateLevel_AL0 = 250
-DLCreateLevel_AL1 = 250
-DLCreateLevel_AL2 = 250
-DLCreateLevel_AL3 = 250
+DLCreateLevel_AL0 = 0
+DLCreateLevel_AL1 = 0
+DLCreateLevel_AL2 = 0
+DLCreateLevel_AL3 = 0
 DLCreateReset_AL0 = 0
 DLCreateReset_AL1 = 0
 DLCreateReset_AL2 = 0
@@ -335,10 +338,10 @@ SUCreateMasterReset_AL0 = 0
 SUCreateMasterReset_AL1 = 0
 SUCreateMasterReset_AL2 = 0
 SUCreateMasterReset_AL3 = 0
-RFCreateLevel_AL0 = 150
-RFCreateLevel_AL1 = 150
-RFCreateLevel_AL2 = 150
-RFCreateLevel_AL3 = 150
+RFCreateLevel_AL0 = 0
+RFCreateLevel_AL1 = 0
+RFCreateLevel_AL2 = 0
+RFCreateLevel_AL3 = 0
 RFCreateReset_AL0 = 0
 RFCreateReset_AL1 = 0
 RFCreateReset_AL2 = 0
@@ -394,7 +397,7 @@ GensSystemFinalRewardDay = 7
 ; Helper Settings
 ;==================================================
 HelperSwitch = 1
-HelperActiveLevel = 80
+HelperActiveLevel = 40
 HelperActiveDelay = 5
 HelperActiveMoney1 = 20
 HelperActiveMoney2 = 50
@@ -425,15 +428,19 @@ CashShopGoblinPointValue_AL3 = 1
 ;==================================================
 PartyReconnectTime = 300
 PartyGeneralExperience1 = 100
-PartyGeneralExperience2 = 80
-PartyGeneralExperience3 = 75
-PartyGeneralExperience4 = 65
-PartyGeneralExperience5 = 60
+PartyGeneralExperience2 = 130
+PartyGeneralExperience3 = 160
+PartyGeneralExperience4 = 190
+PartyGeneralExperience5 = 200
+PartyGeneralExperience6 = 200
+PartyGeneralExperience7 = 200
 PartySpecialExperience1 = 100
-PartySpecialExperience2 = 80
-PartySpecialExperience3 = 75
-PartySpecialExperience4 = 65
-PartySpecialExperience5 = 60
+PartySpecialExperience2 = 130
+PartySpecialExperience3 = 160
+PartySpecialExperience4 = 190
+PartySpecialExperience5 = 200
+PartySpecialExperience6 = 200
+PartySpecialExperience7 = 200
 PartyMaxMembers = 7
 PartyDisablePK = 1
 RestrictRequest = 1
@@ -542,7 +549,7 @@ DieMonsterSwitch = 0
 ; Exibe mensagem de conexão Gm/Player.
 ;==================================================
 OnlineGmSwitch = 1
-OnlineUserSwitch = 0
+OnlineUserSwitch = 1
 
 ;==================================================
 ; Disable exp message (Premium)
@@ -555,12 +562,12 @@ DisableExpMessage = 0
 ; Remover Recuo (Premium)
 ; Remove o recuo/empurrão das skills
 ;==================================================
-DisableLightningEffect  = 1
-DisableCycloneEffect  = 1
-DisableTwistEffect  = 1
-DisableLungEffect  = 1
-DisableFallingEffect  = 1
-DisableUpperCutEffect  = 1
+DisableLightningEffect  = 0
+DisableCycloneEffect  = 0
+DisableTwistEffect  = 0
+DisableLungEffect  = 0
+DisableFallingEffect  = 0
+DisableUpperCutEffect  = 0
 
 ;==================================================
 ; Disable Wings Class Mix
@@ -582,17 +589,17 @@ PkCanEnterDS = 0
 ; Pk Item Drop
 ;==================================================
 PkItemDropSwitch = 0
-PkItemDropEnable_AL0 = 1
-PkItemDropEnable_AL1 = 1
-PkItemDropEnable_AL2 = 1
-PkItemDropEnable_AL3 = 1
-PkItemDropMinLevel = 0
-PkItemDropMaxLevel = 2
-PkItemDropExecellent = 1
-PkItemDropSocketItem = 1
-PkItemDropSetItem = 1
-PkItemDropHarmony = 1
-PkItemDropRate = 10
+PkItemDropEnable_AL0 = 0
+PkItemDropEnable_AL1 = 0
+PkItemDropEnable_AL2 = 0
+PkItemDropEnable_AL3 = 0
+PkItemDropMinLevel = 150
+PkItemDropMaxLevel = 150
+PkItemDropExecellent = 0
+PkItemDropSocketItem = 0
+PkItemDropSetItem = 0
+PkItemDropHarmony = 0
+PkItemDropRate = 0
 
 ;==================================================
 ; Disconnect Online Account
@@ -603,7 +610,7 @@ DisconnectOnlineAccount = 1
 ;==================================================
 ; Enable CS Skills in All Maps
 ;==================================================
-EnableCsSkillsAllMaps = 1
+EnableCsSkillsAllMaps = 0
 
 ;==================================================
 ; Enable Combo Skills in All Class

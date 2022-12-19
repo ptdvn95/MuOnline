@@ -2,13 +2,13 @@
 ;==================================================
 ; Announce Chaos Mix Settings
 ;==================================================
-AnnounceChaosMix = 0
+AnnounceChaosMix = 1
 AnnounceChaosMixText = %s put the item %s +15
 
 ;==================================================
 ; Custom Arena Settings
 ;==================================================
-CustomArenaSwitch = 1
+CustomArenaSwitch = 0
 CustomArenaVictimScoreDecrease = 10
 CustomArenaKillerScoreIncrease = 100
 CustomArenaText1 = [%s] will close in %d minute(s)
@@ -34,7 +34,7 @@ CustomArenaText19 = His class is not allowed in the arena
 ;==================================================
 ; Custom Event Drop Settings
 ;==================================================
-CustomEventDropSwitch = 1
+CustomEventDropSwitch = 0
 CustomEventDropText1 = [%s] will start in %d minute(s)
 CustomEventDropText2 = [%s] started
 CustomEventDropText3 = [%s] finished
@@ -115,7 +115,7 @@ CustomAttackOfflineGPGain = 0
 ;==================================================
 ; Custom Online Lottery Settings
 ;==================================================
-CustomOnlineLotterySwitch = 1
+CustomOnlineLotterySwitch = 0
 CustomOnlineLotteryText1 = %s em %d minuto(s)
 CustomOnlineLotteryText2 = %s foi o vencedor do sorteio. Parabéns!
 CustomOnlineLotteryText3 = %s não teve vencedor
@@ -124,13 +124,13 @@ CustomOnlineLotteryNoOff = 1
 ;==================================================
 ; Custom Quest Settings
 ;==================================================
-CustomQuestSwitch = 1
+CustomQuestSwitch = 0
 
 ;==================================================
 ; Custom RankUser Settings (CustomRankUser.txt)
 ; Type Reset = 0, Type Master Reset = 1, Type Level = 2
 ;==================================================
-CustomRankUserSwitch = 1
+CustomRankUserSwitch = 0
 CustomRankUserType = 2
 CustomRankUserRewardSwitch = 1
 CustomRankUserNoticeToAll = 1
@@ -144,17 +144,17 @@ CustomDeathMessageSwitch = 1
 ;==================================================
 ; Custom Quiz
 ;==================================================
-CustomQuizSwitch = 1
+CustomQuizSwitch = 0
 
 ;==================================================
 ; Custom NpcCollector Settings (CustomNpcCollector.txt)
 ;==================================================
-CustomNpcCollectorSwitch = 1
+CustomNpcCollectorSwitch = 0
 
 ;==================================================
 ; Custom Pick Command (CustomPick.txt) 
 ;==================================================
-CustomPickSwitch = 1
+CustomPickSwitch = 0
 CustomPickEnable_AL0 = 1
 CustomPickEnable_AL1 = 1
 CustomPickEnable_AL2 = 1
@@ -175,7 +175,7 @@ CustomPickRequireMoney_AL3 = 200000
 ;==================================================
 ; Custom Ranking Settings (CustomRanking.txt) F8 in game
 ;==================================================
-CustomRankingSwitch = 1
+CustomRankingSwitch = 0
 
 ;==================================================
 ; Custom EventTime Settings H in game
@@ -201,7 +201,7 @@ GuildWarehouseStatus = 0
 ; 1: Only for coins
 ; 2: All purchases
 ;==================================================
-CustomShopMessageBox = 2
+CustomShopMessageBox = 1
 
 ;==================================================
 ; Custom Quest Settings (CustomNpcQuest.txt)

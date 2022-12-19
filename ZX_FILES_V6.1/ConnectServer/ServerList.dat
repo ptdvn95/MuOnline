@@ -1,5 +1,5 @@
 //ServerCode	ServerName	ServerAddress		ServerPort	ServerType
-0		"MUMexico"	"169.254.7.44"		55901		"SHOW"
-1		"MUMexico2"	"169.254.7.44"		55902		"SHOW"
-19		"MUMexicoCS"	"169.254.7.44"		55919		"HIDE"
+0		"MUDISCORD"	"192.168.11.119"		55901		"SHOW"
+1		"MUDISCORD2"	"192.168.11.119"		55902		"SHOW"
+19		"MUDISCORDCS"	"192.168.11.119"		55919		"HIDE"
 end

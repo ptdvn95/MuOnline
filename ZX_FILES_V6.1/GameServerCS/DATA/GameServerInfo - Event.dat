@@ -17,7 +17,7 @@ BloodCastlePvp_AL3 = 0
 ;==================================================
 ; Bonus Manager Settings
 ;==================================================
-BonusManagerSwitch = 1
+BonusManagerSwitch = 0
 
 ;==================================================
 ; Castle Deep Event Settings
@@ -70,13 +70,13 @@ DevilSquareMaxUser = 20
 ;==================================================
 ; Double Goer Event Settings
 ;==================================================
-DoubleGoerEvent = 1
+DoubleGoerEvent = 0
 DoubleGoerDifficultRate = 200
 
 ;==================================================
 ; Illusion Temple Event Settings
 ;==================================================
-IllusionTempleEvent = 1
+IllusionTempleEvent = 0
 IllusionTempleMinUser = 2
 IllusionTempleRewardFenrirRate = 15
 

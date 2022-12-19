@@ -61,7 +61,7 @@ end
 	//Quest Section   Type   Level   Dur   Skill   Luck   Option   ExcOp	SetOp	JoH	OEx	Socket1	Socket2	Socket3	Socket4	Socket5 Time	Class
 4
 	1 	14        13      0       0     0       0      0        0	0	0	0	255	255	255	255	255	0	*
-	1 	 7         1      15      0     0       1      28       63	5	0	0	255	255	255	255	255	0	2
+	1 	 7         1      0      0     0       1      28       63	5	0	0	255	255	255	255	255	0	2
 	1 	 7         1      0       0     0       0      0        0	0	0	0	255	255	255	255	255	0	*
 end
 

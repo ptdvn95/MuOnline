@@ -1,25 +1,24 @@
 //=================================================================================================================
 //-- Desenvolvido por louis - www.jogandomu.com.br
-//-- Sistema que realiza um sorteio entre todos os usários online, dropando itens ao vencedor
-//-- Sorteio realizado de acordo com os horários e prêmios abaixo
+//-- Sistema que realiza um sorteio entre todos os usï¿½rios online, dropando itens ao vencedor
+//-- Sorteio realizado de acordo com os horï¿½rios e prï¿½mios abaixo
 //=================================================================================================================
-// Obs: Se você inciar o evento pelo menu do GS o valor do prêmio será referente ao index 0. 
+// Obs: Se vocï¿½ inciar o evento pelo menu do GS o valor do prï¿½mio serï¿½ referente ao index 0. 
 //=================================================================================================================
-// O drop do item é de acordo com o Event item bag Lottery.txt
+// O drop do item ï¿½ de acordo com o Event item bag Lottery.txt
 //=================================================================================================================
 
 0
 //Index   Year   Month   Day   DoW   Hour   Minute   Second
-0         *      *       *     *     *      36        0
 end
 
 1
 //Index   Name                                 DropMap      AlarmTime
-0         "Sorteio Online"                     0            5            
+//0         "Raffle Online"                     0            5            
 end
 
 //Reward 
 2
 //Index   	WC	WP	GP 
-0		10	0	0		
+//0		10	0	0		
 end

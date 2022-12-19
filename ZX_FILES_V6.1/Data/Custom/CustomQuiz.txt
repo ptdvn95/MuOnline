@@ -3,24 +3,47 @@
 //=================================================================================================================
 0
 //Index   Year   Month   Day   DoW   Hour   Minute   Second
-0         *      *       *     *     *      10       0
+0         *      *       *     *     0      25       0
+0         *      *       *     *     1      25       0
+0         *      *       *     *     2      25       0
+0         *      *       *     *     3      25       0
+0         *      *       *     *     4      25       0
+0         *      *       *     *     5      25       0
+0         *      *       *     *     6      25       0
+0         *      *       *     *     7      25       0
+0         *      *       *     *     8      25       0
+0         *      *       *     *     9      25       0
+0         *      *       *     *     10      25       0
+0         *      *       *     *     11      25       0
+0         *      *       *     *     12      25       0
+0         *      *       *     *     13      25       0
+0         *      *       *     *     14      25       0
+0         *      *       *     *     15      25       0
+0         *      *       *     *     16      25       0
+0         *      *       *     *     17      25       0
+0         *      *       *     *     18      25       0
+0         *      *       *     *     19      25       0
+0         *      *       *     *     20      25       0
+0         *      *       *     *     21      25       0
+0         *      *       *     *     22      25       0
+0         *      *       *     *     23      25       0
 end
 
 1
 //Index   Name                       AlarmTime   EventTime
-0         "Quiz"                        3           3
+0         "Đố vui trúng đại !!!"                        5           5
 end
 
 
 //=================================================================================================================
 // Questions
 //=================================================================================================================
-//  ID  	->  Question ID
-//  WC 		->  Premia��o em WCoinC
-//  WP      	->  Premia��o em WCoinP
-//  GP      	->  Premia��o em Goblin Point
-//  Question   	->  Pergunta
-//  Answer   	->  Resposta
+//  ID  	
+//  WC 		
+//  WP      	
+//  GP      	
+//  Question   	
+//  Answer   	
 //=================================================================================================================
 // Obs: Evite usar respostas que possuem acentos. 
 //=================================================================================================================
@@ -28,15 +51,17 @@ end
 //       #ID     #WC     #WP	 #GP         #Question				      		        #Answer		 
 //=================================================================================================================
 2
-	  0      10       0       0	     "Cidade Maravilhosa?"					"Rio de Janeiro"	
-	  1      10       0       0	     "10+2x2?"							"14"
-	  2      10       0       0	     "Qual o site do jogo?"					"www.seusite.com"
-	  3      10       0       0	     "Um dos maiores cientistas do mundo?"			"Albert Einstein"
-	  4      10       0       0	     "Quantas vezes o Brasil foi campe�o mundial(futebol)?"	"5"
-	  5      10       0       0	     "Em que ano foi lan�ado o jogo Mu Online?"			"2003"
-	  6      10       0       0	     "Qual o nick exato do ADM do jogo?"			"TesteADM"
-	  7      10       0       0	     "Qual o nome exato do servidor?"				"Seu Servidor"
-	  8      10       0       0	     "Quando um jogador � novato, qual nome lhe damos?"		"Noob"
-	  9      10       0       0	     "Quantos estados tem o Brasil?"				"26"
-	  10     10       0       0	     "Em que continente fica localizada a It�lia?"		"Continente Europeu"
+	  0      250       250       250	     "Bộ phận quý nhất của con trai là gì?"						"ngoc trai"	
+	  1      250       250       250	     "Đồ uống nào vùa có canxi lại có cả sắt?"					"cafe"
+	  2      250       250       250	     "Đẹp trai nhất cọt"										"raika"
+	  3      250       250       250	     "Điều gì luôn đến, nhưng không bao giờ đến?"				"ngay mai"
+	  4      250       250       250	     "Vận tốc ánh sáng xấp xỉ là bao nhiêu m/s?"				"300000000"
+	  5      250       250       250	     "25x2+3*3+15*2+5*2 = ?"									"69"
+	  6      250       250       250	     "Cái gì của người con gái lúc nào cũng ẩm ướt?"			"cai luoi"
+	  7      250       250       250	     "Môn thể thao nào có cả vua lẫn hoàng hậu?"				"co vua"
+	  8      250       250       250	     "Kiến nào không bao giờ ngủ?"								"kien thuc"
+	  9      250       250       250	     "Con gì có cánh mà không có lông?"							"con dieu"
+	  10     250       250       250	     "Cái gì của con chim nhưng lại trên cơ thể con người?"		"vet chan chim"
+	  11     250       250       250	     "Bệnh gì bác sĩ bó tay?"									"gay tay"
+	  12     250       250       250	     "Ở Việt Nam, rồng bay ở đâu và đáp ở đâu?"					"thang long, ha long"
 end

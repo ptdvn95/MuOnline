@@ -62,7 +62,7 @@
 		
 		<BuffList>
 			<Buff Index="03" Mode="0" Power1="100" Power2="50" Power3="0" Power4="0" Duration="900" Comment="Shadow Phantom effect 15 minutes" />
-			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="604800" Comment="Seal of Ascension 7 Days" />
+			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="0" Comment="Seal of Ascension 7 Days" />
 		</BuffList>
 	</Class>
 	<Class Index="1" Name="Dark Knight">
@@ -75,7 +75,7 @@
 		
 		<BuffList>
 			<Buff Index="03" Mode="0" Power1="100" Power2="50" Power3="0" Power4="0" Duration="900" Comment="Shadow Phantom effect 15 minutes" />
-			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="604800" Comment="Seal of Ascension 7 Days" />
+			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="0" Comment="Seal of Ascension 7 Days" />
 		</BuffList>
 	</Class>
 	<Class Index="2" Name="Fairy Elf">
@@ -88,7 +88,7 @@
 		
 		<BuffList>
 			<Buff Index="03" Mode="0" Power1="100" Power2="50" Power3="0" Power4="0" Duration="900" Comment="Shadow Phantom effect 15 minutes" />
-			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="604800" Comment="Seal of Ascension 7 Days" />
+			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="0" Comment="Seal of Ascension 7 Days" />
 		</BuffList>
 	</Class>
 	<Class Index="3" Name="Magic Gladiator">
@@ -101,7 +101,7 @@
 		
 		<BuffList>
 			<Buff Index="03" Mode="0" Power1="100" Power2="50" Power3="0" Power4="0" Duration="900" Comment="Shadow Phantom effect 15 minutes" />
-			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="604800" Comment="Seal of Ascension 7 Days" />
+			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="0" Comment="Seal of Ascension 7 Days" />
 		</BuffList>
 	</Class>
 	<Class Index="4" Name="Dark Lord">
@@ -114,7 +114,7 @@
 		
 		<BuffList>
 			<Buff Index="03" Mode="0" Power1="100" Power2="50" Power3="0" Power4="0" Duration="900" Comment="Shadow Phantom effect 15 minutes" />
-			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="604800" Comment="Seal of Ascension 7 Days" />
+			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="0" Comment="Seal of Ascension 7 Days" />
 		</BuffList>
 	</Class>
 	<Class Index="5" Name="Summoner">
@@ -127,7 +127,7 @@
 		
 		<BuffList>
 			<Buff Index="03" Mode="0" Power1="100" Power2="50" Power3="0" Power4="0" Duration="900" Comment="Shadow Phantom effect 15 minutes" />
-			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="604800" Comment="Seal of Ascension 7 Days" />
+			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="0" Comment="Seal of Ascension 7 Days" />
 		</BuffList>
 	</Class>
 	<Class Index="6" Name="Rage Fighter">
@@ -140,7 +140,7 @@
 		
 		<BuffList>
 			<Buff Index="03" Mode="0" Power1="100" Power2="50" Power3="0" Power4="0" Duration="900" Comment="Shadow Phantom effect 15 minutes" />
-			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="604800" Comment="Seal of Ascension 7 Days" />
+			<Buff Index="29" Mode="1" Power1="0" Power2="0" Power3="0" Power4="0" Duration="0" Comment="Seal of Ascension 7 Days" />
 		</BuffList>
 	</Class>
 </DefaultClassInfo>

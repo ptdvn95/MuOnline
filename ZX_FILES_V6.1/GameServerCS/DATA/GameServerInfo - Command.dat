@@ -216,18 +216,18 @@ CommandMarryOnlyGM = 1
 ;==================================================
 ; Command Open WareHouse 
 ;==================================================
-CommandOpenWareOnlySafeZone = 1
+CommandOpenWareOnlySafeZone = 0
 
 ;==================================================
 ; Command Change Class 
 ;==================================================
-CommandChangeClassToDW = 1
-CommandChangeClassToDK = 1
-CommandChangeClassToELF = 1
-CommandChangeClassToMG = 1
-CommandChangeClassToDL = 1
-CommandChangeClassToSU = 1
-CommandChangeClassToRF = 1
+CommandChangeClassToDW = 0
+CommandChangeClassToDK = 0
+CommandChangeClassToELF = 0
+CommandChangeClassToMG = 0
+CommandChangeClassToDL = 0
+CommandChangeClassToSU = 0
+CommandChangeClassToRF = 0
 
 ;==================================================
 ; Reward Command Settings
