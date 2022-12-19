@@ -179,8 +179,8 @@ void InitCommon() // OK
 	SetCompleteHook(0xE8, 0x005BAFAB, &CRenderBoolean); // Show Guild Logo Name Player
 	// SetCompleteHook(0xE8,0x007C32F9,&FixHelperMouseClick); // S8
 	// SetFloat(0xD477AC,0.0); //Fix ItemStack in Itemtoolip/Shop
-	SetCompleteHook(0xE9, 0x00856FAA, 0x00856FD2); // Remove (H) Baú Aberto
-	SetCompleteHook(0xE9, 0x007D371E, 0x007D3725); // Remove botão (H)
+	// SetCompleteHook(0xE9, 0x00856FAA, 0x00856FD2); // Remove (H) Baú Aberto
+	// SetCompleteHook(0xE9, 0x007D371E, 0x007D3725); // Remove botão (H)
 	// SetCompleteHook(0xE9, 0x008369FA, 0x00836A23);  // Remove botão (K)
 	// SetCompleteHook(0xE9, 0x007D36B8, 0x007D36BF); // Função (K) Inventário aberto
 	// SetCompleteHook(0xE9, 0x007D3F9C, 0x007D3FA3); // Função (K) Baú Aberto
