@@ -557,7 +557,7 @@ void CChatEx::Load()
 {
 	//SetCompleteHook(0xE9, 0x00788C59, &sub_5985F0); //-- TEST
 	MemorySet(0x00785B44, 0x90, 0x5);
-	//SetCompleteHook(0xE9, 0x00788C59, &ChatTextColor); //-- Text
+	SetCompleteHook(0xE9, 0x00788C59, &ChatTextColor); //-- Text
 	SetCompleteHook(0xE8, 0x0078ADCC, &CheckDrawSyetemChat); //-- Interface
 	SetCompleteHook(0xE8, 0x0078AE15, &CheckDrawSyetemChat); //-- Interface
 	SetCompleteHook(0xE8, 0x0078AE5E, &CheckDrawSyetemChat); //-- Interface

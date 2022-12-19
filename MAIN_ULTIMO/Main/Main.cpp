@@ -90,6 +90,7 @@
 #include "SceneCreate.h"
 
 #include "CUIMng.h"
+#include "ServerSelWin.h"
 
 HINSTANCE hins;
 
@@ -176,6 +177,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 //	gInfoLog.Load();
 	gCUIMng.Load(); //-- Custom Loading Screen
+	g_ServerSelWin.Init(); // Move ServerList to center
 	SetByte(0x00E61144,0xA0); // Accent
 	SetByte(0x004D1E69,0xEB); // Crack (mu.exe)
 	SetByte(0x004D228D,0xE9); // Crack (GameGuard)

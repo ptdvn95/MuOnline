@@ -208,6 +208,7 @@
     <ClInclude Include="SelectChar.h" />
     <ClInclude Include="SeparateChat.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="ServerSelWin.h" />
     <ClInclude Include="SetEffect.h" />
     <ClInclude Include="ShopSearch.h" />
     <ClInclude Include="SItemOption.h" />
@@ -341,6 +342,7 @@
     <ClCompile Include="SelectChar.cpp" />
     <ClCompile Include="SeparateChat.cpp" />
     <ClCompile Include="ServerInfo.cpp" />
+    <ClCompile Include="ServerSelWin.cpp" />
     <ClCompile Include="SetEffect.cpp" />
     <ClCompile Include="ShopSearch.cpp" />
     <ClCompile Include="SItemOption.cpp" />
