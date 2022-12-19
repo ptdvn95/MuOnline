@@ -1667,7 +1667,7 @@ _declspec(naked) void GuildWarPosition()
 void InitInter3()
 {
 	//--------------------------------
-	// Nuevo Código Interface Downgrade
+	// Nuevo Cï¿½digo Interface Downgrade
 	//--------------------------------
 	RenderSlot = -1;
 	SetCompleteHook(0xE9, 0x007DB308, &ShadowColorCheck); //Get Slot Type
@@ -1897,18 +1897,18 @@ void InitInter3()
 	MemorySet(0x00878B5F, 0x90, 0x5);		//Remover DevilScare Master
 
 	SetCompleteHook(0xE9, 0x007E4CA4, 0x007E4D16);	//Remover ChaosCastle Master
-	SetByte((PVOID)(0x007E4CB9 + 1), 0);	//Cambia el número del chaos
+	SetByte((PVOID)(0x007E4CB9 + 1), 0);	//Cambia el nï¿½mero del chaos
 
 	SetCompleteHook(0xE9, 0x00425468, &SlideShow);
 
-	SetDword((PVOID)(0x007D0EF6 + 1), 350); //POSIÇÃO Y GUILD MASTER BUTTONS PART1
-	SetDword((PVOID)(0x007D0F5D + 1), 350); //POSIÇÃO Y GUILD MASTER BUTTONS PART1
-	SetByte((PVOID)(0x007D0F05 + 2), 43); //POSIÇÃO X GUILD MASTER BUTTONS PART1
-	SetByte((PVOID)(0x007D0F6C + 2), 88); //POSIÇÃO X GUILD MASTER BUTTONS PART1
-	SetDword((PVOID)(0x007D11DE + 2), 350); //POSIÇÃO Y GUILD MASTER BUTTONS PART2
-	SetDword((PVOID)(0x007D1249 + 2), 350); //POSIÇÃO Y GUILD MASTER BUTTONS PART2
-	SetByte((PVOID)(0x007D11EE + 2), 43); //POSIÇÃO X GUILD MASTER BUTTONS PART2
-	SetByte((PVOID)(0x007D1259 + 2), 88); //POSIÇÃO X GUILD MASTER BUTTONS PART2
+	SetDword((PVOID)(0x007D0EF6 + 1), 350); //POSIï¿½ï¿½O Y GUILD MASTER BUTTONS PART1
+	SetDword((PVOID)(0x007D0F5D + 1), 350); //POSIï¿½ï¿½O Y GUILD MASTER BUTTONS PART1
+	SetByte((PVOID)(0x007D0F05 + 2), 43); //POSIï¿½ï¿½O X GUILD MASTER BUTTONS PART1
+	SetByte((PVOID)(0x007D0F6C + 2), 88); //POSIï¿½ï¿½O X GUILD MASTER BUTTONS PART1
+	SetDword((PVOID)(0x007D11DE + 2), 350); //POSIï¿½ï¿½O Y GUILD MASTER BUTTONS PART2
+	SetDword((PVOID)(0x007D1249 + 2), 350); //POSIï¿½ï¿½O Y GUILD MASTER BUTTONS PART2
+	SetByte((PVOID)(0x007D11EE + 2), 43); //POSIï¿½ï¿½O X GUILD MASTER BUTTONS PART2
+	SetByte((PVOID)(0x007D1259 + 2), 88); //POSIï¿½ï¿½O X GUILD MASTER BUTTONS PART2
 	//-- Change SkillBox MUHELPER
 	SetDword(0x007F31C1 + 1, 0x700003);
 	SetDword(0x007F3201 + 1, 0x700003);
@@ -2050,6 +2050,9 @@ void InitInter3()
 	SetByte((PVOID)(0x00784B71 + 1), 42);
 	SetByte((PVOID)(0x00784BAE + 1), 2);
 	SetByte((PVOID)(0x00784BD4 + 2), 56);
+	// Weapons in Hands "Blood Caslte"
+	SetCompleteHook(0xE9, 0x00561740, &WeaponHandBC1);
+	SetCompleteHook(0xE9, 0x0057DDD7, &WeaponHandBC2);
 }
 
 __declspec(naked) void PositionAncientY()
@@ -2068,4 +2071,32 @@ void RemoveSocket()
 {
 	SetRange((LPVOID)0x00D46C8C, 5, ASM::NOP);
 	SetCompleteHook(0xE9, 0x00835234, &PositionAncientY);
+}
+
+void __declspec(naked) WeaponHandBC1()
+{
+	static DWORD Return = 0x00561747;
+	_asm { MOV EDX,DWORD PTR SS:[EBP+0x8] }
+	if(pMapNumber == 11 || pMapNumber == 12
+	|| pMapNumber == 13 || pMapNumber == 14
+	|| pMapNumber == 15 || pMapNumber == 16
+	|| pMapNumber == 17 || pMapNumber == 52)
+	{ _asm { MOV BYTE PTR DS:[EDX+0xE],0 } }
+	else
+	{ _asm { MOV BYTE PTR DS:[EDX+0xE],1 } }
+	_asm { JMP[Return] }
+}
+
+void __declspec(naked) WeaponHandBC2()
+{
+	static DWORD Return = 0x0057DDDE;
+	_asm { MOV ECX,DWORD PTR SS:[EBP+0x8] }
+	if(pMapNumber == 11 || pMapNumber == 12
+	|| pMapNumber == 13 || pMapNumber == 14
+	|| pMapNumber == 15 || pMapNumber == 16
+	|| pMapNumber == 17 || pMapNumber == 52)
+	{ _asm { MOV BYTE PTR DS:[ECX+0xE],0 } }
+	else
+	{ _asm { MOV BYTE PTR DS:[ECX+0xE],1 } }
+	_asm { JMP[Return] }
 }

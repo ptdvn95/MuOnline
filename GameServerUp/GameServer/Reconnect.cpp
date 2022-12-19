@@ -44,6 +44,16 @@ void CReconnect::SetReconnectInfo(LPOBJ lpObj) // OK
 
 	memcpy(info.Name,lpObj->Name,sizeof(info.Name));
 
+	info.AttackCustom = lpObj->AttackCustom;
+
+	info.AttackCustomSkill = lpObj->AttackCustomSkill;
+
+	info.AttackCustomZoneMap = lpObj->AttackCustomZoneMap;
+
+	info.AttackCustomZoneX = lpObj->AttackCustomZoneX;
+
+	info.AttackCustomZoneY = lpObj->AttackCustomZoneY;
+
 	info.ReconnectTime = GetTickCount();
 
 	info.PartyNumber = lpObj->PartyNumber;
@@ -133,6 +143,18 @@ void CReconnect::ResumeParty(LPOBJ lpObj,RECONNECT_INFO* lpInfo) // OK
 
 void CReconnect::ResumeCommand(LPOBJ lpObj,RECONNECT_INFO* lpInfo) // OK
 {
+	lpObj->AttackCustom = lpInfo->AttackCustom;
+	
+	lpObj->AttackCustomSkill = lpInfo->AttackCustomSkill;
+
+	lpObj->AttackCustomZoneMap = lpInfo->AttackCustomZoneMap;
+
+	lpObj->AttackCustomZoneX = lpInfo->AttackCustomZoneX;
+
+	lpObj->AttackCustomZoneY = lpInfo->AttackCustomZoneY;
+
+	lpObj->AttackCustomDelay = GetTickCount();
+
 	lpObj->AutoAddPointCount = lpInfo->AutoAddPointCount;
 
 	memcpy(lpObj->AutoAddPointStats,lpInfo->AutoAddPointStats,sizeof(lpObj->AutoAddPointStats));

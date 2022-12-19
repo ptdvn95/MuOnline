@@ -17,7 +17,8 @@ void CheckMasterLevel();
 void CompareGensMoveIndex();
 void DrawEffectsPic(int &EffectID, float StartX, float StartY, float StartWidth, float StartHeight );
 void ReduceComsumeCPU();
-
+void MoveBoids();
+void DarkLordWithRaven(int a1);
 
 extern BYTE GensBattleMapCount;
 extern BYTE GensMoveIndexCount;

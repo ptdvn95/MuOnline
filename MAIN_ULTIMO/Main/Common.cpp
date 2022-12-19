@@ -185,6 +185,8 @@ void InitCommon() // OK
 	// SetCompleteHook(0xE9, 0x007D36B8, 0x007D36BF); // Função (K) Inventário aberto
 	// SetCompleteHook(0xE9, 0x007D3F9C, 0x007D3FA3); // Função (K) Baú Aberto
 	SetByte(0x004D128F, 0x1D); // Fix Resolution 640x480 1.04e - kayito
+	SetCompleteHook(0xE9, 0x005055A4, &MoveBoids);
+	SetCompleteHook(0xE9, 0x0054F212, &DarkLordWithRaven);
 
 	Encoger = GetPrivateProfileIntA("Setting", "Encoger", 0, "./Settings.ini");
 
@@ -515,5 +517,73 @@ __declspec(naked) void ReduceComsumeCPU()
 		Call Dword Ptr Ds : [0x0075615C] ;
 		Call Dword Ptr Ds : [0x00756140] ;
 		Jmp[JmpBack];
+	}
+}
+
+// Fix Effect Event Invasion Dragon(Gold - Red)
+#define WD_7ATLANSE   7
+__declspec(naked) void MoveBoids()
+{
+	static DWORD addr_jmp = 0x00506D04;
+
+	_asm
+	{
+		mov     byte ptr ss:[ebp-0x32], 0
+		mov     byte ptr ss:[ebp-0x31], 1
+	}
+
+	if(World != WD_7ATLANSE )
+	{
+		addr_jmp = 0x0050563E;
+	}
+	else
+	{
+		addr_jmp = 0x005055AC;
+	}
+
+	if(*(DWORD*)0xEBB834 != 0)
+	{
+		addr_jmp = 0x005055EF;
+	}
+	_asm
+	{
+		jmp     [addr_jmp]
+	}
+}
+
+// Fix Dark Lord Holding Crow
+void __declspec(naked) DarkLordWithRaven(int a1)
+{
+	static DWORD Return_Adress = 0x0054F220;
+
+	int Action;
+
+	if (pMapNumber == 1000)
+	{
+
+	}
+	else
+	{
+	
+	lpViewObj lpObj = &*(lpViewObj)a1;
+
+		if(lpObj->WeaponSecondSlot == 7832)
+		{
+			Action = 0x4C; 
+		}
+		else
+		{
+			Action = 0x1; 
+		}
+	}
+
+	_asm
+	{
+	PUSH 0x1                                  
+	PUSH Action                                 
+	MOV EDX,DWORD PTR SS:[EBP+0x8]
+	ADD EDX,0x308                            
+	PUSH EDX                                 
+	JMP [Return_Adress]
 	}
 }

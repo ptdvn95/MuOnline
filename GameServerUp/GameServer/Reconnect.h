@@ -18,6 +18,11 @@ struct RECONNECT_INFO
 	int AutoResetStats[5];
 	int RequestOption;
 	char AutoPartyPassword[11];
+	int AttackCustom;
+	int AttackCustomSkill;
+	int AttackCustomZoneX;
+	int AttackCustomZoneY;
+	int AttackCustomZoneMap;
 	GENS_SYSTEM_VICTIM_LIST GensVictimList[MAX_GENS_SYSTEM_VICTIM];
 };
 
