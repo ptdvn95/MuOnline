@@ -1137,6 +1137,8 @@ void ProtocolCore(BYTE head,BYTE* lpMsg,int size,int aIndex,int encrypt,int seri
 				case 0xF8:
 					gCustomJewelBank.JewelBankWithDrawRecv((PSBMSG_JEWELBANKWITHDRAW_RECV*)lpMsg,aIndex);
 					break;
+				case 0xF9:
+					gJewelsBank.JewelBankSlot((JEWELBANKSLOT_RECV*)lpMsg,aIndex);
 			}
 			break;
 		case 0xF6:

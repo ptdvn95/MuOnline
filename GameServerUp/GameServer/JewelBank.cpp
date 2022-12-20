@@ -116,6 +116,145 @@ void JewelsBank::Load()
 	this->Enable = GetPrivateProfileInt("JewelsBank", "Enable", 0, JEWELSBANK_DIR);
 }
 
+void JewelsBank::JewelBankSlot(JEWELBANKSLOT_RECV* lpMsg,int aIndex)
+{
+	LPOBJ lpObj = &gObj[aIndex];
+
+	int Slot = lpMsg->slot;
+
+	if(gObjIsConnectedGP(aIndex) == 0)
+	{
+		return;
+	}
+
+	if(lpObj->Interface.use != 0)
+	{
+		return;
+	}
+
+	if(lpObj->ChaosLock != 0)
+	{
+		return;
+	}
+
+	if(INVENTORY_FULL_RANGE(Slot) == 0)
+	{
+		return;
+	}
+
+	if(lpObj->Inventory[Slot].IsItem() == 0)
+	{
+		return;
+	}
+
+	int JewelIndex = this->GetJewelSimpleType(lpObj->Inventory[Slot].m_Index);
+	
+	if(JewelIndex >= 0)
+	{
+		int JewelType;
+		int JewelCount;
+		
+		if(JewelIndex >= 10)
+		{
+			JewelType	= JewelIndex-10;
+			JewelCount	= 10*(lpObj->Inventory[Slot].m_Level+1);
+		}
+		else
+		{
+			JewelType	= JewelIndex;
+			JewelCount	= 1;
+		}
+
+		if(JewelCount < 0 || JewelCount > 160)
+		{
+			return;
+		}
+
+		switch(JewelType)
+		{
+			case 0: // Bless
+				this->sendblessbankslot(aIndex, JewelCount, Slot);
+			break;
+			case 1: // Soul
+				this->sendsoulbankslot(aIndex, JewelCount, Slot);
+			break;
+			case 2: // Life
+				this->sendlifebankslot(aIndex, JewelCount, Slot);
+			break;
+			case 3: // Creation
+				this->sendcreateonbankslot(aIndex, JewelCount, Slot);
+			break;
+			case 4: // Guardian
+				this->sendGuardianBankslot(aIndex, JewelCount, Slot);
+			break;
+			case 5: // Gem Stone
+				this->sendGemStoneBankslot(aIndex, JewelCount, Slot);
+			break;
+			case 6: // Harmony
+				this->sendHarmonyBankslot(aIndex, JewelCount, Slot);
+			break;
+			case 7: // Chaos
+				this->sendchaosbankslot(aIndex, JewelCount, Slot);
+			break;
+			case 8: // Low Stone
+				this->sendLowStoneBankslot(aIndex, JewelCount, Slot);
+			break;
+			case 9: // High Stone
+				this->sendHighStoneBankslot(aIndex, JewelCount, Slot);
+			break;
+		}
+	}
+}
+
+int JewelsBank::GetJewelSimpleType(int ItemIndex) // OK
+{
+	switch(ItemIndex)
+	{
+		case GET_ITEM(14,13):
+			return 0;
+		case GET_ITEM(14,14):
+			return 1;
+		case GET_ITEM(14,16):
+			return 2;
+		case GET_ITEM(14,22):
+			return 3;
+		case GET_ITEM(14,31):
+			return 4;
+		case GET_ITEM(14,41):
+			return 5;
+		case GET_ITEM(14,42):
+			return 6;
+		case GET_ITEM(12,15):
+			return 7;
+		case GET_ITEM(14,43):
+			return 8;
+		case GET_ITEM(14,44):
+			return 9;
+		case GET_ITEM(12,30): // Bundled Jewel of Bless
+			return 10;
+		case GET_ITEM(12,31): // Bundled Jewel of Soul
+			return 11;
+		case GET_ITEM(12,136): // Bundled Jewel of Life
+			return 12;
+		case GET_ITEM(12,137): // Bundled Jewel of Creation
+			return 13;
+		case GET_ITEM(12,138): // Bundled Jewel of Guardian
+			return 14;
+		case GET_ITEM(12,139): // Bundled Gemstone
+			return 15;
+		case GET_ITEM(12,140): // Bundled Jewel of Harmony
+			return 16;
+		case GET_ITEM(12,141): // Bundled Jewel of Chaos
+			return 17;
+		case GET_ITEM(12,142): // Bundled Lower Refining Stone
+			return 18;
+		case GET_ITEM(12,143): // Bundled Higer Refining Stone
+			return 19;
+	}
+
+	return -1;
+}
+
 //-----------------------------------------------------
 void JewelsBank::sendzen(int aIndex, int Count)
 {
@@ -145,6 +284,19 @@ void JewelsBank::sendchaosbank(int aIndex, int Count)
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Chaos", Count);
 }
 
+void JewelsBank::sendchaosbankslot(int aIndex, int Count, int slot)
+{
+	if (!this->Enable) return;
+	// gObjDeleteItemsCount(aIndex, GET_ITEM(12, 15), 0, Count);
+	gItemManager.InventoryDelItem(aIndex,slot);
+	gItemManager.GCItemDeleteSend(aIndex,slot,1);
+	LPOBJ lpObj = &gObj[aIndex];
+	lpObj->ChaosBank += Count;
+	EnvioJewelsBank(aIndex);
+	GDCharacterInfoSaveSend(aIndex);
+	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Chaos", Count);
+}
+
 void JewelsBank::sendblessbank(int aIndex, int Count)
 {
 	if (!this->Enable) return;
@@ -161,6 +313,19 @@ void JewelsBank::sendblessbank(int aIndex, int Count)
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Bless", Count);
 }
 
+void JewelsBank::sendblessbankslot(int aIndex, int Count, int slot)
+{
+	if (!this->Enable) return;
+	// gObjDeleteItemsCount(aIndex, GET_ITEM(14, 13), 0, Count);
+	gItemManager.InventoryDelItem(aIndex,slot);
+	gItemManager.GCItemDeleteSend(aIndex,slot,1);
+	LPOBJ lpObj = &gObj[aIndex];
+	lpObj->BlessBank += Count;
+	EnvioJewelsBank(aIndex);
+	GDCharacterInfoSaveSend(aIndex);
+	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Bless", Count);
+}
+
 void JewelsBank::sendsoulbank(int aIndex, int Count)
 {
 	if (!this->Enable) return;
@@ -170,6 +335,19 @@ void JewelsBank::sendsoulbank(int aIndex, int Count)
 		return;
 	}
 	gObjDeleteItemsCount(aIndex, GET_ITEM(14, 14), 0, Count);
+	LPOBJ lpObj = &gObj[aIndex];
+	lpObj->SoulBank += Count;
+	EnvioJewelsBank(aIndex);
+	GDCharacterInfoSaveSend(aIndex);
+	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Soul", Count);
+}
+
+void JewelsBank::sendsoulbankslot(int aIndex, int Count, int slot)
+{
+	if (!this->Enable) return;
+	// gObjDeleteItemsCount(aIndex, GET_ITEM(14, 14), 0, Count);
+	gItemManager.InventoryDelItem(aIndex,slot);
+	gItemManager.GCItemDeleteSend(aIndex,slot,1);
 	LPOBJ lpObj = &gObj[aIndex];
 	lpObj->SoulBank += Count;
 	EnvioJewelsBank(aIndex);
@@ -194,6 +372,19 @@ void JewelsBank::sendlifebank(int aIndex, int Count)
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Life", Count);
 }
 
+void JewelsBank::sendlifebankslot(int aIndex, int Count, int slot)
+{
+	if (!this->Enable) return;
+	// gObjDeleteItemsCount(aIndex, GET_ITEM(14, 16), 0, Count);
+	gItemManager.InventoryDelItem(aIndex,slot);
+	gItemManager.GCItemDeleteSend(aIndex,slot,1);
+	LPOBJ lpObj = &gObj[aIndex];
+	lpObj->LifeBank += Count;
+	EnvioJewelsBank(aIndex);
+	GDCharacterInfoSaveSend(aIndex);
+	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Life", Count);
+}
+
 void JewelsBank::sendcreateonbank(int aIndex, int Count)
 {
 	if (!this->Enable) return;
@@ -211,8 +402,22 @@ void JewelsBank::sendcreateonbank(int aIndex, int Count)
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Createon", Count);
 }
 
+void JewelsBank::sendcreateonbankslot(int aIndex, int Count, int slot)
+{
+	if (!this->Enable) return;
+	// gObjDeleteItemsCount(aIndex, GET_ITEM(14, 22), 0, Count);
+	gItemManager.InventoryDelItem(aIndex,slot);
+	gItemManager.GCItemDeleteSend(aIndex,slot,1);
+	LPOBJ lpObj = &gObj[aIndex];
+	lpObj->CreateonBank += Count;
+	EnvioJewelsBank(aIndex);
+	GDCharacterInfoSaveSend(aIndex);
+	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Creation", Count);
+}
+
 void JewelsBank::sendGuardianBank(int aIndex, int Count)
 {
+	if (!this->Enable) return;
 	if (gObjGetItemCountInInventory(aIndex, GET_ITEM(14, 31), 0) < Count)
 	{
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Need %d Guardian", Count);
@@ -226,8 +431,22 @@ void JewelsBank::sendGuardianBank(int aIndex, int Count)
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Guardian", Count);
 }
 
+void JewelsBank::sendGuardianBankslot(int aIndex, int Count, int slot)
+{
+	if (!this->Enable) return;
+	// gObjDeleteItemsCount(aIndex, GET_ITEM(14, 31), 0, Count);
+	gItemManager.InventoryDelItem(aIndex,slot);
+	gItemManager.GCItemDeleteSend(aIndex,slot,1);
+	LPOBJ lpObj = &gObj[aIndex];
+	lpObj->GuardianBank += Count;
+	EnvioJewelsBank(aIndex);
+	GDCharacterInfoSaveSend(aIndex);
+	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Guardian", Count);
+}
+
 void JewelsBank::sendHarmonyBank(int aIndex, int Count)
 {
+	if (!this->Enable) return;
 	if (gObjGetItemCountInInventory(aIndex, GET_ITEM(14, 42), 0) < Count)
 	{
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Need %d Harmony", Count);
@@ -241,8 +460,22 @@ void JewelsBank::sendHarmonyBank(int aIndex, int Count)
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Harmony", Count);
 }
 
+void JewelsBank::sendHarmonyBankslot(int aIndex, int Count, int slot)
+{
+	if (!this->Enable) return;
+	// gObjDeleteItemsCount(aIndex, GET_ITEM(14, 42), 0, Count);
+	gItemManager.InventoryDelItem(aIndex,slot);
+	gItemManager.GCItemDeleteSend(aIndex,slot,1);
+	LPOBJ lpObj = &gObj[aIndex];
+	lpObj->HarmonyBank += Count;
+	EnvioJewelsBank(aIndex);
+	GDCharacterInfoSaveSend(aIndex);
+	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d Harmony", Count);
+}
+
 void JewelsBank::sendLowStoneBank(int aIndex, int Count)
 {
+	if (!this->Enable) return;
 	if (gObjGetItemCountInInventory(aIndex, GET_ITEM(14, 43), 0) < Count)
 	{
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Need %d LowStone", Count);
@@ -256,8 +489,22 @@ void JewelsBank::sendLowStoneBank(int aIndex, int Count)
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d LowStone", Count);
 }
 
+void JewelsBank::sendLowStoneBankslot(int aIndex, int Count, int slot)
+{
+	if (!this->Enable) return;
+	// gObjDeleteItemsCount(aIndex, GET_ITEM(14, 43), 0, Count);
+	gItemManager.InventoryDelItem(aIndex,slot);
+	gItemManager.GCItemDeleteSend(aIndex,slot,1);
+	LPOBJ lpObj = &gObj[aIndex];
+	lpObj->LowStoneBank += Count;
+	EnvioJewelsBank(aIndex);
+	GDCharacterInfoSaveSend(aIndex);
+	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d LowStone", Count);
+}
+
 void JewelsBank::sendHighStoneBank(int aIndex, int Count)
 {
+	if (!this->Enable) return;
 	if (gObjGetItemCountInInventory(aIndex, GET_ITEM(14, 44), 0) < Count)
 	{
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Need %d HighStone", Count);
@@ -271,14 +518,41 @@ void JewelsBank::sendHighStoneBank(int aIndex, int Count)
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d HighStone", Count);
 }
 
+void JewelsBank::sendHighStoneBankslot(int aIndex, int Count, int slot)
+{
+	if (!this->Enable) return;
+	// gObjDeleteItemsCount(aIndex, GET_ITEM(14, 44), 0, Count);
+	gItemManager.InventoryDelItem(aIndex,slot);
+	gItemManager.GCItemDeleteSend(aIndex,slot,1);
+	LPOBJ lpObj = &gObj[aIndex];
+	lpObj->HighStoneBank += Count;
+	EnvioJewelsBank(aIndex);
+	GDCharacterInfoSaveSend(aIndex);
+	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d HighStone", Count);
+}
+
 void JewelsBank::sendGemStoneBank(int aIndex, int Count)
 {
+	if (!this->Enable) return;
 	if (gObjGetItemCountInInventory(aIndex, GET_ITEM(14, 41), 0) < Count)
 	{
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Need %d GemStoneBank", Count);
 		return;
 	}
 	gObjDeleteItemsCount(aIndex, GET_ITEM(14, 41), 0, Count);
+	LPOBJ lpObj = &gObj[aIndex];
+	lpObj->GemStoneBank += Count;
+	EnvioJewelsBank(aIndex);
+	GDCharacterInfoSaveSend(aIndex);
+	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Send %d GemStoneBank", Count);
+}
+
+void JewelsBank::sendGemStoneBankslot(int aIndex, int Count, int slot)
+{
+	if (!this->Enable) return;
+	// gObjDeleteItemsCount(aIndex, GET_ITEM(14, 41), 0, Count);
+	gItemManager.InventoryDelItem(aIndex,slot);
+	gItemManager.GCItemDeleteSend(aIndex,slot,1);
 	LPOBJ lpObj = &gObj[aIndex];
 	lpObj->GemStoneBank += Count;
 	EnvioJewelsBank(aIndex);

@@ -32,12 +32,20 @@ struct PMSG_JEWELSBANK
 #pragma pack()
 };
 
+struct JEWELBANKSLOT_RECV
+{
+	PSBMSG_HEAD header; // C1:F3:F4
+	int slot;
+};
+
 class JewelsBank
 {
 public:
 	void Load();
 	void EnvioJewelsBank(int aIndex);
 	bool CheckItemInventorySpace(LPOBJ lpObj, int index);
+	void JewelBankSlot(JEWELBANKSLOT_RECV* lpMsg,int aIndex);
+	int GetJewelSimpleType(int ItemIndex);
 	//Send
 	void sendzen(int aIndex, int Count);
 	void sendchaosbank(int aIndex, int Count);
@@ -50,6 +58,18 @@ public:
 	void sendLowStoneBank(int aIndex, int Count);
 	void sendHighStoneBank(int aIndex, int Count);
 	void sendGemStoneBank(int aIndex, int Count);
+
+	// Slot
+	void sendchaosbankslot(int aIndex, int Count, int slot);
+	void sendblessbankslot(int aIndex, int Count, int slot);
+	void sendsoulbankslot(int aIndex, int Count, int slot);
+	void sendlifebankslot(int aIndex, int Count, int slot);
+	void sendcreateonbankslot(int aIndex, int Count, int slot);
+	void sendGuardianBankslot(int aIndex, int Count, int slot);
+	void sendHarmonyBankslot(int aIndex, int Count, int slot);
+	void sendLowStoneBankslot(int aIndex, int Count, int slot);
+	void sendHighStoneBankslot(int aIndex, int Count, int slot);
+	void sendGemStoneBankslot(int aIndex, int Count, int slot);
 
 	// Reck
 	void recvzen(int aIndex, int Count);

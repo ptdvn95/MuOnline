@@ -295,7 +295,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 	gCustomMessage.LoadEng(gProtect.m_MainInfo.EngCustomMessageInfo);
 
-	gCustomJewelBank.Load();
+	// gCustomJewelBank.Load();
 
 	// gCustomMessage.LoadPor(gProtect.m_MainInfo.PorCustomMessageInfo);
 

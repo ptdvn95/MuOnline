@@ -31,10 +31,17 @@ struct PMSG_JEWELSBANK
 #pragma pack()
 };
 
+struct JEWELBANKSLOT_SEND
+{
+	PSBMSG_HEAD header; // C1:F3:F4
+	int slot;
+};
+
 
 class JewelsBank
 {
 public:
+	DWORD StatusTick;
 	bool Active;
 	void JewelsBankLoad();
 	void Bind();
@@ -46,6 +53,7 @@ public:
 	void Button(DWORD key);
 	void Packet(int number);
 	void RecibirJewelsBank(PMSG_JEWELSBANK * aRecv);
+	void JewelBankSend(int slot);
 };
 extern JewelsBank gJewelsBank;
 

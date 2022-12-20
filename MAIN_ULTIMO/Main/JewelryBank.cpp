@@ -9,14 +9,69 @@
 #include "Protocol.h"
 #include "Item.h"
 #include "Protect.h"
+#include "Util.h"
 
 JewelsBank gJewelsBank;
 
+void SendByRightClick(int This)
+{
+	lpItemObj item = (lpItemObj)*(DWORD*)(This + 84);
+
+	if (item)
+	{
+		if ( GetKeyState ( VK_RBUTTON ) & 0x8000 && GetKeyState ( VK_SHIFT ) & 0x8000 ) 
+		{
+			int start = 12;
+			if (*(DWORD*)(This + 44) == 200)
+			{
+				start = 12;
+			}
+			else if (*(DWORD*)(This + 44) == 44)
+			{
+				start = 76;
+			}
+			else if(*(DWORD*)(This + 44) == 131)
+			{
+				start = 108;
+			}
+
+			int Slot = item->PosX+(item->PosY*8)+start;
+
+			gJewelsBank.JewelBankSend(Slot);
+		}
+	}
+
+	((void(__thiscall*)(int))0x007DCF20)(This);
+}
+
+void JewelsBank::JewelBankSend(int slot)
+{
+	if((GetTickCount() - this->StatusTick) < 250 )
+	{
+		return;
+	}
+
+	if (slot < 0)
+	{
+		return;
+	}
+
+	this->StatusTick = GetTickCount();
+
+
+	JEWELBANKSLOT_SEND pMsg;
+
+	pMsg.slot = slot;
+
+	pMsg.header.set(0xF3, 0xF9,sizeof(pMsg));
+
+	DataSend((BYTE*)&pMsg,pMsg.header.size);
+}
 
 void JewelsBank::JewelsBankLoad()
 {
 	this->Active = false;
-
+	SetCompleteHook(0xE8,0x007DD0D9,&SendByRightClick);
 	this->Bind();
 }
 
