@@ -70,7 +70,7 @@ void JewelsBank::Draw()
 	float StartY = 21;
 	float StartX = 0;
 
-	gInterface.DrawWindow(eJEWELBANK_MAIN, eJEWELBANK_TITLE, eJEWELBANK_FRAME, eJEWELBANK_FOOTER, 14, StartX, StartY, "Jewel Bank System");
+	gInterface.DrawWindow(eJEWELBANK_MAIN, eJEWELBANK_TITLE, eJEWELBANK_FRAME, eJEWELBANK_FOOTER, 14, StartX, StartY, "Ngân Hàng Ngọc");
 	//gInterface.DrawFormat(eYellow, StartX + 10, 110, 210, 3, "Jewel Bank System");
 
 	gInterface.DrawGUI(eJEWELBANK_CLOSE, StartX + MainWidth - gInterface.Data[eJEWELBANK_CLOSE].Width, 18);
@@ -85,7 +85,7 @@ void JewelsBank::Draw()
 		}
 		// ----
 		gInterface.DrawColoredGUI(eJEWELBANK_CLOSE, gInterface.Data[eJEWELBANK_CLOSE].X, 18, Color);
-		gInterface.DrawToolTip((int)gInterface.Data[eJEWELBANK_CLOSE].X + 5, 15, "Close ");
+		gInterface.DrawToolTip((int)gInterface.Data[eJEWELBANK_CLOSE].X + 5, 15, "Close");
 	}
 
 

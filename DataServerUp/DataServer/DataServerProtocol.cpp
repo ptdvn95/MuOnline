@@ -853,6 +853,12 @@ void DataServerProtocolCore(int index,BYTE head,BYTE* lpMsg,int size) // OK
 				case 0x02:
 					GDCustomNpcQuestMonsterCountSaveRecv((SDHP_CUSTOMNPCQUESTMONSTERSAVE_RECV*)lpMsg);
 					break;
+				case 0x04:
+					GDCustomJewelBankRecv((SDHP_CUSTOM_JEWELBANK_RECV*)lpMsg);
+					break;
+				case 0x05:
+					GDCustomJewelBankInfoRecv((SDHP_CUSTOM_JEWELBANK_INFO_RECV*)lpMsg,index);
+					break;
 			}
             break;
 		case 0xD9:
@@ -3660,4 +3666,108 @@ void GDAchievementsSave(PMSG_GDREQ_ACH_SAVE* lpMsg, int aIndex)
 		lpMsg->counter[49]);
 
 	gQueryManager.Close();
+}
+
+void GDCustomJewelBankRecv(SDHP_CUSTOM_JEWELBANK_RECV* lpMsg) // OK
+{
+	int Bless		= 0; 
+	int Soul		= 0; 
+	int Life		= 0; 
+	int Creation	= 0; 
+	int Guardian	= 0; 
+	int GemStone	= 0; 
+	int Harmony		= 0; 
+	int Chaos		= 0; 
+	int LowStone	= 0; 
+	int HighStone	= 0; 
+
+	switch(lpMsg->type)
+	{
+		case 0:
+			Bless = lpMsg->count;
+		break;
+		case 1:
+			Soul = lpMsg->count;
+		break;
+		case 2:
+			Life = lpMsg->count;
+		break;
+		case 3:
+			Creation = lpMsg->count;
+		break;
+		case 4:
+			Guardian = lpMsg->count;
+		break;
+		case 5:
+			GemStone = lpMsg->count;
+		break;
+		case 6:
+			Harmony = lpMsg->count;
+		break;
+		case 7:
+			Chaos = lpMsg->count;
+		break;
+		case 8:
+			LowStone = lpMsg->count;
+		break;
+		case 9:
+			HighStone = lpMsg->count;
+		break;
+	}
+
+	if(gQueryManager.ExecQuery("SELECT * FROM CustomJewelBank WHERE AccountID='%s'",lpMsg->account) == 0 || gQueryManager.Fetch() == SQL_NO_DATA)
+	{
+		gQueryManager.Close();
+		gQueryManager.ExecQuery("INSERT INTO CustomJewelBank (AccountID,Bless,Soul,Life,Creation,Guardian,GemStone,Harmony,Chaos,LowStone,HighStone) VALUES ('%s',%d,%d,%d,%d,%d,%d,%d,%d,%d,%d)",lpMsg->account,Bless,Soul,Life,Creation,Guardian,GemStone,Harmony,Chaos,LowStone,HighStone);
+		gQueryManager.Close();
+
+	}
+	else
+	{
+		gQueryManager.Close();
+		gQueryManager.ExecQuery("Update CustomJewelBank SET Bless+=%d,Soul+=%d,Life+=%d,Creation+=%d,Guardian+=%d,GemStone+=%d,Harmony+=%d,Chaos+=%d,LowStone+=%d,HighStone+=%d WHERE AccountID = '%s'",Bless,Soul,Life,Creation,Guardian,GemStone,Harmony,Chaos,LowStone,HighStone,lpMsg->account);
+		gQueryManager.Close();
+	}
+
+}
+
+void GDCustomJewelBankInfoRecv(SDHP_CUSTOM_JEWELBANK_INFO_RECV* lpMsg,int index)
+{
+	SDHP_CUSTOM_JEWELBANK_INFO_SEND pMsg = { 0 };
+
+	pMsg.header.set(0xF7,0x05,sizeof(pMsg));
+
+	pMsg.index = lpMsg->index;
+
+	if(gQueryManager.ExecQuery("SELECT * FROM CustomJewelBank WHERE AccountID='%s'",lpMsg->account) == 0 || gQueryManager.Fetch() == SQL_NO_DATA)
+	{
+		gQueryManager.Close();
+
+		pMsg.Bless		= 0; 
+		pMsg.Soul		= 0; 
+		pMsg.Life		= 0; 
+		pMsg.Creation	= 0; 
+		pMsg.Guardian	= 0; 
+		pMsg.GemStone	= 0; 
+		pMsg.Harmony	= 0; 
+		pMsg.Chaos		= 0; 
+		pMsg.LowStone	= 0; 
+		pMsg.HighStone	= 0; 
+	}
+	else
+	{
+		pMsg.Bless		= gQueryManager.GetAsInteger("Bless"); 
+		pMsg.Soul		= gQueryManager.GetAsInteger("Soul");
+		pMsg.Life		= gQueryManager.GetAsInteger("Life");
+		pMsg.Creation	= gQueryManager.GetAsInteger("Creation");
+		pMsg.Guardian	= gQueryManager.GetAsInteger("Guardian");
+		pMsg.GemStone	= gQueryManager.GetAsInteger("GemStone");
+		pMsg.Harmony	= gQueryManager.GetAsInteger("Harmony");
+		pMsg.Chaos		= gQueryManager.GetAsInteger("Chaos"); ; 
+		pMsg.LowStone	= gQueryManager.GetAsInteger("LowStone");
+		pMsg.HighStone	= gQueryManager.GetAsInteger("HighStone");
+
+		gQueryManager.Close();
+	}
+	gSocketManager.DataSend(index,(BYTE*)&pMsg,sizeof(pMsg));
 }

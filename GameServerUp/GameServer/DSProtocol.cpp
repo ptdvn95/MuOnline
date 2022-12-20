@@ -64,6 +64,7 @@
 #include "ResetSystem.h"
 #include "GrandResetSystem.h"
 #include "InvokerHelper.h"
+#include "CustomJewelBank.h"
 
 void DataServerProtocolCore(BYTE head,BYTE* lpMsg,int size) // OK
 {
@@ -634,6 +635,9 @@ void DataServerProtocolCore(BYTE head,BYTE* lpMsg,int size) // OK
 			{
 				case 0x00:
 					gCustomNpcQuest.DGCustomNpcQuestRecv((SDHP_CUSTOMNPCQUEST_RECV*)lpMsg);
+					break;
+				case 0x05:
+					gCustomJewelBank.CustomJewelBankInfoRecv((SDHP_CUSTOM_JEWELBANK_INFO_RECV*)lpMsg);
 					break;
 			}
 			break;

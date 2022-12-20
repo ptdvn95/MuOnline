@@ -399,6 +399,7 @@ public:
 	bool CheckItemNotSlot(int index); // OK
 
 	int CheckItemSkill(int index);
+	int CheckItemInventorySpaceCount(LPOBJ lpObj,int width,int height); // OK
 private:
 	std::map<int,ITEM_INFO> m_ItemInfo;
 };

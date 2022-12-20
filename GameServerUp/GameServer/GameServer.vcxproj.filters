@@ -969,6 +969,9 @@
     <ClInclude Include="HwidManager.h">
       <Filter>Source Files\HWID</Filter>
     </ClInclude>
+    <ClInclude Include="CustomJewelBank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1768,6 +1771,9 @@
     </ClCompile>
     <ClCompile Include="HwidManager.cpp">
       <Filter>Source Files\HWID</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomJewelBank.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

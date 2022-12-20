@@ -1013,6 +1013,38 @@ struct PMSG_GDREQ_ACH_SAVE
 	unsigned int counter[50];
 };
 
+struct SDHP_CUSTOM_JEWELBANK_RECV 
+{
+    PSBMSG_HEAD header;
+	WORD index;
+	char account[11];
+	WORD type;
+	DWORD count;
+};
+
+struct SDHP_CUSTOM_JEWELBANK_INFO_RECV
+{
+    PSBMSG_HEAD header; // C1:F5
+    WORD index;
+    char account[11];
+};
+
+struct SDHP_CUSTOM_JEWELBANK_INFO_SEND
+{
+    PSBMSG_HEAD header; // C1:F5
+    WORD index;
+	int Bless; 
+	int Soul; 
+	int Life; 
+	int Creation; 
+	int Guardian; 
+	int GemStone; 
+	int Harmony; 
+	int Chaos; 
+	int LowStone; 
+	int HighStone; 
+};
+
 //**********************************************//
 //**********************************************//
 //**********************************************//
@@ -1102,3 +1134,5 @@ void DS_GDReqCsGuildUnionInfo(BYTE *lpRecv, int aIndex);
 void DS_GDReqCsSaveTotalGuildInfo(BYTE *lpRecv, int aIndex);
 void DS_GDReqCsLoadTotalGuildInfo(BYTE *lpRecv, int aIndex);
 void DS_GDReqCastleNpcUpdate(BYTE *lpRecv, int aIndex);
+void GDCustomJewelBankRecv(SDHP_CUSTOM_JEWELBANK_RECV* lpMsg);
+void GDCustomJewelBankInfoRecv(SDHP_CUSTOM_JEWELBANK_INFO_RECV* lpMsg,int index);

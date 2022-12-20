@@ -42,6 +42,7 @@
 #include "MuHelper.h"
 #include "ResetSystemPanel.h"
 #include "GrandResetSystem.h"
+#include "CustomJewelBank.h"
 
 Interface gInterface;
 
@@ -541,7 +542,7 @@ void Interface::LoadImages()
 	pLoadImage("Interface\\GFx\\Render_buttom_3.tga", 71524, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
 	//--
 	pLoadImage("Interface\\GFx\\RenderBits_Sound.tga", 71523, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
-	// pLoadImage("Interface\\GFx\\JewelBank.tga", 71525, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
+	pLoadImage("Interface\\GFx\\JewelBank.tga", 71525, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
 	// pLoadImage("Interface\\GFx\\PetInventoryFrame.tga", 71526, 0x2601, 0x2901, 1, 0); //esquina abajo derecha
 	//--
 	pLoadImage("Interface\\GFx\\newui_option_volume01.tga", 31596, 0x2601, 0x2901, 1, 0); // esquina abajo derecha
@@ -1294,6 +1295,8 @@ void Interface::Work()
 
 	ReconnectMainProc();
 
+	// gCustomJewelBank.DrawJewelBankWindow();
+
 	gInterface.DrawVipWindow();
 
 	gInterface.DrawMenu();
@@ -1445,6 +1448,13 @@ void Interface::Work()
 		else if (GetKeyState(VK_DOWN) & 0x4000)
 		{
 			gInterface.OpenConfig(1);
+		}
+		if (GetKeyState('J') & 0x4000) 
+		{
+			// if (GetForegroundWindow() == pGameWindow && !gInterface.CheckWindow(ObjWindow::ChatWindow)&& !gInterface.CheckWindow(ObjWindow::Guild))
+			// {
+			// gCustomJewelBank.OpenWindow();
+			// }
 		}
 		if (GetKeyState(VK_F6) & 0x4000) 
 		{

@@ -410,6 +410,16 @@ OBJECT_GRESET_INFO_BG,
 OBJECT_GRESET_MONEY_BG,
 OBJECT_GRESET_CLOSE,
 OBJECT_GRESET_FINISH,
+
+eJewelBank_MAIN,
+eJewelBank_TITLE,
+eJewelBank_FRAME,
+eJewelBank_FOOTER,
+eJewelBank_DIV,
+eJewelBank_CLOSE,
+eJewelBank_NEXT,
+eJewelBank_PREV,
+eJewelBank_WITHDRAW, 
 };
 
 enum InterfaceID

@@ -84,8 +84,9 @@
 #include "ResetSystem.h"
 #include "GrandResetSystem.h"
 #include "HwidManager.h"
+#include "CustomJewelBank.h"
 
-//Dragones function para chequear mapa de invasión y todos los personajes
+//Dragones function para chequear mapa de invasiï¿½n y todos los personajes
 void GCEventStateSendToAll(int map ,BYTE InvasionState, BYTE InvasionIndex)
 {
 	for ( int n=0; n<MAX_OBJECT ; n++ )
@@ -1129,6 +1130,12 @@ void ProtocolCore(BYTE head,BYTE* lpMsg,int size,int aIndex,int encrypt,int seri
 					break;
 				case 0xE9:
 					gHwidManager.ConnectHwid((CG_HWID_SEND*)lpMsg, &gObj[aIndex]);
+					break;
+				case 0xF7:
+					gCustomJewelBank.JewelBankRecv((PSBMSG_JEWELBANK_RECV*)lpMsg,aIndex);
+					break;
+				case 0xF8:
+					gCustomJewelBank.JewelBankWithDrawRecv((PSBMSG_JEWELBANKWITHDRAW_RECV*)lpMsg,aIndex);
 					break;
 			}
 			break;

@@ -965,6 +965,17 @@ struct OBJECTSTRUCT
 	int DueloEspecial;
 #endif
 
+	int JewelBlessCount; 
+	int JewelSoulCount; 
+	int JewelLifeCount; 
+	int JewelCreationCount; 
+	int JewelGuardianCount; 
+	int JewelGemStoneCount; 
+	int JewelHarmonyCount; 
+	int JewelChaosCount; 
+	int JewelLowStoneCount; 
+	int JewelHighStoneCount; 
+
 	int BuyVip;
 	int PickupEnable;
 	int Pickup[20];

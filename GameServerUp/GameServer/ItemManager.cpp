@@ -5214,3 +5214,26 @@ bool CItemManager::CheckItemNotSlot(int index) // OK
 
 	return false;
 }
+
+int CItemManager::CheckItemInventorySpaceCount(LPOBJ lpObj,int width,int height) // OK
+{
+	int MaxY = (this->GetInventoryMaxValue(lpObj)-INVENTORY_WEAR_SIZE)/8;
+
+	int count = 0;
+
+	for(int y=0;y < MaxY;y++)
+	{
+		for(int x=0;x < 8;x++)
+		{
+			if(lpObj->InventoryMap[((y*8)+x)] == 0xFF)
+			{
+				if(this->InventoryRectCheck(lpObj->Index,x,y,width,height) != 0xFF)
+				{
+					count++;
+				}
+			}
+		}
+	}
+
+	return count;
+}

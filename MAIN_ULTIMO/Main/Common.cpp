@@ -190,7 +190,7 @@ void InitCommon() // OK
 
 	Encoger = GetPrivateProfileIntA("Setting", "Encoger", 0, "./Settings.ini");
 
-	// SeparateChat = GetPrivateProfileIntA("Setting", "SeparateChat", 0, "./Settings.ini");
+	SeparateChat = GetPrivateProfileIntA("Setting", "SeparateChat", 0, "./Settings.ini");
 	HpMonsterBar = GetPrivateProfileIntA("Setting", "HpMonsterBar", 0, "./Settings.ini");
 	HPMonsterName = GetPrivateProfileIntA("Setting", "HPMonsterName", 0, "./Settings.ini");
 	TimerBar = GetPrivateProfileIntA("Setting", "TimerBar", 0, "./Settings.ini");
@@ -312,15 +312,15 @@ void InitCommon() // OK
 	
 
 	// Default Separate Chat
-	// gChatExpanded.m_separate = SeparateChat;
+	gChatExpanded.m_separate = SeparateChat;
 
-	// if(SeparateChat == 1)
-	// {
-	// 	gChatExpanded.Load();
-	// }
+	if(SeparateChat == 1)
+	{
+		gChatExpanded.Load();
+	}
 
 	// Custom separate chat
-	SeparateChatN.Init();
+	// SeparateChatN.Init();
 
 	// Item set option 512 line (file in Local\eng)
 	g_csItemOption.Init();

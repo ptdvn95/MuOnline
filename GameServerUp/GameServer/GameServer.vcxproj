@@ -316,6 +316,7 @@
     <ClInclude Include="CustomEventDrop.h" />
     <ClInclude Include="CustomEventTime.h" />
     <ClInclude Include="CustomJewel.h" />
+    <ClInclude Include="CustomJewelBank.h" />
     <ClInclude Include="CustomMix.h" />
     <ClInclude Include="CustomMonster.h" />
     <ClInclude Include="CustomMonsterSkill.h" />
@@ -589,6 +590,7 @@
     <ClCompile Include="CustomEventDrop.cpp" />
     <ClCompile Include="CustomEventTime.cpp" />
     <ClCompile Include="CustomJewel.cpp" />
+    <ClCompile Include="CustomJewelBank.cpp" />
     <ClCompile Include="CustomMix.cpp" />
     <ClCompile Include="CustomMonster.cpp" />
     <ClCompile Include="CustomMonsterSkill.cpp" />

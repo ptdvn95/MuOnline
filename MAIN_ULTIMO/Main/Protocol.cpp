@@ -38,6 +38,7 @@
 #include "GrandResetSystem.h"
 #include "PartyBar.h"
 #include "HWID.h"
+#include "CustomJewelBank.h"
 
 BOOL ProtocolCoreEx(BYTE head,BYTE* lpMsg,int size,int key) // OK
 {
@@ -186,6 +187,9 @@ BOOL ProtocolCoreEx(BYTE head,BYTE* lpMsg,int size,int key) // OK
 				// MasterSkill
 				case 0xF4:
 					gCRenderEx700.RecvMasterSkill((PMSG_MASTER_SKILL_LIST_SEND *)lpMsg);
+					return 1;
+				case 0xF7:
+					gCustomJewelBank.GCCustomJewelBankInfoRecv((PSBMSG_JEWELBANK_RECV*)lpMsg);
 					return 1;
 				case 0x13:
 					gIconBuff.GC_BuffInfo((PMSG_SEND_BUFF_ICON_EX*)lpMsg);

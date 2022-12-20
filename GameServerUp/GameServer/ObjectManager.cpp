@@ -93,6 +93,7 @@
 #include "MonsterCoins.h"
 #include "WindowsQuest.h"
 #include "InvokerHelper.h"
+#include "CustomJewelBank.h"
 
 CObjectManager gObjectManager;
 //////////////////////////////////////////////////////////////////////
@@ -4946,6 +4947,8 @@ bool CObjectManager::CharacterInfoSet(BYTE* aRecv, int aIndex) // OK
 	gInventoryEquipment.InsertInventoryEquipment(lpObj);
 
 	GCWeatherSend(lpObj->Index, (gMap[lpObj->Map].GetWeather() / 16));
+
+	gCustomJewelBank.CustomJewelBankInfoSend(lpObj->Index);
 
 	GCMainCheckSend(aIndex);
 

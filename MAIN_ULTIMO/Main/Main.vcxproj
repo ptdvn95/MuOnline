@@ -118,6 +118,7 @@
     <ClInclude Include="CustomFog.h" />
     <ClInclude Include="CustomFont.h" />
     <ClInclude Include="CustomGloves.h" />
+    <ClInclude Include="CustomJewelBank.h" />
     <ClInclude Include="CustomPetEffect.h" />
     <ClInclude Include="Entryproy.h" />
     <ClInclude Include="GetBarChat.h" />
@@ -264,6 +265,7 @@
     <ClCompile Include="CustomFog.cpp" />
     <ClCompile Include="CustomFont.cpp" />
     <ClCompile Include="CustomGloves.cpp" />
+    <ClCompile Include="CustomJewelBank.cpp" />
     <ClCompile Include="CustomPetEffect.cpp" />
     <ClCompile Include="GetBarChat.cpp" />
     <ClCompile Include="GLFont.cpp" />
