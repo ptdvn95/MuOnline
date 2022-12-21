@@ -1040,9 +1040,9 @@ void CPersonalShop::GCPShopItemListSend(int aIndex,int bIndex,BYTE result,BYTE t
 {
 	LPOBJ lpObj = &gObj[bIndex];
 
-//#if(CUSTOM_PERSONAL_SHOP==1)
-//	g_PersonalShopEx.UpdatePSInventoryTarget(aIndex, bIndex);
-//#endif
+#if(CUSTOM_PERSONAL_SHOP==1)
+	g_PersonalShopEx.SendInfoTarget(aIndex, bIndex);
+#endif
 
 	BYTE send[4096];
 

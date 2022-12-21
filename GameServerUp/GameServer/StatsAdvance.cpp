@@ -45,7 +45,11 @@ void CStatsAdvance::Send(LPOBJ lpObj)
 	//--
 	pMsg.StatInfo.DoubleDamageRate = lpObj->DoubleDamageRate;
 	pMsg.StatInfo.TripleDamageRate = lpObj->TripleDamageRate;
-	pMsg.StatInfo.DamageReductionRate = lpObj->DamageReduction[MAX_DAMAGE_REDUCTION];
+	pMsg.StatInfo.DamageReductionRate = 0;
+	for(int n = 0; n < MAX_DAMAGE_REDUCTION; n++)
+	{
+		pMsg.StatInfo.DamageReductionRate += lpObj->DamageReduction[n];
+	}
 	pMsg.StatInfo.ShieldSkillDamageReductionRate = lpObj->ShieldDamageReduction;
 	pMsg.StatInfo.SDDamageReductionRate = lpObj->DamageReduction[DAMAGE_REDUCTION_JOH_ITEM];
 	pMsg.StatInfo.SDDecreaseDamageRate = lpObj->DecreaseShieldGaugeRate;
@@ -79,5 +83,13 @@ void CStatsAdvance::Send(LPOBJ lpObj)
 	pMsg.StatInfo.FullHPRestoreRate = lpObj->OffensiveFullHPRestoreRate;
 	pMsg.StatInfo.FullMPRestoreRate = lpObj->OffensiveFullMPRestoreRate;
 	pMsg.StatInfo.FullSDRestoreRate = lpObj->OffensiveFullSDRestoreRate;
+	//--
+	pMsg.StatInfo.AttackPhysispeed = lpObj->PhysiSpeed;
+	pMsg.StatInfo.AttackMagicspeed = lpObj->MagicSpeed;
+	//--
+	pMsg.StatInfo.PhysiDamageMin = lpObj->PhysiDamageMin;
+	pMsg.StatInfo.PhysiDamageMax = lpObj->PhysiDamageMax;
+	pMsg.StatInfo.AttackSuccessRate = lpObj->AttackSuccessRate;
+	//--
 	DataSend(lpObj->Index, (BYTE*)&pMsg, pMsg.h.size);
 }

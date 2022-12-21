@@ -71,7 +71,7 @@ void PersonalShopEx::Search(int aIndex, CG_PersonalPage* aRecv)
 	int StartCount = Page * 10;
 	int EndCount =  StartCount + 10;
 
-	for(int n=OBJECT_START_USER;n<MAX_OBJECT;n++)
+	for(int n=OBJECT_START_USER_AND_BOTS;n<MAX_OBJECT;n++)
 	{
 		LPOBJ lpSearch = &gObj[n];
 		if(lpSearch->Connected < OBJECT_PLAYING || !lpSearch->PShopOpen || n == aIndex) 
@@ -109,4 +109,25 @@ void PersonalShopEx::Search(int aIndex, CG_PersonalPage* aRecv)
 	SendBuff[7]=SendCount;
 	DataSend(aIndex,SendBuff,datasize);
 }
+void PersonalShopEx::SendInfoTarget(int aIndex, int bIndex)
+{
+	LPOBJ lpObj = &gObj[bIndex]; //Target
+
+	GC_SendTargetInfo pRequest;
+	pRequest.Head.set(0xFA, 0x10, sizeof(pRequest));
+	memset(pRequest.Name, 0, sizeof(pRequest.Name));
+	memcpy(pRequest.Name, lpObj->Name, sizeof(pRequest.Name));
+	// ----
+	pRequest.bIndex = bIndex;
+	DataSend(aIndex, (LPBYTE)&pRequest, sizeof(pRequest));
+}
+
+bool PersonalShopEx::NPCDialog(LPOBJ lpObj)
+{
+	CG_PersonalPage aCG;
+	aCG.Page = 0;
+	this->Search(lpObj->Index,&aCG);
+	return true;
+}
+
 #endif

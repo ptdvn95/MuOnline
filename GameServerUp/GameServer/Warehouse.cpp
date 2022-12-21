@@ -190,7 +190,24 @@ void CWarehouse::CGWarehouseClose(int aIndex) // OK
 	lpObj->LoadWarehouse = 0;
 
 	lpObj->LoadGuildWarehouse = 0;
+	//--
+	GUILD_INFO_STRUCT * lpGuild = gGuildClass.SearchGuild(lpObj->GuildName);
 
+	if ( lpGuild != NULL )
+	{
+		SDHP_WAREHOUSE_GUILD_STATUS_UPDATE_SEND pWareHouseUpdate;
+
+		pWareHouseUpdate.header.set(0x05, 0x77,sizeof(pWareHouseUpdate));
+
+		pWareHouseUpdate.index = aIndex;
+
+		memcpy(pWareHouseUpdate.Name, lpGuild->Name,sizeof(pWareHouseUpdate.Name));
+
+		pWareHouseUpdate.Status = lpObj->LoadGuildWarehouse;
+
+		gDataServerConnection.DataSend((BYTE*)&pWareHouseUpdate, pWareHouseUpdate.header.size);
+	}
+	//--
 	PBMSG_HEAD pMsg;
 
 	pMsg.set(0x82, sizeof(pMsg));
@@ -632,7 +649,19 @@ void CWarehouse::GDWarehouseGuildItemSend(int aIndex, char* account) // OK
 	lpObj->Interface.state = 0;
 
 	lpObj->LoadGuildWarehouse = 1;
+	//--
+	SDHP_WAREHOUSE_GUILD_STATUS_UPDATE_SEND pWareHouseUpdate;
 
+	pWareHouseUpdate.header.set(0x05, 0x77,sizeof(pWareHouseUpdate));
+
+	pWareHouseUpdate.index = aIndex;
+
+	memcpy(pWareHouseUpdate.Name,lpGuild->Name,sizeof(pWareHouseUpdate.Name));
+
+	pWareHouseUpdate.Status = lpObj->LoadGuildWarehouse;
+
+	gDataServerConnection.DataSend((BYTE*)&pWareHouseUpdate, pWareHouseUpdate.header.size);
+	//--
 	SDHP_WAREHOUSE_ITEM_SEND pMsg;
 
 	pMsg.header.set(0x05, 0x70, sizeof(pMsg));
@@ -674,4 +703,39 @@ void CWarehouse::GDWarehouseGuildItemSaveSend(int aIndex) // OK
 	gDataServerConnection.DataSend((BYTE*)&pMsg, sizeof(pMsg));
 
 	GDPetItemInfoSaveSend(aIndex, 1);
+}
+
+void CWarehouse::GDWarehouseGuildConsult(int aIndex, char* account) // OK
+{
+	GUILD_INFO_STRUCT * lpGuild = gGuildClass.SearchGuild(account);
+
+	if ( lpGuild == NULL )
+	{
+		return;
+	}
+
+	SDHP_WAREHOUSE_GUILD_STATUS_SEND pWareHouse;
+
+	pWareHouse.header.set(0x05, 0x76, sizeof(pWareHouse));
+
+	pWareHouse.index = aIndex;
+
+	memcpy(pWareHouse.Name, lpGuild->Name, sizeof(pWareHouse.Name));
+
+	gDataServerConnection.DataSend((BYTE*)&pWareHouse, pWareHouse.header.size);
+}
+
+void CWarehouse::DGWarehouseGuildOpenRecv(SDHP_WAREHOUSE_GUILD_STATUS_RECV* lpMsg) // OK
+{
+	LPOBJ lpObj = &gObj[lpMsg->index];
+
+	lpObj->LoadGuildWarehouse = lpMsg->Status;
+
+	if (lpObj->LoadGuildWarehouse == 1)
+	{
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, gMessage.GetMessage(839));
+		return;
+	}
+
+	this->GDWarehouseGuildItemSend(lpObj->Index,lpObj->GuildName); // OK
 }

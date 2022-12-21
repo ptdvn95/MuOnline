@@ -32,6 +32,7 @@
 #include "SkillHitBox.h"
 #include "Util.h"
 #include "Viewport.h"
+#include "Log.h"
 
 CSkillManager gSkillManager;
 //////////////////////////////////////////////////////////////////////
@@ -940,6 +941,17 @@ void CSkillManager::UseAttackSkill(int aIndex,int bIndex,CSkill* lpSkill) // OK
 
 	bool combo = false;
 
+		//============ Fix Tele ==========//
+	if(lpObj->Type == OBJECT_USER && lpObj->Class == CLASS_DW)
+	{
+		int skill = ((lpSkill==0)?SKILL_NONE:lpSkill->m_skill);
+		// if(lpObj->Teleport != 0 && this->CheckSkillOK(skill)) {
+		if(lpObj->Teleport != 0) {
+				return;
+		}
+		
+	}
+	//============ Fix Tele ==========//
 	if((gServerInfo.m_EnableComboToAllSwitch == 1 || gQuest.CheckQuestListState(lpObj,3,QUEST_FINISH) != 0) && lpObj->ComboSkill.CheckCombo(lpSkill->m_skill) != 0)
 	{
 		if(gServerInfo.m_CheckAutoComboHack == 0 || (GetTickCount()-lpObj->ComboTime) > ((DWORD)gServerInfo.m_CheckAutoComboHackTolerance))
@@ -1000,6 +1012,17 @@ void CSkillManager::UseDurationSkillAttack(int aIndex,int bIndex,CSkill* lpSkill
 
 	bool combo = false;
 
+		//============ Fix Tele ==========//
+	if(lpObj->Type == OBJECT_USER && lpObj->Class == CLASS_DW)
+	{
+		int skill = ((lpSkill==0)?SKILL_NONE:lpSkill->m_skill);
+		// if(lpObj->Teleport != 0 && this->CheckSkillOK(skill)) {
+		if(lpObj->Teleport != 0) {
+				return;
+		}
+		
+	}
+	//============ Fix Tele ==========/
 
 	if(lpSkill->m_skill != SKILL_FLAME && lpSkill->m_skill != SKILL_TWISTER && lpSkill->m_skill != SKILL_EVIL_SPIRIT && lpSkill->m_skill != SKILL_HELL_FIRE && lpSkill->m_skill != SKILL_AQUA_BEAM && lpSkill->m_skill != SKILL_BLAST && lpSkill->m_skill != SKILL_INFERNO && lpSkill->m_skill != SKILL_TRIPLE_SHOT && lpSkill->m_skill != SKILL_IMPALE && lpSkill->m_skill != SKILL_MONSTER_AREA_ATTACK && lpSkill->m_skill != SKILL_PENETRATION && lpSkill->m_skill != SKILL_FIRE_SLASH && lpSkill->m_skill != SKILL_FIRE_SCREAM)
 	{
@@ -1490,7 +1513,7 @@ bool CSkillManager::SkillManaShield(int aIndex,int bIndex,CSkill* lpSkill) // OK
 {
 	LPOBJ lpTarget = &gObj[bIndex];
 
-	if(lpTarget->Type != OBJECT_USER && OBJECT_RANGE(lpTarget->SummonIndex) == 0)
+	if(lpTarget->Type != OBJECT_USER && OBJECT_RANGE(lpTarget->SummonIndex) == 1)
 	{
 		return 0;
 	}
@@ -1506,7 +1529,6 @@ bool CSkillManager::SkillManaShield(int aIndex,int bIndex,CSkill* lpSkill) // OK
 	{
 		return 0;
 	}
-
 	if(CC_MAP_RANGE(lpObj->Map) != 0 && aIndex != bIndex)
 	{
 		return 0;
@@ -1592,7 +1614,6 @@ bool CSkillManager::SkillHeal(int aIndex,int bIndex,CSkill* lpSkill) // OK
 	{
 		return 0;
 	}
-
 	if(CC_MAP_RANGE(lpObj->Map) != 0 && aIndex != bIndex)
 	{
 		return 0;
@@ -2225,24 +2246,26 @@ bool CSkillManager::SkillGreaterLife(int aIndex,int bIndex,CSkill* lpSkill) // O
 	else
 	{
 		PARTY_INFO* lpParty = &gParty.m_PartyInfo[lpObj->PartyNumber];
-
+		const int Health = value1; //fix kuti
 		for(int n=0;n < MAX_PARTY_USER;n++)
 		{
 			int index = lpParty->Index[n];
-
+			LPOBJ lpTarget = &gObj[index];
+			
 			if(OBJECT_RANGE(index) == 0)
 			{
 				continue;
 			}
 
-			if(this->CheckSkillRadio(lpSkill->m_index,lpObj->X,lpObj->Y,gObj[index].X,gObj[index].Y) == 0)
+			if(this->CheckSkillRadio(lpSkill->m_index,lpObj->X,lpObj->Y,lpTarget->X,lpTarget->Y) == 0)
 			{
 				continue;
 			}
 
-			value1 = (value1*((gObj[index].Type==OBJECT_USER)?gServerInfo.m_GreaterLifeRate[gObj[index].Class]:100))/100;
+			//fix kuti
+			value1 = (Health*((lpTarget->Type==OBJECT_USER)?gServerInfo.m_GreaterLifeRate[lpTarget->Class]:100))/100;
 
-			gEffectManager.AddEffect(&gObj[index],0,this->GetSkillEffect(lpSkill->m_index),count,value1,value2,value3,0);
+			gEffectManager.AddEffect(lpTarget,0,this->GetSkillEffect(lpSkill->m_index),count,value1,value2,value3,0);
 
 			this->GCSkillAttackSend(lpObj,lpSkill->m_index,index,1);
 		}
@@ -2459,9 +2482,6 @@ bool CSkillManager::SkillFireBurst(int aIndex,int bIndex,CSkill* lpSkill,bool co
 
 		gAttack.Attack(lpObj,&gObj[index],lpSkill,0,0,0,0,combo);
 
-//		gEffectManager.AddEffect(lpTarget, 0, 83, 1, 0, 0, 0, 0);
-//		gEffectManager.AddEffect(lpTarget, 0, 84, 1, 0, 0, 0, 0);
-
 		if(combo != 0)
 		{
 			this->GCSkillAttackSend(lpObj,SKILL_COMBO,index,1);
@@ -2520,11 +2540,26 @@ bool CSkillManager::SkillEarthquake(int aIndex,int bIndex,CSkill* lpSkill,bool c
 bool CSkillManager::SkillSummonParty(int aIndex,int bIndex,CSkill* lpSkill) // OK
 {
 	LPOBJ lpObj = &gObj[aIndex];
-
+	LPOBJ lpPObj = &gObj[aIndex];
 	if(lpObj->Type != OBJECT_USER)
 	{
 		return 0;
 	}
+
+	if(lpObj->Map == 94)
+	{
+		gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,"Bạn không thể sử dụng skill này ở map này");
+		return 0;
+	}
+
+
+	if(lpPObj->Map == 94)
+	{
+		gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,"Bạn không thể sử dụng skill này trong map săn ngọc");
+		return 0;
+	}
+	
+	
 
 	if(OBJECT_RANGE(lpObj->PartyNumber) != 0)
 	{
@@ -4025,7 +4060,7 @@ bool CSkillManager::SkillShieldRecover(int aIndex,int bIndex,CSkill* lpSkill) //
 	{
 		return 0;
 	}
-
+	
 	if(CC_MAP_RANGE(lpObj->Map) != 0 && aIndex != bIndex)
 	{
 		return 0;
@@ -4449,6 +4484,8 @@ bool CSkillManager::SkillChainDriver(int aIndex,int bIndex,CSkill* lpSkill,bool 
 	{
 		return 0;
 	}
+
+	gObjAddMsgSendDelay(lpTarget,2,lpObj->Index,150,0); // day lui RF
 
 	gAttack.Attack(lpObj,lpTarget,lpSkill,1,0,0,1,combo);
 
@@ -5456,12 +5493,12 @@ void CSkillManager::ApplyDeathStabEffect(LPOBJ lpObj,LPOBJ lpTarget,CSkill* lpSk
 
 	if ((GetLargeRand() % 100) < (gMasterSkillTree.GetMasterSkillValue(lpObj, MASTER_SKILL_ADD_DEATH_STAB_MASTERED) - lpTarget->ResistStunRate))
 	{
-		gEffectManager.AddEffect(lpTarget, 0, EFFECT_STERN, 2, 0, 0, 0, 0);
+		gEffectManager.AddEffect(lpTarget,0,EFFECT_STERN,2,0,0,0,0);
 	}
-	else if ((GetLargeRand() % 100) < gMasterSkillTree.GetMasterSkillValue(lpObj, MASTER_SKILL_ADD_DEATH_STAB_ENHANCED))
+	else if((GetLargeRand()%100) < gMasterSkillTree.GetMasterSkillValue(lpObj, MASTER_SKILL_ADD_DEATH_STAB_ENHANCED))
 	{
-		damage = ((lpObj->Strength + lpObj->AddStrength) * 10) / 100;
-		gEffectManager.AddEffect(lpTarget, 0, EFFECT_DEATH_STAB_ENHANCED, 10, lpObj->Index, 1, SET_NUMBERHW(damage), SET_NUMBERLW(damage));
+		damage = ((lpObj->Strength+lpObj->AddStrength)*10)/100;
+		gEffectManager.AddEffect(lpTarget,0,EFFECT_DEATH_STAB_ENHANCED,10,lpObj->Index,1,SET_NUMBERHW(damage),SET_NUMBERLW(damage));
 	}
 
 	#endif
@@ -6000,10 +6037,10 @@ void CSkillManager::CGSkillAttackRecv(PMSG_SKILL_ATTACK_RECV* lpMsg,int aIndex) 
 		return;
 	}
 
-//	if(gMap[lpObj->Map].CheckAttr(lpObj->X,lpObj->Y,1) != 0 || gMap[lpTarget->Map].CheckAttr(lpTarget->X,lpTarget->Y,1) != 0)
-//	{
-//		return;
-//	}  // buff skill in event
+	/*if(gMap[lpObj->Map].CheckAttr(lpObj->X, lpObj->Y, 1) != 0 || gMap[lpTarget->Map].CheckAttr(lpTarget->X, lpTarget->Y, 1) != 0)
+	{
+		return;
+	}*/
 
 	if (BC_MAP_RANGE(lpObj->Map) || CA_MAP_RANGE(lpObj->Map) || CC_MAP_RANGE(lpObj->Map) || DS_MAP_RANGE(lpObj->Map) || IT_MAP_RANGE(lpObj->Map))
 	{
@@ -6131,6 +6168,29 @@ void CSkillManager::CGDurationSkillAttackRecv(PMSG_DURATION_SKILL_ATTACK_RECV* l
 	CSkill* lpSkill = 0;
 
 	if(gHackSkillCheck.CheckSpeedHack(lpObj,skill) == 1)
+	{
+		return;
+	}
+
+	if
+	(
+		   skill ==  SKILL_MANA_SHIELD //16
+		|| skill ==  SKILL_CRESCENT_MOON_SLASH  //44
+		|| skill ==  SKILL_SPIRAL_SLASH 
+		|| skill ==  SKILL_MANA_RAYS 
+		|| skill ==  SKILL_FIRE_BLAST 
+		|| skill ==  SKILL_MANA_GLAIVE 
+		|| skill ==  SKILL_STAR_FALL 
+		|| skill ==  SKILL_CHARGE 
+		|| skill ==  SKILL_HEAL 
+		|| skill ==  SKILL_PARTY_HEAL 
+		|| skill ==  SKILL_DEFENSE 
+		|| skill ==  SKILL_GREATER_DEFENSE 
+		|| skill ==  SKILL_GREATER_DAMAGE 
+		|| skill ==  SKILL_GREATER_CRITICAL_DAMAGE 
+		|| skill ==  SKILL_SHIELD_RECOVER 
+		|| skill ==  SKILL_DAMAGE_REFLECT 
+	)
 	{
 		return;
 	}
@@ -6633,3 +6693,13 @@ void CSkillManager::GCSkillListSend(LPOBJ lpObj,BYTE type) // OK
 
 	DataSend(lpObj->Index,send,size);
 }
+
+// BOOL CSkillManager::CheckSkillOK(int Skill)
+// {
+// 	std::map<int, SKILKTELEFIX_DATA>::iterator it = this->m_SetSkillTeleFix.find(Skill);
+// 	if (it == this->m_SetSkillTeleFix.end())
+// 	{
+// 		return TRUE;
+// 	}
+// 	return FALSE;
+// }

@@ -398,9 +398,15 @@ struct SKILL_INFO
 	int RequireClass[MAX_CLASS];
 };
 
+// struct SKILKTELEFIX_DATA{
+// 	int Index;
+// 	int IDSkill;
+// };
+
 class CSkillManager
 {
 public:
+	// std::map<int, SKILKTELEFIX_DATA> m_SetSkillTeleFix;
 	CSkillManager();
 	virtual ~CSkillManager();
 	void Load(char* path);
@@ -562,6 +568,7 @@ public:
 	void GCSkillAddSend(int aIndex, BYTE slot, int skill, BYTE level, BYTE type);
 	void GCSkillDelSend(int aIndex, BYTE slot, int skill, BYTE level, BYTE type);
 	void GCSkillListSend(LPOBJ lpObj, BYTE type);
+	// BOOL CheckSkillOK(int Skill);
 private:
 	std::map<int, SKILL_INFO> m_SkillInfo;
 };

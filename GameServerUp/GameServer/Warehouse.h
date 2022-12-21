@@ -8,7 +8,7 @@
 #include "Protocol.h"
 #include "User.h"
 
-#define MAX_WAREHOUSE_MONEY 100000000
+#define MAX_WAREHOUSE_MONEY 2000000000
 
 //**********************************************//
 //************ Client -> GameServer ************//
@@ -72,6 +72,13 @@ struct SDHP_WAREHOUSE_FREE_RECV
 //********** GameServer -> DataServer **********//
 //**********************************************//
 
+struct SDHP_WAREHOUSE_GUILD_STATUS_SEND
+{
+	PSBMSG_HEAD header; // C1:05:00
+	WORD index;
+	char Name[9];
+};
+
 struct SDHP_WAREHOUSE_ITEM_SEND
 {
 	PSBMSG_HEAD header; // C1:05:00
@@ -91,6 +98,21 @@ struct SDHP_WAREHOUSE_ITEM_SAVE_SEND
 	UINT WarehouseNumber;
 };
 
+struct SDHP_WAREHOUSE_GUILD_STATUS_UPDATE_SEND
+{
+	PSBMSG_HEAD header; // C1:05:00
+	WORD index;
+	char Name[9];
+	int Status;
+};
+
+struct SDHP_WAREHOUSE_GUILD_STATUS_RECV
+{
+	PSBMSG_HEAD header; // C1:05:00
+	WORD index;
+	int Status;
+};
+
 //**********************************************//
 //**********************************************//
 //**********************************************//
@@ -102,7 +124,6 @@ public:
 	virtual ~CWarehouse();
 	int GetWarehouseTaxMoney(int level,int lock);
 	void CGWarehouseMoneyRecv(PMSG_WAREHOUSE_MONEY_RECV* lpMsg,int aIndex);
-	void CGWarehouseClose(int aIndex);
 	void CGWarehousePasswordRecv(PMSG_WAREHOUSE_PASSWORD_RECV* lpMsg,int aIndex);
 	void GCWarehouseListSend(LPOBJ lpObj);
 	void GCWarehouseMoneySend(int aIndex,BYTE result,int InventoryMoney,int WarehouseMoney);
@@ -111,10 +132,15 @@ public:
 	void DGWarehouseFreeRecv(SDHP_WAREHOUSE_FREE_RECV* lpMsg);
 	void GDWarehouseItemSend(int aIndex,char* account);
 	void GDWarehouseItemSaveSend(int aIndex);
+
+	void CGWarehouseClose(int aIndex);
 	void DGWarehouseGuildItemRecv(SDHP_WAREHOUSE_ITEM_RECV* lpMsg);
 	void DGWarehouseGuildFreeRecv(SDHP_WAREHOUSE_FREE_RECV* lpMsg);
 	void GDWarehouseGuildItemSend(int aIndex,char* account);
 	void GDWarehouseGuildItemSaveSend(int aIndex);
+
+	void GDWarehouseGuildConsult(int aIndex, char* account); // OK
+	void DGWarehouseGuildOpenRecv(SDHP_WAREHOUSE_GUILD_STATUS_RECV* lpMsg); // OK
 };
 
 extern CWarehouse gWarehouse;

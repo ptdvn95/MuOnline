@@ -6,6 +6,14 @@
 #include "Notice.h"
 #include "Message.h"
 #include "ServerInfo.h"
+#include "Map.h"
+#include "MapManager.h"
+#include "MapServerManager.h"
+#include "MapItem.h"
+#include "Map.h"
+#include "Log.h"
+#include "Guild.h"
+
 cPartySearch gPartySearch;
 
 cPartySearch::cPartySearch()
@@ -45,7 +53,7 @@ void cPartySearch::PartySearchAddToList(PMSG_RECV_PARTYSEARCH_ADD* lpMsg, int aI
 
 	REGISTERED_INFO info;
 
-	memcpy(info.Name,gObj[aIndex].Name,sizeof(info.Name));
+	memcpy(info.Name, gObj[aIndex].Name, sizeof(info.Name));
 	info.aIndex = aIndex;
 	info.DarkKnight = lpMsg->DarkKnight;
 	info.DarkWizard = lpMsg->DarkWizard;
@@ -55,38 +63,42 @@ void cPartySearch::PartySearchAddToList(PMSG_RECV_PARTYSEARCH_ADD* lpMsg, int aI
 	info.Summoner = lpMsg->Summoner;
 	info.RageFighter = lpMsg->RageFighter;
 	info.OnlyGuild = lpMsg->OnlyGuild;
+	info.OnlyAlliance = lpMsg->OnlyAlliance;
 	info.OneClass = lpMsg->OneClass;
 	info.Level = lpMsg->Level;
-
-	if (lpMsg->SystemActive == true)
+	info.RequirePassword = lpMsg->RequirePassword;
+	if(info.RequirePassword)
 	{
+		memcpy(info.Password,(lpMsg->Password == "")?"":lpMsg->Password,sizeof(info.Password));
+	}
+	if (lpMsg->SystemActive == true){
 		std::string nme(info.Name);
 
-		std::transform(nme.begin(),nme.end(),nme.begin(),tolower);
+		std::transform(nme.begin(), nme.end(), nme.begin(), tolower);
 
-		std::map<std::string,REGISTERED_INFO>::iterator it = this->m_Registered.find(nme);
+		std::map<std::string, REGISTERED_INFO>::iterator it = this->m_Registered.find(nme);
 
-		if(it == this->m_Registered.end())
+		if (it == this->m_Registered.end())
 		{
-			this->m_Registered.insert(std::pair<std::string,REGISTERED_INFO>(nme,info));
-			gNotice.GCNoticeSendToAll(0,0,0,0,0,0,"[%s] Just created a new party [%s] %d %d",gObj[aIndex].Name, g_szMapName[gObj[aIndex].Map],gObj[aIndex].X,gObj[aIndex].Y);
+			this->m_Registered.insert(std::pair<std::string, REGISTERED_INFO>(nme, info));
+			if (info.RequirePassword)
+				gNotice.GCNoticeSendToAll(0,0,0,0,0,0,"New Private Auto Party created [%s] %s %d %d",gObj[aIndex].Name, gMapManager.GetMapName(gObj[aIndex].Map),gObj[aIndex].X,gObj[aIndex].Y);
+			else
+				gNotice.GCNoticeSendToAll(0,0,0,0,0,0,gMessage.GetMessage(986),gObj[aIndex].Name, gMapManager.GetMapName(gObj[aIndex].Map),gObj[aIndex].X,gObj[aIndex].Y);
 		}
 		else
 		{
 			it->second = info;
 		}
-
 		info.IsOnline = true;
-	}
-	else
-	{
+	}else{
 		std::string nme(info.Name);
 
-		std::transform(nme.begin(),nme.end(),nme.begin(),tolower);
+		std::transform(nme.begin(), nme.end(), nme.begin(), tolower);
 
-		std::map<std::string,REGISTERED_INFO>::iterator it = this->m_Registered.find(nme);
+		std::map<std::string, REGISTERED_INFO>::iterator it = this->m_Registered.find(nme);
 
-		if(it != this->m_Registered.end())
+		if (it != this->m_Registered.end())
 		{
 			this->m_Registered.erase(it);
 			return;
@@ -114,70 +126,65 @@ void cPartySearch::PartySearchDelFromList(char* Name)
 }
 
 
-void cPartySearch::GCPartyListSend(int aIndex)
-{
-	BYTE send[4096];
+void cPartySearch::GCPartyListSend(int aIndex){
 
+	BYTE send[4096];
 	PMSG_SEND_PARTYLIST pMsg;
 	pMsg.header.set(0xF3, 0xF0, sizeof(pMsg));
-
 	int size = sizeof(pMsg);
-
 	pMsg.Count = 0;
-
 	PMSG_PARTYLIST info;
-
-	for(std::map<std::string,REGISTERED_INFO>::iterator it=this->m_Registered.begin();it != this->m_Registered.end();it++)
+	for (std::map<std::string, REGISTERED_INFO>::iterator it = this->m_Registered.begin(); it != this->m_Registered.end(); it++)
 	{
 		LPOBJ lpObj = gObjFind(it->second.Name);
-
-		if (lpObj == 0)
-		{
+		if (lpObj == 0){
 			it->second.IsOnline = false;
 		}
 		else
 		{
 			std::string name(it->second.Name);
-
-			std::transform(name.begin(),name.end(),name.begin(),tolower);
-
-			std::map<std::string,REGISTERED_INFO>::iterator iter = this->m_Registered.find(name);
-
+			std::transform(name.begin(), name.end(), name.begin(), tolower);
+			std::map<std::string, REGISTERED_INFO>::iterator iter = this->m_Registered.find(name);
 			iter->second.aIndex = lpObj->Index;
-
 			iter->second.IsOnline = true;
 		}
-
 		if (it->second.IsOnline == true)
 		{
-			memcpy(info.Name,it->second.Name,sizeof(info.Name));
+			memcpy(info.Name, it->second.Name, sizeof(info.Name));
 			info.Map = lpObj->Map;
 			info.X = lpObj->X;
 			info.Y = lpObj->Y;
 			info.Level = it->second.Level;
-			
 			info.OnlyGuild = it->second.OnlyGuild;
 
-			/*if (info->second.OnlyGuild == true &&(lpObj->GuildNumber != lpTarget->GuildNumber))
-			{
-				gNotice.GCNoticeSend(lpObj->Index,1,0, 0, 0, 0, 0, "You are not in the right guild!");
-				return;
-			}*/
+			info.OnlyAlliance = it->second.OnlyAlliance;
+
+			info.RequirePassword = it->second.RequirePassword;
 
 			info.IsSameGuild = false;
+			info.IsSameAlliance = false;
 
-			if (info.OnlyGuild == true &&(lpObj->GuildNumber == gObj[aIndex].GuildNumber))
+			if (info.OnlyGuild == true && (lpObj->GuildNumber == gObj[aIndex].GuildNumber))
 			{
 				info.IsSameGuild = true;
 			}
 
-			info.Count = 1;
+			if (info.OnlyAlliance == true)
+			{
+				if ((lpObj->Guild != 0 && lpObj->Guild->GuildUnion != 0) && (gObj[aIndex].Guild != 0 && gObj[aIndex].Guild->GuildUnion != 0))
+				{
+					if (lpObj->Guild->GuildUnion == gObj[aIndex].Guild->GuildUnion)
+					{
+						info.IsSameAlliance = true;
+					}
+				}
+			}
 
-			if(OBJECT_RANGE(lpObj->PartyNumber) != 0)
+			info.Count = 1;
+			if (OBJECT_RANGE(lpObj->PartyNumber) != 0)
 			{
 				info.Count = gParty.GetMemberCount(lpObj->PartyNumber);
 			}
-
 			bool HaveDW = true;
 			bool HaveDK = true;
 			bool HaveFE = true;
@@ -185,40 +192,29 @@ void cPartySearch::GCPartyListSend(int aIndex)
 			bool HaveDL = true;
 			bool HaveSU = true;
 			bool HaveRF = true;
-
 			if (it->second.OneClass == true)
 			{
-				if (info.Count != 1)
-				{
-					for (int i=0;i<info.Count;i++)
-					{
+				if (info.Count != 1){
+					for (int i = 0; i<info.Count; i++){
 						LPOBJ lpTarget = &gObj[gParty.m_PartyInfo[lpObj->PartyNumber].Index[i]];
-
-						if (lpTarget->Class == CLASS_DW)
-						{
+						if (lpTarget->Class == CLASS_DW){
 							HaveDW = false;
-						}
-						else if (lpTarget->Class == CLASS_DK)
+						}else if (lpTarget->Class == CLASS_DK)
 						{
 							HaveDK = false;
-						}
-						else if (lpTarget->Class == CLASS_FE)
+						}else if (lpTarget->Class == CLASS_FE)
 						{
 							HaveFE = false;
-						}
-						else if (lpTarget->Class == CLASS_MG)
+						}else if (lpTarget->Class == CLASS_MG)
 						{
 							HaveMG = false;
-						}
-						else if (lpTarget->Class == CLASS_DL)
+						}else if (lpTarget->Class == CLASS_DL)
 						{
 							HaveDL = false;
-						}
-						else if (lpTarget->Class == CLASS_SU)
+						}else if (lpTarget->Class == CLASS_SU)
 						{
 							HaveSU = false;
-						}
-						else if (lpTarget->Class == CLASS_RF)
+						}else if (lpTarget->Class == CLASS_RF)
 						{
 							HaveRF = false;
 						}
@@ -226,36 +222,28 @@ void cPartySearch::GCPartyListSend(int aIndex)
 				}
 				else
 				{
-					if (lpObj->Class == CLASS_DW)
-					{
+					if (lpObj->Class == CLASS_DW){
 						HaveDW = false;
-					}
-					else if (lpObj->Class == CLASS_DK)
+					}else if (lpObj->Class == CLASS_DK)
 					{
 						HaveDK = false;
-					}
-					else if (lpObj->Class == CLASS_FE)
+					}else if (lpObj->Class == CLASS_FE)
 					{
 						HaveFE = false;
-					}
-					else if (lpObj->Class == CLASS_MG)
+					}else if (lpObj->Class == CLASS_MG)
 					{
 						HaveMG = false;
-					}
-					else if (lpObj->Class == CLASS_DL)
+					}else if (lpObj->Class == CLASS_DL)
 					{
 						HaveDL = false;
-					}
-					else if (lpObj->Class == CLASS_SU)
+					}else if (lpObj->Class == CLASS_SU)
 					{
 						HaveSU = false;
-					}
-					else if (lpObj->Class == CLASS_RF)
+					}else if (lpObj->Class == CLASS_RF)
 					{
 						HaveRF = false;
 					}
 				}
-
 				info.DarkWizard = HaveDW;
 				info.DarkKnight = HaveDK;
 				info.Elf = HaveFE;
@@ -274,20 +262,15 @@ void cPartySearch::GCPartyListSend(int aIndex)
 				info.Summoner = it->second.Summoner;
 				info.RageFighter = it->second.RageFighter;
 			}
-
-			memcpy(&send[size],&info,sizeof(info));
+			memcpy(&send[size], &info, sizeof(info));
 			size += sizeof(info);
-
 			pMsg.Count++;
 		}
 	}
-
 	pMsg.header.size[0] = SET_NUMBERHB(size);
-
 	pMsg.header.size[1] = SET_NUMBERLB(size);
-
-	memcpy(send,&pMsg,sizeof(pMsg));
-	DataSend(aIndex,send,size);
+	memcpy(send, &pMsg, sizeof(pMsg));
+	DataSend(aIndex, send, size);
 }
 
 
@@ -307,67 +290,69 @@ bool cPartySearch::Dialog(LPOBJ lpObj, LPOBJ lpNpc)
 
 void cPartySearch::RequestParty(PMSG_PARTY_REQ_REQ* lpMsg, int aIndex)
 {
-
 	LPOBJ lpObj = &gObj[aIndex];
 	LPOBJ lpTarget = gObjFind(lpMsg->Name);
 
 	if (lpTarget == NULL)
 	{
-        return;
+		return;
 	}
-
 	std::string name(lpTarget->Name);
+	std::transform(name.begin(), name.end(), name.begin(), tolower);
+	std::map<std::string, REGISTERED_INFO>::iterator info = this->m_Registered.find(name);
 
-	std::transform(name.begin(),name.end(),name.begin(),tolower);
-
-	std::map<std::string,REGISTERED_INFO>::iterator info = this->m_Registered.find(name);
-
-	if (lpObj->PartyNumber >= 0)
+	if (info->second.RequirePassword)
 	{
-		gNotice.GCNoticeSend(lpObj->Index,1,0, 0, 0, 0, 0, "You already in party!");
-		return;
-	}
-
-	if (!strcmp(lpObj->Name,lpTarget->Name))
-	{
-		gNotice.GCNoticeSend(lpObj->Index,1,0, 0, 0, 0, 0, "You can not add yourself to the party!");
-		return;
-	}
-
-	if (lpTarget->PartyNumber >= 0)
-	{
-		if (lpObj->PartyNumber == lpTarget->PartyNumber)
+		if (!lpMsg->needPassword)
 		{
-			gNotice.GCNoticeSend(lpObj->Index,1,0, 0, 0, 0, 0, "You are already in this group!");
+			gNotice.GCNoticeSend(lpObj->Index,1,0, 0, 0, 0, 0, "Lien he Administrator de bao loi ban dang gap phai xin cam on");
+			return;
+		}
+	
+		if (strcmp(info->second.Password,lpMsg->Password) != 0)
+		{
+			gNotice.GCNoticeSend(lpObj->Index,1,0, 0, 0, 0, 0, "Ban nhap sai mat khau vui long nhat lai cho dung|hoac hoi lai LeadTeam");
 			return;
 		}
 	}
 
-	//if (!strcmp(lpObj->Guild))
-
-	if (info->second.OnlyGuild == true &&(lpObj->GuildNumber != lpTarget->GuildNumber))
+	if (lpObj->PartyNumber >= 0)
 	{
-		gNotice.GCNoticeSend(lpObj->Index,1,0, 0, 0, 0, 0, "You are not in the right guild!");
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, gMessage.GetMessage(610));
 		return;
 	}
-
-	if(gParty.Create(lpTarget->Index) == 0)
+	if (!strcmp(lpObj->Name, lpTarget->Name))
 	{
-		if(gParty.AddMember(lpTarget->PartyNumber,lpObj->Index) == 0)
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, gMessage.GetMessage(611));
+		return;
+	}
+	if (lpTarget->PartyNumber >= 0){
+		if (lpObj->PartyNumber == lpTarget->PartyNumber)
 		{
-			gParty.GCPartyResultSend(lpObj->Index,2);
-			gParty.GCPartyResultSend(lpTarget->Index,2);
+			gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, gMessage.GetMessage(612));
+			return;
+		}
+	}
+	if (info->second.OnlyGuild == true && (lpObj->GuildNumber != lpTarget->GuildNumber)){
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, gMessage.GetMessage(613));
+		return;
+	}
+	if (gParty.Create(lpTarget->Index) == 0)
+	{
+		if (gParty.AddMember(lpTarget->PartyNumber, lpObj->Index) == 0){
+			gParty.GCPartyResultSend(lpObj->Index, 2);
+			gParty.GCPartyResultSend(lpTarget->Index, 2);
 		}
 	}
 	else
 	{
-		if(gParty.AddMember(lpTarget->PartyNumber,lpObj->Index) == 0)
-		{
-			gParty.GCPartyResultSend(lpObj->Index,2);
-			gParty.GCPartyResultSend(lpTarget->Index,2);
+		if (gParty.AddMember(lpTarget->PartyNumber, lpObj->Index) == 0){
+			gParty.GCPartyResultSend(lpObj->Index, 2);
+			gParty.GCPartyResultSend(lpTarget->Index, 2);
 			gParty.Destroy(lpTarget->PartyNumber);
 		}
 	}
+	gLog.Output(LOG_GENERAL,"PARTY SEARCH ADD TEAM");
 }
 
 void cPartySearch::SendPartySettings(LPOBJ lpObj)
@@ -409,6 +394,11 @@ void cPartySearch::SendPartySettings(LPOBJ lpObj)
 	pMsg.Summoner = it->second.Summoner;
 
 	pMsg.RageFighter = it->second.RageFighter;
+
+	pMsg.RequiredPassword = it->second.RequirePassword;
+	if(pMsg.RequiredPassword){
+		memcpy(pMsg.Password,(it->second.Password == "")?"":it->second.Password,sizeof(pMsg.Password));
+	}
 
 	DataSend(lpObj->Index,(LPBYTE)&pMsg, sizeof(pMsg));
 }

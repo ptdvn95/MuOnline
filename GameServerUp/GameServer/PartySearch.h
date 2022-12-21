@@ -1,5 +1,6 @@
 #pragma once
 
+#include "stdafx.h"
 #include "Protocol.h"
 
 struct PMSG_RECV_PARTYSEARCH_ADD
@@ -7,6 +8,7 @@ struct PMSG_RECV_PARTYSEARCH_ADD
 	PSBMSG_HEAD header;
 	bool SystemActive;
 	bool OnlyGuild;
+	bool OnlyAlliance;
 	bool OneClass;
 	bool DarkWizard;
 	bool DarkKnight;
@@ -16,6 +18,8 @@ struct PMSG_RECV_PARTYSEARCH_ADD
 	bool Summoner;
 	bool RageFighter;
 	int Level;
+	bool RequirePassword;
+	char Password[20];
 };
 
 struct PMSG_SEND_PARTYLIST
@@ -39,7 +43,10 @@ struct PMSG_PARTYLIST
 	bool Summoner;
 	bool RageFighter;
 	bool OnlyGuild;
+	bool OnlyAlliance;
 	bool IsSameGuild;
+	bool IsSameAlliance;
+	bool RequirePassword;
 	int Count;
 };
 
@@ -48,6 +55,7 @@ struct PMSG_PARTYSETTINGS_SEND
 	PSBMSG_HEAD header;
 	bool SystemActive;
 	bool OnlyGuild;
+	bool OnlyAlliance;
 	bool OneClass;
 	bool DarkWizard;
 	bool DarkKnight;
@@ -57,12 +65,16 @@ struct PMSG_PARTYSETTINGS_SEND
 	bool Summoner;
 	bool RageFighter;
 	int Level;
+	bool RequiredPassword;
+	char Password[20];
 };
 
 struct PMSG_PARTY_REQ_REQ
 {
 	PSBMSG_HEAD header;
 	char Name[11];
+	bool needPassword;
+	char Password[20];
 };
 
 struct REGISTERED_INFO
@@ -70,6 +82,7 @@ struct REGISTERED_INFO
 	char Name[11];
 	int aIndex;
 	bool OnlyGuild;
+	bool OnlyAlliance;
 	bool OneClass;
 	bool DarkWizard;
 	bool DarkKnight;
@@ -80,6 +93,8 @@ struct REGISTERED_INFO
 	bool RageFighter;
 	int Level;
 	BYTE IsOnline;
+	bool RequirePassword;
+	char Password[20];
 };
 
 class cPartySearch
@@ -94,7 +109,6 @@ public:
 	bool Dialog(LPOBJ lpObj, LPOBJ lpNpc);
 	void RequestParty(PMSG_PARTY_REQ_REQ* lpMsg, int aIndex);
 	void SendPartySettings(LPOBJ lpObj);
-	// ----
 	int NpcID;
 	int NpcMap;
 	int NpcX;
@@ -102,6 +116,5 @@ public:
 	int DelAfterRelog;
 	int CanOpenSettings[MAX_ACCOUNT_LEVEL];
 	int CanOpenMain[MAX_ACCOUNT_LEVEL];
-	// ----
 	std::map<std::string, REGISTERED_INFO> m_Registered;
 }; extern cPartySearch gPartySearch;

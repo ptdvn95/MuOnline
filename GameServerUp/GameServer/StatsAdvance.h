@@ -54,6 +54,13 @@ struct STATS_ADVANCE_DATA
 	int FullHPRestoreRate;
 	int FullMPRestoreRate;
 	int FullSDRestoreRate;
+	//--
+	int AttackPhysispeed;
+	int AttackMagicspeed;
+	//--
+	int PhysiDamageMin;
+	int PhysiDamageMax;
+	int AttackSuccessRate;
 };
 
 struct PMSG_STATS_ADVANCE
