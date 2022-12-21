@@ -65,113 +65,103 @@ void CStatsAdvance::DrawInfo()
 	gInterface.DrawBarForm(flDrawX, flDrawY, flWidth, flHight, 0, 0, 0, 1.0);
 	flDrawY += 15;
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Total Damage Reflect:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Phản Sát Thương:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.TotalDamageReflect);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Full DamageReflect Rate:");
-	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.FullDamageReflectRate);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Critical Damage Rate:");
+		
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Chí Mạng:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.CriticalDamageRate);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Critical Damage (PVM):");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Chí Mạng (Quái Vật):");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eBlue, "%d", this->m_Data.CriticalDamagePVM);
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Critical Damage (PVP)");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Chí Mạng (Người Chơi)");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eBlue, "%d", this->m_Data.CriticalDamagePVP);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Exellent Damage Rate:");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Hoàn Hảo:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.ExellentDamageRate);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Exellent Damage (PVM):");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Hoàn Hảo (Quái Vật):");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eAncient, "%d", this->m_Data.ExellentDamagePVM);
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Exellent Damage (PVP):");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Hoàn Hảo (Người Chơi):");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eAncient, "%d", this->m_Data.ExellentDamagePVP);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Double Damage Rate:");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương X2:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.DoubleDamageRate);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Triple Damage Rate:");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương X3:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.TripleDamageRate);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Damage Reduction Rate:");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Giảm Sát Thương:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.DamageReductionRate);
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Shield Skill Damage Reduction Rate:");
-	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.ShieldSkillDamageReductionRate);
-	if (gProtect.m_MainInfo.CustomInterfaceType == 0 || gProtect.m_MainInfo.CustomInterfaceType >= 2)
-	{
-		this->DrawLine(flDrawX, flDrawY, flWidth, "SD Damage Reduction Rate:");
-		flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.SDDamageReductionRate);
-
-		this->DrawLine(flDrawX, flDrawY, flWidth, "SD Decrease Damage Rate:");
-		flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.SDDecreaseDamageRate);
-	}
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Ignore Defence Rate:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Giảm Sát Thương (Gia Cường Dòng Vàng):");
+	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.SDDamageReductionRate);
+			
+	this->DrawLine(flDrawX, flDrawY, flWidth, "SD Giảm Tỷ Lệ Sát Thương:");
+	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.SDDecreaseDamageRate);
+		
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Bỏ Qua Phòng Thủ Của Đối Phương:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.IgnoreDefenceRate);
-	if (gProtect.m_MainInfo.CustomInterfaceType == 0 || gProtect.m_MainInfo.CustomInterfaceType >= 2)
-	{
-		this->DrawLine(flDrawX, flDrawY, flWidth, "Ignore SD Rate:");
-		flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.IgnoreSDRate);
-	}
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Increase Damage PvP:");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Bỏ Qua Phòng Thủ SD Của Đối Phương:");
+	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.IgnoreSDRate);
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Tăng Sát Thương PvP:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d", this->m_Data.IncreaseDamagePvP);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Increase Defence PvP:");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Tăng Phòng Thủ PvP:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d", this->m_Data.IncreaseDefencePvP);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Resist Double Damage Rate:");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Chống Lại Dame X2 Của Đối Phương:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.ResistDoubleDamageRate);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Resist Ignore Defence Rate:");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Chống Lại Bỏ Qua Phòng Thủ Của Đối Phương:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.ResistIgnoreDefenceRate);
-	if (gProtect.m_MainInfo.CustomInterfaceType == 0 || gProtect.m_MainInfo.CustomInterfaceType >= 2)
-	{
-		this->DrawLine(flDrawX, flDrawY, flWidth, "Resist Ignore SD Rate:");
-		flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.ResistIgnoreSDRate);
-	}
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Resist Critical Damage Rate:");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Chống Lại Bỏ Qua Tỷ Lệ SD Của Đối Phương:");
+	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.ResistIgnoreSDRate);
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Chống Lại Sát Thương Chí Mạng Của Đối Phương:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.ResistCriticalDamageRate);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Resist Exellent Damage Rate:");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Chống Lại Sát Thương Hoàn Hảo Của Đối Phương:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.ResistExellentDamageRate);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Resist Stum Rate:");
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Chống Lại Đóng Băng Của Đối Phương:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.ResistStumRate);
+		
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Tỷ Lệ Hồi Phục Tất Cả HP:");
+	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%% - %d%%", this->m_Data.FullHPRestoreRateDef, this->m_Data.FullHPRestoreRate);
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Tỷ Lệ Hồi Phục Tất Cả Mana:");
+	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%% - %d%%", this->m_Data.FullMPRestoreRateDef, this->m_Data.FullMPRestoreRate);
+	
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Tỷ Lệ Hồi Phục Tất Cả SD:");
+	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%% - %d%%", this->m_Data.FullSDRestoreRateDef, this->m_Data.FullSDRestoreRate);
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Ice Increase / Resist Rate:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Gia tăng nguyên tố Băng / Tỉ lệ kháng:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d - %d%%", this->m_Data.IncreaseIce, this->m_Data.ResistIce);
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Poison Increase / Resist Rate:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Gia tăng nguyên tố Độc / Tỉ lệ kháng:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d - %d%%", this->m_Data.IncreasePoison, this->m_Data.ResistPoison);
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Lighting Increase / Resist Rate:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Gia tăng nguyên tố Sét / Tỉ lệ kháng:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d - %d%%", this->m_Data.IncreaseLighting, this->m_Data.ResistLighting);
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Fire Increase / Resist Rate:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Gia tăng nguyên tố Hoả / Tỉ lệ kháng:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d - %d%%", this->m_Data.IncreaseFire, this->m_Data.ResistFire);
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Earth Increase / Resist Rate:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Gia tăng nguyên tố Mộc / Tỉ lệ kháng:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d - %d%%", this->m_Data.IncreaseEarth, this->m_Data.ResistEarth);
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Wind Increase / Resist Rate:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Gia tăng nguyên tố Phong / Tỉ lệ kháng:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d - %d%%", this->m_Data.IncreaseWind, this->m_Data.ResistWind);
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Water Increase / Resist Rate:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Gia tăng nguyên tố Thuỷ / Tỉ lệ kháng:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d - %d%%", this->m_Data.IncreaseWater, this->m_Data.ResistWater);
 
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Full HP Restore Rate (Def, Att):");
-	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%% - %d%%", this->m_Data.FullHPRestoreRateDef, this->m_Data.FullHPRestoreRate);
-
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Full MP Restore Rate (Def, Att):");
-	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%% - %d%%", this->m_Data.FullMPRestoreRateDef, this->m_Data.FullMPRestoreRate);
-	if (gProtect.m_MainInfo.CustomInterfaceType == 0 || gProtect.m_MainInfo.CustomInterfaceType >= 2)
-	{
-		this->DrawLine(flDrawX, flDrawY, flWidth, "Full SD Restore Rate (Def, Att):");
-		flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%% - %d%%", this->m_Data.FullSDRestoreRateDef, this->m_Data.FullSDRestoreRate);
-	}
-	gInterface.DrawFormat(eColorAdvance, flDrawX, 5, flWidth, 3, "ADVANCED STATUS");
+	gInterface.DrawFormat(eColorAdvance, flDrawX, 5, flWidth, 3, "Thông Tin Nhân Vật");
 
 }
 
