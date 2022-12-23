@@ -1,10 +1,5 @@
 [GameServerInfo]
 ;==================================================
-; Downgrade 97 Settings
-;==================================================
-DisabledSD = 0
-
-;==================================================
 ; Announce Chaos Mix Settings
 ;==================================================
 AnnounceChaosMix = 1
@@ -16,33 +11,33 @@ AnnounceChaosMixText = %s put the item %s +15
 CustomArenaSwitch = 0
 CustomArenaVictimScoreDecrease = 10
 CustomArenaKillerScoreIncrease = 100
-CustomArenaText1 = [%s] sẽ đóng lại trong %d phút
-CustomArenaText2 = [%s] đã đóng
-CustomArenaText3 = [%s] sẽ bắt đầu trong %d phút
-CustomArenaText4 = [%s] đã bắt đầu
-CustomArenaText5 = [%s] đã kết thúc
-CustomArenaText6 = [%s] %s là người chiến thắng
+CustomArenaText1 = [%s] will close in %d minute(s)
+CustomArenaText2 = [%s] closed
+CustomArenaText3 = [%s] will start in %d minute(s)
+CustomArenaText4 = [%s] started
+CustomArenaText5 = [%s] finished
+CustomArenaText6 = [%s] %s is the winner
 CustomArenaText7 = [%s] You got in the %d position with %d points
-CustomArenaText8 = Bạn không thể tham gia khu vực
-CustomArenaText9 = Khu vực này hiện tại chưa mở
-CustomArenaText10 = Đã vượt quá số lượng người chơi tối đa
-CustomArenaText11 = Bạn phải đạt tối thiểu cấp độ %d
-CustomArenaText12 = Bạn phải ở mức tối đa cấp độ %d
-CustomArenaText13 = Bạn phải đạt tối thiểu cấp độ Master %d
+CustomArenaText8 = You can not enter the arena
+CustomArenaText9 = This arena is not currently open
+CustomArenaText10 = Exceeded maximum number of players
+CustomArenaText11 = You must be at least Level %d
+CustomArenaText12 = You must be a maximum of Level %d
+CustomArenaText13 = You must be at least Master Level %d
 CustomArenaText14 = You must be at most Master Level %d
-CustomArenaText15 = Bạn phải đạt tối thiểu %d lần resets
-CustomArenaText16 = Bạn phải đạt tối đa %d lần resets
-CustomArenaText17 = Bạn phải đạt tối thiểu %d Master Resets
+CustomArenaText15 = You must be at least %d Resets
+CustomArenaText16 = You need to have a maximum of %d Resets
+CustomArenaText17 = You must be at least %d Master Resets
 CustomArenaText18 = You need to have a maximum of %d Master Resets
-CustomArenaText19 = Class nhân vật không phù hợp với khu vực
+CustomArenaText19 = His class is not allowed in the arena
 
 ;==================================================
 ; Custom Event Drop Settings
 ;==================================================
 CustomEventDropSwitch = 0
-CustomEventDropText1 = [%s] sẽ bắt đầu trong %d phút
-CustomEventDropText2 = [%s] đã bắt đầu
-CustomEventDropText3 = [%s] đã kết thúc
+CustomEventDropText1 = [%s] will start in %d minute(s)
+CustomEventDropText2 = [%s] started
+CustomEventDropText3 = [%s] finished
 
 ;==================================================
 ; Custom NPC Talk
@@ -53,15 +48,14 @@ CustomNpcTalkGoblin = -1
 CustomNpcTalkTrainer = -1
 CustomNpcTalkGuard = -1
 CustomNpcTalkNixie = 601
-CustomNpcTalkPriestJames = 709
 
 ;==================================================
 ; Custom MuHelper Settings
 ;==================================================
-MuOffHelperTime_AL0 = 5
-MuOffHelperTime_AL1 = 5
-MuOffHelperTime_AL2 = 5
-MuOffHelperTime_AL3 = 5
+MuOffHelperTime_AL0 = 1
+MuOffHelperTime_AL1 = 1
+MuOffHelperTime_AL2 = 1
+MuOffHelperTime_AL3 = 1
 MuOffHelperEnabled_AL0 = 1
 MuOffHelperEnabled_AL1 = 1
 MuOffHelperEnabled_AL2 = 1
@@ -123,8 +117,8 @@ CustomAttackOfflineGPGain = 0
 ;==================================================
 CustomOnlineLotterySwitch = 0
 CustomOnlineLotteryText1 = %s em %d minuto(s)
-CustomOnlineLotteryText2 = %s foi o vencedor do sorteio. Parab?!
-CustomOnlineLotteryText3 = %s n?teve vencedor
+CustomOnlineLotteryText2 = %s foi o vencedor do sorteio. Parab�ns!
+CustomOnlineLotteryText3 = %s n�o teve vencedor
 CustomOnlineLotteryNoOff = 1
 
 ;==================================================
@@ -136,11 +130,11 @@ CustomQuestSwitch = 0
 ; Custom RankUser Settings (CustomRankUser.txt)
 ; Type Reset = 0, Type Master Reset = 1, Type Level = 2
 ;==================================================
-CustomRankUserSwitch = 2
+CustomRankUserSwitch = 0
 CustomRankUserType = 2
-CustomRankUserRewardSwitch = 2
-CustomRankUserNoticeToAll = 2
-CustomRankUserNoticeToUser = 2
+CustomRankUserRewardSwitch = 1
+CustomRankUserNoticeToAll = 1
+CustomRankUserNoticeToUser = 1
 
 ;==================================================
 ; Custom Death Message
@@ -150,17 +144,17 @@ CustomDeathMessageSwitch = 1
 ;==================================================
 ; Custom Quiz
 ;==================================================
-CustomQuizSwitch = 1
+CustomQuizSwitch = 0
 
 ;==================================================
 ; Custom NpcCollector Settings (CustomNpcCollector.txt)
 ;==================================================
-CustomNpcCollectorSwitch = 1
+CustomNpcCollectorSwitch = 0
 
 ;==================================================
 ; Custom Pick Command (CustomPick.txt) 
 ;==================================================
-CustomPickSwitch = 1
+CustomPickSwitch = 0
 CustomPickEnable_AL0 = 1
 CustomPickEnable_AL1 = 1
 CustomPickEnable_AL2 = 1
@@ -197,7 +191,7 @@ CustomEventTimeSwitch = 1
 ; 128 Guild Master+
 ;==================================================
 GuildWarehouseEnable = 1
-GuildWarehouseStatus = 1
+GuildWarehouseStatus = 0
 
 ;==================================================
 ; Custom Shop MessageBox

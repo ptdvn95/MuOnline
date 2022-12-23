@@ -4,19 +4,13 @@ CustomerName = MUDISCORD
 ;==================================================
 ; Server Settings
 ;==================================================
-ServerName = MUDISCORD
-ServerCode = 0
+ServerName = MUDISCORD_CS
+ServerCode = 19
 ServerLock = 0
-ServerPort = 55901
+ServerPort = 55919
 ServerVersion = 1.04.05
 ServerSerial = TbYehR2hFUPBKgZj
 ServerMaxUserNumber = 100
-ServerMinLevel = 0
-ServerMaxLevel = 0
-ServerMinReset = 0
-ServerMaxReset = 0
-ServerMinMasterReset = 0
-ServerMaxMasterReset = 0
 
 ;==================================================
 ; Select Language Message.txt
@@ -43,13 +37,12 @@ WriteTradeLog = 0
 WriteConnectLog = 0
 WriteHackLog = 0
 WriteCashShopLog = 0
-WriteChaosMixLog = 1
-WriteSystemAntifloodLog = 1
+WriteChaosMixLog = 0
 
 ;==================================================
 ; AntiFlood Settings
 ;==================================================
-MaxIpConnection = 10
+MaxIpConnection = 100
 BannedDuration = 60000
 MaxHwidConnection = 5
 
@@ -83,6 +76,7 @@ SpeedHackSkillDebug = 1
 ; Common Settings
 ;==================================================
 MaxItemOption = 7
+MaxIpConnection = 10
 PersonalCodeCheck = 0
 SetItemAcceptHarmonySwitch = 1
 CharacterCloseCount = 1
@@ -103,10 +97,9 @@ UserHealthBarSwitch = 1
 ;==================================================
 NonPK = 0
 LevelInicioPK = 5
-PKLimitCount = 4
 PKLimitFree = 0
 PKDownTime1 = 3600
-PKDownTime2 = 7200
+PKDownTime2 = 3600
 SelfDefenseTime = 60000  //time in secund
 
 ;==================================================
@@ -122,9 +115,9 @@ PersonalShopSwitch = 1
 ;==================================================
 ; Duel Settings
 ;==================================================
-DuelSwitch = 1
+DuelSwitch = 0
 DuelScore = 10
-DuelArenaAnnounceSwitch = 1
+DuelArenaAnnounceSwitch = 0
 DuelArenaDisableRestoreHP = 0
 DuelArenaDisableRestoreSD = 0
 
@@ -143,10 +136,10 @@ GuildOwnerDestroyLimit = 1
 ;==================================================
 ; Elf Buffer Settings
 ;==================================================
-ElfBufferMaxLevel_AL0 = 200
-ElfBufferMaxLevel_AL1 = 200
-ElfBufferMaxLevel_AL2 = 200
-ElfBufferMaxLevel_AL3 = 250
+ElfBufferMaxLevel_AL0 = 220
+ElfBufferMaxLevel_AL1 = 220
+ElfBufferMaxLevel_AL2 = 220
+ElfBufferMaxLevel_AL3 = 220
 ElfBufferMaxReset_AL0 = 10000
 ElfBufferMaxReset_AL1 = 10000
 ElfBufferMaxReset_AL2 = 10000
@@ -159,18 +152,18 @@ ElfBufferDefenseConstB = 3
 ;==================================================
 ; Experience Settings
 ;==================================================
-AddExperienceRate_AL0 = 80
-AddExperienceRate_AL1 = 80
-AddExperienceRate_AL2 = 80
-AddExperienceRate_AL3 = 80
-AddMasterExperienceRate_AL0 = 10
-AddMasterExperienceRate_AL1 = 10
-AddMasterExperienceRate_AL2 = 10
-AddMasterExperienceRate_AL3 = 10
-MinMasterExperienceMonsterLevel_AL0 = 5
-MinMasterExperienceMonsterLevel_AL1 = 5
-MinMasterExperienceMonsterLevel_AL2 = 5
-MinMasterExperienceMonsterLevel_AL3 = 5
+AddExperienceRate_AL0 = 5
+AddExperienceRate_AL1 = 5
+AddExperienceRate_AL2 = 5
+AddExperienceRate_AL3 = 5
+AddMasterExperienceRate_AL0 = 3
+AddMasterExperienceRate_AL1 = 3
+AddMasterExperienceRate_AL2 = 3
+AddMasterExperienceRate_AL3 = 3
+MinMasterExperienceMonsterLevel_AL0 = 95
+MinMasterExperienceMonsterLevel_AL1 = 95
+MinMasterExperienceMonsterLevel_AL2 = 95
+MinMasterExperienceMonsterLevel_AL3 = 95
 AddEventExperienceRate_AL0 = 1
 AddEventExperienceRate_AL1 = 1
 AddEventExperienceRate_AL2 = 1
@@ -191,7 +184,7 @@ AutoResetExperienceRate_AL3 = 1
 ;==================================================
 ; Item Drop Settings
 ;==================================================
-ItemDropTime = 20
+ItemDropTime = 15
 ItemDropPickUpTime = 10
 ItemDropRate_AL0 = 30
 ItemDropRate_AL1 = 30
@@ -212,10 +205,10 @@ MoneyAmountDropRate_AL3 = 40
 ; If > 0 enable the system
 ; Money Drop = (MoneyValue*MonterLevel) + % ItemBonus
 ;==================================================
-MoneyValue_AL0 = 20
-MoneyValue_AL1 = 20
-MoneyValue_AL2 = 20
-MoneyValue_AL3 = 20
+MoneyValue_AL0 = 10
+MoneyValue_AL1 = 10
+MoneyValue_AL2 = 10
+MoneyValue_AL3 = 10
 
 ;==================================================
 ; Item Durability Settings
@@ -234,9 +227,9 @@ PetDurabilityRate = 100
 TradeItemBlock = 0
 TradeItemBlockExc = 0
 TradeItemBlockSet = 0
-TradeItemBlockHarmony = 1
+TradeItemBlockHarmony = 0
 TradeItemBlockSell = 0
-TradeItemBlockLucky = 1
+TradeItemBlockLucky = 0
 
 ;==================================================
 ; Level Up Settings
@@ -244,47 +237,14 @@ TradeItemBlockLucky = 1
 MaxLevelUp = 1
 MaxLevelUpEvent = 1
 MaxLevelUpQuest = 1
-
-DW_MaxStatPoint_STR = 65535
-DW_MaxStatPoint_AGI = 65535
-DW_MaxStatPoint_VIT = 65535
-DW_MaxStatPoint_ENE = 65535
-
-DK_MaxStatPoint_STR = 65535
-DK_MaxStatPoint_AGI = 65535
-DK_MaxStatPoint_VIT = 65535
-DK_MaxStatPoint_ENE = 65535
-
-ELF_MaxStatPoint_STR = 65535
-ELF_MaxStatPoint_AGI = 65535
-ELF_MaxStatPoint_VIT = 65535
-ELF_MaxStatPoint_ENE = 65535
-
-MG_MaxStatPoint_STR = 65535
-MG_MaxStatPoint_AGI = 65535
-MG_MaxStatPoint_VIT = 65535
-MG_MaxStatPoint_ENE = 65535
-
-DL_MaxStatPoint_STR = 65535
-DL_MaxStatPoint_AGI = 65535
-DL_MaxStatPoint_VIT = 65535
-DL_MaxStatPoint_ENE = 65535
-
-SU_MaxStatPoint_STR = 65535
-SU_MaxStatPoint_AGI = 65535
-SU_MaxStatPoint_VIT = 65535
-SU_MaxStatPoint_ENE = 65535
-
-RF_MaxStatPoint_STR = 65535
-RF_MaxStatPoint_AGI = 65535
-RF_MaxStatPoint_VIT = 65535
-RF_MaxStatPoint_ENE = 65535
-
+MaxStatPoint_AL0 = 65535
+MaxStatPoint_AL1 = 65535
+MaxStatPoint_AL2 = 65535
+MaxStatPoint_AL3 = 65535
 MaxStatPointCMD_AL0 = 32767
 MaxStatPointCMD_AL1 = 32767
 MaxStatPointCMD_AL2 = 32767
 MaxStatPointCMD_AL3 = 32767
-
 DWLevelUpPoint = 5
 DKLevelUpPoint = 5
 FELevelUpPoint = 5
@@ -298,7 +258,7 @@ PlusStatPoint = 1
 ; Create Character Settings
 ;==================================================
 CharacterCreateSwitch = 1
-MGCreateType = 0
+MGCreateType = 0				
 DLCreateType = 0		
 SUCreateType = 0
 RFCreateType = 0
@@ -364,7 +324,7 @@ ShieldGaugeAttackComboMiss = 0
 ; Master Skill Tree Settings
 ;==================================================
 MasterSkillTree = 1
-MasterSkillTreePoint = 10
+MasterSkillTreePoint = 1
 MasterSkillTreeMaxLevel = 600
 
 ;==================================================
@@ -373,7 +333,7 @@ MasterSkillTreeMaxLevel = 600
 ; Formula: level max 400 + level plus 1000 = 1400 lvl.
 ; DownGrade: Activar si usaras una config stilo downgrade.
 ;==================================================
-Max_LevelPlus = 600
+Max_LevelPlus = 0
 DownGrade = 0
 
 ;==================================================
@@ -397,7 +357,7 @@ GensSystemFinalRewardDay = 7
 ; Helper Settings
 ;==================================================
 HelperSwitch = 1
-HelperActiveLevel = 40
+HelperActiveLevel = 0
 HelperActiveDelay = 5
 HelperActiveMoney1 = 20
 HelperActiveMoney2 = 50
@@ -423,8 +383,6 @@ CashShopGoblinPointValue_AL3 = 1
 
 ;==================================================
 ; Party Settings
-; Active RestrictRequest
-; Funtion DifferenceLevel
 ;==================================================
 PartyReconnectTime = 300
 PartyGeneralExperience1 = 100
@@ -444,7 +402,7 @@ PartySpecialExperience7 = 200
 PartyMaxMembers = 7
 PartyDisablePK = 1
 RestrictRequest = 1
-DifferenceMaxLevel = 100
+DifferenceMaxLevel = 120
 
 ;==================================================
 ; Potion Settings
@@ -486,14 +444,14 @@ SoulSuccessRate_AL0 = 50
 SoulSuccessRate_AL1 = 50
 SoulSuccessRate_AL2 = 50
 SoulSuccessRate_AL3 = 70
-LifeSuccessRate_AL0 = 60
-LifeSuccessRate_AL1 = 60
-LifeSuccessRate_AL2 = 60
+LifeSuccessRate_AL0 = 50
+LifeSuccessRate_AL1 = 50
+LifeSuccessRate_AL2 = 50
 LifeSuccessRate_AL3 = 80
 HarmonySuccessRate_AL0 = 50
 HarmonySuccessRate_AL1 = 50
 HarmonySuccessRate_AL2 = 50
-HarmonySuccessRate_AL3 = 50
+HarmonySuccessRate_AL3 = 60
 SmeltStoneSuccessRate1_AL0 = 50
 SmeltStoneSuccessRate1_AL1 = 50
 SmeltStoneSuccessRate1_AL2 = 50
@@ -535,13 +493,13 @@ HpBonus_AL0 = 1
 HpBonus_AL1 = 1
 HpBonus_AL2 = 1
 HpBonus_AL3 = 1
-HpBonus_MAX = 10000
+HpBonus_MAX = 1
 
 ;==================================================
 ; Die System
 ; Mostra mensagem no chat quando o personagem morre.
 ;==================================================
-DieUserSwitch = 0
+DieUserSwitch = 1
 DieMonsterSwitch = 0
 
 ;==================================================
@@ -562,12 +520,12 @@ DisableExpMessage = 0
 ; Remover Recuo (Premium)
 ; Remove o recuo/empurrão das skills
 ;==================================================
-DisableLightningEffect  = 0
-DisableCycloneEffect  = 0
-DisableTwistEffect  = 0
-DisableLungEffect  = 0
-DisableFallingEffect  = 0
-DisableUpperCutEffect  = 0
+DisableLightningEffect  = 1
+DisableCycloneEffect  = 1
+DisableTwistEffect  = 1
+DisableLungEffect  = 1
+DisableFallingEffect  = 1
+DisableUpperCutEffect  = 1
 
 ;==================================================
 ; Disable Wings Class Mix
