@@ -149,6 +149,12 @@ void CTrade::CGTradeRequestRecv(PMSG_TRADE_REQUEST_RECV* lpMsg, int aIndex) // O
 
 	LPOBJ lpTarget = &gObj[bIndex];
 
+	if(lpTarget->DieRegen != 0 || lpObj->DieRegen != 0)
+	{
+		gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(43));
+		return;
+	}
+
 	if (lpTarget->Type == OBJECT_BOT)
 	{
 		if (gBotBuffer.BotTalk(aIndex, bIndex) != 0)
@@ -258,6 +264,12 @@ void CTrade::CGTradeRequestRecv(PMSG_TRADE_REQUEST_RECV* lpMsg, int aIndex) // O
 
 	LPOBJ lpTarget = &gObj[bIndex];
 
+	if(lpTarget->DieRegen != 0 || lpObj->DieRegen != 0)
+	{
+		gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(43));
+		return;
+	}
+
 	if (lpTarget->Type == OBJECT_BOT)
 	{
 		if (gBotBuffer.BotTalk(aIndex, bIndex) != 0)
@@ -364,6 +376,12 @@ void CTrade::CGTradeResponseRecv(PMSG_TRADE_RESPONSE_RECV* lpMsg, int aIndex) //
 
 	LPOBJ lpTarget = &gObj[bIndex];
 
+	if(lpTarget->DieRegen != 0 || lpObj->DieRegen != 0) //fix party ao morrer 1
+	{
+		gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(43));
+		return;
+	}
+
 	if (lpObj->Interface.use == 0 || lpObj->Interface.type != INTERFACE_TRADE || lpObj->Interface.state != 0)
 	{
 		return;
@@ -468,6 +486,12 @@ void CTrade::CGTradeResponseRecv(PMSG_TRADE_RESPONSE_RECV* lpMsg, int aIndex) //
 	}
 
 	LPOBJ lpTarget = &gObj[bIndex];
+
+	if(lpTarget->DieRegen != 0 || lpObj->DieRegen != 0) //fix party ao morrer 1
+	{
+		gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(43));
+		return;
+	}
 
 	if (lpObj->Interface.use == 0 || lpObj->Interface.type != INTERFACE_TRADE || lpObj->Interface.state != 0)
 	{
