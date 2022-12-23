@@ -687,7 +687,7 @@ void CTrade::CGTradeOkButtonRecv(PMSG_TRADE_OK_BUTTON_RECV* lpMsg, int aIndex) /
 		return;
 	}
 
-	if ((GetTickCount() - lpObj->TradeOkTime) < 6000)
+	if ((GetTickCount() - lpObj->TradeOkTime) < 1000)
 	{
 		return;
 	}
