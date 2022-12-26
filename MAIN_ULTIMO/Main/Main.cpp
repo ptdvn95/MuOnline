@@ -84,7 +84,6 @@
 #include "GetBarChat.h"
 #include "GLFont.h"
 #include "SmithItem.h"
-#include "CustomJewelBank.h"
 
 #include "test.h"
 #include "proah..h"
@@ -294,12 +293,6 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	LoadReferenceAddressTable((HMODULE)hins, MAKEINTRESOURCE(IDR_BIN3),(DWORD)&NewAddressData3);
 
 	gCustomMessage.LoadEng(gProtect.m_MainInfo.EngCustomMessageInfo);
-
-	// gCustomJewelBank.Load();
-
-	// gCustomMessage.LoadPor(gProtect.m_MainInfo.PorCustomMessageInfo);
-
-	// gCustomMessage.LoadSpn(gProtect.m_MainInfo.SpnCustomMessageInfo);
 
 	gCustomJewel.Load(gProtect.m_MainInfo.CustomJewelInfo);
 

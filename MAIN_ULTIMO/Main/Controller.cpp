@@ -28,7 +28,6 @@
 #include "WindowsQuest.h"
 #include "ResetSystemPanel.h"
 #include "GrandResetSystem.h"
-#include "CustomJewelBank.h"
 // ----------------------------------------------------------------------------------------------
 
 Controller	gController;
@@ -106,11 +105,6 @@ LRESULT Controller::Mouse(int Code, WPARAM wParam, LPARAM lParam)
 			gJewelsBank.Button(wParam);
 			gJewelsBank.EventJewelBank_Close(wParam);
 #endif
-			gCustomJewelBank.CommandNext(wParam);
-			gCustomJewelBank.CommandPrev(wParam);
-			gCustomJewelBank.EventJewelBankWindow_Close(wParam);
-			gCustomJewelBank.EventJewelBankWithDraw(wParam);
-
 			gInterface.EventPartySearchWindow_All(wParam);
 			gInterface.EventPartySettingsWindow_Main(wParam);
 

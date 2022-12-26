@@ -705,9 +705,6 @@
     <ClInclude Include="ServerSelWin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CustomJewelBank.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1095,9 +1092,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ServerSelWin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CustomJewelBank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

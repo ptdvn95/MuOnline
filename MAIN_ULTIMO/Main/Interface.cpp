@@ -42,7 +42,6 @@
 #include "MuHelper.h"
 #include "ResetSystemPanel.h"
 #include "GrandResetSystem.h"
-#include "CustomJewelBank.h"
 
 Interface gInterface;
 
@@ -1295,8 +1294,6 @@ void Interface::Work()
 
 	ReconnectMainProc();
 
-	// gCustomJewelBank.DrawJewelBankWindow();
-
 	gInterface.DrawVipWindow();
 
 	gInterface.DrawMenu();
@@ -1448,13 +1445,6 @@ void Interface::Work()
 		else if (GetKeyState(VK_DOWN) & 0x4000)
 		{
 			gInterface.OpenConfig(1);
-		}
-		if (GetKeyState('J') & 0x4000) 
-		{
-			// if (GetForegroundWindow() == pGameWindow && !gInterface.CheckWindow(ObjWindow::ChatWindow)&& !gInterface.CheckWindow(ObjWindow::Guild))
-			// {
-			// gCustomJewelBank.OpenWindow();
-			// }
 		}
 		if (GetKeyState(VK_F6) & 0x4000) 
 		{
