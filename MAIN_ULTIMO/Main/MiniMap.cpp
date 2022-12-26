@@ -24,7 +24,7 @@ CMinimap::CMinimap()
 	this->DataMap.ModelID = -1;
 	this->DataMap.XSW_Minimap_Frame = 0;  //-- Minimap_FrameX
 	this->DataMap.YSW_Minimap_Frame = 0;  //-- Minimap_FrameY
-	this->DataMap.XSW_Minimap = 545; //-- MiniMapX (Mover Minimapa Izquierda o Derecha)
+	this->DataMap.XSW_Minimap = 545.0; //-- MiniMapX (Mover Minimapa Izquierda o Derecha)
 	this->DataMap.YSW_Minimap = 10.0; //-- MiniMapY (Minimapa Arriba) (Mover Minimapa Arriba o Abajo)
 	this->DataMap.XSW_Time_Frame = 0.0; //-- Time_FrameX
 	this->DataMap.YSW_Time_Frame = 0.0; //-- Time_FrameY
@@ -442,22 +442,22 @@ void Interface::DrawMiniMap()
 	RenderBitmap(31463, InitialX - 9, InitialY - 9, 100, 100, 0.3599999452, 0.0625, 0.5779999495, 0.2889999151, 1, 1, 0.0); //Minimapa v2 Marco Dorado
 	if(TimerBar != 0)
 	{
-	RenderBitmap(31458, InitialX + ReturnX(TransForX(5)), InitialY + ReturnY(TransForY(71)), ReturnX(TransForX(53)), ReturnY(TransForY(26)), -0.4, -0.4, 1.2, 1.2, 0.1, 1, 0); //Minimapa v2 Timer
-	//--
-	time_t TimeLocal;
-	struct tm * LocalT;
-	time(&TimeLocal);
-	// -----
-	LocalT = localtime(&TimeLocal); 
-	// -----
-	char LocalTime[30];
-	sprintf(LocalTime, "%2d:%02d:%02d", LocalT->tm_hour, LocalT->tm_min, LocalT->tm_sec);
-	//--
-	pSetBlend(true);
-	this->DrawFormat(eWhite, InitialX + ReturnX(TransForX(32)), InitialY + ReturnY(TransForY(85)), ReturnX(TransForX(100)), ReturnY(TransForY(1)), LocalTime);
-	pGLSwitchBlend();
-	pGLSwitch();
-	pSetBlend(false);
+		RenderBitmap(31458, InitialX + ReturnX(TransForX(5)), InitialY + ReturnY(TransForY(71)), ReturnX(TransForX(53)), ReturnY(TransForY(26)), -0.4, -0.4, 1.2, 1.2, 0.1, 1, 0); //Minimapa v2 Timer
+		//--
+		time_t TimeLocal;
+		struct tm * LocalT;
+		time(&TimeLocal);
+		// -----
+		LocalT = localtime(&TimeLocal); 
+		// -----
+		char LocalTime[30];
+		sprintf(LocalTime, "%2d:%02d:%02d", LocalT->tm_hour, LocalT->tm_min, LocalT->tm_sec);
+		//--
+		pSetBlend(true);
+		this->DrawFormat(eWhite, InitialX + ReturnX(TransForX(32)), InitialY + ReturnY(TransForY(85)), ReturnX(TransForX(100)), ReturnY(TransForY(1)), LocalTime);
+		pGLSwitchBlend();
+		pGLSwitch();
+		pSetBlend(false);
 	}
 
 	int x1, y1, w1, h1;
@@ -744,9 +744,9 @@ void Interface::MiniMapMini()
 			InitialX = v11 + (cursorX - gRenderMap.maxX);
 			InitialY = v10 + (cursorY - gRenderMap.maxY);
 			InitialX = InitialX < 20 ? 20 : InitialX;
-			InitialX = InitialX > 535 ? 535 : InitialX;
+			InitialX = InitialX > 545 ? 545 : InitialX;
 			InitialY = InitialY < 5 ? 5 : InitialY;
-			InitialY = InitialY > 310 ? 310 : InitialY;
+			InitialY = InitialY > 320 ? 320 : InitialY;
 			gRenderMap.ultimoX = InitialX;
 			gRenderMap.ultimoY = InitialY;
 		}

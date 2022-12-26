@@ -20,6 +20,28 @@
 
 #define MAX_MINI_MAP 100
 
+struct LoadTypeMap
+{
+	/*+0*/   DWORD ModelID;
+	/*+4*/   DWORD XSW_Minimap_Frame;
+	/*+8*/   DWORD YSW_Minimap_Frame;
+	/*+12*/  DWORD XSW_Minimap;
+	/*+16*/  DWORD YSW_Minimap;
+	/*+20*/  DWORD XSW_Time_Frame;
+	/*+24*/  DWORD YSW_Time_Frame;
+	/*+92*/  DWORD This_92;
+	/*+96*/  DWORD This_96;
+	/*+100*/ DWORD DropMoveUserX;
+	/*+104*/ DWORD DropMoveUserY;
+	/*+108*/ DWORD This_108;
+	/*+112*/ DWORD This_112;
+	/*+116*/ float CurrentMoveX;
+	/*+120*/ float CurrentMoveY;
+	/*+124*/ DWORD Scale;
+	/*+126*/ DWORD TimerEventVK;
+	/*+128*/ float Alpha;
+};
+
 class CMinimap
 {
 public:
