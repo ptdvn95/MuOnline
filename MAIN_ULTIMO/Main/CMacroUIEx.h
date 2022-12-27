@@ -7,7 +7,10 @@
 #define PlayBuffer			((signed int(__cdecl*)(int a1, int a2, int a3)) 0x006D6C20)
 #define RenderImage			((void(__cdecl*)(DWORD, float, float, float, float)) 0x00790B50)
 #define RenderImage2		((int(__cdecl*)(int a1, float a2, float a3)) 0x00790C20)
-
+#define HELPERBTN_POSITION_X 70.0f
+#define HELPERBTN_POSITION_Y 0.0f
+#define HELPERBTN_POSITION_Y2 0.6f
+#define HELPERBTN_TOOLTIP_Y 30.0f
 // ---------------------------------------------------------------------------------------------
 
 class CMacroUIEx

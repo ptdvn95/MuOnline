@@ -639,6 +639,9 @@ bool CCommandManager::ManagementCore(LPOBJ lpObj,char* message, int Npc) // OK
 		case COMMAND_STARTARENA:
 			Result = CommandStartCustomArena(lpObj,argument);
 			break;
+		case COMMAND_ADD_POINT_ALL:
+			Result = CommandAddPointAll(lpObj,argument);
+			break;
 		default:
 			return 0;
 	}
@@ -766,6 +769,73 @@ bool CCommandManager::CommandAddPoint(LPOBJ lpObj,char* arg,int type) // OK
 	gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(74),amount,lpObj->LevelUpPoint);
 
 	gLog.Output(LOG_COMMAND,"[CommandAddPoint][%s][%s] - (Type: %d, Amount: %d)",lpObj->Account,lpObj->Name,type,amount);
+
+	return 1;
+}
+
+bool CCommandManager::CommandAddPointAll(LPOBJ lpObj,char* arg) // OK
+{
+	int amount_str = this->GetNumber(arg,0); // type 0
+	int amount_agi = this->GetNumber(arg,1); // type 1
+	int amount_vit = this->GetNumber(arg,2); // type 2
+	int amount_ene = this->GetNumber(arg,3); // type 3
+	int amount_com = 0;
+
+	if(lpObj->Class == CLASS_DL)
+	{
+		amount_com = this->GetNumber(arg,4); // type 4
+	}
+
+	if(amount_str < 0 || amount_agi < 0 || amount_vit < 0 || amount_ene < 0 || amount_com < 0 || lpObj->LevelUpPoint < (amount_str + amount_agi + amount_vit + amount_ene + amount_com))
+	{
+		gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(72));
+		return 0;
+	}
+
+	if(amount_str > 0)
+	{
+		if(gObjectManager.CharacterLevelUpPointAdd(lpObj,0,amount_str) == 0)
+		{
+			return 0;
+		}
+	}
+	if(amount_agi > 0)
+	{
+		if(gObjectManager.CharacterLevelUpPointAdd(lpObj,1,amount_agi) == 0)
+		{
+			return 0;
+		}
+	}
+	if(amount_vit > 0)
+	{
+		if(gObjectManager.CharacterLevelUpPointAdd(lpObj,2,amount_vit) == 0)
+		{
+			return 0;
+		}
+	}
+	if(amount_ene > 0)
+	{
+		if(gObjectManager.CharacterLevelUpPointAdd(lpObj,3,amount_ene) == 0)
+		{
+			return 0;
+		}
+	}
+	if(lpObj->Class == CLASS_DL)
+	{
+		if(amount_com > 0)
+		{
+			if(gObjectManager.CharacterLevelUpPointAdd(lpObj,4,amount_com) == 0)
+			{
+				return 0;
+			}
+		}
+	}
+
+	GCNewCharacterInfoSend(lpObj);
+
+	gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(74),amount_str+amount_agi+amount_vit+amount_ene+amount_com,lpObj->LevelUpPoint);
+
+	gLog.Output(LOG_COMMAND,"[CommandAddPoint][%s][%s] - (ALL | Amount: %d %d %d %d %d)",lpObj->Account,lpObj->Name,amount_str,amount_agi,amount_vit,amount_ene,amount_com);
 
 	return 1;
 }

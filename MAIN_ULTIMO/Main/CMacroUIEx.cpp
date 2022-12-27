@@ -423,26 +423,74 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 	char Cord[256];
 	float X = (double)*((DWORD *)This + 5);
 	float Y = (double)*((signed int *)This + 6);
+	int JGetHelperBar; // [sp+2Ch] [bp-104h]@1
+	float y; // ST1C_4@1
+	float x; // ST18_4@1
 	float RenderX; 
 
 	EnableAlphaTest(1);
 	glColor4f(1.0, 1.0, 1.0, 1.0);
-	RenderImage(31602, X, Y, 22.0, 25.0);
+	// RenderImage(31602, X, Y, 22.0, 25.0);
 
-	for(int i = 0 ; i < 4 ; i ++)
-	{
-		RenderX = (double) X + 22.0 + (i * 26.0);
-		RenderImage(31603, RenderX, Y, 26.0, 25.0);
-		if(i == 3){
-			RenderX = (double) X + 22.0 + ((i+1) * 26.0);
-			RenderImage(31604, RenderX, Y, 73.0, 20.0);
-		}
-	}
+	// for(int i = 0 ; i < 2 ; i ++)
+	// {
+	// 	RenderX = (double) X + 22.0 + (i * 26.0);
+	// 	RenderImage(31603, RenderX, Y, 26.0, 25.0);
+	// 	if(i == 1){
+	// 		RenderX = (double) X + 22.0 + ((i+1) * 26.0);
+	// 		RenderImage(31604, RenderX, Y, 73.0, 20.0);
+	// 	}
+	// }
+	JGetHelperBar = *(DWORD *)(InstanceX() + 152);
+
+	y = (double)*(signed int *)(JGetHelperBar + 24);
+	x = (double)*(signed int *)(JGetHelperBar + 20);
+	RenderBitmap(61519, Return2X(x + TransForX(0.0)), ReturnY(TransForY(y)), Return2X(TransForX(92.0)), ReturnY(TransForY(15.0)), 0.326000005, 0.004999999888, 0.6700000167, 0.04500000179, 1, 1, 0.0);
 
 	//Mapa y Coordenadas
 	if (World >= 82 && World <= 100)
 	{
-		wsprintf(Cord, "%s  (%d , %d)", pGetTextLine(pTextLineThis, (3182 + World - 82)), gObjUser.CoordenadaX, gObjUser.CoordenadaY);
+		std::string custom_map_s6_name = "";
+		switch(World){
+			case 83: // Nixie Lake
+				custom_map_s6_name = "Swamp of Darkness";
+				break;
+			case 84: // Nixie Lake
+				custom_map_s6_name = "Nixie Lake";
+				break;
+			case 85: // Ferea
+				custom_map_s6_name = "Ferea";
+				break;
+			case 86: // Nars
+				custom_map_s6_name = "Nars";
+				break;
+			case 87: // Kubera Mine
+				custom_map_s6_name = "Kubera Mine";
+				break;
+			case 88: // Uruk Mountain
+				custom_map_s6_name = "Uruk Mountain";
+				break;
+			case 89: // Acheron
+				custom_map_s6_name = "Acheron";
+				break;
+			case 90: // Debenter
+				custom_map_s6_name = "Debenter";
+				break;
+			case 91: // Deep Dungeon
+				custom_map_s6_name = "Deep Dungeon";
+				break;
+			case 92: // Deep Dungeon 3
+				custom_map_s6_name = "Deep Dungeon 3";
+				break;
+			case 93: // Atlans Abyss
+				custom_map_s6_name = "Atlans Abyss";
+				break;
+			case 94: // Scotch Canyon
+				custom_map_s6_name = "Scotch Canyon";
+				break;
+		}
+		// wsprintf(Cord, "%s  (%d , %d)", pGetTextLine(pTextLineThis, (3182 + World - 82)), gObjUser.CoordenadaX, gObjUser.CoordenadaY);
+		wsprintf(Cord, "%s  (%d , %d)", &custom_map_s6_name, gObjUser.CoordenadaX, gObjUser.CoordenadaY);
 	}
 	else
 	{
@@ -450,55 +498,55 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 	}
 	pSetBackgroundTextColor(pTextThis(), 0, 0, 0, 0);
 	pSetTextColor(pTextThis(), 240, 240, 240, 255);
-	pDrawText(pTextThis(), X - 30, Y + 3, Cord, 190, 0, (LPINT)3, 0);
+	pDrawText(pTextThis(), X - 60, Y + 4, Cord, 190, 0, (LPINT)3, 0);
 	pGLSwitch();
 	EnableAlphaTest(0);
 	//-- Config
-	gInterface.DrawButtonRender(ButtonSettings, 146, 1, 0, 0);
+	gInterface.DrawButtonRender(ButtonSettings, HELPERBTN_POSITION_X, HELPERBTN_POSITION_Y, 0, 0);
 
 	if (gInterface.IsWorkZone(ButtonSettings))
 	{
-		gInterface.DrawToolTip(146, 40, "Config Helper");
+		gInterface.DrawToolTip(HELPERBTN_POSITION_X, HELPERBTN_TOOLTIP_Y, "Config Helper");
 
 		if (gInterface.Data[ButtonSettings].OnClick)
 		{
-			pDrawButton(31761, 146, 1.6, 18.0f, 13.3, 0, 26.9);
+			pDrawButton(31761, HELPERBTN_POSITION_X, HELPERBTN_POSITION_Y2, 18.0f, 13.3, 0, 26.9);
 		}
 		else
 		{
-			pDrawButton(31761, 146, 1.6, 18.0f, 13.3, 0, 13.6);
+			pDrawButton(31761, HELPERBTN_POSITION_X, HELPERBTN_POSITION_Y2, 18.0f, 13.3, 0, 13.6);
 		}
 	}
 	else
 	{
-		pDrawButton(31761, 146, 1.0,18.0f, 13.3, 0, 0);
+		pDrawButton(31761, HELPERBTN_POSITION_X, HELPERBTN_POSITION_Y, 18.0f, 13.3, 0, 0);
 	}
 
 	if (!*(BYTE*)(*(DWORD*)(MUHELPER_STRUC)+0x08))
 	{
-		gInterface.DrawButtonRender(ButtonStart, 146 + 18, 1, 0, 0);
+		gInterface.DrawButtonRender(ButtonStart, HELPERBTN_POSITION_X + 18, 1, 0, 0);
 		//-- Play
 		if (gInterface.IsWorkZone(ButtonStart))
 		{
-			gInterface.DrawToolTip(146 + 18, 40,"Start Helper");
+			gInterface.DrawToolTip(HELPERBTN_POSITION_X + 18, HELPERBTN_TOOLTIP_Y,"Start Helper");
 
 			if (gInterface.Data[ButtonStart].OnClick)
 			{
-				pDrawButton(31762, 146 + 18, 1.6, 18.0f, 13.3, 0, 26.9);
+				pDrawButton(31762, HELPERBTN_POSITION_X + 18, HELPERBTN_POSITION_Y2, 18.0f, 13.3, 0, 26.9);
 			}
 			else
 			{
-				pDrawButton(31762, 146 + 18, 1.6, 18.0f, 13.3, 0, 13.6);
+				pDrawButton(31762, HELPERBTN_POSITION_X + 18, HELPERBTN_POSITION_Y2, 18.0f, 13.3, 0, 13.6);
 			}
 		}
 		else
 		{
-			pDrawButton(31762, 146 + 18, 1.0,18.0f, 13.3, 0, 0);
+			pDrawButton(31762, HELPERBTN_POSITION_X + 18, HELPERBTN_POSITION_Y,18.0f, 13.3, 0, 0);
 		}
 	}
 	else
 	{
-		gInterface.DrawButtonRender(ButtonStop, 146 + 18, 1, 0, 0);
+		gInterface.DrawButtonRender(ButtonStop, HELPERBTN_POSITION_X + 18, HELPERBTN_POSITION_Y, 0, 0);
 
 		if(offhelper == 1)
 		{
@@ -507,20 +555,20 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 		//-- Pause
 		if (gInterface.IsWorkZone(ButtonStop))
 		{
-			gInterface.DrawToolTip(146 + 18, 40,"Stop Helper");
+			gInterface.DrawToolTip(HELPERBTN_POSITION_X + 18, HELPERBTN_TOOLTIP_Y,"Stop Helper");
 
 			if (gInterface.Data[ButtonStop].OnClick)
 			{
-				pDrawButton(31763, 146 + 18, 1.6, 18.0f, 13.3, 0, 26.9);
+				pDrawButton(31763, HELPERBTN_POSITION_X + 18, HELPERBTN_POSITION_Y2, 18.0f, 13.3, 0, 26.9);
 			}
 			else
 			{
-				pDrawButton(31763, 146 + 18, 1.6, 18.0f, 13.3, 0, 13.6);
+				pDrawButton(31763, HELPERBTN_POSITION_X + 18, HELPERBTN_POSITION_Y2, 18.0f, 13.3, 0, 13.6);
 			}
 		}
 		else
 		{
-			pDrawButton(31763, 146 + 18, 1.0, 18.0f, 13.3, 0, 0);
+			pDrawButton(31763, HELPERBTN_POSITION_X + 18, HELPERBTN_POSITION_Y, 18.0f, 13.3, 0, 0);
 		}
 	}
 //=======================================================
@@ -566,8 +614,8 @@ __declspec(naked) void MuHelperRemake2_01()  //<- ConfigHelper
 	static DWORD Addr_JMP = 0x007D26DA;
 	static DWORD W = 18;
 	static DWORD H = 13.3;
-	static DWORD X = 146.0f;
-	static DWORD Y = 1;
+	static DWORD X = HELPERBTN_POSITION_X;
+	static DWORD Y = HELPERBTN_POSITION_Y + 1.0f;
  
 	_asm
 	{
@@ -591,8 +639,8 @@ __declspec(naked) void MuHelperRemake2_02()  //<- PlayHelper
 	static DWORD Addr_JMP = 0x007D2776;
 	static DWORD W = 18;
 	static DWORD H = 13.3;
-	static DWORD X = 146.0f + 18.0f;
-	static DWORD Y = 1;
+	static DWORD X = HELPERBTN_POSITION_X + 18.0f;
+	static DWORD Y = HELPERBTN_POSITION_Y + 1.0f;
  
 	_asm
 	{
@@ -616,8 +664,8 @@ __declspec(naked) void MuHelperRemake2_03()  //<- PauseHelper
 	static DWORD Addr_JMP = 0x007D2821;
 	static DWORD W = 18;
 	static DWORD H = 13.3;
-	static DWORD X = 146.0f + 18.0f;
-	static DWORD Y = 1;
+	static DWORD X = HELPERBTN_POSITION_X + 18.0f;
+	static DWORD Y = HELPERBTN_POSITION_Y + 1.0f;
  
 	_asm
 	{
