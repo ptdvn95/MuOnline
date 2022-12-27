@@ -9,6 +9,7 @@ struct PMSG_JEWELBANK
 {
 	PSBMSG_HEAD h;
 	int Result;
+	bool Triple;
 };
 
 struct PMSG_JEWELSBANK
@@ -50,8 +51,8 @@ public:
 	void DrawLine(int ItemType, int ItemIndex, int ItemLevel, float DrawX, float DrawY, char * ItemName, int Count);
 	void DrawInfo(float InfoDrawX, float InfoDrawY, char* Text, bool Type, int Count);
 	bool EventJewelBank_Close(DWORD Event);
-	void Button(DWORD key);
-	void Packet(int number);
+	void Button(DWORD key, bool triple = false);
+	void Packet(int number, bool triple = false);
 	void RecibirJewelsBank(PMSG_JEWELSBANK * aRecv);
 	void JewelBankSend(int slot);
 };

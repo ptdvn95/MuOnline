@@ -436,7 +436,7 @@ void CMacroUIEx::RenderHelperFrame(int *This)
 	y = (double)*(signed int *)(JGetHelperBar + 24);
 	x = (double)*(signed int *)(JGetHelperBar + 20);
 
-	RenderBitmap(61519, Return2X(x + TransForX(0.0)), ReturnY(TransForY(y)), Return2X(TransForX(92.0)), ReturnY(TransForY(15.0)), 0.326000005, 0.004999999888, 0.6700000167, 0.04500000179, 1, 1, 0.0);
+	RenderBitmap(61519, Return2X(x + TransForX(0.0)), ReturnY(TransForY(y + 0.5)), Return2X(TransForX(92.0)), ReturnY(TransForY(15.0)), 0.326000005, 0.004999999888, 0.6700000167, 0.04500000179, 1, 1, 0.0);
 
 	//Mapa y Coordenadas
 	if (World >= 82 && World <= 100)

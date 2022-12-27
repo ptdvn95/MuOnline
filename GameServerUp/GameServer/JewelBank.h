@@ -10,6 +10,7 @@ struct PMSG_JEWELBANK
 {
 	PSBMSG_HEAD h;
 	int Result;
+	bool Triple;
 };
 
 struct PMSG_JEWELSBANK

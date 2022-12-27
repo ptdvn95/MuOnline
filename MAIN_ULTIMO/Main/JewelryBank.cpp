@@ -15,38 +15,38 @@ JewelsBank gJewelsBank;
 
 void SendByRightClick(int This)
 {
-	lpItemObj item = (lpItemObj)*(DWORD*)(This + 84);
+	lpItemObj item = (lpItemObj) * (DWORD *)(This + 84);
 
 	if (item)
 	{
-		if ( GetKeyState ( VK_RBUTTON ) & 0x8000 && GetKeyState ( VK_SHIFT ) & 0x8000 ) 
+		if (GetKeyState(VK_RBUTTON) & 0x8000 && GetKeyState(VK_SHIFT) & 0x8000)
 		{
 			int start = 12;
-			if (*(DWORD*)(This + 44) == 200)
+			if (*(DWORD *)(This + 44) == 200)
 			{
 				start = 12;
 			}
-			else if (*(DWORD*)(This + 44) == 44)
+			else if (*(DWORD *)(This + 44) == 44)
 			{
 				start = 76;
 			}
-			else if(*(DWORD*)(This + 44) == 131)
+			else if (*(DWORD *)(This + 44) == 131)
 			{
 				start = 108;
 			}
 
-			int Slot = item->PosX+(item->PosY*8)+start;
+			int Slot = item->PosX + (item->PosY * 8) + start;
 
 			gJewelsBank.JewelBankSend(Slot);
 		}
 	}
 
-	((void(__thiscall*)(int))0x007DCF20)(This);
+	((void(__thiscall *)(int))0x007DCF20)(This);
 }
 
 void JewelsBank::JewelBankSend(int slot)
 {
-	if((GetTickCount() - this->StatusTick) < 250 )
+	if ((GetTickCount() - this->StatusTick) < 250)
 	{
 		return;
 	}
@@ -58,20 +58,19 @@ void JewelsBank::JewelBankSend(int slot)
 
 	this->StatusTick = GetTickCount();
 
-
 	JEWELBANKSLOT_SEND pMsg;
 
 	pMsg.slot = slot;
 
-	pMsg.header.set(0xF3, 0xF9,sizeof(pMsg));
+	pMsg.header.set(0xF3, 0xF9, sizeof(pMsg));
 
-	DataSend((BYTE*)&pMsg,pMsg.header.size);
+	DataSend((BYTE *)&pMsg, pMsg.header.size);
 }
 
 void JewelsBank::JewelsBankLoad()
 {
 	this->Active = false;
-	SetCompleteHook(0xE8,0x007DD0D9,&SendByRightClick);
+	SetCompleteHook(0xE8, 0x007DD0D9, &SendByRightClick);
 	this->Bind();
 }
 
@@ -86,7 +85,7 @@ void JewelsBank::Bind()
 	gInterface.BindObject(eJEWELBANK_DIV, 0x7A62, 223, 21, -1, -1);
 	gInterface.BindObject(eJEWELBANK_CLOSE, 0x7EC5, 36, 29, -1, -1);
 
-	//Sumar
+	// Sumar
 	gInterface.BindObject(eJEWELBANK_PAGEUP1, 0x7AA4, 15, 15, -1, -1);
 	gInterface.BindObject(eJEWELBANK_PAGEUP2, 0x7AA4, 15, 15, -1, -1);
 	gInterface.BindObject(eJEWELBANK_PAGEUP3, 0x7AA4, 15, 15, -1, -1);
@@ -98,7 +97,7 @@ void JewelsBank::Bind()
 	gInterface.BindObject(eJEWELBANK_PAGEUP9, 0x7AA4, 15, 15, -1, -1);
 	gInterface.BindObject(eJEWELBANK_PAGEUP10, 0x7AA4, 15, 15, -1, -1);
 	gInterface.BindObject(eJEWELBANK_PAGEUP11, 0x7AA4, 15, 15, -1, -1);
-	//Restar
+	// Restar
 	gInterface.BindObject(eJEWELBANK_PAGEDN1, 0x7C0D, 15, 15, -1, -1);
 	gInterface.BindObject(eJEWELBANK_PAGEDN2, 0x7C0D, 15, 15, -1, -1);
 	gInterface.BindObject(eJEWELBANK_PAGEDN3, 0x7C0D, 15, 15, -1, -1);
@@ -115,7 +114,8 @@ void JewelsBank::Bind()
 void JewelsBank::Draw()
 {
 
-	if (this->Active == false) return;
+	if (this->Active == false)
+		return;
 
 	gInterface.Data[eJEWELBANK_MAIN].OnShow = true;
 
@@ -126,7 +126,7 @@ void JewelsBank::Draw()
 	float StartX = 0;
 
 	gInterface.DrawWindow(eJEWELBANK_MAIN, eJEWELBANK_TITLE, eJEWELBANK_FRAME, eJEWELBANK_FOOTER, 14, StartX, StartY, "Ngân Hàng Ngọc");
-	//gInterface.DrawFormat(eYellow, StartX + 10, 110, 210, 3, "Jewel Bank System");
+	// gInterface.DrawFormat(eYellow, StartX + 10, 110, 210, 3, "Jewel Bank System");
 
 	gInterface.DrawGUI(eJEWELBANK_CLOSE, StartX + MainWidth - gInterface.Data[eJEWELBANK_CLOSE].Width, 18);
 	// ----
@@ -143,12 +143,10 @@ void JewelsBank::Draw()
 		gInterface.DrawToolTip((int)gInterface.Data[eJEWELBANK_CLOSE].X + 5, 15, "Close");
 	}
 
-
 	float flDrawX = StartX + 20;
 	float flDrawY = StartY + 30;
 
 	this->DrawInfo(flDrawX, flDrawY, "Zen", true, Zen);
-
 
 	flDrawY += 20;
 	gInterface.DrawGUI(eJEWELBANK_DIV, StartX, flDrawY + 10);
@@ -183,12 +181,15 @@ void JewelsBank::Draw()
 
 		flDrawY += 20;
 		this->DrawLine(14, 41, 10, flDrawX, flDrawY, "Jewel Of GemStone", GemStoneBank);
+
+		gInterface.DrawFormat(eYellow, flDrawX - 10, flDrawY + 52, 150, 1, "%s", "Nhấn nút [+] hoặc [shift + chuột phải] vào ngọc trong kho đồ để gửi.");
+		gInterface.DrawFormat(eYellow, flDrawX - 10, flDrawY + 63, 150, 1, "%s", "Nhấn nút [-] để lấy ngọc x1 hoặc [shift + chuột trái] + [-] để lấy ngọc x3.");
 	}
 }
 
-void JewelsBank::DrawLine(int ItemType, int ItemIndex, int ItemLevel, float ItemDrawX, float ItemDrawY, char * ItemName, int Count)
+void JewelsBank::DrawLine(int ItemType, int ItemIndex, int ItemLevel, float ItemDrawX, float ItemDrawY, char *ItemName, int Count)
 {
-	ItemBmdStruct* ItemInfo = pGetItemBmdStruct(ITEM(ItemType, ItemIndex));
+	ItemBmdStruct *ItemInfo = pGetItemBmdStruct(ITEM(ItemType, ItemIndex));
 
 	const int WidthValue = 24;
 	const int HeightValue = 26;
@@ -225,10 +226,10 @@ void JewelsBank::DrawLine(int ItemType, int ItemIndex, int ItemLevel, float Item
 		}
 	}
 
-	//gInterface.DrawGUI(eJEWELBANK_LINE, ItemDrawX + 15, flY + 15);
+	// gInterface.DrawGUI(eJEWELBANK_LINE, ItemDrawX + 15, flY + 15);
 }
 
-void JewelsBank::DrawInfo(float InfoDrawX, float InfoDrawY, char* Text, bool Type, int Count)
+void JewelsBank::DrawInfo(float InfoDrawX, float InfoDrawY, char *Text, bool Type, int Count)
 {
 	float flX = InfoDrawX + 10;
 	float flY = InfoDrawY;
@@ -237,7 +238,6 @@ void JewelsBank::DrawInfo(float InfoDrawX, float InfoDrawY, char* Text, bool Typ
 
 	flX += 30;
 	flY += 10;
-
 
 	if (Type)
 	{
@@ -263,7 +263,6 @@ void JewelsBank::DrawInfo(float InfoDrawX, float InfoDrawY, char* Text, bool Typ
 			{
 				gInterface.DrawColoredGUI(eJEWELBANK_PAGEUP1, gInterface.Data[eJEWELBANK_PAGEUP1].X, gInterface.Data[eJEWELBANK_PAGEUP1].Y, eGray150);
 			}
-
 		}
 	}
 	else
@@ -271,11 +270,11 @@ void JewelsBank::DrawInfo(float InfoDrawX, float InfoDrawY, char* Text, bool Typ
 		gInterface.DrawFormat(eYellow, flX, flY + 2, 100, 1, "%s: %d", Text, Count);
 	}
 
-	//flX += 95;
-	//gInterface.DrawGUI(eJEWELBANK_LINE, InfoDrawX + 15, flY + 15);
+	// flX += 95;
+	// gInterface.DrawGUI(eJEWELBANK_LINE, InfoDrawX + 15, flY + 15);
 }
 
-void JewelsBank::Button(DWORD key)
+void JewelsBank::Button(DWORD key, bool triple)
 {
 	if (this->Active == false)
 	{
@@ -286,16 +285,15 @@ void JewelsBank::Button(DWORD key)
 	{
 		if (gInterface.ButtonEx(key, eJEWELBANK_PAGEUP1 + i, false))
 		{
-			this->Packet(i);
+			this->Packet(i, triple);
 			return;
 		}
 		else if (gInterface.ButtonEx(key, eJEWELBANK_PAGEDN1 + i, false))
 		{
-			this->Packet(i + 11);
+			this->Packet(i + 11, triple);
 			return;
 		}
 	}
-
 }
 
 bool JewelsBank::EventJewelBank_Close(DWORD Event)
@@ -333,15 +331,24 @@ bool JewelsBank::EventJewelBank_Close(DWORD Event)
 	return false;
 }
 
-void JewelsBank::Packet(int number)
+void JewelsBank::Packet(int number, bool triple)
 {
 	PMSG_JEWELBANK pMsg;
-	pMsg.h.set(0xF3, 0xDF, sizeof(pMsg));
 	pMsg.Result = number;
+	if (triple)
+	{
+		pMsg.h.set(0xF3, 0xDA, sizeof(pMsg));
+		pMsg.Triple = true;
+	}
+	else
+	{
+		pMsg.h.set(0xF3, 0xDF, sizeof(pMsg));
+		pMsg.Triple = false;
+	}
 	DataSend((LPBYTE)&pMsg, pMsg.h.size);
 }
 
-void JewelsBank::RecibirJewelsBank(PMSG_JEWELSBANK * aRecv)
+void JewelsBank::RecibirJewelsBank(PMSG_JEWELSBANK *aRecv)
 {
 	if (aRecv == NULL)
 	{

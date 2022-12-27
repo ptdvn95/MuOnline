@@ -62,6 +62,7 @@ LRESULT Controller::Mouse(int Code, WPARAM wParam, LPARAM lParam)
 	// ----
 	MOUSEHOOKSTRUCTEX * Mouse	= (MOUSEHOOKSTRUCTEX*)lParam;
 	gController.wMouse = wParam;
+	bool JewelryBankTriple = false;
 	switch(wParam)
 	{
 	case WM_LBUTTONUP:
@@ -102,7 +103,14 @@ LRESULT Controller::Mouse(int Code, WPARAM wParam, LPARAM lParam)
 			gwareinterface.EventWarehouseWindow_Main(wParam);
 #endif
 #if (JEWEL_BANK == 1)
-			gJewelsBank.Button(wParam);
+			if(GetKeyState ( VK_SHIFT ) & 0x8000)
+			{
+				gJewelsBank.Button(wParam, true);
+			}
+			else
+			{
+				gJewelsBank.Button(wParam, false);
+			}
 			gJewelsBank.EventJewelBank_Close(wParam);
 #endif
 			gInterface.EventPartySearchWindow_All(wParam);
