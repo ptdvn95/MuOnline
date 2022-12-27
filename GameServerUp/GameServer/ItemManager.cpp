@@ -1016,6 +1016,25 @@ bool CItemManager::CheckItemInventorySpace(LPOBJ lpObj,int width,int height) // 
 	return 0;
 }
 
+int CItemManager::CountEmptySlot(LPOBJ lpObj) // OK
+{
+	int EmptySlot = 0;
+	int MaxY = (this->GetInventoryMaxValue(lpObj)-INVENTORY_WEAR_SIZE)/8;
+
+	for(int y=0;y < MaxY;y++)
+	{
+		for(int x=0;x < 8;x++)
+		{
+			if(lpObj->InventoryMap[((y*8)+x)] == 0xFF)
+			{
+				EmptySlot++;
+			}
+		}
+	}
+
+	return EmptySlot;
+}
+
 void CItemManager::InventoryItemSet(int aIndex,int slot,BYTE type) // OK
 {
 	if(INVENTORY_BASE_RANGE(slot) == 0)

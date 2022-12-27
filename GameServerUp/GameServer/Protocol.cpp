@@ -1115,9 +1115,6 @@ void ProtocolCore(BYTE head,BYTE* lpMsg,int size,int aIndex,int encrypt,int seri
 				case 0xDF:
 					gJewelsBank.Packet(aIndex, (PMSG_JEWELBANK*)lpMsg);
 					break;
-				case 0xDA:
-					gJewelsBank.Packet(aIndex, (PMSG_JEWELBANK*)lpMsg);
-					break;
 #if (RESETCHANGE == 1)
 				case 0xD9:
 					gResetChange.ResetChange(aIndex, (RESETCHANGE_REQ*)lpMsg);

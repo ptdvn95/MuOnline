@@ -584,16 +584,27 @@ void JewelsBank::recvchaosbank(int aIndex, int Count)
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] No %d Chaos", Count);
 		return;
 	}
-	if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+	if (Count == 3)
 	{
-		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
-		return;
+		if (gItemManager.CountEmptySlot(lpObj) < 3)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
 	}
-	lpObj->ChaosBank -= Count;
+	else
+	{
+		if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
+	}
 	for (int i = 0; i<Count; i++)
 	{
 		GDCreateItemSend(aIndex, 235, lpObj->X, lpObj->Y, GET_ITEM(12, 15), 0, 0, 0, 0, 0, aIndex, 0, 0, 0, 0, 0, 0, 0);
 	}
+	lpObj->ChaosBank -= Count;
 	EnvioJewelsBank(aIndex);
 	GDCharacterInfoSaveSend(aIndex);
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Recv %d Chaos", Count);
@@ -608,16 +619,27 @@ void JewelsBank::recvblessbank(int aIndex, int Count)
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] No %d Bless", Count);
 		return;
 	}
-	if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+	if (Count == 3)
 	{
-		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
-		return;
+		if (gItemManager.CountEmptySlot(lpObj) < 3)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
 	}
-	lpObj->BlessBank -= Count;
+	else
+	{
+		if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
+	}
 	for (int i = 0; i<Count; i++)
 	{
 		GDCreateItemSend(aIndex, 235, lpObj->X, lpObj->Y, GET_ITEM(14, 13), 0, 0, 0, 0, 0, aIndex, 0, 0, 0, 0, 0, 0, 0);
 	}
+	lpObj->BlessBank -= Count;
 	EnvioJewelsBank(aIndex);
 	GDCharacterInfoSaveSend(aIndex);
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Recv %d Bless", Count);
@@ -632,16 +654,27 @@ void JewelsBank::recvsoulbank(int aIndex, int Count)
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] No %d Soul", Count);
 		return;
 	}
-	if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+	if (Count == 3)
 	{
-		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
-		return;
+		if (gItemManager.CountEmptySlot(lpObj) < 3)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
 	}
-	lpObj->SoulBank -= Count;
+	else
+	{
+		if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
+	}
 	for (int i = 0; i<Count; i++)
 	{
 		GDCreateItemSend(aIndex, 235, lpObj->X, lpObj->Y, GET_ITEM(14, 14), 0, 0, 0, 0, 0, aIndex, 0, 0, 0, 0, 0, 0, 0);
 	}
+	lpObj->SoulBank -= Count;
 	EnvioJewelsBank(aIndex);
 	GDCharacterInfoSaveSend(aIndex);
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Recv %d Soul", Count);
@@ -657,16 +690,27 @@ void JewelsBank::recvlifebank(int aIndex, int Count)
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] No %d Life", Count);
 		return;
 	}
-	if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+	if (Count == 3)
 	{
-		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
-		return;
+		if (gItemManager.CountEmptySlot(lpObj) < 3)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
 	}
-	lpObj->LifeBank -= Count;
+	else
+	{
+		if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
+	}
 	for (int i = 0; i<Count; i++)
 	{
 		GDCreateItemSend(aIndex, 235, lpObj->X, lpObj->Y, GET_ITEM(14, 16), 0, 0, 0, 0, 0, aIndex, 0, 0, 0, 0, 0, 0, 0);
 	}
+	lpObj->LifeBank -= Count;
 	EnvioJewelsBank(aIndex);
 	GDCharacterInfoSaveSend(aIndex);
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Recv %d Life", Count);
@@ -682,16 +726,27 @@ void JewelsBank::recvcreateonbank(int aIndex, int Count)
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] No %d Createon", Count);
 		return;
 	}
-	if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+	if (Count == 3)
 	{
-		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
-		return;
+		if (gItemManager.CountEmptySlot(lpObj) < 3)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
 	}
-	lpObj->CreateonBank -= Count;
+	else
+	{
+		if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
+	}
 	for (int i = 0; i<Count; i++)
 	{
 		GDCreateItemSend(aIndex, 235, lpObj->X, lpObj->Y, GET_ITEM(14, 22), 0, 0, 0, 0, 0, aIndex, 0, 0, 0, 0, 0, 0, 0);
 	}
+	lpObj->CreateonBank -= Count;
 	EnvioJewelsBank(aIndex);
 	GDCharacterInfoSaveSend(aIndex);
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Recv %d Createon", Count);
@@ -705,16 +760,27 @@ void JewelsBank::recvGuardianBank(int aIndex, int Count)
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] No %d Guardian", Count);
 		return;
 	}
-	if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+	if (Count == 3)
 	{
-		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
-		return;
+		if (gItemManager.CountEmptySlot(lpObj) < 3)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
 	}
-	lpObj->GuardianBank -= Count;
+	else
+	{
+		if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
+	}
 	for (int i = 0; i<Count; i++)
 	{
 		GDCreateItemSend(aIndex, 235, lpObj->X, lpObj->Y, GET_ITEM(14, 31), 0, 0, 0, 0, 0, aIndex, 0, 0, 0, 0, 0, 0, 0);
 	}
+	lpObj->GuardianBank -= Count;
 	EnvioJewelsBank(aIndex);
 	GDCharacterInfoSaveSend(aIndex);
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Recv %d Guardian", Count);
@@ -728,16 +794,27 @@ void JewelsBank::recvHarmonyBank(int aIndex, int Count)
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] No %d Harmony", Count);
 		return;
 	}
-	if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+	if (Count == 3)
 	{
-		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
-		return;
+		if (gItemManager.CountEmptySlot(lpObj) < 3)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
 	}
-	lpObj->HarmonyBank -= Count;
+	else
+	{
+		if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
+	}
 	for (int i = 0; i<Count; i++)
 	{
 		GDCreateItemSend(aIndex, 235, lpObj->X, lpObj->Y, GET_ITEM(14, 42), 0, 0, 0, 0, 0, aIndex, 0, 0, 0, 0, 0, 0, 0);
 	}
+	lpObj->HarmonyBank -= Count;
 	EnvioJewelsBank(aIndex);
 	GDCharacterInfoSaveSend(aIndex);
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Recv %d Harmony", Count);
@@ -751,16 +828,27 @@ void JewelsBank::recvLowStoneBank(int aIndex, int Count)
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] No %d LowStone", Count);
 		return;
 	}
-	if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+	if (Count == 3)
 	{
-		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
-		return;
+		if (gItemManager.CountEmptySlot(lpObj) < 3)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
 	}
-	lpObj->LowStoneBank -= Count;
+	else
+	{
+		if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
+	}
 	for (int i = 0; i<Count; i++)
 	{
 		GDCreateItemSend(aIndex, 235, lpObj->X, lpObj->Y, GET_ITEM(14, 43), 0, 0, 0, 0, 0, aIndex, 0, 0, 0, 0, 0, 0, 0);
 	}
+	lpObj->LowStoneBank -= Count;
 	EnvioJewelsBank(aIndex);
 	GDCharacterInfoSaveSend(aIndex);
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Recv %d LowStone", Count);
@@ -774,16 +862,27 @@ void JewelsBank::recvHighStoneBank(int aIndex, int Count)
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] No %d HighStone", Count);
 		return;
 	}
-	if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+	if (Count == 3)
 	{
-		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
-		return;
+		if (gItemManager.CountEmptySlot(lpObj) < 3)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
 	}
-	lpObj->HighStoneBank -= Count;
+	else
+	{
+		if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
+	}
 	for (int i = 0; i<Count; i++)
 	{
 		GDCreateItemSend(aIndex, 235, lpObj->X, lpObj->Y, GET_ITEM(14, 44), 0, 0, 0, 0, 0, aIndex, 0, 0, 0, 0, 0, 0, 0);
 	}
+	lpObj->HighStoneBank -= Count;
 	EnvioJewelsBank(aIndex);
 	GDCharacterInfoSaveSend(aIndex);
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Recv %d HighStone", Count);
@@ -797,16 +896,27 @@ void JewelsBank::recvGemStoneBank(int aIndex, int Count)
 		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] No %d GemStone", Count);
 		return;
 	}
-	if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+	if (Count == 3)
 	{
-		gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
-		return;
+		if (gItemManager.CountEmptySlot(lpObj) < 3)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
 	}
-	lpObj->GemStoneBank -= Count;
+	else
+	{
+		if (gItemManager.CheckItemInventorySpace(lpObj, 1, 1) == 0)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Inventory %d", Count);
+			return;
+		}
+	}
 	for (int i = 0; i<Count; i++)
 	{
 		GDCreateItemSend(aIndex, 235, lpObj->X, lpObj->Y, GET_ITEM(14, 41), 0, 0, 0, 0, 0, aIndex, 0, 0, 0, 0, 0, 0, 0);
 	}
+	lpObj->GemStoneBank -= Count;
 	EnvioJewelsBank(aIndex);
 	GDCharacterInfoSaveSend(aIndex);
 	gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, "[JewelsBank] Recv %d GemStone", Count);
@@ -872,34 +982,34 @@ void JewelsBank::Packet(int aIndex, PMSG_JEWELBANK* lpMsg)
 		this->recvzen(aIndex, 1);
 		break;
 	case 12:
-		this->recvchaosbank(aIndex, 1);
+		this->recvchaosbank(aIndex, lpMsg->Triple ? 3 : 1);
 		break;
 	case 13:
-		this->recvblessbank(aIndex, 1);
+		this->recvblessbank(aIndex, lpMsg->Triple ? 3 : 1);
 		break;
 	case 14:
-		this->recvsoulbank(aIndex, 1);
+		this->recvsoulbank(aIndex, lpMsg->Triple ? 3 : 1);
 		break;
 	case 15:
-		this->recvlifebank(aIndex, 1);
+		this->recvlifebank(aIndex, lpMsg->Triple ? 3 : 1);
 		break;
 	case 16:
-		this->recvcreateonbank(aIndex, 1);
+		this->recvcreateonbank(aIndex, lpMsg->Triple ? 3 : 1);
 		break;
 	case 17:
-		this->recvGuardianBank(aIndex, 1);
+		this->recvGuardianBank(aIndex, lpMsg->Triple ? 3 : 1);
 		break;
 	case 18:
-		this->recvHarmonyBank(aIndex, 1);
+		this->recvHarmonyBank(aIndex, lpMsg->Triple ? 3 : 1);
 		break;
 	case 19:
-		this->recvLowStoneBank(aIndex, 1);
+		this->recvLowStoneBank(aIndex, lpMsg->Triple ? 3 : 1);
 		break;
 	case 20:
-		this->recvHighStoneBank(aIndex, 1);
+		this->recvHighStoneBank(aIndex, lpMsg->Triple ? 3 : 1);
 		break;
 	case 21:
-		this->recvGemStoneBank(aIndex, 1);
+		this->recvGemStoneBank(aIndex, lpMsg->Triple ? 3 : 1);
 		break;
 	}
 }

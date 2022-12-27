@@ -285,7 +285,7 @@ void JewelsBank::Button(DWORD key, bool triple)
 	{
 		if (gInterface.ButtonEx(key, eJEWELBANK_PAGEUP1 + i, false))
 		{
-			this->Packet(i, triple);
+			this->Packet(i, false);
 			return;
 		}
 		else if (gInterface.ButtonEx(key, eJEWELBANK_PAGEDN1 + i, false))
@@ -335,16 +335,8 @@ void JewelsBank::Packet(int number, bool triple)
 {
 	PMSG_JEWELBANK pMsg;
 	pMsg.Result = number;
-	if (triple)
-	{
-		pMsg.h.set(0xF3, 0xDA, sizeof(pMsg));
-		pMsg.Triple = true;
-	}
-	else
-	{
-		pMsg.h.set(0xF3, 0xDF, sizeof(pMsg));
-		pMsg.Triple = false;
-	}
+	pMsg.h.set(0xF3, 0xDF, sizeof(pMsg));
+	pMsg.Triple = triple;
 	DataSend((LPBYTE)&pMsg, pMsg.h.size);
 }
 
