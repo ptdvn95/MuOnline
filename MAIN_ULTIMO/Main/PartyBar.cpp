@@ -794,14 +794,14 @@ void Interface::BarPartyNew()
 		int y = 13;
 		int x = 560;
 
-		RenderBitmap(81525, x + ReturnX(TransForX(2)), y + ReturnY(TransForY(-12)), ReturnX(TransForX(64)), ReturnY(TransForY(20)), 0.0, 0.0, 0.75, 0.1678999364, 1, 1, 0); //-- Barra
+		RenderBitmap(81525, x + ReturnX(TransForX(2)), y + ReturnY(TransForY(-13)), ReturnX(TransForX(64)), ReturnY(TransForY(20)), 0.0, 0.0, 0.75, 0.1678999364, 1, 1, 0); //-- Barra
 		//-- TitleName
 		pSetFont(pTextThis(), (int)pFontBold);
 		pSetBackgroundTextColor(pTextThis(), 0, 0, 0, 0);
 		pSetTextColor(pTextThis(), 240, 240, 240, 255);
-		pDrawText(pTextThis(), x + ReturnX(TransForX(30)), y + ReturnY(TransForY(-9)), "Party", 148.0, 0, (LPINT)1, 0);
+		pDrawText(pTextThis(), x + ReturnX(TransForX(30)), y + ReturnY(TransForY(-10)), "Party", 148.0, 0, (LPINT)1, 0);
 
-		if (pCheckMouseOver(x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-12)), ReturnX(TransForX(14)), ReturnY(TransForY(14))))
+		if (pCheckMouseOver(x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-13.5)), ReturnX(TransForX(14)), ReturnY(TransForY(14))))
 		{
 			if (pCursorX >= x + ReturnX(TransForX(66)))
 			{
@@ -810,9 +810,9 @@ void Interface::BarPartyNew()
 		}
 		if (MinimizarParty == 0)
 		{
-			if (CheckButtonPressed(x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-12)), ReturnX(TransForX(14)), ReturnY(TransForY(14))))
+			if (CheckButtonPressed(x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-13.5)), ReturnX(TransForX(14)), ReturnY(TransForY(14))))
 			{
-				RenderBitmap(61545, x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-12)), ReturnX(TransForX(14)), ReturnY(TransForY(14)), 0.6000000238, 0.4131799936, 0.1090999693, 0.09779000282, 1, 1, 0); //-- Boton Minimizar
+				RenderBitmap(61545, x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-13.5)), ReturnX(TransForX(14)), ReturnY(TransForY(14)), 0.6000000238, 0.4131799936, 0.1090999693, 0.09779000282, 1, 1, 0); //-- Boton Minimizar
 				if (GetTickCount() >= VKBUTTON_DELAY2 + 200)
 				{
 					MinimizarParty = 1;
@@ -821,14 +821,14 @@ void Interface::BarPartyNew()
 			}
 			else
 			{
-				RenderBitmap(61545, x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-12)), ReturnX(TransForX(14)), ReturnY(TransForY(14)), 0.4829999804, 0.4131799936, 0.1090999693, 0.09779000282, 1, 1, 0); //-- Boton Minimizar
+				RenderBitmap(61545, x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-13.5)), ReturnX(TransForX(14)), ReturnY(TransForY(14)), 0.4829999804, 0.4131799936, 0.1090999693, 0.09779000282, 1, 1, 0); //-- Boton Minimizar
 			}
 		}
 		else
 		{
-			if (CheckButtonPressed(x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-12)), ReturnX(TransForX(14)), ReturnY(TransForY(14))))
+			if (CheckButtonPressed(x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-13.5)), ReturnX(TransForX(14)), ReturnY(TransForY(14))))
 			{
-				RenderBitmap(61545, x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-12)), ReturnX(TransForX(14)), ReturnY(TransForY(14)), 0.1289999783, 0.4131799936, 0.1090999693, 0.09779000282, 1, 1, 0); //-- Boton Minimizar
+				RenderBitmap(61545, x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-13.5)), ReturnX(TransForX(14)), ReturnY(TransForY(14)), 0.1289999783, 0.4131799936, 0.1090999693, 0.09779000282, 1, 1, 0); //-- Boton Minimizar
 				if (GetTickCount() >= VKBUTTON_DELAY2 + 200)
 				{
 					MinimizarParty = 0;
@@ -837,7 +837,7 @@ void Interface::BarPartyNew()
 			}
 			else
 			{
-				RenderBitmap(61545, x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-12)), ReturnX(TransForX(14)), ReturnY(TransForY(14)), 0.01299999934, 0.4131799936, 0.1090999693, 0.09779000282, 1, 1, 0); //-- Boton Minimizar
+				RenderBitmap(61545, x + ReturnX(TransForX(66)), y + ReturnY(TransForY(-13.5)), ReturnX(TransForX(14)), ReturnY(TransForY(14)), 0.01299999934, 0.4131799936, 0.1090999693, 0.09779000282, 1, 1, 0); //-- Boton Minimizar
 			}
 		}
 	}

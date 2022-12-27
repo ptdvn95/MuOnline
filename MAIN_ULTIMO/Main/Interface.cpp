@@ -553,6 +553,8 @@ void Interface::LoadImages()
 	pLoadImage("Interface\\GFx\\Party\\newui_Party_X.tga", 81524, 0x2601, 0x2901, 1, 0);
 	//--
 	pLoadImage("Interface\\GFx\\Party\\BarraMixta.jpg", 81525, 0x2601, 0x2901, 1, 0);
+	LoadBitmapA("Interface\\GFx\\ex700\\winPet_I1.tga", 61545, GL_LINEAR, GL_CLAMP, 1, 0);
+	LoadBitmapA("Interface\\GFx\\Party\\Ex700\\PartyBar.tga", 81525, GL_LINEAR, GL_CLAMP, 1, 0);
 	pLoadImage("Interface\\GFx\\Party\\newui_Party_Manabar02.jpg", 81526, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Interface\\GFx\\Party\\PartyPlayerInfo.tga", 81527, 0x2601, 0x2901, 1, 0);
 	//-------------- custom interfaces

@@ -2455,7 +2455,7 @@ void Centralizado::InitCentral()
 	//-- Party
 	SetCompleteHook(0xE8, 0x0084BC0F, &InfoOverParty);
 	SetCompleteHook(0xE8, 0x0084BD1D, &MouseBlockParty);
-//	SetCompleteHook(0xE9, 0x0084BDB0, &RenderPartyBack);
+	// SetCompleteHook(0xE9, 0x0084BDB0, &RenderPartyBack);
 
 	//--- Panel Option
 	SetCompleteHook(0xE8, 0x008490F5, &CheckOptionMouseOver);
