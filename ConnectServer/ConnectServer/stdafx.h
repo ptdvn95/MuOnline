@@ -4,34 +4,20 @@
 
 #define _WIN32_WINNT _WIN32_WINNT_WINXP
 
-#define DATASERVER_VERSION "DS"
-#define GAMESERVER_TYPE2 1
+#define CONNECTSERVER_VERSION "CS"
+#define CONNECTSERVER_CLIENT "LOUIS MS EMULATOR"
 
-#if(GAMESERVER_TYPE2 == 1)
-#define DATASERVER_CLIENT "[MU DISCORD]"
-#else
-#define DATASERVER_CLIENT "[MU DISCORD]"
-#endif
-
-#define LEVEL_PLUS    1
-#define WINDOWSQUEST  1
-
-#ifndef DATASERVER_UPDATE
-#define DATASERVER_UPDATE 803
+#ifndef CONNECTSERVER_UPDATE
+#define CONNECTSERVER_UPDATE 803
 #endif
 
 #ifndef PROTECT_STATE
-#define PROTECT_STATE 1
+#define PROTECT_STATE 0
 #endif
 
 // System Include
 #include <windows.h>
 #include <winsock2.h>
-#include <commctrl.h>
-#include <sql.h>
-#include <sqltypes.h>
-#include <sqlext.h>
-#include <process.h>
 #include <iostream>
 #include <stdlib.h>
 #include <malloc.h>
@@ -48,12 +34,12 @@
 #include <Psapi.h>
 
 #pragma comment(lib,"ws2_32.lib")
-#pragma comment(lib,"comctl32.lib")
 #pragma comment(lib,"Rpcrt4.lib")
 #pragma comment(lib,"dbghelp.lib")
 #pragma comment(lib,"Psapi.lib")
 
 extern char CustomerName[32];
 extern char CustomerHardwareId[36];
+extern long MaxIpConnection;
 
 typedef unsigned __int64 QWORD;
