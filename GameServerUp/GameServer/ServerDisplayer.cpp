@@ -385,7 +385,7 @@ void CServerDisplayer::PaintDev() // OK
 	HFONT OldFont = (HFONT)SelectObject(hdc, this->m_font4);
 
 	SetTextColor(hdc, RGB(0, 0, 0));
-	TextOut(hdc, 750, rect.top + 10, "By =[MaxVoll]=", 15);
+	TextOut(hdc, 750, rect.top + 10, "By =[Zekcrom]=", 15);
 
 	SelectObject(hdc, OldFont);
 	SetBkMode(hdc, OldBkMode);

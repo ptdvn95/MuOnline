@@ -23,9 +23,19 @@ CServerDisplayer::CServerDisplayer() // OK
 
 	this->m_font = CreateFont(50,0,0,0,FW_THIN,0,0,0,ANSI_CHARSET,OUT_DEFAULT_PRECIS,CLIP_DEFAULT_PRECIS,DEFAULT_QUALITY,DEFAULT_PITCH | FF_DONTCARE,"Times");
 
-	this->m_brush[0] = CreateSolidBrush(RGB(105,105,105));
-	this->m_brush[1] = CreateSolidBrush(RGB(110,240,120));
-	this->m_brush[2] = CreateSolidBrush(RGB(9,99,189));
+#if(GAMESERVER_TYPE2 == 0)
+	this->m_brush[0] = CreateSolidBrush(RGB(0,0,0));
+	this->m_brush[1] = CreateSolidBrush(RGB(120, 120, 120));	//rojo
+	this->m_brush[2] = CreateSolidBrush(RGB(39, 79, 121));	// 0, 152, 239	//<-
+	this->m_brush[3] = CreateSolidBrush(RGB(255, 255, 255));	//semiblack	//<- blanco
+	this->m_brush[4] = CreateSolidBrush(RGB(210, 210, 210));	//Black //<- semi blanco
+#else
+	this->m_brush[0] = CreateSolidBrush(RGB(7, 226, 176));		//<- cuando esta activo
+	this->m_brush[1] = CreateSolidBrush(RGB(120, 120, 120));	//<- cuando esta desactivado
+	this->m_brush[2] = CreateSolidBrush(RGB(5, 180, 66));		// 0, 152, 239	//<-39, 79, 121
+	this->m_brush[3] = CreateSolidBrush(RGB(255, 255, 255));	//semiblack	//<- fondo
+	this->m_brush[4] = CreateSolidBrush(RGB(210, 210, 210));	//Black //<- fondo de eventos e informacion
+#endif
 
 	strcpy_s(this->m_DisplayerText[0],"STANDBY MODE");
 	strcpy_s(this->m_DisplayerText[1],"ACTIVE MODE");
@@ -37,6 +47,8 @@ CServerDisplayer::~CServerDisplayer() // OK
 	DeleteObject(this->m_brush[0]);
 	DeleteObject(this->m_brush[1]);
 	DeleteObject(this->m_brush[2]);
+	DeleteObject(this->m_brush[3]);
+	DeleteObject(this->m_brush[4]);
 }
 
 void CServerDisplayer::Init(HWND hWnd) // OK
@@ -48,6 +60,8 @@ void CServerDisplayer::Init(HWND hWnd) // OK
 	PROTECT_FINAL
 
 	gLog.AddLog(1,"LOG");
+
+	gLog.AddLog(1,"LOG_ACCOUNT");
 }
 
 void CServerDisplayer::Run() // OK
@@ -85,13 +99,13 @@ void CServerDisplayer::PaintAllInfo() // OK
 	if(gServerList.CheckJoinServerState() == 0)
 	{
 		SetTextColor(hdc,RGB(200,200,200));
-		FillRect(hdc,&rect,this->m_brush[0]);
+		FillRect(hdc,&rect,this->m_brush[1]);
 		TextOut(hdc,120,50,this->m_DisplayerText[0],strlen(this->m_DisplayerText[0]));
 	}
 	else
 	{
 		SetTextColor(hdc,RGB(250,250,250));
-		FillRect(hdc,&rect,this->m_brush[1]);
+		FillRect(hdc,&rect,this->m_brush[0]);
 		TextOut(hdc,150,50,this->m_DisplayerText[1],strlen(this->m_DisplayerText[1]));
 	}
 
@@ -115,9 +129,9 @@ void CServerDisplayer::PaintName() // OK
 
 	HFONT OldFont = (HFONT)SelectObject(hdc,this->m_font);
 
-		SetTextColor(hdc,RGB(255,255,255));
-		FillRect(hdc,&rect,this->m_brush[2]);
-		TextOut(hdc,80,0,CONNECTSERVER_CLIENT,sizeof(CONNECTSERVER_CLIENT));
+	SetTextColor(hdc,RGB(255,255,255));
+	FillRect(hdc,&rect,this->m_brush[2]);
+	DrawText(hdc, CONNECTSERVER_CLIENT, sizeof(CONNECTSERVER_CLIENT), &rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
 
 	SelectObject(hdc,OldFont);
 	SetBkMode(hdc,OldBkMode);
@@ -135,11 +149,13 @@ void CServerDisplayer::LogTextPaint() // OK
 
 	HDC hdc = GetDC(this->m_hwnd);
 
-	FillRect(hdc,&rect,(HBRUSH)GetStockObject(0));
+	FillRect(hdc,&rect,this->m_brush[BLACK_BRUSH]);
 
 	int line = MAX_LOG_TEXT_LINE;
 
 	int count = (((this->m_count-1)>=0)?(this->m_count-1):(MAX_LOG_TEXT_LINE-1));
+
+	int OldBkMode = SetBkMode(hdc,TRANSPARENT);
 
 	for(int n=0;n < MAX_LOG_TEXT_LINE;n++)
 	{

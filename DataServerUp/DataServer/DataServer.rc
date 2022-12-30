@@ -16,7 +16,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Inglés (Estados Unidos) resources
+// Inglï¿½s (Estados Unidos) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -76,7 +76,7 @@ BEGIN
     LTEXT           "DataServer",IDC_STATIC,56,11,45,8,SS_NOPREFIX
     LTEXT           "Files Season 6 epi 3",IDC_STATIC,44,22,79,8
     DEFPUSHBUTTON   "OK",IDOK,54,53,30,11,WS_GROUP
-    LTEXT           "Developer: ZxGames",IDC_STATIC,44,34,86,8
+    LTEXT           "Developer: Zekcrom",IDC_STATIC,44,34,86,8
 END
 
 
@@ -131,12 +131,12 @@ BEGIN
     IDC_DATASERVER          "DATASERVER"
 END
 
-#endif    // Inglés (Estados Unidos) resources
+#endif    // Inglï¿½s (Estados Unidos) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// Portugués (Brasil) resources
+// Portuguï¿½s (Brasil) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_PTB)
 LANGUAGE LANG_PORTUGUESE, SUBLANG_PORTUGUESE_BRAZILIAN
@@ -178,13 +178,13 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName", "ZXGAMES"
+            VALUE "CompanyName", "MU Lover Group"
             VALUE "FileDescription", "DataServer"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "DataServer"
-            VALUE "LegalCopyright", "Copyright © MaxVoll"
+            VALUE "LegalCopyright", "Copyright Zekcrom"
             VALUE "OriginalFilename", "DataServer.exe"
-            VALUE "ProductName", "ZxGames DataServer"
+            VALUE "ProductName", "Zekcrom DataServer"
             VALUE "ProductVersion", "1.0.0.0"
         END
     END
@@ -194,12 +194,12 @@ BEGIN
     END
 END
 
-#endif    // Portugués (Brasil) resources
+#endif    // Portuguï¿½s (Brasil) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// Español (México) resources
+// Espaï¿½ol (Mï¿½xico) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESM)
 LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MEXICAN
@@ -213,12 +213,12 @@ LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MEXICAN
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDI_ICON1               ICON                    "DataServer.ico"
-#endif    // Español (México) resources
+#endif    // Espaï¿½ol (Mï¿½xico) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// Español (España, alfabetización internacional) resources
+// Espaï¿½ol (Espaï¿½a, alfabetizaciï¿½n internacional) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESN)
 LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MODERN
@@ -232,7 +232,7 @@ LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MODERN
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDI_ICON2               ICON                    "DataServer.ico"
-#endif    // Español (España, alfabetización internacional) resources
+#endif    // Espaï¿½ol (Espaï¿½a, alfabetizaciï¿½n internacional) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

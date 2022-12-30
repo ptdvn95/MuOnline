@@ -36,7 +36,7 @@ public:
 private:
 	HWND m_hwnd;
 	HFONT m_font;
-	HBRUSH m_brush[3];
+	HBRUSH m_brush[5];
 	LOG_DISPLAY_INFO m_log[MAX_LOG_TEXT_LINE];
 	int m_count;
 	char m_DisplayerText[2][64];

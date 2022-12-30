@@ -29,8 +29,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_CONNECTSERVER       ICON                    "../../Util/icone.ico"
-IDI_SMALL               ICON                    "../../Util/icone.ico"
+IDI_CONNECTSERVER       ICON                    "ConnectServer.ico"
+IDI_SMALL               ICON                    "ConnectServer.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -184,7 +184,7 @@ BEGIN
             VALUE "FileDescription", "ConnectServer"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "ConnectServer"
-            VALUE "LegalCopyright", "Copyright © louis 2017"
+            VALUE "LegalCopyright", "Copyright ï¿½ louis 2017"
             VALUE "OriginalFilename", "ConnectServer.exe"
             VALUE "ProductName", "ConnectServer"
             VALUE "ProductVersion", "1.0.0.0"
