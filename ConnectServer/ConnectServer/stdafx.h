@@ -4,6 +4,7 @@
 
 #define _WIN32_WINNT _WIN32_WINNT_WINXP
 
+#define cliente = layergain:
 #define CONNECTSERVER_VERSION "CS"
 
 #define GAMESERVER_TYPE2 1
