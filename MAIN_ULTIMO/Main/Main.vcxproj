@@ -120,6 +120,7 @@
     <ClInclude Include="CustomGloves.h" />
     <ClInclude Include="CustomPetEffect.h" />
     <ClInclude Include="Entryproy.h" />
+    <ClInclude Include="FullViewMode.h" />
     <ClInclude Include="GetBarChat.h" />
     <ClInclude Include="GLFont.h" />
     <ClInclude Include="GrandResetSystem.h" />
@@ -214,6 +215,7 @@
     <ClInclude Include="SItemOption.h" />
     <ClInclude Include="SItemSetOption.h" />
     <ClInclude Include="SmithItem.h" />
+    <ClInclude Include="SmoothCamera.h" />
     <ClInclude Include="StaticEffect.h" />
     <ClInclude Include="StatsAdvance.h" />
     <ClInclude Include="stdafx.h" />
@@ -265,6 +267,7 @@
     <ClCompile Include="CustomFont.cpp" />
     <ClCompile Include="CustomGloves.cpp" />
     <ClCompile Include="CustomPetEffect.cpp" />
+    <ClCompile Include="FullViewMode.cpp" />
     <ClCompile Include="GetBarChat.cpp" />
     <ClCompile Include="GLFont.cpp" />
     <ClCompile Include="GrandResetSystem.cpp" />
@@ -349,6 +352,7 @@
     <ClCompile Include="MasterSkill.cpp" />
     <ClCompile Include="SItemSetOption.cpp" />
     <ClCompile Include="SmithItem.cpp" />
+    <ClCompile Include="SmoothCamera.cpp" />
     <ClCompile Include="StaticEffect.cpp" />
     <ClCompile Include="StatsAdvance.cpp" />
     <ClCompile Include="stdafx.cpp">

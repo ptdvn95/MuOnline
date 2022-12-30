@@ -470,3 +470,9 @@ signed int sub_9CEBF0(double a1);
 #define SAFE_DELETE(p)  { if(p) { delete (p);     (p)=NULL; } }
 #define SAFE_DELETE_ARRAY(p)  { if(p) { delete [] (p);     (p)=NULL; } }
 #define SAFE_RELEASE(p) { if(p) { (p)->Release(); (p)=NULL; } }
+
+#define pIsKeyNone            ((bool(__cdecl*)(int)) 0x791030)
+#define pIsKeyRelease         ((bool(__cdecl*)(int)) 0x791050)
+#define pIsKeyPress            ((bool(__cdecl*)(int)) 0x791070)
+#define pIsKeyRepeat         ((bool(__cdecl*)(int)) 0x791090)
+#define IsPress ((int(__cdecl*)(int VKBUTTON)) 0x00791070)

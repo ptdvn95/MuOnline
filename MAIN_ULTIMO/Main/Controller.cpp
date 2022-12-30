@@ -33,6 +33,18 @@
 Controller	gController;
 // ----------------------------------------------------------------------------------------------
 
+void __declspec(naked) iconHook()
+{
+	static DWORD dwIcon = (DWORD)LoadIcon(gController.Instance, MAKEINTRESOURCE(IDI_ICON1));
+	static DWORD dwJmp = 0x004D0E3C;
+
+	_asm
+	{
+		MOV EAX, dwIcon
+		JMP dwJmp
+	}
+}
+
 bool Controller::Load()
 {
 	if( !this->MouseHook )
@@ -45,6 +57,7 @@ bool Controller::Load()
 		}
 	}
 	// ----
+	SetOp((LPVOID)0x004D0E2F, iconHook, ASM::CALL);
 	if( !this->KeyboardHook )
 	{
 	}
@@ -374,5 +387,3 @@ LRESULT Controller::Window(HWND Window, DWORD Message, WPARAM wParam, LPARAM lPa
 	// ----
 	return CallWindowProc((WNDPROC)gTrayMode.TempWindowProc, Window, Message, wParam, lParam);
 }
-
-

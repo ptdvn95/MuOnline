@@ -867,6 +867,7 @@ void CNpcTalk::NpcWarehouse(LPOBJ lpNpc, LPOBJ lpObj) // OK
 		pMsg.MaxWarehouse = gServerInfo.m_CustomWarehouseMaxNumber[lpObj->AccountLevel];
 		DataSend(lpObj->Index, (LPBYTE)&pMsg, sizeof(pMsg));
 	}
+	GCChatTargetSend(lpObj,lpNpc->Index,"Hãy gửi vật phẩm của bạn cho tôi, tôi sẽ bảo vệ chúng bằng cả mạng sống của mình.");
 }
 
 void CNpcTalk::NpcGuildMaster(LPOBJ lpNpc,LPOBJ lpObj) // OK

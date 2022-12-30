@@ -42,6 +42,7 @@
 #include "MuHelper.h"
 #include "ResetSystemPanel.h"
 #include "GrandResetSystem.h"
+#include "SmoothCamera.h"
 
 Interface gInterface;
 
@@ -1463,6 +1464,7 @@ void Interface::Work()
 		if (GetKeyState(VK_F10) & 0x4000)
 		{
 			gInterface.SwitchCamera();
+			SmoothCamera.Camera();
 		}
 		if (GetKeyState(VK_F11) & 0x4000)
 		{

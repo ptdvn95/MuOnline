@@ -92,6 +92,8 @@
 #include "CUIMng.h"
 #include "ServerSelWin.h"
 
+#include "FullViewMode.h"
+
 HINSTANCE hins;
 
 void StartAddress(LPVOID lpThreadParameter)
@@ -177,6 +179,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 //	gInfoLog.Load();
 	gCUIMng.Load(); //-- Custom Loading Screen
+	FullViewMode.Hook();
 	g_ServerSelWin.Init(); // Move ServerList to center
 	SetByte(0x00E61144,0xA0); // Accent
 	SetByte(0x004D1E69,0xEB); // Crack (mu.exe)
@@ -212,6 +215,19 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	SetByte(0x007E1C44,0xB7); // Item Type Limit
 	SetByte(0x0052100D,0xEB); // Ctrl Fix
 	SetByte(0x009543C4,0x00); // Move Vulcanus
+
+	// Remove Inventory Border
+	SetByte(0x007F041C + 1, 0);
+	SetByte(0x0082C6FC + 1, 0);
+	SetByte(0x0083513C + 1, 0);
+	SetByte(0x00842492 + 1, 0);
+	SetByte(0x00847054 + 1, 0);
+	SetByte(0x0084F9F4 + 1, 0);
+	SetByte(0x008575E3 + 1, 0);
+	SetByte(0x008578A9 + 1, 0);
+	SetByte(0x008642B9 + 1, 0);
+	SetByte(0x008642D5 + 1, 0);
+
 	SetCompleteHook(0xE9, 0x004D1CF0, 0x004D1DC2); //-- Remoce MuError.DMP
 	MemorySet(0x00D20170, 0x90, 0x1B); //-- Remove Creation MuError.log
 	SetByte(0x0064CBD1,((gProtect.m_MainInfo.HelperActiveAlert==0) ? 0xEB : 0x75)); //-- Helper Message Box
