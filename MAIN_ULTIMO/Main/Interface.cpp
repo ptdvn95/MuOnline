@@ -470,6 +470,11 @@ void Interface::LoadImages()
 		pLoadImage("Custom\\Interface\\Money\\item_money2.tga", 0x7910, 0x2601, 0x2901, 1, 0);
 	}
 	//
+	// pLoadImage("Item\\alicewing4db_render.jpg", 32836, GL_LINEAR, GL_REPEAT, 1, 0);	
+	// pLoadImage("Item\\elfwing4da_render01.jpg", 32834, GL_LINEAR, GL_REPEAT, 1, 0);	
+	// pLoadImage("Item\\elfwing4da_render02.jpg", 32835, GL_LINEAR, GL_REPEAT, 1, 0);
+	// pLoadImage("Item\\magicianwing4da_render.jpg", 32831, GL_LINEAR, GL_REPEAT, 1, 0);
+	// pLoadImage("Item\\dknightwing4db_render.jpg", 32833, GL_LINEAR, GL_REPEAT, 1, 0);
 	pLoadImage("Custom\\Interface\\Rank01.tga", 0x7880, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Custom\\Interface\\Rank02.tga", 0x7881, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Custom\\Interface\\Rank03.tga", 0x7882, 0x2601, 0x2901, 1, 0);

@@ -233,6 +233,7 @@
     <ClInclude Include="ware.h" />
     <ClInclude Include="WindowsQuest.h" />
     <ClInclude Include="WindowsStruct.h" />
+    <ClInclude Include="WingBright.h" />
     <ClInclude Include="zzzmathlib.h" />
   </ItemGroup>
   <ItemGroup>
@@ -369,6 +370,7 @@
     <ClCompile Include="ware.cpp" />
     <ClCompile Include="WindowsQuest.cpp" />
     <ClCompile Include="WindowsStruct.cpp" />
+    <ClCompile Include="WingBright.cpp" />
     <ClCompile Include="zzzmathlib.cpp" />
   </ItemGroup>
   <ItemGroup>

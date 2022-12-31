@@ -711,6 +711,9 @@
     <ClInclude Include="SmoothCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WingBright.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1104,6 +1107,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SmoothCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WingBright.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

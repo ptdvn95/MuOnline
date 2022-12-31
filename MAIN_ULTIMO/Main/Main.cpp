@@ -69,6 +69,7 @@
 #include "BuffIcon.h"
 #include "MuHelper.h"
 #include "PartyBar.h"
+#include "WingBright.h"
 //--
 //#include "Ruud.h"
 #include "Inter3.h"
@@ -341,6 +342,8 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	ItemTRSData.Load(gProtect.m_MainInfo.CustomPosition);
 
 	gCustomRemake.Load(gProtect.m_MainInfo.CustomRemake);
+
+	// gWings.Load();
 
 	gItemManager.Load(gProtect.m_MainInfo.m_ItemInfoEx);
 
