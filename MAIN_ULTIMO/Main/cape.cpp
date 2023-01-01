@@ -27,6 +27,57 @@ DWORD CapeRegister;
 DWORD CapeEffectPointer;
 DWORD CapeEffectBuff;
 
+float Render1(float a1, float a2)
+{
+float v5;
+float v2 = a2 * 0.01745f;
+float v6 = (float)((int)(v2 * 1000.0f / a1 + timeGetTime()) % (int)(6283.185546875f / a1))* 0.001f * a1;
+
+if (v6 >= 3.14f)
+v5 = cosf(v6);
+else
+v5 = -cosf(v6);
+return (float)((v5 + 1.0f) * 0.5f);
+}
+
+void RenderCape(int This, int a2, float a3, float a4, float a5)
+{
+float v6; // ST18_4@3
+float green; // ST04_4@3
+float v11; // [sp+1Ch] [bp-4h]@2
+
+    v11 = 1.0;
+    if ( a3 > 0.0 )
+    {
+      v6 = a5 - a4;
+      green = -a3;
+      v11 = Render1(green, 0.0) * v6 + a4;
+    }	
+	if ( This == a2 )
+	{
+		EnableAlphaBlend();
+		BindTexture(This = a2);
+		glColor3f(v11, v11, v11);
+	}
+}
+
+void BindTextureRender(int a1)
+{
+	if ( a1 )
+	{	
+		RenderCape(a1, 30679, 3.0, 0.4, 1.0);//darklordwing4de_render.jpg	
+		RenderCape(a1, 30680, 3.0, 0.4, 1.0);//darklordwing4dd_render.jpg	
+		RenderCape(a1, 30682, 3.0, 0.5, 1.0);//ragefighterwing4db_render.jpg
+		RenderCape(a1, 32692, 3.0, 0.1, 1.0);//Item802_wing_R.jpg
+	}
+	BindTexture(a1);
+}
+
+void CPhysicsCloth_Render(int This, int a2)
+{
+	*(DWORD *)(This + 16) = a2;
+}
+
 void CCapeAnimation::DrawViewPort(DWORD ObjectPointer, DWORD ObjectModel, DWORD a3)
 {
 	lpViewObj Object = &*(ObjectPreview*)(ObjectPointer);
@@ -873,6 +924,8 @@ void CCapeAnimation::Load()
 	SetCompleteHook(0xE9, 0x0057464E, 0x00574667); //Apply
 
 	SetCompleteHook(0xE9, 0x00574750, &RemoveDarklordHair);
+	
+	SetCompleteHook(0xE8, 0x0051EC9D, &BindTextureRender);
 	//-
 	SetRange((LPVOID)0x00574D3D,13,ASM::NOP);
 	SetOp((LPVOID)0x00574D3D,(LPVOID)AllowMGCape,ASM::JMP);

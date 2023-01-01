@@ -220,6 +220,9 @@
 #define pItemBmdStruct			*(ItemBmdStruct*)0x8128AC0
 #define pGetItemBmdStruct(ItemId)	(ItemBmdStruct*)(*(DWORD*)0x8128AC0 + sizeof(ItemBmdStruct) * ItemId)
 
+#define EnableAlphaBlend						((void(__cdecl*)()) 0x00636070)
+#define BindTexture								((bool(__cdecl*)(int a1)) 0x00635CF0)
+
 #define sub_636720_Addr ((int(*)())0x636720)
 #define sub_6363D0_Addr ((void(__cdecl*)(GLint x, int a2, GLsizei width, GLsizei height)) 0x6363D0)
 #define sub_6358A0_Addr ((int(__cdecl*)(float a1, float a2, float a3, float a4)) 0x6358A0)
