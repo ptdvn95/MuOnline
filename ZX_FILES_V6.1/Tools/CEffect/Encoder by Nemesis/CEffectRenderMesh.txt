@@ -1,0 +1,25 @@
+0
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//RenderEffect 2 = Solido | RenderEffect 66 = Transparente | RenderEffect 70 = Glow                                                                             //
+//EffectType -1 = Sin Efecto | EffectType 0 = Animacion en X | EffectType 1 = Animacion en Y                                                                    // 
+//EffectType 2 = Animacion reversa en X | EffectType 3 = Animacion Reversa en Y | EffectType 4 = Animacion en Frame 4x4 | EffectType 5 = Animacion en Frame 1x4 //
+//TimeEffectType = Velocidad de animacion en "EffectType" | TimeTextureID = Velocidad de animacion en "TextureID" (Efecto Render)                               //
+//TimeTextureID 1 = Velocidad de animacion en "TextureID" (Efecto Render) | TimeTextureID -1 = Deja de hacer el efecto Render en TextureID                      //
+//LevelGlow = El Brillo que aparece al Subir de nivel con Bless/Soul                                                                                            //
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//	Type	Index	Red	Green	Blue	GroupMesh	RenderEffect	EffectType	TimeEffectType	TextureID	TimeTextureID	LevelGlow       //
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//Blessed Divine Sword	
+	12	156	1.000000	1.000000	1.000000	0	4	3	0.470588	-1	0.662745	1
+	12	157	1.000000	1.000000	1.000000	4	66	4	1.000000	-1	-1		7
+	12	157	1.000000	1.000000	1.000000	1	68	0	0.392157	-1	0.313725	9
+	12	157	1.000000	1.000000	1.000000	2	66	1	0.392157	-1	0.313725	15
+	12	158	1.000000	1.000000	1.000000	1	66	-1	0.000000	1	0.784314	1
+	12	158	1.000000	1.000000	1.000000	2	70	5	0.784314	533059	0.588235	1
+	12	159	1.000000	1.000000	1.000000	0	66	4	0.784314	-1	0.498039	1
+	12	159	1.000000	1.000000	1.000000	3	68	1	0.627451	-1	0.662745	1
+	12	160	1.000000	1.000000	1.000000	0	68	-1	0.000000	533059	1.0		1
+	12	161	1.000000	1.000000	1.000000	0	66	0	0.470588	-1	-1	1
+	12	161	1.000000	1.000000	1.000000	2	66	2	0.470588	-1	-1	1
+	12	162	1.000000	1.000000	1.000000	0	70	-1	0.000000	533059	0.588235	1
+end
