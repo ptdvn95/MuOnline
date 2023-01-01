@@ -49,3 +49,7 @@
 *.cache
 *.manifest
 *.lastbuildstate
+ZX_FILES_V6.1/Tools/MAIN_INFO/ZxRelease/TooltipTRSData.bmd
+ZX_FILES_V6.1/Tools/MAIN_INFO/ZxRelease/system.zx
+ZX_FILES_V6.1/Tools/MAIN_INFO/ZxRelease/MakeWorldTRSData.bmd
+ZX_FILES_V6.1/Tools/MAIN_INFO/ZxRelease/EffectTRSData.bmd
