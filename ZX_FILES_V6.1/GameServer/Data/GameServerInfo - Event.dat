@@ -8,7 +8,7 @@ TimerMarlonTeleport = 300
 ; Blood Castle Event Settings
 ;==================================================
 BloodCastleEvent = 1
-BloodCastleMaxUser = 20
+BloodCastleMaxUser = 10
 BloodCastlePvp_AL0 = 0
 BloodCastlePvp_AL1 = 0
 BloodCastlePvp_AL2 = 0
@@ -53,7 +53,7 @@ ChaosCastleBlowUserRate = 50
 ;==================================================
 ; Crywolf Event Settings
 ;==================================================
-CrywolfEvent = 1
+CrywolfEvent = 0
 CrywolfBenefitSwitch = 1
 CrywolfBenefitChaosRate = 10
 CrywolfBenefitMonsterLife = 80
@@ -65,46 +65,42 @@ CrywolfPenaltyExperience = 70
 ; Devil Square Event Settings
 ;==================================================
 DevilSquareEvent = 1
-DevilSquareMaxUser = 20
+DevilSquareMaxUser = 15
 
 ;==================================================
 ; Double Goer Event Settings
 ;==================================================
 DoubleGoerEvent = 0
-DoubleGoerDifficultRate = 200
+DoubleGoerDifficultRate = 100
 
 ;==================================================
 ; Illusion Temple Event Settings
 ;==================================================
 IllusionTempleEvent = 0
-IllusionTempleMinUser = 2
-IllusionTempleRewardFenrirRate = 15
+IllusionTempleMinUser = 1
+IllusionTempleRewardFenrirRate = 5
 
 ;==================================================
 ; Imperial Guardian Event Settings
 ;==================================================
-ImperialGuardianEvent = 1
-ImperialGuardianDifficultRate = 200
+ImperialGuardianEvent = 0
+ImperialGuardianDifficultRate = 100
 
 ;==================================================
 ; Invasion Manager Settings
-; Activar Effecto dragones Voladores: [1/0]
-; Desactivar Efecto al morir Boss: [1/0]
 ;==================================================
 InvasionManagerSwitch = 1
-FlyingDragonsSwitch = 1
-FlyingDragonsKillBossSwitch = 1
 
 ;==================================================
 ; Kanturu Event Settings
 ;==================================================
-KanturuEvent = 0
+KanturuEvent = 1
 
 ;==================================================
 ; Moss Merchant Event Settings
 ;==================================================
 MossMerchantEvent = 0
-MossMerchantEventTime = 120
+MossMerchantEventTime = 220
 
 ;==================================================
 ; Raklion Event Settings
@@ -119,7 +115,7 @@ QuicklyEvent = 0
 ;==================================================
 ; Event Start (Iniciar evento - Premium)
 ;==================================================
-EventStartSwitch = 0
+EventStartSwitch = 1
 EventStartTime   = 15
 
 ;==================================================

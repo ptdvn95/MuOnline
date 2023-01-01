@@ -1,5 +1,3 @@
 //Account         Name         Level
-"planeto"	"Zekcrom"	2
-"planeto"	"Ranita"	2
-"test"	"Oscuro"	2
+"admin1"	"Darius"	2
 end

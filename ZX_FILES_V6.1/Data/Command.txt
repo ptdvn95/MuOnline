@@ -104,4 +104,5 @@
 	79	 "/startking"			1	1	1	1			0	0	0	0			0	0	0	0			0	0	0	0			0	0	0	0			0	0	0	0		0	1		0	0	0	//startking			- Start King of MU Event
 	80	 "/startinvasion"		1	1	1	1			0	0	0	0			0	0	0	0			0	0	0	0			0	0	0	0			0	0	0	0		0	1		0	0	0	//startinvasion	<index>		- Start Invasion
 	81	 "/startarena"			1	1	1	1			0	0	0	0			0	0	0	0			0	0	0	0			0	0	0	0			0	0	0	0		0	1		0	0	0	//startarena <index>		- Start Custom Arena
+	82   	 "/point"			1	1	1	1			0	0	0	0			0	0	0	0			0	0	0	0			0	0	0	0			0	0	0	0		0	0		0	0	0	//stats <points> <points> <points> <points> <points>
 end
