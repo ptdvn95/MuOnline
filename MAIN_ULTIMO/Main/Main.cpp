@@ -70,6 +70,7 @@
 #include "MuHelper.h"
 #include "PartyBar.h"
 #include "WingBright.h"
+#include "AutoLogin.h"
 //--
 //#include "Ruud.h"
 #include "Inter3.h"
@@ -819,7 +820,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 	InitAttackSpeed(); //-- Fix Agilidad
 
-	
+	AutoLogin.Load(); //-- Auto Login
 
 	//GInfo.IniInformation();
 

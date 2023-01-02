@@ -90,6 +90,7 @@
     <ClInclude Include="allocator.h" />
     <ClInclude Include="Antilag.h" />
     <ClInclude Include="array.h" />
+    <ClInclude Include="AutoLogin.h" />
     <ClInclude Include="base.h" />
     <ClInclude Include="BuffIcon.h" />
     <ClInclude Include="Camera.h" />
@@ -240,6 +241,7 @@
     <ClCompile Include="..\..\Util\CCRC32.Cpp" />
     <ClCompile Include="Achievements.cpp" />
     <ClCompile Include="Antilag.cpp" />
+    <ClCompile Include="AutoLogin.cpp" />
     <ClCompile Include="BuffIcon.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="cape.cpp" />
