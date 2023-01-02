@@ -304,11 +304,11 @@ void InitCommon() // OK
 	//	SetByte((0x00958D4C + 3), 0xE9);	//1 Codepage utf thai lang FDE9
 	//	SetByte((0x00958D4C + 4), 0xFD);	//2	Codepage utf thai lang
 
-			SetByte(0x004215A7, 0xEB); //[0-9A-Za-z] Name
-			SetByte(0x00507AFD, 0xEB); //[0-9A-Za-z] Guild
-			SetByte((0x00507AEA + 1), 0x72); //[0-9A-Za-z] Name
+		SetByte(0x004215A7, 0xEB); //[0-9A-Za-z] Name
+		SetByte(0x00507AFD, 0xEB); //[0-9A-Za-z] Guild
+		SetByte((0x00507AEA + 1), 0x72); //[0-9A-Za-z] Name
 
-			// SetByte((0x00958D56 + 0x3), 0x04); // message limit
+		// SetByte((0x00958D56 + 0x3), 0x04); // message limit
 	
 
 	// Default Separate Chat
@@ -524,7 +524,7 @@ __declspec(naked) void ReduceComsumeCPU()
 }
 
 // Fix Effect Event Invasion Dragon(Gold - Red)
-#define WD_7ATLANSE   7
+// #define WD_7ATLANSE   7
 __declspec(naked) void MoveBoids()
 {
 	static DWORD addr_jmp = 0x00506D04;
@@ -535,7 +535,7 @@ __declspec(naked) void MoveBoids()
 		mov     byte ptr ss:[ebp-0x31], 1
 	}
 
-	if(World != WD_7ATLANSE )
+	if(World != 7 )
 	{
 		addr_jmp = 0x0050563E;
 	}

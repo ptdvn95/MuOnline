@@ -686,6 +686,7 @@ public:
 	void		BarPartyNew();
 
 private:
-	
 };
+	void BtnChaChangeButton(GLuint uiImageType, float x, float y, float width, float height, float su, float sv);
+	void BtnChaChangeButtonFriend(GLuint uiImageType, float x, float y, float width, float height, float su, float sv);
 extern Interface gInterface;

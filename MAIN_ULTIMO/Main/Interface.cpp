@@ -1602,6 +1602,11 @@ void Interface::Work()
 	}
 
 	gInterface.DrawLogo(0);
+
+	// Fix inventory blink
+	SetCompleteHook(0xE8, 0x008119E6, &BtnChaChangeButton);
+	// SetCompleteHook(0xE8, 0x00811B1A, &BtnChaChangeButtonFriend); //-- friend
+	// SetCompleteHook(0xE8, 0x00811B61, &BtnChaChangeButtonFriend); //-- friend
 }
 
 void Interface::SwitchMiniMap()
@@ -5408,4 +5413,13 @@ void Interface::EventLuckyWheel_Main(DWORD Event)
 		DataSend((BYTE *)&pMsg, pMsg.h.size);
 		StartRoll = 1;
 	}
+}
+
+void BtnChaChangeButton(GLuint uiImageType, float x, float y, float width, float height, float su, float sv)
+{
+	return;
+}
+void BtnChaChangeButtonFriend(GLuint uiImageType, float x, float y, float width, float height, float su, float sv)
+{
+	return;
 }

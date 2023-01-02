@@ -207,6 +207,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="Ruud.h" />
     <ClInclude Include="SceneCreate.h" />
+    <ClInclude Include="SCharacterS3.h" />
     <ClInclude Include="SelectChar.h" />
     <ClInclude Include="SeparateChat.h" />
     <ClInclude Include="ServerInfo.h" />
@@ -345,6 +346,7 @@
     <ClCompile Include="Resolution.cpp" />
     <ClCompile Include="Ruud.cpp" />
     <ClCompile Include="SceneCreate.cpp" />
+    <ClCompile Include="SCharacterS3.cpp" />
     <ClCompile Include="SelectChar.cpp" />
     <ClCompile Include="SeparateChat.cpp" />
     <ClCompile Include="ServerInfo.cpp" />

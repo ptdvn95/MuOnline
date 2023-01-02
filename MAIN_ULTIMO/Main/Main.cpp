@@ -71,6 +71,7 @@
 #include "PartyBar.h"
 #include "WingBright.h"
 #include "AutoLogin.h"
+#include "SCharacterS3.h"
 //--
 //#include "Ruud.h"
 #include "Inter3.h"
@@ -152,6 +153,16 @@ __declspec(naked) void OffButtonRepeirInInventory()
 
 extern "C" _declspec(dllexport) void EntryProc() // OK
 {
+	// Force use Launcher
+	// char ** lpszCommandLine = 0;
+	// CommandLineToArg(GetCommandLine(), &lpszCommandLine);
+	// if( strcmp("update", lpszCommandLine[1]) )
+	// {
+	// 	MessageBox(0, "Please start Game from the Launcher!", "ERROR!", MB_OK | MB_ICONASTERISK);
+	// 	ShellExecuteA(NULL,"open","Launcher.exe",0,0,SW_SHOW);
+	// 	ExitProcess(0);
+	// }
+
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)StartAddress, 0, 0, 0);
 
 	if(gProtect.ReadMainFile("Data\\Local\\system.zx") == 0)
@@ -183,6 +194,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	gCUIMng.Load(); //-- Custom Loading Screen
 	FullViewMode.Hook();
 	g_ServerSelWin.Init(); // Move ServerList to center
+	SCharacterS3();
 	SetByte(0x00E61144,0xA0); // Accent
 	SetByte(0x004D1E69,0xEB); // Crack (mu.exe)
 	SetByte(0x004D228D,0xE9); // Crack (GameGuard)
@@ -260,6 +272,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	SetDword(0x00954115 + 1, (DWORD)gProtect.m_MainInfo.ServerName2); //-> (Gold PVP)
 	SetDword(0x009540E2 + 1, (DWORD)gProtect.m_MainInfo.ServerName3); //-> (Non-PVP)
 	SetDword(0x009540AC + 1, (DWORD)gProtect.m_MainInfo.ServerName4); //-> Sem Nada
+	SetDword(0x004D9746+3,480);
 
 	MemorySet(0x0063E908,0x90,20); //-- C1:F3:04
 
