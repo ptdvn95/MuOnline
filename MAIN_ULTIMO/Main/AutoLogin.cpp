@@ -74,7 +74,7 @@ void CButtonAutoLogin(int This, int a2)
 {
 	CUIRenderText_SetFont((int)pTextThis(), *(int*)0xE8C594);
 
-	float startX = (530.0 - getX(329)) / 2,
+	float startX = (640.0 - getX(329)) / 2,
 		startY = (480.0 - getY(245)) * 2.0 / 3.0;
 
 	int Struct = _Instance() + 16968;
@@ -82,19 +82,104 @@ void CButtonAutoLogin(int This, int a2)
 	if (IsCursorInZone(startX + getX(246.0), startY + getY(156), 15, 15)) {
 		if (pIsKeyRelease(VK_LBUTTON))
 		{
-			pDrawButton(0x7B69, startX + getX(246.0), startY + getY(156), 15, 15, 0, 0);
+			// pDrawButton(0x7B69, startX + getX(246.0), startY + getY(156), 15, 15, 0, 0);
 			AutoLogin.savePass = !AutoLogin.savePass;
 			PlayBuffer(25, 0, 0);
 		}
 	}
 	if (AutoLogin.savePass) {
-		pDrawButton(0x7B69, startX + getX(246.0), startY + getY(156), 15, 15, 0, 0);
+		switch (pWinWidth)
+		{
+			//1024
+		case 1024:
+			RenderBitmap(0x7B69, (startX + 374) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 82, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.02999999747, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(91), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1280
+		case 1280:
+			RenderBitmap(0x7B69, (startX + 482) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 84, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.02999999747, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(60), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1366
+		case 1366:
+			RenderBitmap(0x7B69, (startX + 520) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 82, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.02999999747, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(41), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1440
+		case 1440:
+			RenderBitmap(0x7B69, (startX + 553) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 84, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.02999999747, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(32), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1600
+		case 1600:
+			RenderBitmap(0x7B69, (startX + 626) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 84, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.02999999747, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(5), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1680
+		case 1680:
+			RenderBitmap(0x7B69, (startX + 662) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 84, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.02999999747, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX - 4, startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1920
+		case 1920:
+			RenderBitmap(0x7B69, (startX + 774) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 84, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.02999999747, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX - 15, startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//600 o 800
+		default:
+			RenderBitmap(0x7B69, (startX + 292) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 82, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.02999999747, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(130), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+		}
 	}
 	else {
-		pDrawButton(0x7B69, startX + getX(246.0), startY + getY(156), 15, 15, 0, 15);
+		switch (pWinWidth)
+		{
+			//1024
+		case 1024:
+			RenderBitmap(0x7B69, (startX + 374) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 82, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.5, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(91), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1280
+		case 1280:
+			RenderBitmap(0x7B69, (startX + 482) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 84, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.5, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(60), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1366
+		case 1366:
+			RenderBitmap(0x7B69, (startX + 520) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 82, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.5, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(41), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1440
+		case 1440:
+			RenderBitmap(0x7B69, (startX + 553) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 84, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.5, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(32), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1600
+		case 1600:
+			RenderBitmap(0x7B69, (startX + 626) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 84, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.5, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(5), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1680
+		case 1680:
+			RenderBitmap(0x7B69, (startX + 662) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 84, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.5, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX -4 , startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//1920
+		case 1920:
+			RenderBitmap(0x7B69, (startX + 774) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 84, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.5, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX - 15, startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+			//600 o 800
+		default:
+			RenderBitmap(0x7B69, (startX + 292) / g_fScreenRate_x, (MAX_WIN_HEIGHT / 2) - (15 / 2) + 82, 20 / g_fScreenRate_x, 15 / g_fScreenRate_y, 0.01, 0.5, 0.8799999952, 0.3700000346, 1, 1, 0);
+			CustomFont.Draw(CustomFont.FontNormal, startX + getX(130), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Lưu mật khẩu");
+			break;
+		}
+		
 	}
-	CustomFont.Draw((HFONT)pFontNormal, startX + getX(130), startY + getY(160), 0xffffffD1, 0x0, 92, 0, 4, "Save password");
 }
+
 
 void DoLoginWinCreate(int)
 {
