@@ -284,8 +284,11 @@ void SCharacterS3()
     SetByte((LPVOID)0x0057F0FF, 0x00);
     SetByte((LPVOID)0x0057F100, 0x00);
     SetByte((LPVOID)0x0057F101, 0x90);
-	// CAOTHU.VN add here to fix mount size
-	SetRange((LPVOID)0x503839, 6, ASM::NOP);
-	SetOp((LPVOID)0x503839, (LPVOID)ThuNhoThuCuoi, ASM::JMP);	
 
+	// fix mount size ver 1
+	// SetRange((LPVOID)0x503839, 6, ASM::NOP);
+	// SetOp((LPVOID)0x503839, (LPVOID)ThuNhoThuCuoi, ASM::JMP);	
+
+	// fix mount size ver 2
+	SetByte((LPVOID)0x00503834, 0xEB);
 }
