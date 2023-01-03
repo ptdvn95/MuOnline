@@ -573,6 +573,7 @@ bool CAttack::Attack(LPOBJ lpObj,LPOBJ lpTarget,CSkill* lpSkill,bool send,BYTE f
 		{
 			effect = 0x04;
 			damage = (damage*((lpObj->Type==OBJECT_USER&&lpTarget->Type==OBJECT_USER)?gServerInfo.m_ReflectDamageRatePvP:gServerInfo.m_ReflectDamageRatePvM))/100;
+			damage = (damage*((lpObj->Type==OBJECT_USER&&lpTarget->Type==OBJECT_USER)?gServerInfo.m_nReflectDamageRatePvP[lpObj->Class]:gServerInfo.m_nReflectDamageRatePvM[lpObj->Class]))/100;
 		}
 	}
 

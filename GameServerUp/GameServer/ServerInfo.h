@@ -1082,6 +1082,9 @@ public:
 	int Max_LevelPlus;
 	int DownGrade;
 	int m_MaxHwidConnection;
+
+	int m_nReflectDamageRatePvP[MAX_CLASS];
+	int m_nReflectDamageRatePvM[MAX_CLASS];
 };
 
 extern CServerInfo gServerInfo;

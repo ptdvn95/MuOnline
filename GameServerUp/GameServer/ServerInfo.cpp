@@ -2242,6 +2242,45 @@ void CServerInfo::ReadCharacterInfo(char* section,char* path) // OK
 
 	#endif
 
+	
+	this->m_nReflectDamageRatePvP[0] = GetPrivateProfileInt(section,"DWReflectDamageRatePvP",0,path);
+
+	this->m_nReflectDamageRatePvP[1] = GetPrivateProfileInt(section,"DKReflectDamageRatePvP",0,path);
+
+	this->m_nReflectDamageRatePvP[2] = GetPrivateProfileInt(section,"FEReflectDamageRatePvP",0,path);
+
+	this->m_nReflectDamageRatePvP[3] = GetPrivateProfileInt(section,"MGReflectDamageRatePvP",0,path);
+
+	this->m_nReflectDamageRatePvP[4] = GetPrivateProfileInt(section,"DLReflectDamageRatePvP",0,path);
+
+	this->m_nReflectDamageRatePvP[5] = GetPrivateProfileInt(section,"SUReflectDamageRatePvP",0,path);
+
+	#if(GAMESERVER_UPDATE>=601)
+
+	this->m_nReflectDamageRatePvP[6] = GetPrivateProfileInt(section,"RFReflectDamageRatePvP",0,path);
+
+	#endif
+
+	//--
+
+	this->m_nReflectDamageRatePvM[0] = GetPrivateProfileInt(section,"DWReflectDamageRatePvM",0,path);
+
+	this->m_nReflectDamageRatePvM[1] = GetPrivateProfileInt(section,"DKReflectDamageRatePvM",0,path);
+
+	this->m_nReflectDamageRatePvM[2] = GetPrivateProfileInt(section,"FEReflectDamageRatePvM",0,path);
+
+	this->m_nReflectDamageRatePvM[3] = GetPrivateProfileInt(section,"MGReflectDamageRatePvM",0,path);
+
+	this->m_nReflectDamageRatePvM[4] = GetPrivateProfileInt(section,"DLReflectDamageRatePvM",0,path);
+
+	this->m_nReflectDamageRatePvM[5] = GetPrivateProfileInt(section,"SUReflectDamageRatePvM",0,path);
+
+	#if(GAMESERVER_UPDATE>=601)
+
+	this->m_nReflectDamageRatePvM[6] = GetPrivateProfileInt(section,"RFReflectDamageRatePvM",0,path);
+
+	#endif
+
 	#if(GAMESERVER_UPDATE>=701)
 
 	this->m_DuelElementalDamageRate = GetPrivateProfileInt(section,"DuelElementalDamageRate",0,path);
