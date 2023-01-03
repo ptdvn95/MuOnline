@@ -1085,6 +1085,9 @@ public:
 
 	int m_nReflectDamageRatePvP[MAX_CLASS];
 	int m_nReflectDamageRatePvM[MAX_CLASS];
+
+	int m_UnlimitedBoltArrowEnable;
+	short m_UnlimitedBoltArrowLevel;
 };
 
 extern CServerInfo gServerInfo;

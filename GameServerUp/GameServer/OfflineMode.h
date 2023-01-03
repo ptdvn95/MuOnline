@@ -159,6 +159,7 @@ public:
 	void OnHelperpAlreadyConnected(LPOBJ lpObj); // OK
 	void EmptyMuOffHelper(int aIndex);
 	void regresar(int aIndex);
+	void MuOffHelperRepair(int aIndex);
 };
 // ----------------------------------------------------------------------------------------------
 extern OfflineMode g_OfflineMode;

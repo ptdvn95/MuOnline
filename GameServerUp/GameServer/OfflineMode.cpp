@@ -339,10 +339,11 @@ void OfflineMode::Attack(int aIndex)
 
 	this->RenderAttack(aIndex);
 
+	this->MuOffHelperRepair(aIndex);
 	//this->PickUP(aIndex);
 }
 
-void MuOffHelperRepair(int aIndex)
+void OfflineMode::MuOffHelperRepair(int aIndex)
 {
 	if (!gObjIsConnectedGP(aIndex))
 	{
@@ -582,7 +583,8 @@ void OfflineMode::RenderAttack(int aIndex)	//-- INCOMPLETO
 	int caminar = 0;
 	int distance = (lpObj->HuntingRange > 6) ? 6 : lpObj->HuntingRange;
 	//-- SKILL ATTACK
-	CSkill * SkillRender = gSkillManager.GetSkill(lpObj, lpObj->SkillBasicID);
+	// CSkill * SkillRender = gSkillManager.GetSkill(lpObj, lpObj->SkillBasicID);
+	CSkill * SkillRender = ( lpObj->Life < (( lpObj->MaxLife * lpObj->RecoveryDrainPercent) / 100) && lpObj->RecoveryDrainOn != 0) ? gSkillManager.GetSkill(lpObj, SKILL_DRAIN_LIFE) : gSkillManager.GetSkill(lpObj, lpObj->SkillBasicID);
 
 	if (SkillRender == 0)
 	{

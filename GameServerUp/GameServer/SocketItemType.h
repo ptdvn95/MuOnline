@@ -20,7 +20,7 @@ public:
 	void Load(char* path);
 	bool CheckSocketItemType(int index);
 	long GetSocketItemMaxSocket(int index);
-//private:
+private:
 	std::map<int,SOCKET_ITEM_TYPE_INFO> m_SocketItemTypeInfo;
 };
 

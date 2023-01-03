@@ -77,6 +77,17 @@ bool CAttack::Attack(LPOBJ lpObj,LPOBJ lpTarget,CSkill* lpSkill,bool send,BYTE f
 		return 0;
 	}
 
+	if(lpObj->Type == OBJECT_USER && lpTarget->Type == OBJECT_MONSTER)
+	{
+		if(OBJECT_RANGE(lpObj->SummonIndex) != 0)
+		{
+			if(lpObj->SummonIndex == lpTarget->Index)
+			{
+				return 0;
+			}
+		}
+	}
+
 	if (lpObj->Type == OBJECT_USER && lpTarget->Type == OBJECT_USER)
 	{
 		if(lpObj->DisablePvp == 1 || lpTarget->DisablePvp == 1)
@@ -180,7 +191,6 @@ bool CAttack::Attack(LPOBJ lpObj,LPOBJ lpTarget,CSkill* lpSkill,bool send,BYTE f
 	{
 		return 0;
 	}
-
 
 	if(lpTarget->Type == OBJECT_MONSTER)
 	{
@@ -1221,7 +1231,17 @@ bool CAttack::DecreaseArrow(LPOBJ lpObj) // OK
 		}
 		else
 		{
-			gItemManager.DecreaseItemDur(lpObj,1,1);
+			if(gServerInfo.m_UnlimitedBoltArrowEnable == 1)
+			{
+				if(lpObj->Level >= gServerInfo.m_UnlimitedBoltArrowLevel)
+				{
+					gItemManager.DecreaseItemDur(lpObj, 0, 0);
+				}
+			}
+			else
+			{
+				gItemManager.DecreaseItemDur(lpObj,1,1);
+			}
 		}
 	}
 
@@ -1233,7 +1253,17 @@ bool CAttack::DecreaseArrow(LPOBJ lpObj) // OK
 		}
 		else
 		{
-			gItemManager.DecreaseItemDur(lpObj,0,1);
+			if(gServerInfo.m_UnlimitedBoltArrowEnable == 1)
+			{
+				if(lpObj->Level >= gServerInfo.m_UnlimitedBoltArrowLevel)
+				{
+					gItemManager.DecreaseItemDur(lpObj,0,0);
+				}
+			}
+			else
+			{
+				gItemManager.DecreaseItemDur(lpObj,0,1);
+			}
 		}
 	}
 
@@ -1427,9 +1457,17 @@ void CAttack::HelperSprite(LPOBJ lpObj,LPOBJ lpTarget,int* damage) // OK
 
 				(*damage) = ((*damage)*(100+gServerInfo.m_SkeletonIncDamageConstA))/100;
 			}
+			else if(lpItem->m_Index == GET_ITEM(13,65)) // Maria
+			{
+				(*damage) = ((*damage)*(100-gServerInfo.m_MariaDecDamageConstA))/100;
+			}
 			//--------------------------- cosas de pet
 			else if (gCustomPet.CheckCustomPetByItem(lpItem->m_Index) != 0)
 			{
+				lpObj->Life -= 4;
+
+				GCLifeSend(lpObj->Index,0xFF,(int)lpObj->Life,lpObj->Shield);
+
 				(*damage) = ((*damage)*(100 + gCustomPet.GetCustomPetDamageRate(lpItem->m_Index))) / 100;
 			}
 			//----------------------------------
@@ -1547,6 +1585,10 @@ void CAttack::DamageSprite(LPOBJ lpObj,int damage) // OK
 	else if(lpItem->m_Index == GET_ITEM(13,123)) // Skeleton
 	{
 		lpItem->m_Durability -= (damage*(1.0f*DurabilityValue))/100;
+	}
+	else if(gCustomPet.CheckCustomPetByItem(lpItem->m_Index) != 0) // CustomPets
+	{
+		lpItem->m_Durability -= (damage*(1.0f*DurabilityValue)) / 100;
 	}
 	else
 	{

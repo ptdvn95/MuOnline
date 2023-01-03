@@ -2211,6 +2211,10 @@ bool CSkillManager::SkillGreaterLife(int aIndex,int bIndex,CSkill* lpSkill) // O
 
 	value1 += gMasterSkillTree.GetMasterSkillValue(lpObj,MASTER_SKILL_ADD_GREATER_LIFE_IMPROVED);
 
+	value1 += gMasterSkillTree.GetMasterSkillValue(lpObj,MASTER_SKILL_ADD_GREATER_LIFE_ENHANCED);
+
+	value1 += gMasterSkillTree.GetMasterSkillValue(lpObj,MASTER_SKILL_ADD_GREATER_LIFE_MASTERED);
+
 	#elif(GAMESERVER_UPDATE>=401)
 
 	value1 += gMasterSkillTree.GetMasterSkillValue(lpObj,lpSkill->m_index);

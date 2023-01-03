@@ -2261,6 +2261,10 @@ void CServerInfo::ReadCharacterInfo(char* section,char* path) // OK
 
 	#endif
 
+	this->m_UnlimitedBoltArrowEnable = GetPrivateProfileInt(section,"UnlimitedBoltArrowEnable",0,path);
+
+	this->m_UnlimitedBoltArrowLevel = GetPrivateProfileInt(section,"UnlimitedBoltArrowLevel",0,path);
+
 	//--
 
 	this->m_nReflectDamageRatePvM[0] = GetPrivateProfileInt(section,"DWReflectDamageRatePvM",0,path);
