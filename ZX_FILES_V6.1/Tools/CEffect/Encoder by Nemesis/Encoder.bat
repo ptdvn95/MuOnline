@@ -7,4 +7,3 @@ Encoder.exe CMapRenderMesh.txt CMapRenderMesh.bmd
 Encoder.exe CMapEffect.txt CMapEffect.bmd
 Encoder.exe CPetEffect.txt CPetEffect.bmd
 Encoder.exe CPetRenderMesh.txt CPetRenderMesh.bmd
-Encoder.exe CEffectRenderMesh.txt CEffectRenderMesh.bmd

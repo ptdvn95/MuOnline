@@ -14,9 +14,9 @@
 //10 -> Avatar Wings              (Wing402.bmd)                                 //
 //11 -> Orb Wings                 (Wing403.bmd)                                 //
 //12 -> Fall Wings                (Wing404.bmd)                                 //
-//13 --                                                                         //
+//13 -> Control Cloak             (Wing405.bmd)                                 //
 //14 -> The Wings                 (Wing406.bmd)                                 //
-//15 --                                                                         //
+//15 -> Referre Cloak             (Wing407.bmd)                                 //
 //16 -> Holyangel Sword           (HolyAngelSword.bmd)                          //
 //17 -> Holyangel Magic Sword     (HolyAngelMagicSword.bmd)                     //
 //18 -> Holyangel Scepter         (HolyAngelSepter.bmd)                         //
@@ -105,18 +105,157 @@
 //101 -> Magic Knight Shield      (hellnights.bmd)                              //
 //102 -> Wings of Hit             (GuncrasherWing3rd.bmd)                       //
 //103 -> Kit StylizedMoon(Kapocha)(K_StylizedMoonAxe.bmd,""ShortSword,""Sword)  //
-//104 -> Bloody wings             (GuncrasherWing4th.bmd)                       //
-//105 -> Cloak of Isolation       (Wing408.bmd)                                 //
 //------------------------------------------------------------------------------//             
 //      Type            Index           EffectIndex				//
 //------------------------------------------------------------------------------//
-	12		167		65
-	12		159		12
-	12		163		55
-	12		157		10
-	12		158		11
-	12		160		56
-	12		162		57
-	12		156		9
-	12		161		14
+	0			29				92						//Sonic
+	0			36				92						//Siclone
+	0			37				93						//blastbreak
+	2			20				94						//Horn
+	3			12				95						//MagmaSpear
+	4			25				96						//Angelic
+	5			35				97						//Miracle
+	6			22				98						//Lazy
+	6			23				99						//Light
+	6			24				100						//Dark
+	6			25				101						//Magic
+	//------------------------------------------------------------------------------//
+	0			81				82						//Silver Heart Sword
+	0			82				83						//Silver Heart Magic Sword
+	0			83				84						//Silver Heart Claws	
+	0			418				84						//Silver Heart Claws
+	0			419				84						//Silver Heart Claws
+	2			42				86						//Silver Heart Scepter
+	2			43				87						//Silver Heart Mace	
+	3			30				88						//Silver Heart Lance
+	4			42				89						//Silver Heart Bow	
+	5			64				90						//Silver Heart Staff 	
+	5			65				91						//Silver Heart Stick	
+//------------------------------------------------------------------------------//
+	0			42				75						//Bloodangel Sword
+	0			44				76						//Bloodangel Sword Mg
+	0			46				77						//Bloodangel Claw
+	0			400				77						//Bloodangel Claw L
+	0			401				77						//Bloodangel Claw R
+	2			22				78						//Bloodangel Scepter
+	4			28				79						//Bloodangel Bow
+	5			41				80						//Bloodangel Staff
+	5			43				81						//Bloodangel Stick
+//--------------------------------------------------------------------------------------------------
+	5			49				0						//Blessed Divine Arch Staff
+	0			51				1						//Blessed Divine Arch Sword
+	4			30				2						//Blessed Divine Arch Crossbow
+	2			25				3						//Blessed Divine Arch Scepter
+	5			50				4						//Blessed Divine Arch Stick
+	0			61				5
+	0			408				5						//Blessed Arch's Absolute Claws
+	0			409				5						//Blessed Arch's Absolute Claws
+	3			27				6						//Blessed Divine Arch Lance
+	2			35				7						//Blessed Divine Arch Mace
+//--------------------------------------------------------------------------------------------------
+	0			57				16						//Holyangel Sword
+	0			58				17						//Holyangel Magic Sword
+	2			27				18						//Holyangel Scepter
+	5			53				19
+	5			54				20
+	0			52				66						//Pantera Claws
+	0			414				66						//Pantera Claws
+	0			415				66						//Pantera Claws
+	0			59				21						//Holyangel Claws
+	0			404				21
+	0			405				21
+	0			60				21						//Arch Claws
+	0			406				21						//Arch Claws
+	0			407				21						//Arch Claws
+//--------------------------------------------------------------------------------------------------
+	0			62				22						//Soul Sword
+	0			63				23						//Soul Magic Sword
+	4			38				24
+	5			55				25
+	5			56				26
+	0			64				27						//Soul Claws
+	0			410				27						//Soul Claws
+	0			411				27						//Soul Claws
+//--------------------------------------------------------------------------------------------------
+	0			78				28						//Blue Eyes Sword
+	0			79				29						//Blue Eyes Magic Sword
+	2			40				30						//Blue Eye Scepter
+	4			40				31
+	5			61				32
+	5			62				33
+	0			80				34						//Blue Eyes Claws
+	0			412				34						//Blue Eyes Claws
+	0			413				34						//Blue Eyes Claws
+//--------------------------------------------------------------------------------------------------
+	4			31				35						//Darkangel Bow
+	3			24				36						//Darkangel Lance
+	2			33				37						//Darkangel Runic Mace
+	5			51				38						//Darkangel Staff
+	0			55				39						//Darkangel Magic Sword
+	0			54				41						//Darkangel Sword
+//--------------------------------------------------------------------------------------------------
+	2			38				42						//Holyangel Rune Mace
+	3			25				43						//Holyangel Lance
+	3			28				45						//Soul Lance
+	2			39				46						//Soul Rune Mace
+	3			29				49						//Blue Eye Lance
+	2			41				50						//Blue Eye Mace
+//--------------------------------------------------------------------------------------------------
+    12          153             67                      //67 -> Wing of Conqueror 
+	12			156				9                       //9  -> Heavenly Wings
+	12			157				10                      //10 -> Avatar Wings  
+	12			158				11                      //11 -> Orb Wings     
+	12			159				12                      //12 -> Fall Wings    
+    12          160             56                      //13 -> Control Cloak
+    12          161             14                      //14 -> The Wings    
+    12          162             57                      //15 -> Referre Cloak
+    12          163             58                      //58 -> Wings of Power
+    12          167             65                      //65 -> Maya's Wings(MuOrigin)
+    12          171             51                      //
+    12          172             52                      //
+    12          173             53                      //
+    12          174             54                      //
+	12			175				102						//Wing of Hit
+//----------------------------------------------------------------------------------------------------
+	6			50				59						//59 -> Bloodangel Shield
+	6			51				60						//60 -> Darkangel Shield
+	6			52				61						//61 -> Holyangel Shield
+	6			53				62						//62 -> Awakening Shield
+	6			54				63						//63 -> Blueeye Shield
+	6			55				64						//64 -> Silverheart Shield
+//Mix--------------------------------------------------------------------------------------------------
+	13			179				9						//Socket Upgrade Note
+	13			152				9						//Sealed Stone Shard
+	13			153				9						//Holyangel Spirit
+	13			175				9						//Awakening
+	13			173				9						//Cold Marriage
+	13			178				9						//Ancestral Spirit
+	13			150				51						//Steel of Heaven
+	13			151				9						//Archangel's Hammer
+	13			154				9						//Darkangel Anvil
+	13			155				9						//Holyangel Anvil
+	13			176				9						//Soul Moru
+	13			177				9						//Soul Moru
+	13			174				9						//Blue Eye Anvil
+	13			165				9						//Garuda's Flame	
+	13			166				9						//Garuda's Feather	
+	13			167				9						//Golden Sentence			
+	13			168				9						//Greater Spirit Stone		
+	13			169				9						//Greater Spirit Stone		
+	13			170				9						//Greater Spirit Stone		
+	14			244				9
+	14			245				9
+	14			246				9
+	14			247				9
+	14			248				9
+	14			249				9
+	14			251				9
+	14			250				9
+	14			252				9
+	13			180				65
+	13			181				65
+	13			182				65
+	13			183				65
+	13			184				65
+	14			202				9
 end
