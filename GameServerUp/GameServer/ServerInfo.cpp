@@ -2265,6 +2265,10 @@ void CServerInfo::ReadCharacterInfo(char* section,char* path) // OK
 
 	this->m_UnlimitedBoltArrowLevel = GetPrivateProfileInt(section,"UnlimitedBoltArrowLevel",0,path);
 
+	this->m_PoisonDamageDWRate = GetPrivateProfileInt(section,"PoisonDamageDWRate",0,path);
+
+	this->m_PoisonDamageDWTime = GetPrivateProfileInt(section,"PoisonDamageDWTime ",0,path);
+
 	//--
 
 	this->m_nReflectDamageRatePvM[0] = GetPrivateProfileInt(section,"DWReflectDamageRatePvM",0,path);

@@ -14,6 +14,7 @@
 #include "Party.h"
 #include "Util.h"
 #include "Viewport.h"
+#include "ServerInfo.h"
 
 CEffectManager gEffectManager;
 //////////////////////////////////////////////////////////////////////
@@ -1643,7 +1644,8 @@ void CEffectManager::PeriodicEffect(LPOBJ lpObj,CEffect* lpEffect) // OK
 	switch(lpEffect->m_index)
 	{
 		case EFFECT_POISON:
-			damage = (((damage=(int)((lpObj->Life*lpEffect->m_value[2])/100))>lpEffect->m_value[3])?((lpEffect->m_value[3]==0)?damage:lpEffect->m_value[3]):damage);
+			// damage = (((damage=(int)((lpObj->Life*lpEffect->m_value[2])/100))>lpEffect->m_value[3])?((lpEffect->m_value[3]==0)?damage:lpEffect->m_value[3]):damage);
+			damage = (((damage=(int)((lpObj->Life*lpEffect->m_value[2])/gServerInfo.m_PoisonDamageDWRate))>lpEffect->m_value[3])?((lpEffect->m_value[3]==0)?damage:lpEffect->m_value[3]):damage);
 			absorb = 0;
 			effect = 2;
 			break;
@@ -1653,7 +1655,8 @@ void CEffectManager::PeriodicEffect(LPOBJ lpObj,CEffect* lpEffect) // OK
 			effect = 3;
 			break;
 		case EFFECT_SAHAMUTT:
-			damage = MAKE_NUMBERDW(lpEffect->m_value[2],lpEffect->m_value[3]);
+			// damage = MAKE_NUMBERDW(lpEffect->m_value[2],lpEffect->m_value[3]);
+			damage = (((damage = (int)((lpObj->Life*lpEffect->m_value[2])/gServerInfo.m_PoisonDamageDWRate))>lpEffect->m_value[3]) ? ((lpEffect->m_value[3] == 0) ? damage : lpEffect->m_value[3]) : damage);
 			absorb = 0;
 			effect = 3;
 			break;
@@ -1678,12 +1681,13 @@ void CEffectManager::PeriodicEffect(LPOBJ lpObj,CEffect* lpEffect) // OK
 			effect = 3;
 			break;
 		case EFFECT_POISON_ARROW:
-			damage = (((damage=(int)((lpObj->Life*lpEffect->m_value[2])/100))>lpEffect->m_value[3])?((lpEffect->m_value[3]==0)?damage:lpEffect->m_value[3]):damage);
+			// damage = (((damage=(int)((lpObj->Life*lpEffect->m_value[2])/100))>lpEffect->m_value[3])?((lpEffect->m_value[3]==0)?damage:lpEffect->m_value[3]):damage);
+			damage = (((damage=(int)((lpObj->Life*lpEffect->m_value[2])/gServerInfo.m_PoisonDamageDWRate))>lpEffect->m_value[3])?((lpEffect->m_value[3]==0)?damage:lpEffect->m_value[3]):damage);
 			absorb = 0;
 			effect = 2;
 			break;
 		case EFFECT_POISON_ARROW_IMPROVED:
-			damage = (((damage=(int)((lpObj->Life*lpEffect->m_value[2])/100))>lpEffect->m_value[3])?((lpEffect->m_value[3]==0)?damage:lpEffect->m_value[3]):damage);
+			damage = (((damage=(int)((lpObj->Life*lpEffect->m_value[2])/gServerInfo.m_PoisonDamageDWRate))>lpEffect->m_value[3])?((lpEffect->m_value[3]==0)?damage:lpEffect->m_value[3]):damage);
 			absorb = 0;
 			effect = 2;
 			break;

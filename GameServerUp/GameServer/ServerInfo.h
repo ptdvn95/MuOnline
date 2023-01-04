@@ -1088,6 +1088,9 @@ public:
 
 	int m_UnlimitedBoltArrowEnable;
 	short m_UnlimitedBoltArrowLevel;
+
+	int m_PoisonDamageDWRate;
+	int m_PoisonDamageDWTime;
 };
 
 extern CServerInfo gServerInfo;
