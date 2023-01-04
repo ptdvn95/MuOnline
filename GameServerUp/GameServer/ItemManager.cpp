@@ -1772,6 +1772,11 @@ void CItemManager::ItemByteConvert(BYTE* lpMsg,CItem item) // OK
 	}
 #endif
 
+	if (item.IsSocketItem())
+	{
+		lpMsg[6] = 3;
+	}
+
 	memcpy(&lpMsg[7],item.m_SocketOption,MAX_SOCKET_OPTION);
 }
 
@@ -1893,18 +1898,18 @@ bool CItemManager::ConvertItemByte(CItem* lpItem,BYTE* lpMsg) // OK
 		memcpy(lpItem->m_SocketOption,&lpMsg[11],MAX_SOCKET_OPTION);
 	}
 
-//	if(lpItem->IsSocketItem() == 0 && lpItem->IsPentagramItem() == 0 && lpItem->IsPentagramJewel() == 0 && lpItem->IsPentagramMithril() == 0 && lpItem->IsMuunItem() == 0)
-//	{
-//		lpItem->m_JewelOfHarmonyOption = lpMsg[10];
-//
-//		lpItem->m_SocketOptionBonus = 0xFF;
-//	}
-//	else
-//	{
-//		lpItem->m_JewelOfHarmonyOption = 0;
-//
-//		lpItem->m_SocketOptionBonus = lpMsg[10];
-//	}
+	// if(lpItem->IsSocketItem() == 0 && lpItem->IsPentagramItem() == 0 && lpItem->IsPentagramJewel() == 0 && lpItem->IsPentagramMithril() == 0 && lpItem->IsMuunItem() == 0)
+	// {
+	// 	lpItem->m_JewelOfHarmonyOption = lpMsg[10];
+
+	// 	lpItem->m_SocketOptionBonus = 0xFF;
+	// }
+	// else
+	// {
+	// 	lpItem->m_JewelOfHarmonyOption = 0;
+
+	// 	lpItem->m_SocketOptionBonus = lpMsg[10];
+	// }
 
 	lpItem->m_JewelOfHarmonyOption = lpMsg[10];
 
@@ -2108,10 +2113,13 @@ int CItemManager::RepairItem(LPOBJ lpObj,CItem* lpItem,int slot,int type) // OK
 		return 0;
 	}
 
-	if (lpObj->Interface.type == INTERFACE_TRADE)  // FIX DUP ZEN BY MAXVOLL :D
+	//Fix Zen dupe[FIX13]
+	if (lpObj->Interface.type == INTERFACE_TRADE || lpObj->Interface.type == INTERFACE_WAREHOUSE || lpObj->Interface.type == INTERFACE_TRADE && lpObj->Interface.type == INTERFACE_SHOP || lpObj->Interface.type == INTERFACE_WAREHOUSE && lpObj->Interface.type == INTERFACE_SHOP || lpObj->Interface.type == INTERFACE_TRADE && lpObj->Interface.type == INTERFACE_WAREHOUSE && lpObj->Interface.type == INTERFACE_SHOP)
 	{
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, "Hành động không cho phép.");
 		return 0;
 	}
+	//--
 
 	int money = this->GetItemRepairMoney(lpItem,type);
 
@@ -2222,6 +2230,13 @@ BYTE CItemManager::MoveItemToInventoryFromInventory(LPOBJ lpObj,BYTE SourceSlot,
 
 	if(this->InventoryAddItemStack(lpObj,SourceSlot,TargetSlot) != 0)
 	{
+		return 0xFF;
+	}
+
+	//itemLock
+	if (lpObj->Lock > 0)
+	{
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 2, 0, gMessage.GetMessage(778));
 		return 0xFF;
 	}
 
@@ -3315,6 +3330,39 @@ void CItemManager::CGItemGetRecv(PMSG_ITEM_GET_RECV* lpMsg,int aIndex) // OK
 		gAchievements.PickUpZen(aIndex, lpItem->m_BuyMoney);
 #endif
 		gMap[lpObj->Map].ItemGive(aIndex, index);
+		// When party zen is shared
+		if (gParty.IsParty(gObj[aIndex].PartyNumber) == 1)
+			{
+				PARTY_INFO* lpParty = &gParty.m_PartyInfo[lpObj->PartyNumber];
+				int money = lpItem->m_BuyMoney / lpParty->Count;
+				for (int n = 0; n < MAX_PARTY_USER; n++)
+				{
+					if (OBJECT_RANGE(lpParty->Index[n]) != 0)
+					{
+						if (lpObj->Map == gObj[lpParty->Index[n]].Map && gObjCalcDistance(lpObj, &gObj[lpParty->Index[n]]) < MAX_PARTY_DISTANCE)
+						{
+							if (gObjCheckMaxMoney(lpParty->Index[n], money) == 0)
+							{
+								gObj[lpParty->Index[n]].Money = MAX_MONEY;
+							}
+							else
+							{
+								gObj[lpParty->Index[n]].Money += money;
+							}
+
+							pMsg.result = 0xFE;
+
+							pMsg.ItemInfo[0] = SET_NUMBERHB(SET_NUMBERHW(gObj[lpParty->Index[n]].Money));
+							pMsg.ItemInfo[1] = SET_NUMBERLB(SET_NUMBERHW(gObj[lpParty->Index[n]].Money));
+							pMsg.ItemInfo[2] = SET_NUMBERHB(SET_NUMBERLW(gObj[lpParty->Index[n]].Money));
+							pMsg.ItemInfo[3] = SET_NUMBERLB(SET_NUMBERLW(gObj[lpParty->Index[n]].Money));
+
+							DataSend(lpParty->Index[n], (BYTE*)&pMsg, pMsg.header.size);
+						}
+					}
+				}
+				return;
+			}
 
 		if (gObjCheckMaxMoney(aIndex, lpItem->m_BuyMoney) == 0)
 		{
@@ -3502,9 +3550,20 @@ void CItemManager::CGItemDropRecv(PMSG_ITEM_DROP_RECV* lpMsg,int aIndex) // OK
 		return;
 	}
 
-	if(gItemBagManager.DropItemByItemIndex(lpItem->m_Index,lpItem->m_Level,lpObj,lpObj->Map,lpMsg->x,lpMsg->y) != 0)
+	int DropItemIndex = gItemBagManager.DropItemByItemIndex(lpItem->m_Index,lpItem->m_Level,lpObj,lpObj->Map,lpMsg->x,lpMsg->y);
+
+	if (DropItemIndex != 0)
 	{
-		this->InventoryDelItem(aIndex,lpMsg->slot);
+		if (DropItemIndex == 2)
+		{
+			gNotice.GCNoticeSend(aIndex, 1, 0, 0, 0, 0, 0, gMessage.GetMessage(824));
+			DataSend(aIndex, (BYTE*)&pMsg, pMsg.header.size);
+			return;
+		}
+		else
+		{
+			this->InventoryDelItem(aIndex,lpMsg->slot);
+		}
 	}
 	else if(lpItem->m_Index == GET_ITEM(13,7) && (lpItem->m_Level == 0 || lpItem->m_Level == 1)) // Siege Summon
 	{
@@ -4079,9 +4138,19 @@ void CItemManager::CGItemUseRecv(PMSG_ITEM_USE_RECV* lpMsg,int aIndex) // OK
 	}
 	else if((lpItem->m_Index >= GET_ITEM(14,0) && lpItem->m_Index <= GET_ITEM(14,6)) || (lpItem->m_Index >= GET_ITEM(14,35) && lpItem->m_Index <= GET_ITEM(14,40)) || lpItem->m_Index == GET_ITEM(14,70) || lpItem->m_Index == GET_ITEM(14,71) || lpItem->m_Index == GET_ITEM(14,133))
 	{
-		if(gObjectManager.CharacterUsePotion(lpObj,lpItem) != 0)
+		DWORD CurrentTick = GetTickCount();
+		// ----
+		if (CurrentTick - gObj[aIndex].m_PotionTick < 200)
 		{
-			this->DecreaseItemDur(lpObj,lpMsg->SourceSlot,1);
+			return;
+		}
+		else
+		{
+			if (gObjectManager.CharacterUsePotion(lpObj, lpItem) != 0)
+			{
+				lpObj->m_PotionTick = GetTickCount();
+				this->DecreaseItemDur(lpObj, lpMsg->SourceSlot, 1);
+			}
 		}
 	}
 	else if(lpItem->m_Index == GET_ITEM(14,7)) // Siege Potion

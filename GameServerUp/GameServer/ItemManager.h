@@ -210,7 +210,7 @@ struct ITEM_INFO
 	int HaveSerial;
 	int HaveOption;
 	int DropItem;
-	char Name[32];
+	char Name[100];
 	int Level;
 	int DamageMin;
 	int DamageMax;

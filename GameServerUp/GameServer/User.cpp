@@ -1235,7 +1235,7 @@ void gObjCalcExperience(LPOBJ lpObj) // OK
 
 	lpObj->NextExperience = gLevelExperience[((lpObj->Level>=MAX_CHARACTER_LEVEL)?MAX_CHARACTER_LEVEL:lpObj->Level)];
 
-//	gMasterSkillTree.CalcMasterLevelNextExperience(lpObj);
+	gMasterSkillTree.CalcMasterLevelNextExperience(lpObj);
 }
 
 bool gObjGetRandomFreeLocation(int map,int* ox,int* oy,int tx,int ty,int count) // OK
@@ -3090,6 +3090,10 @@ bool gObjInventorySearchSerialNumber(LPOBJ lpObj,DWORD serial) // OK
 		if(lpObj->Inventory[n].m_Serial != 0 && lpObj->Inventory[n].m_Serial == serial && (count++) > 0)
 		{
 			gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(482));
+			// Delete dupe item
+			gItemManager.InventoryDelItem(lpObj->Index, n);
+			gItemManager.GCItemDeleteSend(lpObj->Index, n, 1);
+			// Disconnect player
 			gObjUserKill(lpObj->Index);
 			return 0;
 		}
@@ -3107,6 +3111,10 @@ bool gObjWarehouseSearchSerialNumber(LPOBJ lpObj,DWORD serial) // OK
 		if(lpObj->Warehouse[n].m_Serial != 0 && lpObj->Warehouse[n].m_Serial == serial && (count++) > 0)
 		{
 			gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(482));
+			// Delete dupe item
+			gItemManager.InventoryDelItem(lpObj->Index, n);
+			gItemManager.GCItemDeleteSend(lpObj->Index, n, 1);
+			// Disconnect player
 			gObjUserKill(lpObj->Index);
 			return 0;
 		}
@@ -3422,6 +3430,11 @@ void gObjSecondProc()
 				{
 					GCCloseClientSend(lpObj->Index,2);
 				}
+				//Fix GodMode Hack
+				else
+				{
+					GCCloseClientSend(lpObj->Index,2);
+				}
 			}
 			else
 			{
@@ -3442,6 +3455,7 @@ void gObjSecondProc()
 		}
 		if(lpObj->Connected > OBJECT_LOGGED &&	lpObj->Type == OBJECT_USER)
 		{
+			// gBProtect.BQuetDupe(lpObj->Index); //Scan Dupe
 			if(GetTickCount() - lpObj->AutoSaveTime > 600000)
 			{
 				GDCharacterInfoSaveSend(lpObj->Index);

@@ -491,6 +491,7 @@ struct OBJECTSTRUCT
 	DWORD ConnectTickCount;
 	DWORD ClientTickCount;
 	DWORD ServerTickCount;
+	DWORD m_PotionTick;
 	BYTE CheckTickCount;
 	DWORD PostTime;
 	DWORD TimeCount;

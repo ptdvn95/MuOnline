@@ -514,6 +514,7 @@ bool CJewelOfHarmonyOption::AddSmeltStoneOption(LPOBJ lpObj,int SourceSlot,int T
 
 	int ItemOptionLevel = (lpItem->m_JewelOfHarmonyOption & 0x0F);
 
+	// if(ItemOptionLevel >= lpItem->m_Level || ItemOptionLevel >= gServerInfo.CapDoItemDongVang)
 	if(ItemOptionLevel >= lpItem->m_Level || ItemOptionLevel >= 13)
 	{
 		return 0;
@@ -610,6 +611,7 @@ bool CJewelOfHarmonyOption::AddJewelOfElevationOption(LPOBJ lpObj,int SourceSlot
 		return 0;
 	}
 
+	// int ItemOptionLevel = ((lpItem->m_Level>gServerInfo.CapDoItemDongVang) ? gServerInfo.CapDoItemDongVang : lpItem->m_Level);
 	int ItemOptionLevel = ((lpItem->m_Level>13)?13:lpItem->m_Level);
 
 	if((GetLargeRand()%100) < gServerInfo.m_HarmonySuccessRate[lpObj->AccountLevel])
