@@ -41,7 +41,7 @@ end
 59		6174		2		1		//Jewel Bless
 59		6175		2		1		//Jewel Soul
 59		6281		2		1		//Jewel Creation
-59		6826		0		1		//Lesser Spirit Stone
+59		6826		0		1		//Greater Spirit Stone
 //Index	ItemMix		level	Count
 //-- Cloak Of Death                   lineas del mix: 85 a 88
 100     6159		0		1		//Jewel Chaos simple

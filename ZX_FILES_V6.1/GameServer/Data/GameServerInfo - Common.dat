@@ -10,7 +10,7 @@ ServerLock = 0
 ServerPort = 55901
 ServerVersion = 1.04.05
 ServerSerial = TbYehR2hFUPBKgZj
-ServerMaxUserNumber = 100
+ServerMaxUserNumber = 1000
 ServerMinLevel = 0
 ServerMaxLevel = 0
 ServerMinReset = 0
@@ -579,6 +579,12 @@ DisableWingMixSU = 0
 DisableWingMixRF = 0
 
 ;==================================================
+; Disable Wings 4 Class Mix
+;==================================================
+DisableWing4MixSU = 0
+DisableWing4MixRF = 0
+
+;==================================================
 ; Pk Can Enter in events
 ; Permitir Pk entrar nos eventos
 ;==================================================
@@ -622,3 +628,24 @@ EnableComboToAllSwitch = 1
 ; Socket + Joh
 ;==================================================
 SocketItemAcceptHarmonySwitch = 1
+
+;==================================================
+; Reward Online Hours
+;==================================================
+OnlineRewardCoinsDelay = 0
+OnlineRewardWCoinCValue_AL0 = 0
+OnlineRewardWCoinCValue_AL1 = 0
+OnlineRewardWCoinCValue_AL2 = 0
+OnlineRewardWCoinCValue_AL3 = 0
+OnlineRewardWCoinPValue_AL0 = 0
+OnlineRewardWCoinPValue_AL1 = 0
+OnlineRewardWCoinPValue_AL2 = 0
+OnlineRewardWCoinPValue_AL3 = 0
+OnlineRewardGoblinPointValue_AL0 = 0
+OnlineRewardGoblinPointValue_AL1 = 0
+OnlineRewardGoblinPointValue_AL2 = 0
+OnlineRewardGoblinPointValue_AL3 = 0
+OnlineRewardRuudValue_AL0 = 0
+OnlineRewardRuudValue_AL1 = 0
+OnlineRewardRuudValue_AL2 = 0
+OnlineRewardRuudValue_AL3 = 0

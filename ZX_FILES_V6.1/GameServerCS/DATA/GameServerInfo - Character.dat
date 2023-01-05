@@ -429,3 +429,27 @@ MGDefenseConstA = 4
 DLDefenseConstA = 7
 SUDefenseConstA = 3
 RFDefenseConstA = 8
+
+;==================================================
+; Character Class Reflect Damage Rate Settings
+;==================================================
+DWReflectDamageRatePvP = 100
+DKReflectDamageRatePvP = 100
+FEReflectDamageRatePvP = 100
+MGReflectDamageRatePvP = 100
+DLReflectDamageRatePvP = 100
+SUReflectDamageRatePvP = 100
+RFReflectDamageRatePvP = 100
+DWReflectDamageRatePvM = 100
+DKReflectDamageRatePvM = 100
+FEReflectDamageRatePvM = 100
+MGReflectDamageRatePvM = 100
+DLReflectDamageRatePvM = 100
+SUReflectDamageRatePvM = 100
+RFReflectDamageRatePvM = 100
+
+;==================================================
+; Elf Class Unlimited Bolt And Arrow Level
+;==================================================
+UnlimitedBoltArrowEnable = 1
+UnlimitedBoltArrowLevel = 10

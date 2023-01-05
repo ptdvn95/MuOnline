@@ -56,7 +56,7 @@ end
 	  2      250       250       250	     "Đẹp trai nhất cọt"										"raika"
 	  3      250       250       250	     "Điều gì luôn đến, nhưng không bao giờ đến?"				"ngay mai"
 	  4      250       250       250	     "Vận tốc ánh sáng xấp xỉ là bao nhiêu m/s?"				"300000000"
-	  5      250       250       250	     "25x2+3*3+15*2+5*2 = ?"									"69"
+	  5      250       250       250	     "25x2+3*3+5*2 = ?"									"69"
 	  6      250       250       250	     "Cái gì của người con gái lúc nào cũng ẩm ướt?"			"cai luoi"
 	  7      250       250       250	     "Môn thể thao nào có cả vua lẫn hoàng hậu?"				"co vua"
 	  8      250       250       250	     "Kiến nào không bao giờ ngủ?"								"kien thuc"

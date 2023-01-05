@@ -385,4 +385,15 @@
 12        97            10            6825           6825           *             *             *             *               //Decoration Ring
 12        97            10            6826           6826           *             *             *             *               //Blessed Decoration Ring
 13        122           2             6693           6693           *             *             *             4               //Fenrir
+//Index   OptionIndex   OptionValue   ItemMinIndex   ItemMaxIndex   ItemOption1   ItemOption2   ItemOption3   ItemNewOption   Comment
+
+1         84           5              6300           6308           *             1             1             *               //Wings of Storm
+2         85           1              6300           6308           *             1             1             *               //Wings of Storm
+2         80           4              6300           6308           *             1             1             16               //Wings of Storm
+2         83           4              6300           6308           *             1             1             32               //Wings of Storm
+3         102           5             6300           6308           *             1             1             1               //Wings of Storm
+4         109           5             6300           6308           *             1             1             2               //Wings of Storm
+5         110           5             6300           6308           *             1             1             4               //Wings of Storm
+6         111           5             6300           6308           *             1             1             8               //Wings of Storm
+
 end

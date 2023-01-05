@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Processes>
-  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\ZX_FILES_V6.1\DataServer\DataServer.exe" Parameters="" />
-  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\ZX_FILES_V6.1\ConnectServer\ConnectServer.exe" Parameters="" />
-  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\ZX_FILES_V6.1\JoinServer\JoinServer.exe" Parameters="" />
-  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\ZX_FILES_V6.1\GameServer\GameServer.exe" Parameters="" />
-  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\ZX_FILES_V6.1\GameServerCS\GameServerCS.exe" Parameters="" />
-  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\ZX_FILES_V6.1\[AH]InfiniteServer\InfiniteServer.exe" Parameters="" />
+  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\DataServer\DataServer.exe" Parameters="" />
+  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\JoinServer\JoinServer.exe" Parameters="" />
+  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\ConnectServer\ConnectServer.exe" Parameters="" />
+  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\GameServer\GameServer.exe" Parameters="" />
+  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\GameServerCS\GameServerCS.exe" Parameters="" />
+  <Process Run="True" Delay="1000" Path="F:\MU\ZxGames V6.0 Full Premium\Source_6.1 (Origin)\[AH]InfiniteServer\InfiniteServer.exe" Parameters="" />
 </Processes>

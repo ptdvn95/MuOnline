@@ -276,6 +276,14 @@ Wing3MixRate_AL2 = -1
 Wing3MixRate_AL3 = -1
 
 ;==================================================
+; Wing4 Mix Settings
+;==================================================
+Wing4MixRate_AL0 = 90
+Wing4MixRate_AL1 = 90
+Wing4MixRate_AL2 = 90
+Wing4MixRate_AL3 = 90
+
+;==================================================
 ; Socket Item Create Seed Mix Settings
 ;==================================================
 SocketItemCreateSeedMixRate_AL0 = 100
