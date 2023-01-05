@@ -6,18 +6,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cryptdll", "cryptdll.vcxpro
 		{5E550F4D-0D30-32E4-DA79-5C160DEC0838} = {5E550F4D-0D30-32E4-DA79-5C160DEC0838}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cryptest", "cryptest.vcxproj", "{5E550F4D-0D30-32E4-DA79-5C160DEC0838}"
-	ProjectSection(ProjectDependencies) = postProject
-		{2EA662C8-C83C-71D1-19DA-AFA4D9E66421} = {2EA662C8-C83C-71D1-19DA-AFA4D9E66421}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cryptlib", "cryptlib.vcxproj", "{2EA662C8-C83C-71D1-19DA-AFA4D9E66421}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dlltest", "dlltest.vcxproj", "{824DD802-5EB2-03DB-AF07-3F16EA652A3B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{DF245565-0C65-4937-3B14-3F97632EC72D} = {DF245565-0C65-4937-3B14-3F97632EC72D}
-	EndProjectSection
-EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
