@@ -203,6 +203,7 @@ lpViewObj CCustomMonster::ShowMonster(int MonsterID, int a2, int a3, int a4)
 
 	Object->m_Model.Scale = lpInfo->Size;
 	
+	CCustomMonster::SetMainAttribute(Object, MonsterID);
 
 	return Object;
 }

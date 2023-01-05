@@ -992,6 +992,12 @@ void CSCharacterS13::Load()
 	SetDouble((PVOID)(0xD25508), 1);
 	SetDword((PVOID)(0x004D6C73), 0);
 	SetByte((PVOID)(0x00402106), 0);
+
+	// Remove black bar ver 2
+	SetDword((PVOID)(0x004D7A0E), 480);
+	SetByte((PVOID)(0x004D7A18), 0);
+	SetDword((PVOID)(0x004D7179), 480);
+	SetByte((PVOID)(0x004D7183), 0);
 }
 
 

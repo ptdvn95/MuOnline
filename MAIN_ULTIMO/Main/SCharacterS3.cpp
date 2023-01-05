@@ -3,6 +3,7 @@
 #include "Defines.h"
 #include "TMemory.h"
 #include "import.h"
+#include "Util.h"
 
 __declspec(naked) void SelectCharacterMap()
 {
@@ -244,6 +245,28 @@ __declspec(naked) void ThuNhoThuCuoi()
 	}
 }
 
+// remove black bar ver 1
+void sub_6363D0(GLint x, int y, GLsizei Width, GLsizei Height)
+{
+	*(DWORD*)0x87933F4 = x;
+	*(DWORD*)0x87933F0 = y;
+	*(DWORD*)0x87933EC = Width;
+	*(DWORD*)0x87933E8 = Height;
+
+	if(SceneFlag == 2)
+	{
+		glViewport(x, y, Width, Height);
+	}
+	else if(SceneFlag == 4)
+	{
+		glViewport(x, y - y, Width, Height);
+	}
+	else if(SceneFlag == 5)
+	{
+		glViewport(x, pWinHeight - (Height + y), Width, Height);
+	}
+}
+
 void SCharacterS3()
 {
 	SetRange((LPVOID)0x004D6C26, 5, ASM::NOP);
@@ -291,4 +314,6 @@ void SCharacterS3()
 
 	// fix mount size ver 2
 	SetByte((LPVOID)0x00503834, 0xEB);
+
+	SetCompleteHook(0xE8, 0x00636505, &sub_6363D0);
 }
