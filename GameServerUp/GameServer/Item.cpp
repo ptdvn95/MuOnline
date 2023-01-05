@@ -894,26 +894,26 @@ void CItem::Convert(int index, BYTE Option1, BYTE Option2, BYTE Option3, BYTE Ne
 		if (Option2 != 0)
 		{
 			this->m_Option2 = Option2;
-			this->m_SpecialIndex[SPECIAL_OPTION2] = ITEM_OPTION_ADD_CRITICAL_DAMAGE_RATE;
-			this->m_SpecialValue[SPECIAL_OPTION2] = 5;
+			this->m_SpecialIndex[SPECIAL_OPTION2] = this->m_SpecialIndex[SPECIAL_OPTION2];
+			this->m_SpecialValue[SPECIAL_OPTION2] = this->m_SpecialValue[SPECIAL_OPTION2];
 		}
 
 		if (Option3 != 0)
 		{
 			this->m_Option3 = Option3;
 			this->m_SpecialIndex[SPECIAL_OPTION3] = gCustomWing.GetCustomWingOptionIndex(this->m_Index, 0);
-			this->m_SpecialValue[SPECIAL_OPTION3] = gCustomWing.GetCustomWingOptionValue(this->m_Index, 0);
+			this->m_SpecialValue[SPECIAL_OPTION3] = gCustomWing.GetCustomWingOptionValue(this->m_Index, 0) * Option3;
 
 			if ((this->m_NewOption & 16) != 0)
 			{
 				this->m_SpecialIndex[SPECIAL_OPTION3] = gCustomWing.GetCustomWingOptionIndex(this->m_Index, 1);
-				this->m_SpecialValue[SPECIAL_OPTION3] = gCustomWing.GetCustomWingOptionValue(this->m_Index, 1);
+				this->m_SpecialValue[SPECIAL_OPTION3] = gCustomWing.GetCustomWingOptionValue(this->m_Index, 1) * Option3;
 			}
 
 			if ((this->m_NewOption & 32) != 0)
 			{
 				this->m_SpecialIndex[SPECIAL_OPTION3] = gCustomWing.GetCustomWingOptionIndex(this->m_Index, 2);
-				this->m_SpecialValue[SPECIAL_OPTION3] = gCustomWing.GetCustomWingOptionValue(this->m_Index, 2);
+				this->m_SpecialValue[SPECIAL_OPTION3] = gCustomWing.GetCustomWingOptionValue(this->m_Index, 2) * Option3;
 			}
 		}
 
