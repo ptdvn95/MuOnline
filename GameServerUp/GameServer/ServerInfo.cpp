@@ -935,6 +935,42 @@ void CServerInfo::ReadCashShopInfo(char* section,char* path) // OK
 
 	this->m_CashShopGoblinPointValue[3] = GetPrivateProfileInt(section,"CashShopGoblinPointValue_AL3",0,path);
 
+	//Auto Reward Online Users System
+	this->m_CashShopCoinsDelay = GetPrivateProfileInt(section,"OnlineRewardCoinsDelay",0,path);
+
+	this->m_CashShopWCoinCValue[0] = GetPrivateProfileInt(section,"OnlineRewardWCoinCValue_AL0",0,path);
+
+	this->m_CashShopWCoinCValue[1] = GetPrivateProfileInt(section,"OnlineRewardWCoinCValue_AL1",0,path);
+
+	this->m_CashShopWCoinCValue[2] = GetPrivateProfileInt(section,"OnlineRewardWCoinCValue_AL2",0,path);
+
+	this->m_CashShopWCoinCValue[3] = GetPrivateProfileInt(section,"OnlineRewardWCoinCValue_AL3",0,path);
+
+	this->m_CashShopWCoinPValue[0] = GetPrivateProfileInt(section,"OnlineRewardWCoinPValue_AL0",0,path);
+
+	this->m_CashShopWCoinPValue[1] = GetPrivateProfileInt(section,"OnlineRewardWCoinPValue_AL1",0,path);
+
+	this->m_CashShopWCoinPValue[2] = GetPrivateProfileInt(section,"OnlineRewardWCoinPValue_AL2",0,path);
+
+	this->m_CashShopWCoinPValue[3] = GetPrivateProfileInt(section,"OnlineRewardWCoinPValue_AL3",0,path);
+
+	this->m_CashShopGoblinPointValue[0] = GetPrivateProfileInt(section,"OnlineRewardGoblinPointValue_AL0",0,path);
+
+	this->m_CashShopGoblinPointValue[1] = GetPrivateProfileInt(section,"OnlineRewardGoblinPointValue_AL1",0,path);
+
+	this->m_CashShopGoblinPointValue[2] = GetPrivateProfileInt(section,"OnlineRewardGoblinPointValue_AL2",0,path);
+
+	this->m_CashShopGoblinPointValue[3] = GetPrivateProfileInt(section,"OnlineRewardGoblinPointValue_AL3",0,path);
+
+	this->m_CashShopRuudValue[0] = GetPrivateProfileInt(section,"OnlineRewardRuudValue_AL0",0,path);
+
+	this->m_CashShopRuudValue[1] = GetPrivateProfileInt(section,"OnlineRewardRuudValue_AL1",0,path);
+
+	this->m_CashShopRuudValue[2] = GetPrivateProfileInt(section,"OnlineRewardRuudValue_AL2",0,path);
+
+	this->m_CashShopRuudValue[3] = GetPrivateProfileInt(section,"OnlineRewardRuudValue_AL3",0,path);
+	//--
+
 	#endif
 }
 
@@ -3731,6 +3767,9 @@ void CServerInfo::ReadCommonInfo(char* section,char* path) // OK
 	this->m_DisableWingMixDL	= GetPrivateProfileInt(section,"DisableWingMixDL",0,path);
 	this->m_DisableWingMixSU	= GetPrivateProfileInt(section,"DisableWingMixSU",0,path);
 	this->m_DisableWingMixRF	= GetPrivateProfileInt(section,"DisableWingMixRF",0,path);
+
+	this->m_DisableWing4MixSU	= GetPrivateProfileInt(section,"DisableWing4MixSU",0,path);
+	this->m_DisableWing4MixRF	= GetPrivateProfileInt(section,"DisableWing4MixRF",0,path);
 
 	//Pk enter in events
 	this->m_PkCanEnterBC	= GetPrivateProfileInt(section,"PkCanEnterBC",0,path);

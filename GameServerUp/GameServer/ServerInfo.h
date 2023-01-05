@@ -198,7 +198,13 @@ public:
 	int m_CashShopBannerVersion2;
 	int m_CashShopBannerVersion3;
 	int m_CashShopGoblinPointDelay;
+	//--Reward Online Hours
+	int m_CashShopCoinsDelay;
+	int m_CashShopWCoinCValue[MAX_ACCOUNT_LEVEL];
+	int m_CashShopWCoinPValue[MAX_ACCOUNT_LEVEL];
 	int m_CashShopGoblinPointValue[MAX_ACCOUNT_LEVEL];
+	int m_CashShopRuudValue[MAX_ACCOUNT_LEVEL];
+	//--
 	int m_GensSystemSwitch;
 	int m_GensSystemGuildLock;
 	int m_GensSystemPartyLock;
@@ -961,6 +967,8 @@ public:
 	int m_DisableWingMixDL;
 	int m_DisableWingMixSU;
 	int m_DisableWingMixRF;
+	int m_DisableWing4MixSU;
+	int m_DisableWing4MixRF;
 	//Custom Rank User 
 	int m_CustomRankUserSwitch;
 	int m_CustomRankUserType;

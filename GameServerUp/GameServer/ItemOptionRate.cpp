@@ -376,6 +376,11 @@ bool CItemOptionRate::MakeNewOption(int ItemIndex,int value,BYTE* option) // OK
 		MaxNewOption = 4;
 	}
 
+	if(ItemIndex >= GET_ITEM(12,156) && ItemIndex <= GET_ITEM(12,163)) // 4th Wings
+	{
+		MaxNewOption = 4;
+	}
+
 	if(ItemIndex >= GET_ITEM(12,262) && ItemIndex <= GET_ITEM(12,265)) // Monster Wings
 	{
 		MaxNewOption = 2;

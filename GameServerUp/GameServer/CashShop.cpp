@@ -312,12 +312,44 @@ void CCashShop::MainProc() // OK
 
 		LPOBJ lpObj = &gObj[n];
 
-		if((GetTickCount()-lpObj->CashShopGoblinPointTime) >= ((DWORD)gServerInfo.m_CashShopGoblinPointDelay*60000))
+		/*if((GetTickCount()-lpObj->CashShopGoblinPointTime) >= ((DWORD)gServerInfo.m_CashShopGoblinPointDelay*60000))
 		{
 			lpObj->CashShopGoblinPointTime = GetTickCount();
 			this->GDCashShopAddPointSaveSend(lpObj->Index,0,0,0,gBonusManager.GetBonusValue(lpObj,BONUS_INDEX_GLOBIN_POINT,gServerInfo.m_CashShopGoblinPointValue[lpObj->AccountLevel],-1,-1,-1,-1),0);
 			this->CGCashShopPointRecv(lpObj->Index);
+		}*/
+
+		//-- Reward Online Hours
+		if(gServerInfo.m_CashShopCoinsDelay >= 1)
+		{
+			if((GetTickCount()-lpObj->CashShopGoblinPointTime) >= ((DWORD)gServerInfo.m_CashShopCoinsDelay*60000))
+			{
+				lpObj->CashShopGoblinPointTime = GetTickCount();
+				this->GDCashShopAddPointSaveSend(lpObj->Index,0,gBonusManager.GetBonusValue(lpObj,BONUS_INDEX_GLOBIN_POINT,gServerInfo.m_CashShopWCoinCValue[lpObj->AccountLevel],-1,-1,-1,-1),
+				gBonusManager.GetBonusValue(lpObj,BONUS_INDEX_GLOBIN_POINT,gServerInfo.m_CashShopWCoinPValue[lpObj->AccountLevel],-1,-1,-1,-1),
+				gBonusManager.GetBonusValue(lpObj,BONUS_INDEX_GLOBIN_POINT,gServerInfo.m_CashShopGoblinPointValue[lpObj->AccountLevel],-1,-1,-1,-1),
+				gBonusManager.GetBonusValue(lpObj,BONUS_INDEX_GLOBIN_POINT,gServerInfo.m_CashShopRuudValue[lpObj->AccountLevel],-1,-1,-1,-1));
+				this->CGCashShopPointRecv(lpObj->Index);
+				
+				if(gServerInfo.m_CashShopWCoinCValue[lpObj->AccountLevel] >= 1)
+				{
+				gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(537),gServerInfo.m_CashShopWCoinCValue[lpObj->AccountLevel]);
+				}
+				if(gServerInfo.m_CashShopWCoinPValue[lpObj->AccountLevel] >= 1)
+				{
+				gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(538),gServerInfo.m_CashShopWCoinPValue[lpObj->AccountLevel]);
+				}
+				if(gServerInfo.m_CashShopGoblinPointValue[lpObj->AccountLevel] >= 1)
+				{
+				gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(539),gServerInfo.m_CashShopGoblinPointValue[lpObj->AccountLevel]);
+				}
+				if(gServerInfo.m_CashShopRuudValue[lpObj->AccountLevel] >= 1)
+				{
+				gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(540),gServerInfo.m_CashShopRuudValue[lpObj->AccountLevel]);
+				}
+			}
 		}
+		//--
 
 		for(int i=0;i < INVENTORY_SIZE;i++)
 		{
