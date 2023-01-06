@@ -332,7 +332,32 @@ int CCustomWing::GetCustomWingNewOptionValue(int ItemIndex,int OptionNumber) // 
 	return 0;
 }
 
+void CCustomWing::Wing4NewSpecialOption(int aIndex, int index, bool flag) // Custom new special option only for wing 4
+{
+	if (!gObjIsConnectedGP(aIndex))
+	{
+		return;
+	}
 
+	if(index < GET_ITEM(12,156) || index > GET_ITEM(12,163)){
+		return;
+	}
+
+	if(flag != true)
+	{
+		return;
+	}
+
+	LPOBJ lpObj = &gObj[aIndex];
+
+	if(index == GET_ITEM(12,160)) // Special option only for DL
+	{
+		lpObj->AddLeadership += 200; // Add more command point
+	}
+	lpObj->DoubleDamageRate += 10; // 10% more double dmg rate
+	lpObj->ExcellentDamageRate += 10; // 10% more excellent dmg rate
+	lpObj->CriticalDamageRate += 10; // 10% more crit dmg rate
+}
 void CCustomWing::OpcionAdd(int aIndex, int index, int value)
 {
 

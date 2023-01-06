@@ -376,11 +376,6 @@ bool CItemOptionRate::MakeNewOption(int ItemIndex,int value,BYTE* option) // OK
 		MaxNewOption = 4;
 	}
 
-	if(ItemIndex >= GET_ITEM(12,156) && ItemIndex <= GET_ITEM(12,163)) // 4th Wings
-	{
-		MaxNewOption = 4;
-	}
-
 	if(ItemIndex >= GET_ITEM(12,262) && ItemIndex <= GET_ITEM(12,265)) // Monster Wings
 	{
 		MaxNewOption = 2;
@@ -409,6 +404,11 @@ bool CItemOptionRate::MakeNewOption(int ItemIndex,int value,BYTE* option) // OK
 	if(ItemIndex == GET_ITEM(13,37)) // Fenrir
 	{
 		MaxNewOption = 3;
+	}
+
+	if(ItemIndex >= GET_ITEM(12,156) && ItemIndex <= GET_ITEM(12,163)) // 4th Wings
+	{
+		MaxNewOption = 4;
 	}
 
 	while(true)

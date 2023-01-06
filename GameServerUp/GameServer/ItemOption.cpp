@@ -7,6 +7,7 @@
 #include "ItemManager.h"
 #include "MemScript.h"
 #include "Util.h"
+#include "CustomWing.h"
 
 CItemOption gItemOption;
 //////////////////////////////////////////////////////////////////////
@@ -98,7 +99,7 @@ void CItemOption::Load(char* path) // OK
 
 bool CItemOption::GetItemOption(int index,CItem* lpItem) // OK
 {
-	bool result = 0;
+	bool result = false;
 
 	std::map<int,std::vector<ITEM_OPTION_INFO>>::iterator ItemOptionInfo = this->m_ItemOptionInfo.find(index);
 
@@ -145,7 +146,7 @@ bool CItemOption::GetItemOption(int index,CItem* lpItem) // OK
 			if(lpItem->m_Index == GET_ITEM(13,20) && lpItem->m_Level > 0){
 				return result;
 			}
-			result = 1;
+			result = true;
 
 			lpItem->m_SpecialIndex[index] = it->OptionIndex;
 
@@ -169,6 +170,10 @@ void CItemOption::CalcItemCommonOption(LPOBJ lpObj,bool flag) // OK
 
 void CItemOption::InsertOption(LPOBJ lpObj,CItem* lpItem,bool flag) // OK
 {
+	// new special option for wing 4 only
+	gCustomWing.Wing4NewSpecialOption(lpObj->Index, lpItem->m_Index, flag);
+	// --
+
 	for(int n=0;n < MAX_SPECIAL;n++)
 	{
 		int index = lpItem->m_SpecialIndex[n];
@@ -387,7 +392,7 @@ void CItemOption::InsertOption(LPOBJ lpObj,CItem* lpItem,bool flag) // OK
 #endif
 					+lpObj->MasterLevel)/value);
 				break;
-			case ITEM_OPTION_ADD_DAMAGE:
+			case ITEM_OPTION_ADD_DAMAGE: // Custom wing + 200 damage
 				lpObj->PhysiDamageMinRight += value;
 				lpObj->PhysiDamageMaxRight += value;
 				lpObj->PhysiDamageMinLeft += value;
