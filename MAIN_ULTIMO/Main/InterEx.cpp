@@ -2082,7 +2082,7 @@ void RenderNumberExp(float a4, float a5, int Number, float a7)
 
 void RenderSkillMasterBox(DWORD ModelID, float x, float y, float Width, float Height, float arg1, float arg2, DWORD ScaleAlpha)
 {
-	RenderBitMapColored(ModelID, x + 4.5, y + 3, 37.5, 28.5, 0.0, 0.0, 0.7506249547, 0.5771092772, ScaleAlpha);
+	RenderBitMapColored(ModelID, x + 5, y + 2.5, 37.5, 28.5, 0.0, 0.0, 0.7506249547, 0.5771092772, ScaleAlpha);
 }
 
 void RenderSkillMasterArrow(DWORD ModelID, float x, float y, float Width, float Height, float arg1, float arg2, DWORD ScaleAlpha)
