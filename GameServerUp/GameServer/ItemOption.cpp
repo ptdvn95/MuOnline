@@ -170,10 +170,6 @@ void CItemOption::CalcItemCommonOption(LPOBJ lpObj,bool flag) // OK
 
 void CItemOption::InsertOption(LPOBJ lpObj,CItem* lpItem,bool flag) // OK
 {
-	// new special option for wing 4 only
-	gCustomWing.Wing4NewSpecialOption(lpObj->Index, lpItem->m_Index, flag);
-	// --
-
 	for(int n=0;n < MAX_SPECIAL;n++)
 	{
 		int index = lpItem->m_SpecialIndex[n];

@@ -97,9 +97,6 @@ public:
 	int GetCustomWingOptionValue(int ItemIndex, int OptionNumber);
 	int GetCustomWingNewOptionIndex(int ItemIndex, int OptionNumber);
 	int GetCustomWingNewOptionValue(int ItemIndex, int OptionNumber);
-	void CalcItemCustomOption(LPOBJ lpObj, bool flag);
-	void OpcionAdd(int aIndex, int index, int value);
-	void Wing4NewSpecialOption(int aIndex, int index, bool flag);
 public:
 	CUSTOM_WING_INFO m_CustomWingInfo[MAX_CUSTOM_WING];
 };
