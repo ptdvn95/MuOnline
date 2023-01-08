@@ -804,5 +804,5 @@ void CCustomMap::Load()
 	SetByte((LPVOID)0x0062EEE4,0x69);
 
 	//Set Music
-	SetOp((LPVOID)0x004DADA4,(LPVOID)LoadMapMusic,ASM::CALL);
+	// SetOp((LPVOID)0x004DADA4,(LPVOID)LoadMapMusic,ASM::CALL);
 }

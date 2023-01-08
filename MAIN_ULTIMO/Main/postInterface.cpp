@@ -88,9 +88,6 @@ void newInterface::DrawItemIMG(float PosX, float PosY, float Width, float Height
 
 void newInterface::Work2()
 {
-	
-	
-
 	if(gProtect.m_MainInfo.MonitorMS == 1||gProtect.m_MainInfo.MonitorFPS == 1)
 	{
 		//Draw the black background

@@ -233,6 +233,7 @@
     <ClInclude Include="User.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="ware.h" />
+    <ClInclude Include="WeatherFix.h" />
     <ClInclude Include="WindowsQuest.h" />
     <ClInclude Include="WindowsStruct.h" />
     <ClInclude Include="WingBright.h" />
@@ -372,6 +373,7 @@
     <ClCompile Include="User.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="ware.cpp" />
+    <ClCompile Include="WeatherFix.cpp" />
     <ClCompile Include="WindowsQuest.cpp" />
     <ClCompile Include="WindowsStruct.cpp" />
     <ClCompile Include="WingBright.cpp" />

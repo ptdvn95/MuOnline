@@ -81,6 +81,7 @@
 #include "InfoLog.h"
 #include "ItemTooltip.h"
 #include "RenderSkillDarkhorse.h"
+#include "WeatherFix.h"
 
 #include "ConnectServer.h"
 #include "ServerInfo.h"
@@ -521,6 +522,8 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	gCMacroUIEx.Load();
 
 	gMuHelper.LoadHelper();
+
+	gWeatherFix.Load();
 
 	switch(gProtect.m_MainInfo.CustomInterfaceType)
 	{

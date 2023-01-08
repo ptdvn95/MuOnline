@@ -192,11 +192,11 @@ void InitCommon() // OK
 	SetCompleteHook(0xE9,0x008317BD,&CompareGensMoveIndex);
 
 	SetCompleteHook(0xE8,0x007D2B0C,&FixHelperMouseClick); // Fix Dupe
+	// SetCompleteHook(0xE8,0x007C32F9,&FixHelperMouseClick); // S8
 
 	SetByte((PVOID)(0x81C03FA), 0x01); //-- Show all player's name
 	SetCompleteHook(0xE8, 0x005BAFAB, &CRenderBoolean); // Show Guild Logo Name Player
-	// SetCompleteHook(0xE8,0x007C32F9,&FixHelperMouseClick); // S8
-	// SetFloat(0xD477AC,0.0); //Fix ItemStack in Itemtoolip/Shop
+	SetFloat(0xD477AC,0.0); //Fix ItemStack in Itemtoolip/Shop
 	// SetCompleteHook(0xE9, 0x00856FAA, 0x00856FD2); // Remove (H) Baú Aberto
 	// SetCompleteHook(0xE9, 0x007D371E, 0x007D3725); // Remove botão (H)
 	// SetCompleteHook(0xE9, 0x008369FA, 0x00836A23);  // Remove botão (K)
@@ -302,31 +302,31 @@ void InitCommon() // OK
 	}
 
 	
-		//-- FONT GLOBAL PARA EL JUEGO
-		SetCompleteHook(0xE8, Offset_CreateFontA1, &LoadNewFont);
-		SetCompleteHook(0xE8, Offset_CreateFontA2, &LoadNewFont);
-		SetCompleteHook(0xE8, Offset_CreateFontA3, &LoadNewFont);
-		SetCompleteHook(0xE8, Offset_CreateFontA4, &LoadNewFont);
-		SetCompleteHook(0xE8, Offset_CreateFontA5, &LoadNewFont);
-		//--
-		SetByte((Offset_CreateFontA1 + 5), 0x90);
-		SetByte((Offset_CreateFontA2 + 5), 0x90);
-		SetByte((Offset_CreateFontA3 + 5), 0x90);
-		SetByte((Offset_CreateFontA4 + 5), 0x90);
-		SetByte((Offset_CreateFontA5 + 5), 0x90);
+	//-- FONT GLOBAL PARA EL JUEGO
+	SetCompleteHook(0xE8, Offset_CreateFontA1, &LoadNewFont);
+	SetCompleteHook(0xE8, Offset_CreateFontA2, &LoadNewFont);
+	SetCompleteHook(0xE8, Offset_CreateFontA3, &LoadNewFont);
+	SetCompleteHook(0xE8, Offset_CreateFontA4, &LoadNewFont);
+	SetCompleteHook(0xE8, Offset_CreateFontA5, &LoadNewFont);
+	//--
+	SetByte((Offset_CreateFontA1 + 5), 0x90);
+	SetByte((Offset_CreateFontA2 + 5), 0x90);
+	SetByte((Offset_CreateFontA3 + 5), 0x90);
+	SetByte((Offset_CreateFontA4 + 5), 0x90);
+	SetByte((Offset_CreateFontA5 + 5), 0x90);
 
 
-		SetByte((0x00958D4C + 3), 0x6A);	//1 Codepage utf thai lang
-		SetByte((0x00958D4C + 4), 0x03);	//2	Codepage utf thai lang
+	SetByte((0x00958D4C + 3), 0x6A);	//1 Codepage utf thai lang
+	SetByte((0x00958D4C + 4), 0x03);	//2	Codepage utf thai lang
 
 	//	SetByte((0x00958D4C + 3), 0xE9);	//1 Codepage utf thai lang FDE9
 	//	SetByte((0x00958D4C + 4), 0xFD);	//2	Codepage utf thai lang
 
-		SetByte(0x004215A7, 0xEB); //[0-9A-Za-z] Name
-		SetByte(0x00507AFD, 0xEB); //[0-9A-Za-z] Guild
-		SetByte((0x00507AEA + 1), 0x72); //[0-9A-Za-z] Name
+	SetByte(0x004215A7, 0xEB); //[0-9A-Za-z] Name
+	SetByte(0x00507AFD, 0xEB); //[0-9A-Za-z] Guild
+	SetByte((0x00507AEA + 1), 0x72); //[0-9A-Za-z] Name
 
-		// SetByte((0x00958D56 + 0x3), 0x04); // message limit
+	// SetByte((0x00958D56 + 0x3), 0x04); // message limit
 	
 
 	// Default Separate Chat

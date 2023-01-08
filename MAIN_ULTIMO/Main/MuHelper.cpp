@@ -209,6 +209,6 @@ void cMuOffHelper::LoadHelper()
 	SetCompleteHook(0xE9, 0x0095E1C4, &CheckAutoHealing);
 	//--
 	SetCompleteHook(0xE9, 0x0095F9B0, &CheckHelperMana);
-	//SetCompleteHook(0xE9, 0x0095F9E2, &CheckHelperBP);
-	//SetCompleteHook(0xE9, 0x0059B9C4, &CheckAttckBP);
+	SetCompleteHook(0xE9, 0x0095F9E2, &CheckHelperBP);
+	SetCompleteHook(0xE9, 0x0059B9C4, &CheckAttckBP);
 }

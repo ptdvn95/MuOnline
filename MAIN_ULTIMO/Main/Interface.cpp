@@ -1368,6 +1368,9 @@ void Interface::Work()
 		gInterface.DrawCoord();
 	}
 
+	// Fix advanced stats windows
+	g_StatsAdvance.DrawInfo();
+
 	isHiddenPlayer = GetPrivateProfileIntA("AntiLag", "DisablePlayer", 0, "./Settings.ini");
 
 	if (GetForegroundWindow() == pGameWindow)
