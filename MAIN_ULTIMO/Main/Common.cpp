@@ -102,8 +102,6 @@ char		Test_LevelBuff[100];
 
 Naked(Credit)
 {
-
-
 	gInterface.DrawFormat(eWhite, (MAX_WIN_WIDTH / 2) - 79, 470, 150, 3, "(c) 2021. All right reserved.");
 	gInterface.DrawFormat(eSocket, (MAX_WIN_WIDTH / 2) + 200, 470, 100, 3, "MU Season 6");
 	_asm
@@ -117,6 +115,24 @@ Naked(Credit)
 		mov Test_Buff, 0x004D7D1D
 			jmp Test_Buff
 	}
+}
+
+#define sub_7889B0		((char (__thiscall*)(MUChat* This)) 0x007889B0)
+char ChatWindows(MUChat* This)
+{
+	This->WindowPosX = 0;
+
+	if(gInterface.CheckWindow(ChatWindow))
+	{
+		This->WindowPosY = 382;
+	}
+	else
+	{
+		This->WindowPosY = 429;
+	}
+
+	sub_7889B0(This);
+	return 1;
 }
 
 void InitCommon() // OK
@@ -175,10 +191,12 @@ void InitCommon() // OK
 
 	SetCompleteHook(0xE9,0x008317BD,&CompareGensMoveIndex);
 
+	SetCompleteHook(0xE8,0x007D2B0C,&FixHelperMouseClick); // Fix Dupe
+
 	SetByte((PVOID)(0x81C03FA), 0x01); //-- Show all player's name
 	SetCompleteHook(0xE8, 0x005BAFAB, &CRenderBoolean); // Show Guild Logo Name Player
 	// SetCompleteHook(0xE8,0x007C32F9,&FixHelperMouseClick); // S8
-	SetFloat(0xD477AC,0.0); //Fix ItemStack in Itemtoolip/Shop
+	// SetFloat(0xD477AC,0.0); //Fix ItemStack in Itemtoolip/Shop
 	// SetCompleteHook(0xE9, 0x00856FAA, 0x00856FD2); // Remove (H) Baú Aberto
 	// SetCompleteHook(0xE9, 0x007D371E, 0x007D3725); // Remove botão (H)
 	// SetCompleteHook(0xE9, 0x008369FA, 0x00836A23);  // Remove botão (K)
@@ -329,7 +347,7 @@ void InitCommon() // OK
 	SetCompleteHook(0xE9, 0x0095DFBE, 0x0095DFD3);
 
 	// New ReduceCPU, but only works for 1.04J
-	// SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU);
+	SetCompleteHook(0xE9, 0x0066271F, &ReduceComsumeCPU);
 
 	// Fix RF buff skill got white texture
 	SetByte(0x0050F68C + 1, 0); //origin
@@ -340,6 +358,7 @@ void InitCommon() // OK
 	SetRange((PVOID)0x004D7DAD, 0x0f, ASM::NOP);
 	SetOp((LPVOID)0x004D7D13, (LPVOID)Credit, ASM::JMP);
 
+	SetCompleteHook(0xE8, 0x0078B09A, &ChatWindows); //ChatPosition
 }
 
 BOOL CheckIsLuckyItem(int ItemID) // OK

@@ -1292,7 +1292,6 @@ char FixHelperMouseClick(int a1)
 void CMacroUIEx::Load()
 {
 	SetCompleteHook(0xE8, 0x007F76CD, &OffHelper);
-	SetCompleteHook(0xE8,0x007D2B0C,&FixHelperMouseClick); // Fix Dupe
 
 	if (gProtect.m_MainInfo.MiniMapType == 2)
 	{

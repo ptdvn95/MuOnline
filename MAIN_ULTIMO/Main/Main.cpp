@@ -228,19 +228,20 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	SetByte(0x007DA373,0xB7); // Item Type Limit
 	SetByte(0x007E1C44,0xB7); // Item Type Limit
 	SetByte(0x0052100D,0xEB); // Ctrl Fix
+	SetByte((LPVOID)0x0052101B,0x02); //Fix CTRL Freeze
 	SetByte(0x009543C4,0x00); // Move Vulcanus
 
 	// Remove Inventory Border
-	SetByte(0x007F041C + 1, 0);
-	SetByte(0x0082C6FC + 1, 0);
-	SetByte(0x0083513C + 1, 0);
-	SetByte(0x00842492 + 1, 0);
-	SetByte(0x00847054 + 1, 0);
-	SetByte(0x0084F9F4 + 1, 0);
-	SetByte(0x008575E3 + 1, 0);
-	SetByte(0x008578A9 + 1, 0);
-	SetByte(0x008642B9 + 1, 0);
-	SetByte(0x008642D5 + 1, 0);
+	// SetByte(0x007F041C + 1, 0);
+	// SetByte(0x0082C6FC + 1, 0);
+	// SetByte(0x0083513C + 1, 0);
+	// SetByte(0x00842492 + 1, 0);
+	// SetByte(0x00847054 + 1, 0);
+	// SetByte(0x0084F9F4 + 1, 0);
+	// SetByte(0x008575E3 + 1, 0);
+	// SetByte(0x008578A9 + 1, 0);
+	// SetByte(0x008642B9 + 1, 0);
+	// SetByte(0x008642D5 + 1, 0);
 
 	SetCompleteHook(0xE9, 0x004D1CF0, 0x004D1DC2); //-- Remoce MuError.DMP
 	MemorySet(0x00D20170, 0x90, 0x1B); //-- Remove Creation MuError.log
@@ -275,6 +276,8 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	SetDword(0x004D9746+3,480);
 
 	MemorySet(0x0063E908,0x90,20); //-- C1:F3:04
+
+	MemorySet(0x00792B7F, 0x90, 0x05);	// Fix Button Crywolf Gatekeeper (Third Quest)
 
 	SetCompleteHook(0xE9,0x0064452A,0x00644537); //-- Fix montura
 
@@ -724,6 +727,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	}
 	if (gProtect.m_MainInfo.DisableKeyU == 1)
 	{
+		SetByte(0x005528A0, 0xC3); // [Fix] Remover Recuo PVP
 		MemorySet(0x008684F0, 0x90, 0x52);			//-> Disable FastMenu (Key U)
 	}
 	if (gProtect.m_MainInfo.DisableKeyT == 1)
@@ -832,6 +836,8 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	gCItemSetOption.Load();
 
 	InitAttackSpeed(); //-- Fix Agilidad
+
+	SetRange(0x0077EECD, 0x18, 0x90); //-- Press Middle Mouse button to add stats quickly
 
 	AutoLogin.Load(); //-- Auto Login
 
