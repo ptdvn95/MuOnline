@@ -32,6 +32,7 @@ typedef unsigned __int64 QWORD;
 #pragma comment(lib,"Winmm.lib")
 #pragma comment(lib,"Opengl32.lib")
 #pragma comment(lib,"detours.lib")
+#pragma comment(lib,"wzMUQuiz.lib") //soiitem
 
 #define PREMIUN	1
 #define MAX_CHAT_TYPE1			10
@@ -62,6 +63,7 @@ typedef unsigned __int64 QWORD;
 #define RESETCHANGE  1
 #define ARCHIVEMENT  1
 #define LEVEL_PLUS   1
+#define SOIITEM 	 1
 
 // hptype : 0 Classic || hptype : 1 custom
 #define HPTYPE  0

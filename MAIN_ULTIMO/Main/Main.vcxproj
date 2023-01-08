@@ -195,6 +195,7 @@
     <ClInclude Include="proah..h" />
     <ClInclude Include="Protect.h" />
     <ClInclude Include="Protocol.h" />
+    <ClInclude Include="QuickCommandWindow.h" />
     <ClInclude Include="Radar.h" />
     <ClInclude Include="range.h" />
     <ClInclude Include="Ranking.h" />
@@ -208,6 +209,7 @@
     <ClInclude Include="Ruud.h" />
     <ClInclude Include="SceneCreate.h" />
     <ClInclude Include="SCharacterS3.h" />
+    <ClInclude Include="SEASON3B.h" />
     <ClInclude Include="SelectChar.h" />
     <ClInclude Include="SeparateChat.h" />
     <ClInclude Include="ServerInfo.h" />
@@ -337,6 +339,7 @@
     <ClCompile Include="proah.cpp" />
     <ClCompile Include="Protect.cpp" />
     <ClCompile Include="Protocol.cpp" />
+    <ClCompile Include="QuickCommandWindow.cpp" />
     <ClCompile Include="Radar.cpp" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="RankingEx.cpp" />

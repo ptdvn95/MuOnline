@@ -128,6 +128,15 @@ struct PSWMSG_HEAD
 //**********************************************//
 //************ GameServer -> Client ************//
 //**********************************************//
+#if(SOIITEM)
+typedef struct 
+{
+	PSBMSG_HEAD header;
+	BYTE index[2];
+}PMSG_VIEW_REQUEST_SEND;
+#endif
+
+
 struct PMSG_SHOPRUUD_SEND
 {
 	PBMSG_HEAD h;

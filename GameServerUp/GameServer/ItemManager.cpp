@@ -5325,3 +5325,77 @@ int CItemManager::CheckItemInventorySpaceCount(LPOBJ lpObj,int width,int height)
 
 	return count;
 }
+
+#if(SOIITEM)
+void CItemManager::GCItemListViewSend(PMSG_VIEW_REQUEST_RECV* lpMsg, int aIndex) // OK
+{
+	LPOBJ lpObj = &gObj[aIndex];
+
+	if(gObjIsConnectedGP(aIndex) == 0)
+	{
+		return;
+	}
+
+	int bIndex = MAKE_NUMBERW(lpMsg->index[0],lpMsg->index[1]);
+
+	if(gObjIsConnectedGP(bIndex) == 0)
+	{
+		return;
+	}
+
+	LPOBJ lpTarget = &gObj[bIndex];
+
+	if(lpObj->Interface.use != 0 || lpTarget->Interface.use != 0)
+	{
+		return;
+	}
+
+	BYTE send[4096];
+
+	PMSG_ITEM_LIST_SEND pMsg;
+
+	pMsg.header.setE(0x4E, 0x0D, 0);
+
+	int size = sizeof(pMsg);
+
+	pMsg.count = 0;
+
+	PMSG_ITEM_LIST info;
+
+	for(int n=0;n < INVENTORY_WEAR_SIZE;n++)
+	{
+		if(lpTarget->Inventory[n].IsItem() != 0)
+		{
+			if(lpTarget->Inventory[n].m_ItemExist != 0)
+			{
+				info.slot = n;
+
+				this->ItemByteConvert(info.ItemInfo,lpTarget->Inventory[n]);
+
+				memcpy(&send[size],&info,sizeof(info));
+				size += sizeof(info);
+
+				pMsg.count++;
+			}
+		}
+	}
+
+	pMsg.header.size[0] = SET_NUMBERHB(size);
+	pMsg.header.size[1] = SET_NUMBERLB(size);
+
+	memcpy(send,&pMsg,sizeof(pMsg));
+
+	DataSend(aIndex,send,size);
+
+	for(int n=0;n < INVENTORY_SIZE;n++)
+	{
+		if(lpTarget->Inventory[n].IsItem() != 0)
+		{
+			if(lpTarget->Inventory[n].m_ItemExist != 0 && lpTarget->Inventory[n].m_IsPeriodicItem != 0 )
+			{
+				gCashShop.GCCashShopPeriodicViewItemSend(aIndex, lpTarget->Inventory[n].m_Index, n, lpTarget->Inventory[n].m_PeriodicItemTime);
+			}
+		}
+	}
+}
+#endif

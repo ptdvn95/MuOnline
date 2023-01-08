@@ -38,11 +38,31 @@
 #include "GrandResetSystem.h"
 #include "PartyBar.h"
 #include "HWID.h"
+#include "QuickCommandWindow.h"
 
 BOOL ProtocolCoreEx(BYTE head,BYTE* lpMsg,int size,int key) // OK
 {
 	switch(head)
 	{
+		case 0x4E:
+			switch (((lpMsg[0] == 0xC1) ? lpMsg[3] : lpMsg[4]))
+			{
+#if(SOIITEM)
+			case 0x0D:
+				g_pQuickCommandWindow.ReceiveInventory(lpMsg);
+				return 1;
+			}
+#endif
+#if(SOIITEM)
+		case 0xD2: //soiitem
+			switch ( lpMsg[3] )
+			{
+				case 0x05:
+					g_pQuickCommandWindow.ReceivePeriodItemList(lpMsg);
+					break;
+			}
+			break;
+#endif
 		case 0x11:
 			GCDamageRecv((PMSG_DAMAGE_RECV*)lpMsg);
 			break;

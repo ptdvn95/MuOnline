@@ -1128,6 +1128,11 @@ void ProtocolCore(BYTE head,BYTE* lpMsg,int size,int aIndex,int encrypt,int seri
 				case 0xF2:
 					gHelper.DisableHelper(lpObj);
 					break;
+#if(SOIITEM)
+				case 0xF4:
+					gItemManager.GCItemListViewSend((PMSG_VIEW_REQUEST_RECV*)lpMsg,aIndex);
+					break;
+#endif
 				case 0xE9:
 					gHwidManager.ConnectHwid((CG_HWID_SEND*)lpMsg, &gObj[aIndex]);
 					break;

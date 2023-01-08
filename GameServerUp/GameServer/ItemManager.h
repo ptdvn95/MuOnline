@@ -196,6 +196,14 @@ struct PMSG_ITEM_BUY_NEW
 	BYTE slot;
 };
 
+#if(SOIITEM)
+struct PMSG_VIEW_REQUEST_RECV
+{
+	PSBMSG_HEAD header; // C1:36
+	BYTE index[2];
+};
+#endif
+
 //**********************************************//
 //**********************************************//
 //**********************************************//
@@ -401,6 +409,9 @@ public:
 
 	int CheckItemSkill(int index);
 	int CheckItemInventorySpaceCount(LPOBJ lpObj,int width,int height); // OK
+#if(SOIITEM)
+	void GCItemListViewSend(PMSG_VIEW_REQUEST_RECV* lpMsg,int aIndex);
+#endif
 private:
 	std::map<int,ITEM_INFO> m_ItemInfo;
 };

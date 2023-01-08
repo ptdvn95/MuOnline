@@ -573,6 +573,9 @@ public:
 	void GDCashShopDeleteItemSaveSend(int aIndex,char* GiftAccount,DWORD BaseItemCode,DWORD MainItemCode);
 	void GDCashShopPeriodicItemSaveSend(int aIndex);
 	void GCSendCoin(LPOBJ lpObj, int coin1, int coin2, int coin3);
+#if(SOIITEM)
+	void GCCashShopPeriodicViewItemSend(int aIndex,int index,int slot,int time);
+#endif
 private:
 	CASH_SHOP_PACKAGE_INFO m_CashShopPackageInfo[MAX_CASH_SHOP_ITEM];
 	CASH_SHOP_PRODUCT_INFO m_CashShopProductInfo[MAX_CASH_SHOP_ITEM];

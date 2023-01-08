@@ -82,6 +82,7 @@
 #include "ItemTooltip.h"
 #include "RenderSkillDarkhorse.h"
 #include "WeatherFix.h"
+#include "QuickCommandWindow.h"
 
 #include "ConnectServer.h"
 #include "ServerInfo.h"
@@ -195,6 +196,9 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	gCUIMng.Load(); //-- Custom Loading Screen
 	FullViewMode.Hook();
 	g_ServerSelWin.Init(); // Move ServerList to center
+#if(SOIITEM)
+	g_pQuickCommandWindow.szInit();
+#endif
 	SCharacterS3();
 	SetByte(0x00E61144,0xA0); // Accent
 	SetByte(0x004D1E69,0xEB); // Crack (mu.exe)

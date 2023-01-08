@@ -1962,3 +1962,24 @@ void CCashShop::GCSendCoin(LPOBJ lpObj, int coin1, int coin2, int coin3) // OK
 #endif
 
 }
+
+#if(SOIITEM)
+void CCashShop::GCCashShopPeriodicViewItemSend(int aIndex,int index,int slot,int time) // OK
+{
+	#if(GAMESERVER_UPDATE>=501)
+
+	PMSG_CASH_SHOP_PERIODIC_ITEM_SEND pMsg;
+
+	pMsg.header.set(0xD2,0x05,sizeof(pMsg));
+
+	pMsg.index = index;
+
+	pMsg.slot = slot;
+
+	pMsg.time = time;
+
+	DataSend(aIndex,(BYTE*)&pMsg,pMsg.header.size);
+
+	#endif
+}
+#endif
