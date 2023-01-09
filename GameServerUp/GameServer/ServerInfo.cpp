@@ -3030,7 +3030,11 @@ void CServerInfo::ReadCommonInfo(char* section,char* path) // OK
 
 	this->m_CharacterCloseCount = GetPrivateProfileInt(section,"CharacterCloseCount",0,path);
 
-	this->m_MonsterLifeRate = GetPrivateProfileInt(section,"MonsterLifeRate",0,path);
+	this->m_MonsterLifeRate = GetPrivateProfileInt(section,"MonsterLifeRate",100,path);
+
+	this->m_MonsterDamageRate = GetPrivateProfileInt(section,"MonsterDamageRate",100,path);
+
+	this->m_MonsterDefenseRate = GetPrivateProfileInt(section,"MonsterDefenseRate",100,path);
 
 	#if(GAMESERVER_UPDATE<=603)
 

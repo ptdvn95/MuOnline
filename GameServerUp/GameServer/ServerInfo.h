@@ -92,6 +92,8 @@ public:
 	int m_SetItemAcceptHarmonySwitch;
 	int m_CharacterCloseCount;
 	int m_MonsterLifeRate;
+	int m_MonsterDamageRate;
+	int m_MonsterDefenseRate;
 	int m_MonsterHealthBarSwitch;
 	int m_UserHealthBarSwitch;
 	int m_NonPK;

@@ -198,6 +198,12 @@ void CMonsterManager::SetInfo(MONSTER_INFO info) // OK
 
 	info.ScriptLife = info.Life;
 
+	info.DamageMin = ((__int64)info.DamageMin*gServerInfo.m_MonsterDamageRate) / 100;
+
+	info.DamageMax = ((__int64)info.DamageMax*gServerInfo.m_MonsterDamageRate) / 100;
+
+	info.Defense = ((__int64)info.Defense*gServerInfo.m_MonsterDefenseRate) / 100;
+
 	this->m_MonsterInfo[info.Index] = info;
 }
 
