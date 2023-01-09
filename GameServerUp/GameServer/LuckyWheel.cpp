@@ -142,9 +142,9 @@ void CLuckyWheel::SetInfo(LUCKYWHEEL_INFO info) // OK
 
 void CLuckyWheel::Start(LPOBJ lpUser)
 {
-	if((GetTickCount() - lpUser->LuckyWheelTickCount) <= 30000)
+	if((GetTickCount() - lpUser->LuckyWheelTickCount) <= 10000)
 	{
-		gNotice.GCNoticeSend(lpUser->Index, 1, 0, 0, 0, 0, 0, "Vui lòng thử lại sau %d giây.", 30 - (GetTickCount() - lpUser->LuckyWheelTickCount)/1000);
+		gNotice.GCNoticeSend(lpUser->Index, 1, 0, 0, 0, 0, 0, "Vui lòng thử lại sau %d giây.", 10 - (GetTickCount() - lpUser->LuckyWheelTickCount)/1000);
 		return;
 	}
 	else
