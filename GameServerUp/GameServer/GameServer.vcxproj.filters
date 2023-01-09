@@ -972,6 +972,9 @@
     <ClInclude Include="CustomJewelBank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RamFix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1773,6 +1776,9 @@
       <Filter>Source Files\HWID</Filter>
     </ClCompile>
     <ClCompile Include="CustomJewelBank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RamFix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

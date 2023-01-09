@@ -33,6 +33,7 @@
 #include "CustomAttack.h"
 #include "CustomStore.h"
 #include "OfflineMode.h"
+#include "RamFix.h"
 
 #include <urlmon.h>
 #pragma comment(lib, "urlmon.lib")
@@ -72,6 +73,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine
 	SetLargeRand();
 
 	gServerInfo.ReadStartupInfo("GameServerInfo",".\\Data\\GameServerInfo - Common.dat");
+
+	CreateThread(NULL, NULL, LPTHREAD_START_ROUTINE(RamFix), NULL, 0, 0); // Ram Fix
 
 	#if(PROTECT_STATE==1)
 

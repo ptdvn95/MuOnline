@@ -497,6 +497,7 @@
     <ClInclude Include="RaklionObjInfo.h" />
     <ClInclude Include="RaklionSelupan.h" />
     <ClInclude Include="RaklionUtil.h" />
+    <ClInclude Include="RamFix.h" />
     <ClInclude Include="RandomManager.h" />
     <ClInclude Include="ReadScript2.h" />
     <ClInclude Include="Reconnect.h" />
@@ -769,6 +770,7 @@
     <ClCompile Include="RaklionObjInfo.cpp" />
     <ClCompile Include="RaklionSelupan.cpp" />
     <ClCompile Include="RaklionUtil.cpp" />
+    <ClCompile Include="RamFix.cpp" />
     <ClCompile Include="RandomManager.cpp" />
     <ClCompile Include="Reconnect.cpp" />
     <ClCompile Include="ReiDoMu.cpp" />
