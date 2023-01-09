@@ -29,14 +29,14 @@ void cDragonMaps::Init() // OK
 	}
 }
 
-void cDragonMaps::DeleteFlyingDragons() //Dragones verificar si alguno no se finalizó
+void cDragonMaps::DeleteFlyingDragons() //Dragones verificar si alguno no se finalizï¿½
 {
 	for (int n = 0; n<MAX_MAP; n++) {
 		if (mapasDragones[n].EndTime <= time(0)) {
 			if (mapasDragones[n].index == 1 || mapasDragones[n].index == 3) {
 				mapasDragones[n].Ok = 0;
 				mapasDragones[n].index = -1;
-				//Al hacerlo de esta manera, se soluciona cuando finaliza la invasión
+				//Al hacerlo de esta manera, se soluciona cuando finaliza la invasiï¿½n
 				GCEventStateSendToAll(n, 0, 1);
 				GCEventStateSendToAll(n, 0, 3);
 			}
@@ -46,7 +46,8 @@ void cDragonMaps::DeleteFlyingDragons() //Dragones verificar si alguno no se fin
 
 void cDragonMaps::AddFlyingDragons(int mapa, int invasionTime, int index) //Dragones agregar al mapa y setearlos
 {
-	if (mapa == MAP_ATLANS || mapa == 73 || mapa == 74 || mapa == 76) return; //Agregar esto si quieren que no salgan en Atlans
+	// if (mapa == MAP_ATLANS || mapa == 73 || mapa == 74 || mapa == 76) return; //Agregar esto si quieren que no salgan en Atlans
+	if (mapa == MAP_ATLANS) return; //Agregar esto si quieren que no salgan en Atlans
 
 	if (mapasDragones[mapa].Ok == 1 && mapasDragones[mapa].index == index) {
 		if (mapasDragones[mapa].EndTime<(time(0) + invasionTime)) {
@@ -58,7 +59,7 @@ void cDragonMaps::AddFlyingDragons(int mapa, int invasionTime, int index) //Drag
 		mapasDragones[mapa].index = index;
 		mapasDragones[mapa].EndTime = (time(0) + invasionTime);
 	}
-	GCEventStateSendToAll(mapa, 1, index); //Dragones meter al iniciar una invasión
+	GCEventStateSendToAll(mapa, 1, index); //Dragones meter al iniciar una invasiï¿½n
 }
 
 void cDragonMaps::FlyingDragonsBossDieProc(int mapa) //Quitar dragones al matar al boss
@@ -67,7 +68,7 @@ void cDragonMaps::FlyingDragonsBossDieProc(int mapa) //Quitar dragones al matar 
 		if (mapasDragones[n].index == mapasDragones[mapa].index) {
 			mapasDragones[n].Ok = 0;
 			mapasDragones[n].index = -1;
-			//Al hacerlo de esta manera, se soluciona cuando finaliza la invasión
+			//Al hacerlo de esta manera, se soluciona cuando finaliza la invasiï¿½n
 			GCEventStateSendToAll(n, 0, 1);
 			GCEventStateSendToAll(n, 0, 3);
 		}

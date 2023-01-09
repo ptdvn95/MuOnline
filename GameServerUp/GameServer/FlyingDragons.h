@@ -5,11 +5,11 @@
 class cDragonMaps
 {
 public:
+	//Dragones mï¿½todos	
 	cDragonMaps();
 	virtual ~cDragonMaps();
 	void Init();
-	//Dragones métodos
-	void DeleteFlyingDragons ();
+	void DeleteFlyingDragons();
 	void AddFlyingDragons(int mapa, int invasionTime, int index);
 	void FlyingDragonsBossDieProc(int mapa);
 	void FlyingDragonsCheck(int mapa, int index);
