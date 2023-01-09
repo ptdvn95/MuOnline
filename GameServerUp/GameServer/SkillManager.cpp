@@ -1513,7 +1513,7 @@ bool CSkillManager::SkillManaShield(int aIndex,int bIndex,CSkill* lpSkill) // OK
 {
 	LPOBJ lpTarget = &gObj[bIndex];
 
-	if(lpTarget->Type != OBJECT_USER && OBJECT_RANGE(lpTarget->SummonIndex) == 1)
+	if(lpTarget->Type != OBJECT_USER && OBJECT_RANGE(lpTarget->SummonIndex) == 0)
 	{
 		return 0;
 	}
