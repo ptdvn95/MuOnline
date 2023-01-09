@@ -145,12 +145,17 @@ void CLuckyWheel::Start(LPOBJ lpUser)
 	if((GetTickCount() - lpUser->LuckyWheelTickCount) <= 30000)
 	{
 		gNotice.GCNoticeSend(lpUser->Index, 1, 0, 0, 0, 0, 0, "Vui lòng thử lại sau %d giây.", 30 - (GetTickCount() - lpUser->LuckyWheelTickCount)/1000);
-		// gNotice.GCNoticeSend(lpUser->Index, 1, 0, 0, 0, 0, 0, "Vui lòng thử lại sau 30 giây.", (30000 - (GetTickCount()-lpUser->LuckyWheelTickCount))/1000);
 		return;
 	}
 	else
 	{
 		lpUser->LuckyWheelTickCount = GetTickCount();
+	}
+
+	if (gItemManager.CheckItemInventorySpace(lpUser, 1, 1) == 0)
+	{
+		gNotice.GCNoticeSend(lpUser->Index, 1, 0, 0, 0, 0, 0, "Hòm đồ của bạn đã đầy.");
+		return;
 	}
 
 	if (WcoinLucky > 0)
