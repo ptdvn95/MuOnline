@@ -12,6 +12,7 @@
 #include "SetItemType.h"
 #include "SocketItemType.h"
 #include "Util.h"
+#include "DSProtocol.h"
 
 CCustomJewel gCustomJewel;
 //////////////////////////////////////////////////////////////////////
@@ -107,6 +108,8 @@ void CCustomJewel::Load(char* path) // OK
 
 					info.EnableSlotWeapon = lpMemScript->GetAsNumber();
 
+					info.EnableSlotMastery = lpMemScript->GetAsNumber();
+
 					info.EnableSlotArmor = lpMemScript->GetAsNumber();
 
 					info.EnableSlotWing = lpMemScript->GetAsNumber();
@@ -182,6 +185,25 @@ void CCustomJewel::Load(char* path) // OK
 					info.SocketOption = lpMemScript->GetAsNumber();
 
 					this->SetFailureInfo(info);
+				}
+				else if(section == 3)
+				{
+					if(strcmp("end",lpMemScript->GetAsString()) == 0)
+					{
+						break;
+					}
+
+					CUSTOM_JEWEL_UPGRADE_INFO info;
+
+					memset(&info,0,sizeof(info));
+
+					info.Index = lpMemScript->GetNumber();
+
+					info.ItemOld = lpMemScript->GetAsNumber();
+
+					info.ItemNew = lpMemScript->GetAsNumber();
+
+					this->m_UpgradeInfo.push_back(info);
 				}
 				else
 				{
@@ -336,7 +358,12 @@ bool CCustomJewel::CheckCustomJewelApplyItem(int ItemIndex,CItem* lpItem) // OK
 		return 0;
 	}
 
-	if(lpInfo->EnableSlotArmor == 0 && (lpItem->m_Index >= GET_ITEM(6,0) && lpItem->m_Index < GET_ITEM(12,0)))
+	if (lpInfo->EnableSlotMastery == 0 && ((lpItem->m_Index >= GET_ITEM(7, 201) && lpItem->m_Index <= GET_ITEM(7, 207)) || ((lpItem->m_Index >= GET_ITEM(8, 201) && lpItem->m_Index <= GET_ITEM(8, 207)) || ((lpItem->m_Index >= GET_ITEM(9, 201) && lpItem->m_Index <= GET_ITEM(9, 207)) || ((lpItem->m_Index >= GET_ITEM(10, 201) && lpItem->m_Index <= GET_ITEM(10, 206)) || ((lpItem->m_Index >= GET_ITEM(11, 201) && lpItem->m_Index <= GET_ITEM(11, 207))))))))
+	{
+		return 0;
+	}
+
+	if (lpInfo->EnableSlotArmor == 0 && ((lpItem->m_Index >= GET_ITEM(7, 0) && lpItem->m_Index <= GET_ITEM(7, 200)) || ((lpItem->m_Index >= GET_ITEM(8, 0) && lpItem->m_Index <= GET_ITEM(8, 200)) || ((lpItem->m_Index >= GET_ITEM(9, 0) && lpItem->m_Index <= GET_ITEM(9, 200)) || ((lpItem->m_Index >= GET_ITEM(10, 0) && lpItem->m_Index <= GET_ITEM(10, 200)) || ((lpItem->m_Index >= GET_ITEM(11, 0) && lpItem->m_Index <= GET_ITEM(11, 200))))))))
 	{
 		return 0;
 	}
@@ -592,4 +619,115 @@ int CCustomJewel::GetCustomJewelSocketOption(CItem* lpItem,int value) // OK
 	}
 
 	return count;
+}
+
+bool CCustomJewel::CharacterUseCustomJewel(LPOBJ lpObj,int SourceSlot,int TargetSlot){
+	if(INVENTORY_FULL_RANGE(SourceSlot) == 0)
+	{
+		return 0;
+	}
+
+	if(INVENTORY_FULL_RANGE(TargetSlot) == 0)
+	{
+		return 0;
+	}
+
+	if(lpObj->Inventory[SourceSlot].IsItem() == 0)
+	{
+		return 0;
+	}
+
+	if(lpObj->Inventory[TargetSlot].IsItem() == 0)
+	{
+		return 0;
+	}
+
+	if(lpObj->Inventory[TargetSlot].m_IsPeriodicItem != 0)
+	{
+		return 0;
+	}
+
+	CItem* lpItem = &lpObj->Inventory[TargetSlot];
+
+	if(gCustomJewel.CheckCustomJewelApplyItem(lpObj->Inventory[SourceSlot].m_Index,lpItem) == 0)
+	{
+		return 0;
+	}
+
+	if((GetLargeRand()%100) < gCustomJewel.GetCustomJewelSuccessRate(lpObj->Inventory[SourceSlot].m_Index,lpObj->AccountLevel))
+	{
+		CUSTOM_JEWEL_SUCCESS_INFO* lpInfo = gCustomJewel.GetSuccessInfo(lpObj->Inventory[SourceSlot].m_Index);
+		for(std::vector<CUSTOM_JEWEL_UPGRADE_INFO>::iterator it=this->m_UpgradeInfo.begin();it != this->m_UpgradeInfo.end();it++)
+		{
+			if(it->Index == lpInfo->Index)
+			{
+				if(lpItem->m_Index == it->ItemOld)
+				{
+					GDCreateItemSend(lpObj->Index,0xEB,0,0,it->ItemNew,lpInfo->Level,(BYTE)lpObj->Inventory[TargetSlot].m_Durability,lpInfo->Option1,lpInfo->Option2,lpInfo->Option3,lpObj->Index,lpInfo->NewOption,lpInfo->SetOption,0,0,0,0xFF,0);		
+					gItemManager.InventoryDelItem(lpObj->Index,SourceSlot);
+					gItemManager.GCItemDeleteSend(lpObj->Index,SourceSlot,1);
+					gItemManager.InventoryDelItem(lpObj->Index,TargetSlot);
+					gItemManager.GCItemDeleteSend(lpObj->Index,TargetSlot,1);
+				}
+			}
+
+			gObjectManager.CharacterMakePreviewCharSet(lpObj->Index);
+		}
+
+		lpItem->m_Level = (((lpItem->m_Level+lpInfo->Level)>15)?15:(lpItem->m_Level+lpInfo->Level));
+
+		lpItem->m_Option1 = (((lpItem->m_Option1+lpInfo->Option1)>1)?1:(lpItem->m_Option1+lpInfo->Option1));
+
+		lpItem->m_Option2 = (((lpItem->m_Option2+lpInfo->Option2)>1)?1:(lpItem->m_Option2+lpInfo->Option2));
+
+		lpItem->m_Option3 = (((lpItem->m_Option3+lpInfo->Option3)>gServerInfo.m_MaxItemOption)?gServerInfo.m_MaxItemOption:(lpItem->m_Option3+lpInfo->Option3));
+
+		gCustomJewel.GetCustomJewelNewOption(lpItem,lpInfo->NewOption);
+
+		gCustomJewel.GetCustomJewelSetOption(lpItem,lpInfo->SetOption);
+
+		gCustomJewel.GetCustomJewelSocketOption(lpItem,lpInfo->SocketOption);
+
+		float dur = (float)gItemManager.GetItemDurability(lpItem->m_Index,lpItem->m_Level,lpItem->IsExcItem(),lpItem->IsSetItem());
+
+		lpItem->m_Durability = (dur*lpItem->m_Durability)/lpItem->m_BaseDurability;
+
+		lpItem->Convert(lpItem->m_Index,lpItem->m_Option1,lpItem->m_Option2,lpItem->m_Option3,lpItem->m_NewOption,lpItem->m_SetOption,lpItem->m_JewelOfHarmonyOption,lpItem->m_ItemOptionEx,lpItem->m_SocketOption,lpItem->m_SocketOptionBonus);
+						
+		gItemManager.InventoryDelItem(lpObj->Index,SourceSlot);
+			
+		gItemManager.GCItemDeleteSend(lpObj->Index,SourceSlot,1);
+			
+		gItemManager.GCItemModifySend(lpObj->Index,TargetSlot);
+
+		gObjectManager.CharacterMakePreviewCharSet(lpObj->Index);
+	}
+	else
+	{
+		CUSTOM_JEWEL_FAILURE_INFO* lpInfo = gCustomJewel.GetFailureInfo(lpObj->Inventory[SourceSlot].m_Index);
+
+		lpItem->m_Level = (((lpItem->m_Level-lpInfo->Level)<0)?0:(lpItem->m_Level-lpInfo->Level));
+
+		lpItem->m_Option1 = (((lpItem->m_Option1-lpInfo->Option1)<0)?0:(lpItem->m_Option1-lpInfo->Option1));
+
+		lpItem->m_Option2 = (((lpItem->m_Option2-lpInfo->Option2)<0)?0:(lpItem->m_Option2-lpInfo->Option2));
+
+		lpItem->m_Option3 = (((lpItem->m_Option3-lpInfo->Option3)<0)?0:(lpItem->m_Option3-lpInfo->Option3));
+
+		float dur = (float)gItemManager.GetItemDurability(lpItem->m_Index,lpItem->m_Level,lpItem->IsExcItem(),lpItem->IsSetItem());
+
+		lpItem->m_Durability = (dur*lpItem->m_Durability)/lpItem->m_BaseDurability;
+
+		lpItem->Convert(lpItem->m_Index,lpItem->m_Option1,lpItem->m_Option2,lpItem->m_Option3,lpItem->m_NewOption,lpItem->m_SetOption,lpItem->m_JewelOfHarmonyOption,lpItem->m_ItemOptionEx,lpItem->m_SocketOption,lpItem->m_SocketOptionBonus);
+
+		gObjectManager.CharacterMakePreviewCharSet(lpObj->Index);
+
+		gItemManager.InventoryDelItem(lpObj->Index,SourceSlot);
+			
+		gItemManager.GCItemDeleteSend(lpObj->Index,SourceSlot,1);
+			
+		gItemManager.GCItemModifySend(lpObj->Index,TargetSlot);
+	}
+
+	return 1;
 }

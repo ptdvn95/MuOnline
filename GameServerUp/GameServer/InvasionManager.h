@@ -56,6 +56,10 @@ struct INVASION_INFO
 	int BossIndex;
 	int BossMessage;
 	int InvasionTime;
+	int AlarmMinSave;
+	int AlarmMinLeft;
+	int AlarmTime;
+	char AlertMessage[128];
 	std::vector<INVASION_START_TIME> StartTime;
 	std::vector<INVASION_RESPWAN_INFO> RespawnInfo[MAX_INVASION_RESPAWN_GROUP];
 	std::vector<INVASION_MONSTER_INFO> MonsterInfo;

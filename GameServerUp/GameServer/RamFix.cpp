@@ -8,7 +8,7 @@ void RamFix()
 	HANDLE v2;
 	while ( 1 )
 	{
-		Sleep(5000);
+		Sleep(1000);
 		v1 = GetCurrentProcess();
 		SetProcessWorkingSetSize(v1, 0xFFFFFFFF, 0xFFFFFFFF);
 		v2 = GetCurrentProcess();
