@@ -62,6 +62,12 @@ bool CAttack::Attack(LPOBJ lpObj,LPOBJ lpTarget,CSkill* lpSkill,bool send,BYTE f
 		return 0;
 	}
 
+	// Teleport bugg fix
+	if(lpObj->Teleport > 0)
+	{
+		return 0;
+	}
+
 	if(lpObj->Type == OBJECT_USER && gObjIsConnectedGP(lpObj->Index) == 0)
 	{
 		return 0;

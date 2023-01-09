@@ -5189,6 +5189,12 @@ void CItemManager::CGMoveItemProc(PMSG_MOVEITEM* aRecv, short aIndex) {
 			{
 				return;
 			}
+
+			if(lpObj->Map == MAP_ICARUS && (lpObj->Inventory[aRecv->Source].m_Index == GET_ITEM(13,2) 
+			|| lpObj->Inventory[aRecv->Source].m_Index == GET_ITEM(13,3)|| lpObj->Inventory[aRecv->Source].m_Index == GET_ITEM(13,37)))
+			{
+				return;
+			}
 			
 			int Target = this->InventoryCheckInsertItem(aIndex, lpObj->Inventory[aRecv->Source].m_Index);
 

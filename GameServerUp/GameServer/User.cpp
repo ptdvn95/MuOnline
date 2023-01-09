@@ -2182,6 +2182,29 @@ void gObjTeleportMagicUse(int aIndex,int x,int y) // OK
 		return;
 	}
 
+#if(GAMESERVER_TYPE==1)
+	//-> Teleport Closes CS Gate (1)
+	if (lpObj->Map == 30 && lpObj->X >= 54 && lpObj->Y >= 111 && lpObj->TX <= 127 && lpObj->TY <= 118)
+	{
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, "You cannot use this skill near this location.");
+		gObjTeleport(lpObj->Index, 30, 67, 105);
+	}
+
+	//-> Teleport Closes CS Gate (2)
+	if (lpObj->Map == 30 && lpObj->X >= 67 && lpObj->Y >= 158 && lpObj->TX <= 118 && lpObj->TY <= 164)
+	{
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, "You cannot use this skill near this location.");
+		gObjTeleport(lpObj->Index, 30, 93, 148);
+	}
+
+	//-> Teleport Closes CS Gate (3)
+	if (lpObj->Map == 30 && lpObj->X >= 79 && lpObj->Y >= 201 && lpObj->TX <= 105 && lpObj->TY <= 207)
+	{
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, "You cannot use this skill near this location.");
+		gObjTeleport(lpObj->Index, 30, 93, 192);
+	}
+#endif
+
 	lpObj->TeleportTime = GetTickCount();
 	lpObj->PathCount = 0;
 	lpObj->Teleport = 1;
@@ -3007,6 +3030,29 @@ void gObjSummonAlly(LPOBJ lpObj,int map,int x,int y) // OK
 		gObjTeleportMagicUse(lpObj->Index,x,y);
 		return;
 	}
+
+#if(GAMESERVER_TYPE==1)
+	//-> Teleport Closes CS Gate (1)
+	if (lpObj->Map == 30 && lpObj->X >= 54 && lpObj->Y >= 111 && lpObj->TX <= 127 && lpObj->TY <= 118)
+	{
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, "You cannot use this skill near this location.");
+		gObjTeleport(lpObj->Index, 30, 67, 105);
+	}
+
+	//-> Teleport Closes CS Gate (2)
+	if (lpObj->Map == 30 && lpObj->X >= 67 && lpObj->Y >= 158 && lpObj->TX <= 118 && lpObj->TY <= 164)
+	{
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, "You cannot use this skill near this location.");
+		gObjTeleport(lpObj->Index, 30, 93, 148);
+	}
+
+	//-> Teleport Closes CS Gate (3)
+	if (lpObj->Map == 30 && lpObj->X >= 79 && lpObj->Y >= 201 && lpObj->TX <= 105 && lpObj->TY <= 207)
+	{
+		gNotice.GCNoticeSend(lpObj->Index, 1, 0, 0, 0, 0, 0, "You cannot use this skill near this location.");
+		gObjTeleport(lpObj->Index, 30, 93, 192);
+	}
+#endif
 
 	lpObj->X = x;
 	lpObj->Y = y;
