@@ -5141,7 +5141,7 @@ void Interface::DrawLuckyWheel()
 
 	gCentral.PrintDropBox(StartX, StartY, MainWidth, MainHeight, 0, 0);
 
-	this->DrawFormat(eGold, (int)StartX + 50, (int)StartY + 10, 210, 3, "LuckyWheel");
+	this->DrawFormat(eGold, (int)StartX + 50, (int)StartY + 10, 210, 3, "Vòng Quay May Mắn");
 	// ---
 	//	pDrawGUI(0x7A5A, 145, 55, 312, 292); //1
 	//
@@ -5284,7 +5284,6 @@ void Interface::DrawLuckyWheel()
 	{
 		if (this->Data[eLuckyWheel_CLOSE].OnClick)
 		{
-			PlayBuffer(25, 0, 0);
 			gInterface.DrawButtonRender(eLuckyWheel_CLOSE, StartX + (MainWidth / 2) - (59 / 2), StartY + MainHeight - 32, 0, 28);
 		}
 		else
@@ -5309,7 +5308,7 @@ void Interface::DrawLuckyWheel()
 	gInterface.DrawFormat(eGold, 370, 220, 40, 1, "%d", gLuckyWheel.CostGoblin);
 
 	DrawGUI(eLuckyWheelStart, 265, 230);
-	this->DrawFormat(eWhite, 305, 240, 50.0f, 1.0f, "START");
+	this->DrawFormat(eWhite, 305, 240, 50.0f, 1.0f, "QUAY");
 
 	if (IsWorkZone(eLuckyWheelStart))
 	{
@@ -5346,7 +5345,7 @@ void Interface::EventLuckyWheelWindow_Close(DWORD Event)
 		// ----
 		this->Data[eLuckyWheel_CLOSE].OnClick = false;
 		// ----
-		if (Delay < 30000)
+		if (Delay < 1000)
 		{
 			return;
 		}
@@ -5379,7 +5378,7 @@ void Interface::EventLuckyWheel_Main(DWORD Event)
 		// ----
 		this->Data[eLuckyWheelStart].OnClick = false;
 		// ----
-		if (Delay < 30000)
+		if (Delay < 1000)
 		{
 			return;
 		}
@@ -5414,7 +5413,7 @@ void Interface::EventLuckyWheel_Main(DWORD Event)
 		UP_SEND_REQ pMsg;
 		pMsg.h.set(0xF3, 0xF1, sizeof(pMsg));
 		DataSend((BYTE *)&pMsg, pMsg.h.size);
-		StartRoll = 1;
+		// StartRoll = 1;
 	}
 }
 

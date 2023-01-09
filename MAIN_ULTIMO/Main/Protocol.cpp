@@ -299,6 +299,9 @@ BOOL ProtocolCoreEx(BYTE head,BYTE* lpMsg,int size,int key) // OK
 			case 0x23:
 				UpdateLuckyWheel((ITEM_WIN_SEND*)lpMsg);
 				break;
+			case 0x24:
+				UpdateLuckyWheelStartRoll((ITEM_WIN_SEND*)lpMsg);
+				break;
 			case 0xE5:
 				gJewelsBank.RecibirJewelsBank((PMSG_JEWELSBANK*)lpMsg);
 				break;
@@ -1058,6 +1061,11 @@ void UpdateLuckyWheel(ITEM_WIN_SEND * lpMsg)
 {
 	gInterface.LuckyWheelNumber = lpMsg->number;
 	gInterface.StartRoll = 0;
+}
+
+void UpdateLuckyWheelStartRoll(ITEM_WIN_SEND * lpMsg)
+{
+	gInterface.StartRoll = 1;
 }
 
 void CloseHelper()

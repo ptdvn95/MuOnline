@@ -142,6 +142,17 @@ void CLuckyWheel::SetInfo(LUCKYWHEEL_INFO info) // OK
 
 void CLuckyWheel::Start(LPOBJ lpUser)
 {
+	if((GetTickCount() - lpUser->LuckyWheelTickCount) <= 30000)
+	{
+		gNotice.GCNoticeSend(lpUser->Index, 1, 0, 0, 0, 0, 0, "Vui lòng thử lại sau %d giây.", 30 - (GetTickCount() - lpUser->LuckyWheelTickCount)/1000);
+		// gNotice.GCNoticeSend(lpUser->Index, 1, 0, 0, 0, 0, 0, "Vui lòng thử lại sau 30 giây.", (30000 - (GetTickCount()-lpUser->LuckyWheelTickCount))/1000);
+		return;
+	}
+	else
+	{
+		lpUser->LuckyWheelTickCount = GetTickCount();
+	}
+
 	if (WcoinLucky > 0)
 	{
 		if (lpUser->Coin1 < WcoinLucky)
@@ -169,6 +180,11 @@ void CLuckyWheel::Start(LPOBJ lpUser)
 		}
 	}
 
+	ITEM_WIN_SEND pMsg;
+	pMsg.header.set(0xFB,0x24,sizeof(pMsg));
+	pMsg.number = 1;
+	DataSend(lpUser->Index,(BYTE*)&pMsg,pMsg.header.size);
+
 	GDSetCoinSend(lpUser->Index, -(WcoinLucky), -(WcoinPLucky), -(goblinCoinLucky), 0, "LuckyWheel");
 
 	Sleep(3000);
@@ -177,7 +193,6 @@ void CLuckyWheel::Start(LPOBJ lpUser)
 	GDCreateItemSend(lpUser->Index,0xEB,0,0,GET_ITEM(m_LuckyWheelInfo[number].ItemType,m_LuckyWheelInfo[number].ItemIndex),m_LuckyWheelInfo[number].Level,0,m_LuckyWheelInfo[number].Skill,m_LuckyWheelInfo[number].Luck,m_LuckyWheelInfo[number].Option,-1,m_LuckyWheelInfo[number].Exc,0,0,0,0,0xFF,0);
 	gNotice.GCNoticeSendToAll(0,0,0,0,0,0,gMessage.GetMessage(543),lpUser->Name);
 	
-	ITEM_WIN_SEND pMsg;
 	pMsg.header.set(0xFB,0x23,sizeof(pMsg));
 	pMsg.number = number;
 	DataSend(lpUser->Index,(BYTE*)&pMsg,pMsg.header.size);

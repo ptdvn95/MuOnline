@@ -852,3 +852,4 @@ void CGSendWarehouseOpen(int Number);
 void GCWarehouseInterfaceOpenRecv(PMSG_WAREHOUSEINTERFACE_RECV* lpMsg);
 #endif
 void UpdateLuckyWheel(ITEM_WIN_SEND * lpMsg);
+void UpdateLuckyWheelStartRoll(ITEM_WIN_SEND * lpMsg);

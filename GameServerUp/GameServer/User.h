@@ -496,6 +496,7 @@ struct OBJECTSTRUCT
 	DWORD PostTime;
 	DWORD TimeCount;
 	DWORD PKTickCount;
+	DWORD LuckyWheelTickCount;
 	short CheckSumTableNum;
 	DWORD CheckSumTime;
 	WORD Type;
