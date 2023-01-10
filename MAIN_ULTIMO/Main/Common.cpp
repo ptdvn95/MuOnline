@@ -204,7 +204,9 @@ void InitCommon() // OK
 	// SetCompleteHook(0xE9, 0x007D3F9C, 0x007D3FA3); // Função (K) Baú Aberto
 	SetByte(0x004D128F, 0x1D); // Fix Resolution 640x480 1.04e - kayito
 	SetCompleteHook(0xE9, 0x005055A4, &MoveBoids);
-	SetCompleteHook(0xE9, 0x0054F212, &DarkLordWithRaven);
+	// SetCompleteHook(0xE9, 0x0054F212, &DarkLordWithRaven);
+	SetCompleteHook(0xE9, 0x0054FC7D, &SetAction_PlayerWalk2);
+	SetCompleteHook(0xE9, 0x0054EC8F, &SetAction_PlayerStanby2);
 
 	Encoger = GetPrivateProfileIntA("Setting", "Encoger", 0, "./Settings.ini");
 
@@ -638,3 +640,81 @@ void SaveScreen_fix()
 	*reinterpret_cast<int*>(0x8793404) = *reinterpret_cast<int*>(0x8793404) + 1; // GrabScreen++;
 	*reinterpret_cast<int*>(0x8793404) = *reinterpret_cast<int*>(0x8793404) % 10000; // GrabScreen %= 10000;
 }
+
+void __declspec(naked) SetAction_PlayerStanby2()
+{
+	static DWORD dwModelKey = 0;
+	static DWORD dwHeroKey = 0;
+	static DWORD lbl_54ED43 = 0;
+
+	_asm
+	{
+		mov       edx, dword ptr ss:[ebp+0x8]
+		mov       dwHeroKey, edx
+		movsx     eax, word ptr ds:[edx+0x22C]
+		mov       dwModelKey, eax
+	}
+
+	if(*(DWORD *)(dwHeroKey + 676) != NULL && *(BYTE *)(dwHeroKey + 14) == 1 )
+	{
+		lbl_54ED43 = 0x0054ED28;
+	}
+	else if( dwModelKey == 7831 )
+	{
+		lbl_54ED43 = 0x0054ECA0;
+	}
+	else
+	{
+		lbl_54ED43 = 0x0054ED43;
+	}
+
+	_asm { jmp       [lbl_54ED43] }
+}
+
+bool isItemFenrir(){
+	
+}
+
+
+void __declspec(naked) SetAction_PlayerWalk2()
+{
+	static DWORD dwModelKey = 0;
+	static DWORD dwHeroKey = 0;
+	static DWORD lbl_54FF31 = 0;
+
+	_asm
+	{
+		mov       ecx, dword ptr ss:[ebp+0x8]
+		mov       dwHeroKey, ecx
+		movsx     edx, word ptr ds:[ecx+0x22C]
+		mov       dwModelKey, edx
+	}
+
+	if (*(DWORD *)(dwHeroKey + 676)  != NULL && *(BYTE *)(dwHeroKey + 14) == 1 )
+	{
+		lbl_54FF31 = 0x0054FD2B;
+	}
+	else if ( dwModelKey == 7864 ) // fenrir
+	{
+		lbl_54FF31 = 0x0054FC8F;
+	}
+	else if ( dwModelKey == 7831 ) // horse
+	{
+		lbl_54FF31 = 0x0054FCE9;
+	}
+	else if (dwModelKey == 7829) // iniria
+	{
+		lbl_54FF31 = 0x0054FD5C;
+	}
+	else if (dwModelKey == 7830) // dinorant
+	{
+		lbl_54FF31 = 0x0054FE3B;
+	}
+	else
+	{
+		lbl_54FF31 = 0x0054FF31;
+	}
+
+	_asm { jmp       [lbl_54FF31] }
+}
+

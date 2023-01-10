@@ -19,6 +19,8 @@ void DrawEffectsPic(int &EffectID, float StartX, float StartY, float StartWidth,
 void ReduceComsumeCPU();
 void MoveBoids();
 void DarkLordWithRaven(int a1);
+void SetAction_PlayerStanby2();
+void SetAction_PlayerWalk2();
 void SaveScreen_fix();
 
 extern BYTE GensBattleMapCount;

@@ -177,6 +177,13 @@ __declspec(naked) void FixAttackSpeed()
 				STR_SPEED = 5002;
 			}
 		}
+		if (gObjUser.MagickAttack == 265)
+		{
+			if (STR_SPEED > 4502)
+			{
+				STR_SPEED = 4502;
+			}
+		}
 	}
 	// -> Dark Lord
 	if( CLASS == DarkLord || CLASS == LordEmperor)

@@ -408,6 +408,7 @@ void Interface::RenderObjectSystem()
 	gSmithItem.Bind();
 
 	// g_ExWinQuestSystem.BindImages();
+	// SetCompleteHook(0xE9, 0x007E5CA2, &ItemTooltipRender);
 }
 
 void Interface::DrawZenAndRud(int a1, int a2, int a3, int a4)
@@ -847,6 +848,9 @@ void Interface::LoadImages()
 	g_ExWinQuestSystem.ImageLoad();
 	//--
 	pLoadSomeForm();
+
+	SetDword(0x0081A38A+1,(DWORD)"Interface\\new_Master_back01.tga"); //-> Interface\\new_Master_back01.OZT
+	SetDword(0x0081A3AA+1,(DWORD)"Interface\\new_Master_back02.tga"); //-> Interface\\new_Master_back02.OZT
 }
 
 void Interface::BindObject(short MonsterID, DWORD ModelID, float Width, float Height, float X, float Y)
@@ -5424,4 +5428,59 @@ void BtnChaChangeButton(GLuint uiImageType, float x, float y, float width, float
 void BtnChaChangeButtonFriend(GLuint uiImageType, float x, float y, float width, float height, float su, float sv)
 {
 	return;
+}
+
+__declspec(naked) void ItemTooltipRender()
+{
+	static DWORD Addr = 0x007E5CB6;
+	static DWORD Addr_Exc = 0;
+	static DWORD Addr_Acc = 0;
+
+	_asm
+	{
+
+		MOV ECX, DWORD PTR SS : [EBP + 0x10]
+		MOVZX EAX,BYTE PTR DS:[ECX+0x17]
+		MOV Addr_Exc, EAX
+		MOVZX EDX,BYTE PTR DS:[ECX+0x18]
+		MOV Addr_Acc, EDX
+
+	}
+
+	if(Addr_Exc >= 1 && Addr_Acc >= 1)
+	{
+		_asm
+		{
+			PUSH 1                                  ; /Arg7 = 00000001
+			PUSH 0                                  ; |Arg6 = 00000000
+			PUSH 3                                  ; |Arg5 = 00000003
+			PUSH 0                                  ; |Arg4 = 00000000
+			MOV EAX,DWORD PTR SS:[EBP-0x74]            ; |
+			PUSH EAX                                ; |Arg3
+			MOV ECX,DWORD PTR SS:[EBP+0xC]            ; |
+			//ADD ECX, 120
+			PUSH 0x5                                ; |Arg2
+			MOV EDX,DWORD PTR SS:[EBP+0x8]            ; |
+			PUSH EDX                                ; |Arg1
+			JMP [Addr]
+		}
+	}
+	else
+	{
+		_asm
+		{
+			PUSH 1                                  ; /Arg7 = 00000001
+			PUSH 0                                  ; |Arg6 = 00000000
+			PUSH 3                                  ; |Arg5 = 00000003
+			PUSH 0                                  ; |Arg4 = 00000000
+			MOV EAX,DWORD PTR SS:[EBP-0x74]            ; |
+			PUSH EAX                                ; |Arg3
+			MOV ECX,DWORD PTR SS:[EBP+0xC]            ; |
+			//ADD ECX, 120
+			PUSH ECX                                ; |Arg2
+			MOV EDX,DWORD PTR SS:[EBP+0x8]            ; |
+			PUSH EDX                                ; |Arg1
+			JMP [Addr]
+		}
+	}
 }

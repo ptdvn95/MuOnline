@@ -836,7 +836,7 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 		SetCompleteHook(0xE9, 0x007D371E, 0x007D3725);
 	}
 
-	SetCompleteHook(0xE8, 0x0059AFFA, 0x0059B00E); // monster trabe
+	SetCompleteHook(0xE9, 0x0059AFFA, 0x0059B00E);
 
 	gPostInterface.Load();	//<-- post item
 
