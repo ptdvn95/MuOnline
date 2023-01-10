@@ -308,6 +308,11 @@ void SCharacterS3()
     SetByte((LPVOID)0x0057F100, 0x00);
     SetByte((LPVOID)0x0057F101, 0x90);
 
+	// SetDword((PVOID)(0x004D7A0E), 450);
+	// SetByte((PVOID)(0x004D7A18), 0);
+	// SetDword((PVOID)(0x004D7179), 450);
+	// SetByte((PVOID)(0x004D7183), 0);
+
 	// fix mount size ver 1
 	// SetRange((LPVOID)0x503839, 6, ASM::NOP);
 	// SetOp((LPVOID)0x503839, (LPVOID)ThuNhoThuCuoi, ASM::JMP);	
@@ -315,5 +320,5 @@ void SCharacterS3()
 	// fix mount size ver 2
 	SetByte((LPVOID)0x00503834, 0xEB);
 
-	SetCompleteHook(0xE8, 0x00636505, &sub_6363D0);
+	// SetCompleteHook(0xE8, 0x00636505, &sub_6363D0);
 }

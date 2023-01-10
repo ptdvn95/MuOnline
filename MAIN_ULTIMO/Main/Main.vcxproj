@@ -174,6 +174,7 @@
     <ClInclude Include="MultiSelect.h" />
     <ClInclude Include="mu_object_chat_data.h" />
     <ClInclude Include="mu_object_item_data.h" />
+    <ClInclude Include="NewUIEnterBloodCastle.h" />
     <ClInclude Include="NoShadow.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Offset.h" />
@@ -320,6 +321,7 @@
     <ClCompile Include="MonsterHpBar.cpp" />
     <ClCompile Include="MuHelper.cpp" />
     <ClCompile Include="MultiSelect.cpp" />
+    <ClCompile Include="NewUIEnterBloodCastle.cpp" />
     <ClCompile Include="NoShadow.cpp" />
     <ClCompile Include="OffTrade.cpp" />
     <ClCompile Include="OptionBox.cpp" />

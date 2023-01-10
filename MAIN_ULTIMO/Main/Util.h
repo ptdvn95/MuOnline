@@ -38,6 +38,8 @@ char* GetRewardTextByType(int type);
 void GetFormat(char* str, char oldval, char newval);
 char* ParseReducedValue(DWORD Num);
 
+GLvoid CRenderBitmapCircle(int Texture,float x,float y,float Radius ,float u,float v,float uWidth,float vHeight,bool Scale,bool StartScale,float Alpha);
+
 extern DWORD FrameValue;
 extern DWORD MainTickCount;
 extern BYTE NewAddressData1[240];

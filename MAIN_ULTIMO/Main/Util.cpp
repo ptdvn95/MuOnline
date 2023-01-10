@@ -412,6 +412,80 @@ GLvoid GetDrawCircle(int ID, float X, float Y, float W, float CurrenX, float Cur
 	glEnd();
 }
 
+#define WindowWidth									*(GLsizei*)0x00E61E58
+#define WindowHeight								*(GLsizei*)0x00E61E5C
+GLvoid CRenderBitmapCircle(int Texture,float x,float y,float Radius ,float u,float v,float uWidth,float vHeight,bool Scale,bool StartScale,float Alpha)
+{
+	GLuint vertexcount; // ST1C_4@5
+	float var_radius2; // ST1C_4@5
+	GLfloat var_angle; // ST1C_4@5
+	GLfloat TextureCoord[2]; // [sp+2Ch] [bp-40h]@5
+	GLfloat VertexCoord[4]; // [sp+4Ch] [bp-20h]@5
+	
+	x = x + Radius;
+	y = y + Radius;
+
+	if ( Scale )
+	{
+		x = ConvertX( x );
+		y = ConvertY( y );
+	}
+
+	if ( StartScale )
+	{
+		var_radius2 = ConvertY( Radius );
+		Radius = ConvertX( Radius );
+	}
+
+	y = (double)(unsigned int)WindowHeight - y;
+
+	vertexcount = 20;
+	var_angle = 2.0 * Q_PI / vertexcount;
+
+	BindTexture( Texture );
+
+	glBegin( GL_TRIANGLE_FAN );
+
+	if ( Alpha > 0.0 )
+		glColor4f(1.0, 1.0, 1.0, Alpha);
+	TextureCoord[0] = u;
+	TextureCoord[1] = v;
+	glTexCoord2fv(TextureCoord);
+	//--
+	VertexCoord[0] = x;
+	VertexCoord[1] = y;
+	VertexCoord[2] = 0.0;
+	VertexCoord[3] = 1.0;
+	glVertex4fv(VertexCoord);
+
+	for(int i = 0; i < vertexcount ; i++) 
+	{
+		TextureCoord[0] = (std::cos(var_angle * i) * uWidth) + u;
+		TextureCoord[1] = (std::sin(var_angle * i) * vHeight) + v;
+		glTexCoord2fv(TextureCoord);
+		VertexCoord[0] = (std::cos(var_angle * i) * Radius) + x;
+		VertexCoord[1] = (std::sin(var_angle * i) * -var_radius2) + y;
+		VertexCoord[2] = 0.0;
+		VertexCoord[3] = 1.0;
+		glVertex4fv(VertexCoord);
+	}
+	//--
+	TextureCoord[0] = uWidth + u;
+	TextureCoord[1] = v;
+	glTexCoord2fv(TextureCoord);
+
+	VertexCoord[0] = Radius + x;
+	VertexCoord[1] = y;
+	VertexCoord[2] = 0.0;
+	VertexCoord[3] = 1.0;
+	glVertex4fv(VertexCoord);
+
+	if ( Alpha > 0.0 )
+		glColor4f(1.0, 1.0, 1.0, 1.0);
+
+	glEnd();
+}
+
 int RANGEX(int user)
 {
 	return user - (dword_7BC4F04 + 172);

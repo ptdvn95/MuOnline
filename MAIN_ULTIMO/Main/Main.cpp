@@ -72,6 +72,7 @@
 #include "WingBright.h"
 #include "AutoLogin.h"
 #include "SCharacterS3.h"
+#include "NewUIEnterBloodCastle.h"
 //--
 //#include "Ruud.h"
 #include "Inter3.h"
@@ -841,6 +842,8 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	gPostInterface.Load();	//<-- post item
 
 	gCItemSetOption.Load();
+
+	// g_pNewEnterBloodCastle.Init();
 
 	InitAttackSpeed(); //-- Fix Agilidad
 
