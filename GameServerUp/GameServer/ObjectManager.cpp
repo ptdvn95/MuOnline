@@ -2418,16 +2418,16 @@ bool CObjectManager::CharacterUsePotion(LPOBJ lpObj, CItem* lpItem) // OK
 
 bool CObjectManager::CharacterUsePortal(LPOBJ lpObj, CItem* lpItem) // OK
 {
-	else if (lpObj->Map == MAP_DUEL_ARENA)
-	{
-		gObjMoveGate(lpObj->Index, 17);
-	}
 	if (lpObj->Interface.use != 0)
 	{
 		return 0;
 	}
 
 	if (lpObj->Map == MAP_LORENCIA)
+	{
+		gObjMoveGate(lpObj->Index, 17);
+	}
+	else if (lpObj->Map == MAP_DUEL_ARENA)
 	{
 		gObjMoveGate(lpObj->Index, 17);
 	}
