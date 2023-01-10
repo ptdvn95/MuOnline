@@ -9,6 +9,7 @@
 #include "ChatExpanded.h"
 #include "SeparateChat.h"
 #include "SItemSetOption.h"
+#include "User.h"
 
 BYTE GensBattleMapCount = 0;
 BYTE GensMoveIndexCount = 0;
@@ -519,8 +520,18 @@ void DrawEffectsPic(int &EffectID, float StartX, float StartY, float StartWidth,
 	}
 }
 
+__declspec(naked) void PlayerInfoCheckDelect()
+{
+	static DWORD Addr_JMP = 0x00842869;
+	_asm
+	{
+		JMP[Addr_JMP]
+	}
+}
+
 void CRenderBoolean(int a1, int a2, char *a3)
 {
+	gObjUser.Refresh();
 	int result = *(DWORD *)(a3 + 668);
 	if ( *(BYTE *)(result + 800) == 1 )
 	{
@@ -528,6 +539,8 @@ void CRenderBoolean(int a1, int a2, char *a3)
 		RenderBitmap(31740, a1 - 15, a2 + 2, 16.0, 16.0, 0.0, 0.0, 1.0, 1.0, 1, 1, 0.0);
 	}
 	RenderBoolean(a1,a2,a3);
+
+	SetCompleteHook(0xE9, 0x00842859, &PlayerInfoCheckDelect);
 }
 
 //New ReduceCPU
