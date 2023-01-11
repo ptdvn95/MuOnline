@@ -297,8 +297,8 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 	SetByte(0x00599238 + 3, 50);     //-- size chat head
 
 	// BC Weapon in hand
-	SetCompleteHook(0xE9, 0x00561740, &WeaponHandBC1);
-	SetCompleteHook(0xE9, 0x0057DDD7, &WeaponHandBC2);
+	// SetCompleteHook(0xE9, 0x00561740, &WeaponHandBC1);
+	// SetCompleteHook(0xE9, 0x0057DDD7, &WeaponHandBC2);
 
 //	SetDouble(0xD23AB8, 849);
 
