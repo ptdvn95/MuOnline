@@ -847,7 +847,11 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 	gCItemSetOption.Load();
 
-	// g_pNewEnterBloodCastle.Init();
+	// New BC Level System
+	g_pNewEnterBloodCastle.Init();
+	// New DS Level System
+	SetOp(0x0085B09B, CNewUIEnterDevilSquare, ASM::CALL);
+
 
 	InitAttackSpeed(); //-- Fix Agilidad
 
@@ -912,4 +916,56 @@ void __declspec(naked) WeaponHandBC2()
 	else
 	{ _asm { MOV BYTE PTR DS:[ECX+0xE],1 } }
 	_asm { JMP[Return] }
+}
+
+#define pCNewUIEnterDevilSquare 0xD499E8
+#define CNewUIObj			((void *(__thiscall*)(void *This)) 0x00776CC0)
+#define CNewUIButton			((int(__thiscall*)(int This)) 0x00779150)
+#define sub_9CFA13			((int(__stdcall*)(int a1, int a2, int a3, void(__thiscall *a4)(DWORD), int a5)) 0x009CFA13)
+#define cCNewUIButton			((void *(__thiscall*)(int This)) 0x00779250)
+#define RGBA					((DWORD(__cdecl*)(BYTE, BYTE, BYTE, BYTE)) 0x00412D20)
+//----- (00877B00) --------------------------------------------------------
+void * __fastcall CNewUIEnterDevilSquare(void *This)
+{
+	CNewUIObj(This);
+	*(DWORD *)This = pCNewUIEnterDevilSquare;
+	CNewUIButton((int)((char *)This + 40));
+	sub_9CFA13((int)((char *)This + 212), 172, 7, (void(__thiscall *)(DWORD))CNewUIButton, (int)cCNewUIButton);
+	*((DWORD *)This + 3) = 0;
+	memset((char *)This + 16, 0, 8);
+	memset((char *)This + 32, 0, 8);
+	*((DWORD *)This + 382) = 1;
+	*((DWORD *)This + 7) = 0;
+	*((DWORD *)This + 6) = 0;
+	*((DWORD *)This + 383) = RGBA(0x96u, 0x96u, 0x96u, 150); //Not enter text color
+	*((DWORD *)This + 384) = RGBA(0xFFu, 0xFFu, 0xFFu, 0xFFu); //Enter text color
+	*((DWORD *)This + 354) = 15;  //DS 1 Min level [NORMAL]
+	*((DWORD *)This + 355) = 130; //DS 1 Max level [NORMAL]
+	*((DWORD *)This + 356) = 131; //DS 2 Min level [NORMAL]
+	*((DWORD *)This + 357) = 180; //DS 2 Max level [NORMAL]
+	*((DWORD *)This + 358) = 181; //DS 3 Min level [NORMAL]
+	*((DWORD *)This + 359) = 230; //DS 3 Max level [NORMAL]
+	*((DWORD *)This + 360) = 231; //DS 4 Min level [NORMAL]
+	*((DWORD *)This + 361) = 280; //DS 4 Max level [NORMAL]
+	*((DWORD *)This + 362) = 281; //DS 5 Min level [NORMAL]
+	*((DWORD *)This + 363) = 330; //DS 5 Max level [NORMAL]
+	*((DWORD *)This + 364) = 331; //DS 6 Min level [NORMAL]
+	*((DWORD *)This + 365) = 400; //DS 6 Max level [NORMAL]
+	*((DWORD *)This + 366) = 0;
+	*((DWORD *)This + 367) = 0;
+	*((DWORD *)This + 368) = 15;  //DS 1 Min level [MAGUMSA]
+	*((DWORD *)This + 369) = 110; //DS 1 Max level [MAGUMSA]
+	*((DWORD *)This + 370) = 111; //DS 2 Min level [MAGUMSA]
+	*((DWORD *)This + 371) = 160; //DS 2 Max level [MAGUMSA]
+	*((DWORD *)This + 372) = 161; //DS 3 Min level [MAGUMSA]
+	*((DWORD *)This + 373) = 210; //DS 3 Max level [MAGUMSA]
+	*((DWORD *)This + 374) = 211; //DS 4 Min level [MAGUMSA]
+	*((DWORD *)This + 375) = 260; //DS 4 Max level [MAGUMSA]
+	*((DWORD *)This + 376) = 261; //DS 5 Min level [MAGUMSA]
+	*((DWORD *)This + 377) = 310; //DS 5 Max level [MAGUMSA]
+	*((DWORD *)This + 378) = 311; //DS 6 Min level [MAGUMSA]
+	*((DWORD *)This + 379) = 400; //DS 6 Max level [MAGUMSA]
+	*((DWORD *)This + 380) = 0;
+	*((DWORD *)This + 381) = 0;
+	return This;
 }
