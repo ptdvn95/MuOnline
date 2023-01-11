@@ -198,11 +198,11 @@ void CKanturuBattleStanby::SetState_START() // OK
 
 void CKanturuBattleStanby::SetState_NOTIFY() // OK
 {
-	LogAdd(LOG_BLACK, "[ KANTURU ][ BattleStanby ] State(%d) -> NOTIFY", this->m_BattleStanbyState);
+	// LogAdd(LOG_BLACK, "[ KANTURU ][ BattleStanby ] State(%d) -> NOTIFY", this->m_BattleStanbyState);
 
 	this->SetBattleStanbyState(KANTURU_STANBY_NOTIFY);
 
-	gNotice.GCNoticeSendToAll(0,0,0,0,0,0,gMessage.GetMessage(338));
+	// gNotice.GCNoticeSendToAll(0,0,0,0,0,0,gMessage.GetMessage(338));
 	for (int n = OBJECT_START_USER; n < MAX_OBJECT; n++) // OK
 	{
 		LPOBJ lpObj = &gObj[n];

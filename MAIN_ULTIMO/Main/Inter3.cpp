@@ -2051,8 +2051,6 @@ void InitInter3()
 	SetByte((PVOID)(0x00784BAE + 1), 2);
 	SetByte((PVOID)(0x00784BD4 + 2), 56);
 	// Weapons in Hands "Blood Caslte"
-	SetCompleteHook(0xE9, 0x00561740, &WeaponHandBC1);
-	SetCompleteHook(0xE9, 0x0057DDD7, &WeaponHandBC2);
 }
 
 __declspec(naked) void PositionAncientY()
@@ -2071,32 +2069,4 @@ void RemoveSocket()
 {
 	SetRange((LPVOID)0x00D46C8C, 5, ASM::NOP);
 	SetCompleteHook(0xE9, 0x00835234, &PositionAncientY);
-}
-
-void __declspec(naked) WeaponHandBC1()
-{
-	static DWORD Return = 0x00561747;
-	_asm { MOV EDX,DWORD PTR SS:[EBP+0x8] }
-	if(pMapNumber == 11 || pMapNumber == 12
-	|| pMapNumber == 13 || pMapNumber == 14
-	|| pMapNumber == 15 || pMapNumber == 16
-	|| pMapNumber == 17 || pMapNumber == 52)
-	{ _asm { MOV BYTE PTR DS:[EDX+0xE],0 } }
-	else
-	{ _asm { MOV BYTE PTR DS:[EDX+0xE],1 } }
-	_asm { JMP[Return] }
-}
-
-void __declspec(naked) WeaponHandBC2()
-{
-	static DWORD Return = 0x0057DDDE;
-	_asm { MOV ECX,DWORD PTR SS:[EBP+0x8] }
-	if(pMapNumber == 11 || pMapNumber == 12
-	|| pMapNumber == 13 || pMapNumber == 14
-	|| pMapNumber == 15 || pMapNumber == 16
-	|| pMapNumber == 17 || pMapNumber == 52)
-	{ _asm { MOV BYTE PTR DS:[ECX+0xE],0 } }
-	else
-	{ _asm { MOV BYTE PTR DS:[ECX+0xE],1 } }
-	_asm { JMP[Return] }
 }

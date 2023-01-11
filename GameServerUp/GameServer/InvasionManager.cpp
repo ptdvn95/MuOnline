@@ -163,10 +163,6 @@ void CInvasionManager::Load(char* path) // OK
 					this->m_InvasionInfo[index].BossMessage = lpMemScript->GetAsNumber();
 
 					this->m_InvasionInfo[index].InvasionTime = lpMemScript->GetAsNumber();
-					
-					this->m_InvasionInfo[index].AlarmTime = lpMemScript->GetAsNumber();
-					
-					strcpy_s(this->m_InvasionInfo[index].AlertMessage,lpMemScript->GetAsString());
 				}
 				else if(section == 2)
 				{
@@ -293,17 +289,6 @@ void CInvasionManager::ProcState_BLANK(INVASION_INFO* lpInfo) // OK
 
 void CInvasionManager::ProcState_EMPTY(INVASION_INFO* lpInfo) // OK
 {
-	if(lpInfo->RemainTime > 0 && lpInfo->RemainTime <= (lpInfo->AlarmTime*60))
-	{
-		if((lpInfo->AlarmMinSave=(((lpInfo->RemainTime%60)==0)?((lpInfo->RemainTime/60)-1):(lpInfo->RemainTime/60))) != lpInfo->AlarmMinLeft)
-		{
-			lpInfo->AlarmMinLeft = lpInfo->AlarmMinSave;
-
-			gNotice.GCNoticeSendToAll(0,0,0,0,0,0,gMessage.GetMessage(880),lpInfo->AlertMessage,(lpInfo->AlarmMinLeft+1));
-
-		}
-	}
-
 	if(lpInfo->RemainTime <= 0)
 	{
 		if(lpInfo->RespawnMessage != -1)
@@ -598,8 +583,11 @@ void CInvasionManager::SetMonster(INVASION_INFO* lpInfo,INVASION_RESPWAN_INFO* l
 
 		//Dragones setear variables al iniciar una invasión
 		if (gServerInfo.m_FlyingDragonsSwitch==1){
-			if (lpInfo->Index == 1 || lpInfo->Index == 2) {
-				gDragonMaps.AddFlyingDragons(lpObj->Map, lpInfo->InvasionTime, ((lpInfo->Index * 2) - 1));
+			if (lpInfo->Index==1){
+				gDragonMaps.AddFlyingDragons(lpObj->Map, lpInfo->InvasionTime, 1);
+			}
+			if (lpInfo->Index==2){
+				gDragonMaps.AddFlyingDragons(lpObj->Map, lpInfo->InvasionTime, 3);
 			}
 		}
 
@@ -644,7 +632,10 @@ void CInvasionManager::MonsterDieProc(LPOBJ lpObj,LPOBJ lpTarget) // OK
 		{
 			if (gServerInfo.m_FlyingDragonsKillBossSwitch==1 && gServerInfo.m_FlyingDragonsSwitch==1){
 				//Quitar dragones al matar al boss
-				if (lpInfo->Index == 1 || lpInfo->Index == 2) {
+				if (lpInfo->Index==1){
+					gDragonMaps.FlyingDragonsBossDieProc(lpObj->Map);
+				}
+				else if (lpInfo->Index==2){
 					gDragonMaps.FlyingDragonsBossDieProc(lpObj->Map);
 				}
 			}

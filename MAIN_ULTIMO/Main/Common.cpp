@@ -205,7 +205,11 @@ void InitCommon() // OK
 	// SetCompleteHook(0xE9, 0x007D3F9C, 0x007D3FA3); // Função (K) Baú Aberto
 	SetByte(0x004D128F, 0x1D); // Fix Resolution 640x480 1.04e - kayito
 	SetCompleteHook(0xE9, 0x005055A4, &MoveBoids);
+
+	//ver 1
 	// SetCompleteHook(0xE9, 0x0054F212, &DarkLordWithRaven);
+
+	//ver 2
 	SetCompleteHook(0xE9, 0x0054FC7D, &SetAction_PlayerWalk2);
 	SetCompleteHook(0xE9, 0x0054EC8F, &SetAction_PlayerStanby2);
 

@@ -5,7 +5,6 @@
 #pragma once
 
 #include "Item.h"
-#include "380ItemOption.h"
 
 #define MAX_CUSTOM_JEWEL 15
 
@@ -49,7 +48,6 @@ struct CUSTOM_JEWEL_INFO
 	int MinItemSocketOption;
 	int MaxItemSocketOption;
 	int EnableSlotWeapon;
-	int EnableSlotMastery;
 	int EnableSlotArmor;
 	int EnableSlotWing;
 	int SuccessRate[4];
@@ -57,12 +55,6 @@ struct CUSTOM_JEWEL_INFO
 	char ModelName[32];
 	CUSTOM_JEWEL_SUCCESS_INFO SuccessInfo;
 	CUSTOM_JEWEL_FAILURE_INFO FailureInfo;
-};
-
-struct CUSTOM_JEWEL_UPGRADE_INFO{
-	int Index;
-	int ItemOld;
-	int ItemNew;
 };
 
 class CCustomJewel
@@ -90,11 +82,8 @@ public:
 	int GetCustomJewelNewOption(CItem* lpItem,int value);
 	int GetCustomJewelSetOption(CItem* lpItem,int value);
 	int GetCustomJewelSocketOption(CItem* lpItem,int value);
-	bool CharacterUseCustomJewel(LPOBJ lpObj,int SourceSlot,int TargetSlot);
 public:
 	CUSTOM_JEWEL_INFO m_CustomJewelInfo[MAX_CUSTOM_JEWEL];
-private:
-	std::vector<CUSTOM_JEWEL_UPGRADE_INFO> m_UpgradeInfo;
 };
 
 extern CCustomJewel gCustomJewel;

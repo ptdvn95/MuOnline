@@ -296,6 +296,10 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 	SetByte(0x00599238 + 3, 50);     //-- size chat head
 
+	// BC Weapon in hand
+	SetCompleteHook(0xE9, 0x00561740, &WeaponHandBC1);
+	SetCompleteHook(0xE9, 0x0057DDD7, &WeaponHandBC2);
+
 //	SetDouble(0xD23AB8, 849);
 
 	MemoryCpy(0x00E611B2,gProtect.m_MainInfo.IpAddress,sizeof(gProtect.m_MainInfo.IpAddress)); //-- IpAddress
@@ -880,4 +884,32 @@ BOOL APIENTRY DllMain(HMODULE hModule,DWORD ul_reason_for_call,LPVOID lpReserved
 	}
 
 	return 1;
+}
+
+void __declspec(naked) WeaponHandBC1()
+{
+	static DWORD Return = 0x00561747;
+	_asm { MOV EDX,DWORD PTR SS:[EBP+0x8] }
+	if(pMapNumber == 11 || pMapNumber == 12
+	|| pMapNumber == 13 || pMapNumber == 14
+	|| pMapNumber == 15 || pMapNumber == 16
+	|| pMapNumber == 17 || pMapNumber == 52)
+	{ _asm { MOV BYTE PTR DS:[EDX+0xE],0 } }
+	else
+	{ _asm { MOV BYTE PTR DS:[EDX+0xE],1 } }
+	_asm { JMP[Return] }
+}
+
+void __declspec(naked) WeaponHandBC2()
+{
+	static DWORD Return = 0x0057DDDE;
+	_asm { MOV ECX,DWORD PTR SS:[EBP+0x8] }
+	if(pMapNumber == 11 || pMapNumber == 12
+	|| pMapNumber == 13 || pMapNumber == 14
+	|| pMapNumber == 15 || pMapNumber == 16
+	|| pMapNumber == 17 || pMapNumber == 52)
+	{ _asm { MOV BYTE PTR DS:[ECX+0xE],0 } }
+	else
+	{ _asm { MOV BYTE PTR DS:[ECX+0xE],1 } }
+	_asm { JMP[Return] }
 }

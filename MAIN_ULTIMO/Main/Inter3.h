@@ -12,5 +12,3 @@ enum iInterface
 void PetHPBarRemake(signed int x, signed int y, int nameIndex, signed int hp, signed int hpmax, char a9);
 void InitInter3();
 void RemoveSocket();
-void WeaponHandBC1();
-void WeaponHandBC2();
