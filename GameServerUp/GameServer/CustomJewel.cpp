@@ -398,6 +398,11 @@ bool CCustomJewel::CheckCustomJewelApplyItem(int ItemIndex,CItem* lpItem) // OK
 		return 0;
 	}
 
+	if(lpItem->m_Index == GET_ITEM(4,7) || lpItem->m_Index == GET_ITEM(4,15)) // Bolt,Arrow
+	{
+		return 0;
+	}
+
 	return 1;
 }
 

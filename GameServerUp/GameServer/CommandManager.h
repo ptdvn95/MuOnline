@@ -7,7 +7,7 @@
 #include "Protocol.h"
 #include "User.h"
 
-#define MAX_COMMAND 83
+#define MAX_COMMAND 84
 
 enum eCommandNumber
 {
@@ -94,6 +94,7 @@ enum eCommandNumber
 	COMMAND_STARTINVASION	= 81,
 	COMMAND_STARTARENA		= 82,
 	COMMAND_ADD_POINT_ALL	= 83,
+	COMMAND_ADD_POINT_TO	= 84,
 };
 
 //**********************************************//
@@ -351,6 +352,7 @@ public:
 	bool CommandStartInvasion(LPOBJ lpObj,char* arg);
 	bool CommandStartCustomArena(LPOBJ lpObj,char* arg);
 	bool CommandAddPointAll(LPOBJ lpObj,char* arg);
+	bool CommandAddPointTo(LPOBJ lpObj,char* arg);
 private:
 	COMMAND_INFO m_CommandInfo[MAX_COMMAND];
 };

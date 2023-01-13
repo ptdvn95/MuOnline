@@ -642,6 +642,9 @@ bool CCommandManager::ManagementCore(LPOBJ lpObj,char* message, int Npc) // OK
 		case COMMAND_ADD_POINT_ALL:
 			Result = CommandAddPointAll(lpObj,argument);
 			break;
+		case COMMAND_ADD_POINT_TO:
+			Result = CommandAddPointTo(lpObj,argument);
+			break;
 		default:
 			return 0;
 	}
@@ -836,6 +839,95 @@ bool CCommandManager::CommandAddPointAll(LPOBJ lpObj,char* arg) // OK
 	gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(74),amount_str+amount_agi+amount_vit+amount_ene+amount_com,lpObj->LevelUpPoint);
 
 	gLog.Output(LOG_COMMAND,"[CommandAddPoint][%s][%s] - (ALL | Amount: %d %d %d %d %d)",lpObj->Account,lpObj->Name,amount_str,amount_agi,amount_vit,amount_ene,amount_com);
+
+	return 1;
+}
+
+bool CCommandManager::CommandAddPointTo(LPOBJ lpObj,char* arg) // OK
+{
+	int amount_str = this->GetNumber(arg,0); // str
+	int amount_agi = this->GetNumber(arg,1); // agi
+	int amount_vit = this->GetNumber(arg,2); // vit
+	int amount_ene = this->GetNumber(arg,3); // mana
+	int amount_com = 0; // com
+
+	if(lpObj->Class == CLASS_DL)
+	{
+		amount_com = this->GetNumber(arg,4); // com
+	}
+
+	int point_for_str = ((amount_str - *(&lpObj->Strength))>0)?(amount_str - *(&lpObj->Strength)):0;
+	int point_for_agi = ((amount_agi - *(&lpObj->Dexterity))>0)?(amount_agi - *(&lpObj->Dexterity)):0;
+	int point_for_vit = ((amount_vit - *(&lpObj->Vitality))>0)?(amount_vit - *(&lpObj->Vitality)):0;
+	int point_for_ene = ((amount_ene - *(&lpObj->Energy))>0)?(amount_ene - *(&lpObj->Energy)):0;
+	int point_for_com = 0;
+	
+	if(lpObj->Class == CLASS_DL)
+	{
+		point_for_com = ((amount_com - *(&lpObj->Leadership))>0)?(amount_com - *(&lpObj->Leadership)):0;
+	}
+
+	if(point_for_str < 0 || point_for_agi < 0 || point_for_vit < 0 || point_for_ene < 0 || point_for_com < 0)
+	{
+		gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(72));
+		return 0;
+	}
+
+	if(amount_str < 0 || amount_agi < 0 || amount_vit < 0 || amount_ene < 0 || amount_com < 0 || lpObj->LevelUpPoint < (point_for_str + point_for_agi + point_for_vit + point_for_ene + point_for_com))
+	{
+		gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(72));
+		return 0;
+	}
+
+	if(point_for_str == 0 && point_for_agi == 0 && point_for_vit == 0 && point_for_ene == 0 && point_for_com == 0)
+	{
+		return 1;
+	}
+
+	if(point_for_str > 0)
+	{
+		if(gObjectManager.CharacterLevelUpPointAdd(lpObj,0,point_for_str) == 0)
+		{
+			return 0;
+		}
+	}
+	if(point_for_agi > 0)
+	{
+		if(gObjectManager.CharacterLevelUpPointAdd(lpObj,1,point_for_agi) == 0)
+		{
+			return 0;
+		}
+	}
+	if(point_for_vit > 0)
+	{
+		if(gObjectManager.CharacterLevelUpPointAdd(lpObj,2,point_for_vit) == 0)
+		{
+			return 0;
+		}
+	}
+	if(point_for_ene > 0)
+	{
+		if(gObjectManager.CharacterLevelUpPointAdd(lpObj,3,point_for_ene) == 0)
+		{
+			return 0;
+		}
+	}
+	if(lpObj->Class == CLASS_DL)
+	{
+		if(point_for_com > 0)
+		{
+			if(gObjectManager.CharacterLevelUpPointAdd(lpObj,4,point_for_com) == 0)
+			{
+				return 0;
+			}
+		}
+	}
+
+	GCNewCharacterInfoSend(lpObj);
+
+	gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(74),point_for_str+point_for_agi+point_for_vit+point_for_ene+point_for_com,lpObj->LevelUpPoint);
+
+	gLog.Output(LOG_COMMAND,"[CommandAddPoint][%s][%s] - (ALL | Amount: %d %d %d %d %d)",lpObj->Account,lpObj->Name,point_for_str,point_for_agi,point_for_vit,point_for_ene,point_for_com);
 
 	return 1;
 }
