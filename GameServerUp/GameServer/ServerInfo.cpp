@@ -3280,13 +3280,13 @@ void CServerInfo::ReadCommonInfo(char* section,char* path) // OK
 	this->ENE_MaxStatPoint[6] = GetPrivateProfileInt(section, "RF_MaxStatPoint_ENE", 0, path);
 	//----------------------
 
-//	this->m_MaxStatPoint[0] = GetPrivateProfileInt(section,"MaxStatPoint_AL0",0,path);
-//
-//	this->m_MaxStatPoint[1] = GetPrivateProfileInt(section,"MaxStatPoint_AL1",0,path);
-//
-//	this->m_MaxStatPoint[2] = GetPrivateProfileInt(section,"MaxStatPoint_AL2",0,path);
-//
-//	this->m_MaxStatPoint[3] = GetPrivateProfileInt(section,"MaxStatPoint_AL3",0,path);
+	this->m_MaxStatPoint[0] = GetPrivateProfileInt(section,"MaxStatPoint_AL0",0,path);
+
+	this->m_MaxStatPoint[1] = GetPrivateProfileInt(section,"MaxStatPoint_AL1",0,path);
+
+	this->m_MaxStatPoint[2] = GetPrivateProfileInt(section,"MaxStatPoint_AL2",0,path);
+
+	this->m_MaxStatPoint[3] = GetPrivateProfileInt(section,"MaxStatPoint_AL3",0,path);
 	//---
 	this->m_MaxStatPointCMD[0] = GetPrivateProfileInt(section,"MaxStatPointCMD_AL0",0,path);
 
