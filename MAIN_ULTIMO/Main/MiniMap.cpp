@@ -416,18 +416,20 @@ void Interface::DrawMiniMap()
 	float JCPartyCoordX;
 	float JCPartyCoordY;
 	
-	for(int i = 0; i < pPartyMemberCount ; i++){
-		if( !strcmp(pGetStrutParty( i ).Name, pGetUserName) ){
-			continue;
-		}
+	for(int i = 0; i < 5 ; i++)
+	{
+		// if( !strcmp(pGetStrutParty( i ).Name, pGetUserName) ){
+		// 	continue;
+		// }
 	
-		JCPartyCoordX = (double) InitialX + gMiniMap.gPartyInfo[ i ].x / ((Type == 1) ? 0.5 : Type - 1 );
-		JCPartyCoordY = (double) InitialY + (256 - gMiniMap.gPartyInfo[ i ].y ) / ((Type == 1) ? 0.5 : Type - 1 );
-	
+		JCPartyCoordX = (double)gRenderMap.DataMap.XSW_Minimap + gMiniMap.gPartyInfo[i].x / ((Type == 1) ? 0.5 : Type - 1);
+		JCPartyCoordY = (double)gRenderMap.DataMap.YSW_Minimap + (256 - gMiniMap.gPartyInfo[i].y) / ((Type == 1) ? 0.5 : Type - 1);
+
 		JCPartyCoordX = JCPartyCoordX - gRenderMap.DataMap.This_108 - 5;
 		JCPartyCoordY = JCPartyCoordY - gRenderMap.DataMap.This_112 - 5;
-	
-		RenderBitMapColored(61520, JCPartyCoordX, JCPartyCoordY, 7.5, 7.5, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, gRenderMap.DataMap.Alpha * 255));
+
+		this->DrawFormat(eWhite, JCPartyCoordX, JCPartyCoordY - 9, 35, 3, gMiniMap.gPartyInfo[i].name);
+		RenderBitMapColored(61520, JCPartyCoordX, JCPartyCoordY, 10.0, 10.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, gRenderMap.DataMap.Alpha * 255));
 	}
 
 	EnableAlphaTest(1);
