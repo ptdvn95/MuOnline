@@ -1,4 +1,4 @@
-﻿Build started 1/20/2023 2:42:45 PM.
+﻿Build started 1/20/2023 4:44:08 PM.
      1>Project "C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Main\Main.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\Main.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -165,4 +165,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.27
+Time Elapsed 00:00:05.63

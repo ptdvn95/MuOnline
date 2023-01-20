@@ -241,7 +241,7 @@ void DataViewPortMapLoad()
 
 	Type = gRenderMap.DataMap.Scale;
 
-	for (int i = 0; i < 400; ++i )
+	for (int i = 0; i < 300; ++i )
 	{
 		Model = pGetPreviewStruct(pPreviewThis(), i);
 		if ( Model
@@ -259,6 +259,7 @@ void DataViewPortMapLoad()
 				{
 					pDrawToolTip((int) XNPC, (int) YNPC - 10, (char *)(Model + 56)); //Nombre Monsters
 				}
+				RenderBitMapColored(31471, XNPC + 2, YNPC + 2, 3.0, 3.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, 255)); //Icono Monster
 				{
 					float JCPartyCoordX;
 					float JCPartyCoordY;
@@ -272,12 +273,9 @@ void DataViewPortMapLoad()
 
 						if(JCPartyCoordX == XNPC && JCPartyCoordY == YNPC)
 						{
-							gInterface.DrawFormat(eWhite, JCPartyCoordX, JCPartyCoordY, 35, 3, gMiniMap.gPartyInfo[i].name);
-							RenderBitMapColored(61520, JCPartyCoordX, JCPartyCoordY, 10.0, 10.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, gRenderMap.DataMap.Alpha * 255));
-						}
-						else
-						{
-							RenderBitMapColored(31471, XNPC + 2, YNPC + 2, 3.0, 3.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, 255)); //Icono Monster
+							// gInterface.DrawFormat(eWhite, JCPartyCoordX, JCPartyCoordY, 35, 3, gMiniMap.gPartyInfo[i].name);
+							RenderBitMapColored(61520, JCPartyCoordX - 1.6, JCPartyCoordY, 10.0, 10.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, gRenderMap.DataMap.Alpha * 255));
+							break;
 						}
 					}
 				}
