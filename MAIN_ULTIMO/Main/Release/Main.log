@@ -1,12 +1,11 @@
-﻿Build started 1/9/2023 1:37:06 AM.
+﻿Build started 1/20/2023 2:42:45 PM.
      1>Project "C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Main\Main.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\Main.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          All outputs are up-to-date.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W0 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MAIN_EXPORTS /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Main.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Common.cpp postInterface.cpp
-         Common.cpp
-         postInterface.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W0 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MAIN_EXPORTS /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Main.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt MiniMap.cpp
+         MiniMap.cpp
        ResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -89,6 +88,7 @@
          Release\MonsterHpBar.obj
          Release\MuHelper.obj
          Release\MultiSelect.obj
+         Release\NewUIEnterBloodCastle.obj
          Release\NoShadow.obj
          Release\OffTrade.obj
          Release\OptionBox.obj
@@ -108,6 +108,7 @@
          Release\proah.obj
          Release\Protect.obj
          Release\Protocol.obj
+         Release\QuickCommandWindow.obj
          Release\Radar.obj
          Release\Ranking.obj
          Release\RankingEx.obj
@@ -149,6 +150,9 @@
             Creating library C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\Main.lib and object C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\Main.exp
          Generating code
          Finished generating code
+     1>wzMUQuiz.lib(Client.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'wzMUQuiz.lib(Client.obj)' or at 'C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\vc100.pdb'; linking object as if no debug info
+     1>wzMUQuiz.lib(stdafx.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'wzMUQuiz.lib(stdafx.obj)' or at 'C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\vc100.pdb'; linking object as if no debug info
+     1>wzMUQuiz.lib(UIControl.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'wzMUQuiz.lib(UIControl.obj)' or at 'C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\vc100.pdb'; linking object as if no debug info
      1>detours.lib(detours.obj) : warning LNK4099: PDB 'detours.pdb' was not found with 'detours.lib(detours.obj)' or at 'C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\detours.pdb'; linking object as if no debug info
      1>detours.lib(disasm.obj) : warning LNK4099: PDB 'detours.pdb' was not found with 'detours.lib(disasm.obj)' or at 'C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\detours.pdb'; linking object as if no debug info
          Main.vcxproj -> C:\Users\Zekcrom\Documents\GitHub\MuOnline\MAIN_ULTIMO\Release\Main.dll
@@ -161,4 +165,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.53
+Time Elapsed 00:00:05.27

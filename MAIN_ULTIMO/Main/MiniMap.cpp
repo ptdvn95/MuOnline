@@ -260,7 +260,26 @@ void DataViewPortMapLoad()
 					pDrawToolTip((int) XNPC, (int) YNPC - 10, (char *)(Model + 56)); //Nombre Monsters
 				}
 				{
-					RenderBitMapColored(31471, XNPC + 2, YNPC + 2, 3.0, 3.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, 255)); //Icono Monster
+					float JCPartyCoordX;
+					float JCPartyCoordY;
+					for(int i = 0; i < 5 ; i++)
+					{
+						JCPartyCoordX = (double)gRenderMap.DataMap.XSW_Minimap + gMiniMap.gPartyInfo[i].x / ((Type == 1) ? 0.5 : Type - 1);
+						JCPartyCoordY = (double)gRenderMap.DataMap.YSW_Minimap + (256 - gMiniMap.gPartyInfo[i].y) / ((Type == 1) ? 0.5 : Type - 1);
+
+						JCPartyCoordX = JCPartyCoordX - gRenderMap.DataMap.This_108 - 5;
+						JCPartyCoordY = JCPartyCoordY - gRenderMap.DataMap.This_112 - 5;
+
+						if(JCPartyCoordX == XNPC && JCPartyCoordY == YNPC)
+						{
+							gInterface.DrawFormat(eWhite, JCPartyCoordX, JCPartyCoordY, 35, 3, gMiniMap.gPartyInfo[i].name);
+							RenderBitMapColored(61520, JCPartyCoordX, JCPartyCoordY, 10.0, 10.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, gRenderMap.DataMap.Alpha * 255));
+						}
+						else
+						{
+							RenderBitMapColored(31471, XNPC + 2, YNPC + 2, 3.0, 3.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, 255)); //Icono Monster
+						}
+					}
 				}
 			}
 				//Aqui agregar ID de los Guard Cities
@@ -412,25 +431,25 @@ void Interface::DrawMiniMap()
 		sub_637E80( 32450, (double)gRenderMap.DataMap.DropMoveUserX, (double)gRenderMap.DataMap.DropMoveUserY, 7.5, 7.5, DIRPointer, 0.0, 0.0, 0.546875, 0.546875); //Puntero personaje s3/s6/ex700/legends
 	}
 
-	//Party
-	float JCPartyCoordX;
-	float JCPartyCoordY;
+	// //Party
+	// float JCPartyCoordX;
+	// float JCPartyCoordY;
 	
-	for(int i = 0; i < 5 ; i++)
-	{
-		// if( !strcmp(pGetStrutParty( i ).Name, pGetUserName) ){
-		// 	continue;
-		// }
+	// for(int i = 0; i < 5 ; i++)
+	// {
+	// 	// if( !strcmp(pGetStrutParty( i ).Name, pGetUserName) ){
+	// 	// 	continue;
+	// 	// }
 	
-		JCPartyCoordX = (double)gRenderMap.DataMap.XSW_Minimap + gMiniMap.gPartyInfo[i].x / ((Type == 1) ? 0.5 : Type - 1);
-		JCPartyCoordY = (double)gRenderMap.DataMap.YSW_Minimap + (256 - gMiniMap.gPartyInfo[i].y) / ((Type == 1) ? 0.5 : Type - 1);
+	// 	JCPartyCoordX = (double)gRenderMap.DataMap.XSW_Minimap + gMiniMap.gPartyInfo[i].x / ((Type == 1) ? 0.5 : Type - 1);
+	// 	JCPartyCoordY = (double)gRenderMap.DataMap.YSW_Minimap + (256 - gMiniMap.gPartyInfo[i].y) / ((Type == 1) ? 0.5 : Type - 1);
 
-		JCPartyCoordX = JCPartyCoordX - gRenderMap.DataMap.This_108 - 5;
-		JCPartyCoordY = JCPartyCoordY - gRenderMap.DataMap.This_112 - 5;
+	// 	JCPartyCoordX = JCPartyCoordX - gRenderMap.DataMap.This_108 - 5;
+	// 	JCPartyCoordY = JCPartyCoordY - gRenderMap.DataMap.This_112 - 5;
 
-		this->DrawFormat(eWhite, JCPartyCoordX, JCPartyCoordY - 9, 35, 3, gMiniMap.gPartyInfo[i].name);
-		RenderBitMapColored(61520, JCPartyCoordX, JCPartyCoordY, 10.0, 10.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, gRenderMap.DataMap.Alpha * 255));
-	}
+	// 	this->DrawFormat(eWhite, JCPartyCoordX, JCPartyCoordY - 9, 35, 3, gMiniMap.gPartyInfo[i].name);
+	// 	RenderBitMapColored(61520, JCPartyCoordX, JCPartyCoordY, 10.0, 10.0, 0.0, 0.0, 0.546875, 0.546875, pMakeColor(255, 255, 255, gRenderMap.DataMap.Alpha * 255));
+	// }
 
 	EnableAlphaTest(1);
 	glColor4f(1.0, 1.0, 1.0, gRenderMap.DataMap.Alpha);
