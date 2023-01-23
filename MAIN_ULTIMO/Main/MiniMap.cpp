@@ -900,7 +900,15 @@ void MiniMapLoadNew() // OK
 	{
 		char buff[32];
 
-		wsprintf(buff, "Custom\\Maps\\World%d.tga", ( pMapNumber + 1 ));
+		
+		if(pMapNumber + 1 == 7)
+		{
+			wsprintf(buff, "Custom\\Maps\\World%d.tga", ( pMapNumber + 1 ));
+		}
+		else
+		{
+			wsprintf(buff, "Custom\\Maps\\World%d.jpg", ( pMapNumber + 1 ));
+		}
 		
 		if (MiniMapFileCheck1( pMapNumber + 1 ) != 0)
 		{
