@@ -114,7 +114,7 @@
 #define ARCHIVEMENT            1
 #define LEVEL_PLUS             1
 #define WINDOWSQUEST           1
-#define HPTYPE                 0  // type 0: classic || type 1: custom
+#define HPTYPE                 1  // type 0: classic || type 1: custom
 #define SOIITEM 			   1
 
 // System Include

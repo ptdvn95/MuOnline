@@ -92,7 +92,7 @@ void DrawHealthBar()
 {
 
 	int PosX, PosY;
-	float LifeBarWidth = 66.95;
+	float LifeBarWidth = 64.0;
 	VAngle Angle;
 
 	for (int n = 0; n < MAX_MAIN_VIEWPORT; n++)
@@ -125,8 +125,8 @@ void DrawHealthBar()
 		}
 
 		int LifePercent = lpNewHealthBar->rate / 10;
-		float BarWidth = (((66.95 - 1) / 100.0f) * lpNewHealthBar->rate) - 1;
-		float SDBarWidth = (((66.95 - 1) / 100.0f) * lpNewHealthBar->SDrate) - 1;
+		float BarWidth = (((64.0 - 1) / 100.0f) * lpNewHealthBar->rate) - 1;
+		float SDBarWidth = (((64.0 - 1) / 100.0f) * lpNewHealthBar->SDrate) - 1;
 
 		Angle.X = lpObj->m_Model.VecPosX;
 		Angle.Y = lpObj->m_Model.VecPosY;
@@ -160,52 +160,53 @@ void DrawHealthBar()
 					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // ���� ���� ��� �����
 				}
 
-				if (!isTarget)
+				if (!isTarget) // hover
 				{
-					pDrawBarForm((float)(PosX - 1), (float)(PosY - 12), 66.95, 10, 0.0, 0); // ��� ��� �����
+					// pDrawBarForm((float)(PosX - 1), (float)(PosY - 12), 64.0, 10, 0.0, 0); // ��� ��� �����
 				}
 				else
 				{
-					pDrawBarForm((float)(PosX - 1), (float)(PosY + 12), 66.95, 20, 0.0, 0); // ��� ��� �����
+					pDrawBarForm((float)(PosX) - 1, (float)(PosY + 12), 64.0, 8, 0.0, 0); // ��� ��� �����
+
+					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // ���� ���� ��� ������
+					pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 64.0, 6, 0.0, 0); // ��� ������
+					pDrawBarForm((float)(PosX - 1), (float)(PosY + 5), 64.0, 6, 0.0, 0); // ��� SD
+
+					glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT(ABS(((255.0f / 100.0f) * lpNewHealthBar->rate) - 255.0f)), RGBTOGLFLOAT(0), 0.8); // ���� �� ����
+
+					pDrawBarForm((float)(PosX), (float)(PosY), BarWidth, 3, 0.0, 0); // �����
+
+					glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT((255.0f / 100.0f) * lpNewHealthBar->SDrate), RGBTOGLFLOAT(0), 0.8); // ���� SD ����
+
+					pDrawBarForm((float)(PosX), (float)(PosY + 7), SDBarWidth, 2.5, 0.0, 0); // SD ���
 				}
 
-				glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // ���� ���� ��� ������
-				pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 66.95, 6, 0.0, 0); // ��� ������
-				pDrawBarForm((float)(PosX - 1), (float)(PosY + 5), 66.95, 6, 0.0, 0); // ��� SD
-
-				glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT(ABS(((255.0f / 100.0f) * lpNewHealthBar->rate) - 255.0f)), RGBTOGLFLOAT(0), 0.8); // ���� �� ����
-
-				pDrawBarForm((float)(PosX), (float)(PosY), BarWidth, 3, 0.0, 0); // �����
-
-				glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT((255.0f / 100.0f) * lpNewHealthBar->SDrate), RGBTOGLFLOAT(0), 0.8); // ���� SD ����
-
-				pDrawBarForm((float)(PosX), (float)(PosY + 7), SDBarWidth, 2.5, 0.0, 0); // SD ���
 
 				if (!isTarget)
 				{
 					if (lpNewHealthBar->isSameGuild)
 					{
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eBlack, 9, 3); // ���� �����
+						// DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 64.0, 1, eBlack, 9, 3); // ���� �����
 					}
 					else
 					{
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // ���� �����
+						// DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 64.0, 1, eWhite, 9, 3); // ���� �����
 					}
 				}
 				else
 				{
 					char Text[100];
-					sprintf(Text, "Lvl: %d R: %d HP: %s/%s", lpNewHealthBar->Level, lpNewHealthBar->Reset, ParseReducedValue((int)lpNewHealthBar->Life), ParseReducedValue((int)lpNewHealthBar->MaxLife));
+					sprintf(Text, "Lvl: %d  Rs: %d  HP: %s/%s", lpNewHealthBar->Level, lpNewHealthBar->Reset, ParseReducedValue((int)lpNewHealthBar->Life), ParseReducedValue((int)lpNewHealthBar->MaxLife));
 
 					if (lpNewHealthBar->isSameGuild)
 					{
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY + 23, 67, 1, eBlack, 9, 3); // ���� �����
-						DrawInterfaceText(Text, PosX - 1, PosY + 13, 67, 1, eBlack, 9, 3); // ���� ����
+						// DrawInterfaceText(lpObj->Name, PosX - 1, PosY + 23, 67, 1, eBlack, 9, 3); // ���� �����
+						DrawInterfaceText(Text, PosX - 1, PosY + 13, 64, 1, eBlack, 9, 3); // ���� ����
 					}
 					else
 					{
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY + 23, 67, 1, eWhite, 9, 3); // ���� �����
-						DrawInterfaceText(Text, PosX - 1, PosY + 13, 67, 1, eWhite, 9, 3); // ���� ����
+						// DrawInterfaceText(lpObj->Name, PosX - 1, PosY + 23, 67, 1, eWhite, 9, 3); // ���� �����
+						DrawInterfaceText(Text, PosX - 1, PosY + 13, 64, 1, eWhite, 9, 3); // ���� ����
 					}
 				}
 			}
@@ -226,15 +227,15 @@ void DrawHealthBar()
 
 					if (!isTarget)
 					{
-						pDrawBarForm((float)(PosX - 1), (float)(PosY - 12), 66.95, 10, 0.0, 0); // ��� ��� �����
+						pDrawBarForm((float)(PosX - 1), (float)(PosY - 12), 64.0, 10, 0.0, 0); // ��� ��� �����
 					}
 					else
 					{
-						pDrawBarForm((float)(PosX - 1), (float)(PosY - 22), 66.95, 20, 0.0, 0); // ��� ��� �����
+						pDrawBarForm((float)(PosX - 1), (float)(PosY - 22), 64.0, 20, 0.0, 0); // ��� ��� �����
 					}
 
 					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // ���� ���� ��� ������
-					pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 66.95, 6, 0.0, 0); // ��� ������
+					pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 64.0, 6, 0.0, 0); // ��� ������
 
 					glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT(ABS(((255.0f / 100.0f) * lpNewHealthBar->rate) - 255.0f)), RGBTOGLFLOAT(0), 0.8); // ���� �� ����
 
@@ -242,7 +243,7 @@ void DrawHealthBar()
 
 					if (!isTarget)
 					{
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // ���� �����
+						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 64.0, 1, eWhite, 9, 3); // ���� �����
 					}
 					else
 					{
@@ -262,15 +263,15 @@ void DrawHealthBar()
 
 					if (!isTarget)
 					{
-						pDrawBarForm((float)(PosX - 1), (float)(PosY - 22), 66.95, 20, 0.0, 0); // ��� ��� �����
+						pDrawBarForm((float)(PosX - 1), (float)(PosY - 22), 64.0, 20, 0.0, 0); // ��� ��� �����
 					}
 					else
 					{
-						pDrawBarForm((float)(PosX - 1), (float)(PosY - 32), 66.95, 30, 0.0, 0); // ��� ��� �����
+						pDrawBarForm((float)(PosX - 1), (float)(PosY - 32), 64.0, 30, 0.0, 0); // ��� ��� �����
 					}
 
 					glColor4f(RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), RGBTOGLFLOAT(0), 0.6); // ���� ���� ��� ������
-					pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 66.95, 6, 0.0, 0); // ��� ������
+					pDrawBarForm((float)(PosX - 1), (float)(PosY - 1.5), 64.0, 6, 0.0, 0); // ��� ������
 
 					glColor4f(RGBTOGLFLOAT(255), RGBTOGLFLOAT(ABS(((255.0f / 100.0f) * lpNewHealthBar->rate) - 255.0f)), RGBTOGLFLOAT(0), 0.8); // ���� �� ����
 
@@ -280,8 +281,8 @@ void DrawHealthBar()
 					if (!isTarget)
 					{
 
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // ���� �����
-						DrawInterfaceText(HpBarEx->Name, PosX - 1, PosY - 21, 66.95, 1, eWhite, 9, 3); // ���� �����
+						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 11, 64.0, 1, eWhite, 9, 3); // ���� �����
+						DrawInterfaceText(HpBarEx->Name, PosX - 1, PosY - 21, 64.0, 1, eWhite, 9, 3); // ���� �����
 
 					}
 					else
@@ -290,9 +291,9 @@ void DrawHealthBar()
 						char Text[100];
 						sprintf(Text, "Lvl: %d HP: %s/%s", lpNewHealthBar->Level, ParseReducedValue((int)lpNewHealthBar->Life), ParseReducedValue((int)lpNewHealthBar->MaxLife));
 
-						DrawInterfaceText(HpBarEx->Name, PosX - 1, PosY - 31, 66.95, 1, eWhite, 9, 3); // ���� ��������
-						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 21, 66.95, 1, eWhite, 9, 3); // ���� �����
-						DrawInterfaceText(Text, PosX - 1, PosY - 11, 66.95, 1, eWhite, 9, 3); // ���� ����
+						DrawInterfaceText(HpBarEx->Name, PosX - 1, PosY - 31, 64.0, 1, eWhite, 9, 3); // ���� ��������
+						DrawInterfaceText(lpObj->Name, PosX - 1, PosY - 21, 64.0, 1, eWhite, 9, 3); // ���� �����
+						DrawInterfaceText(Text, PosX - 1, PosY - 11, 64.0, 1, eWhite, 9, 3); // ���� ����
 
 					}
 				}
@@ -316,7 +317,7 @@ void DrawHealthBar()
 void AllInOne()
 {
 	DrawHealthBar();
-	gCustomRankUser.DrawInfo();
+	// gCustomRankUser.DrawInfo();
 }
 
 bool IsPartyMember(int ViewportID)

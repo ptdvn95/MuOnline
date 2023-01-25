@@ -66,7 +66,7 @@ typedef unsigned __int64 QWORD;
 #define SOIITEM 	 1
 
 // hptype : 0 Classic || hptype : 1 custom
-#define HPTYPE  0
+#define HPTYPE  1
 
 #define selectchars13 1
 

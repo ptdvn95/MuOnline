@@ -323,8 +323,8 @@ void InitCommon() // OK
 	SetByte((Offset_CreateFontA5 + 5), 0x90);
 
 
-	SetByte((0x00958D4C + 3), 0x6A);	//1 Codepage utf thai lang
-	SetByte((0x00958D4C + 4), 0x03);	//2	Codepage utf thai lang
+	SetByte((0x00958D4C + 3), 0xA8);	//1 Codepage utf China lang
+	SetByte((0x00958D4C + 4), 0x03);	//2	Codepage utf China lang
 
 	//	SetByte((0x00958D4C + 3), 0xE9);	//1 Codepage utf thai lang FDE9
 	//	SetByte((0x00958D4C + 4), 0xFD);	//2	Codepage utf thai lang

@@ -3,8 +3,8 @@
 #include "OptionBox.h"
 #include "PartyBar.h"
 
-#define takumi12 0
-//#define MAX_USER_IN_PARTY 5
+#define takumi12 1
+// #define MAX_USER_IN_PARTY 5
 
 #define sub_4DB0E0					((BOOL(__cdecl*)(int a1))0x004DB0E0)
 #define sub_59A8B0					((bool(__stdcall*)())0x0059A8B0)

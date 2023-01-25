@@ -166,7 +166,27 @@ void Interface::RenderObjectSystem()
 	// Minimap
 	this->BindObject(eNULL_MAP, 31461, 128, 128, -1, -1);
 	this->BindObject(ePLAYER_POINT, 31460, 3, 3, -1, -1);
-
+	this->BindObject(eLORENCIA_MAP, 31462, 128, 128, -1, -1);
+	this->BindObject(eDUNGEON_MAP, 31463, 128, 128, -1, -1);
+	this->BindObject(eDEVIAS_MAP, 31464, 128, 128, -1, -1);
+	this->BindObject(eNORIA_MAP, 31465, 128, 128, -1, -1);
+	this->BindObject(eLOSTTOWER_MAP, 31466, 128, 128, -1, -1);
+	this->BindObject(eSTADIUM_MAP, 61465, 128, 128, -1, -1);
+	this->BindObject(eATLANS_MAP, 31467, 128, 128, -1, -1);
+	this->BindObject(eTarkan_MAP, 31468, 128, 128, -1, -1);
+	this->BindObject(eElbeland_MAP, 31469, 128, 128, -1, -1);
+	this->BindObject(eICARUS_MAP, 31470, 128, 128, -1, -1);
+	this->BindObject(eLANDOFTRIALS_MAP, 31461, 128, 128, -1, -1);
+	this->BindObject(eAIDA_MAP, 31472, 128, 128, -1, -1);
+	this->BindObject(eCRYWOLF_MAP, 31473, 128, 128, -1, -1);
+	this->BindObject(eKANTRU_MAP, 31474, 128, 128, -1, -1);
+	this->BindObject(eKANTRU3_MAP, 31475, 128, 128, -1, -1);
+	this->BindObject(eBARRACKS_MAP, 31476, 128, 128, -1, -1);
+	this->BindObject(eCALMNESS_MAP, 31477, 128, 128, -1, -1);
+	this->BindObject(eRAKLION_MAP, 31478, 128, 128, -1, -1);
+	this->BindObject(eVULCANUS_MAP, 31479, 128, 128, -1, -1);
+	this->BindObject(eKALRUTAN_MAP, 31480, 128, 128, -1, -1);
+	this->BindObject(eKALRUTAN2_MAP, 31481, 128, 128, -1, -1);
 	this->BindObject(eNextCommand, 31659, 17, 18, -1, -1);
 	this->BindObject(ePrevCommand, 31658, 17, 18, -1, -1);
 	this->BindObject(eNextEvent, 31659, 17, 18, -1, -1);
@@ -471,11 +491,6 @@ void Interface::LoadImages()
 		pLoadImage("Custom\\Interface\\Money\\item_money2.tga", 0x7910, 0x2601, 0x2901, 1, 0);
 	}
 	//
-	// pLoadImage("Item\\alicewing4db_render.jpg", 32836, GL_LINEAR, GL_REPEAT, 1, 0);	
-	// pLoadImage("Item\\elfwing4da_render01.jpg", 32834, GL_LINEAR, GL_REPEAT, 1, 0);	
-	// pLoadImage("Item\\elfwing4da_render02.jpg", 32835, GL_LINEAR, GL_REPEAT, 1, 0);
-	// pLoadImage("Item\\magicianwing4da_render.jpg", 32831, GL_LINEAR, GL_REPEAT, 1, 0);
-	// pLoadImage("Item\\dknightwing4db_render.jpg", 32833, GL_LINEAR, GL_REPEAT, 1, 0);
 	pLoadImage("Custom\\Interface\\Rank01.tga", 0x7880, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Custom\\Interface\\Rank02.tga", 0x7881, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Custom\\Interface\\Rank03.tga", 0x7882, 0x2601, 0x2901, 1, 0);

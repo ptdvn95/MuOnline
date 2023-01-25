@@ -4,7 +4,7 @@
 #include "Protocol.h"
 #include "Object.h"
 
-#define MAX_USER_IN_PARTY	10
+#define MAX_USER_IN_PARTY	5
 
 //----- (0064E1F0) --------------------------------------------------------
 #define sub_4DB1F0			((int(__cdecl*)( )) 0x004DB1F0)
