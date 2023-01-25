@@ -432,6 +432,9 @@ OBJECT_GRESET_MONEY_BG,
 OBJECT_GRESET_CLOSE,
 OBJECT_GRESET_FINISH,
 
+eFruitMain,
+eFruitClose,
+
 eJewelBank_MAIN,
 eJewelBank_TITLE,
 eJewelBank_FRAME,
@@ -441,6 +444,9 @@ eJewelBank_CLOSE,
 eJewelBank_NEXT,
 eJewelBank_PREV,
 eJewelBank_WITHDRAW, 
+
+iNewuiDialogHr = 0x9308,
+iGfxDialoge = 0x9309,
 };
 
 enum InterfaceID
@@ -705,6 +711,11 @@ public:
 	void		DrawMessageBox(LPCSTR Text, ...);
 	//-- Party Bar ex700
 	void		BarPartyNew();
+	void 		DrawFruit();
+	void 		EventFruitWindow_Main(DWORD Event);
+	void		CloseFruitWindow() { this->Data[eFruitMain].OnShow = false; };
+	void 		DrawItem2(float PosX, float PosY, float Width, float Height, int ItemID, int Level, int Excl, int Anc, bool OnMouse);
+	void 		SwitchFruitSystem();
 
 private:
 };

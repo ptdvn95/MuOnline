@@ -98,8 +98,6 @@
 #include "CUIMng.h"
 #include "ServerSelWin.h"
 
-#include "FullViewMode.h"
-
 HINSTANCE hins;
 
 void StartAddress(LPVOID lpThreadParameter)
@@ -195,7 +193,6 @@ extern "C" _declspec(dllexport) void EntryProc() // OK
 
 //	gInfoLog.Load();
 	gCUIMng.Load(); //-- Custom Loading Screen
-	FullViewMode.Hook();
 	g_ServerSelWin.Init(); // Move ServerList to center
 #if(SOIITEM)
 	g_pQuickCommandWindow.szInit();

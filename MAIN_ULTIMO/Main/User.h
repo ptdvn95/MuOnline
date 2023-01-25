@@ -90,6 +90,15 @@ public:
 	int			m_MaxWarehouse;
 	int			m_WarehouseNumber;
 	// --
+
+	// Fruit System
+	int FStrength;
+	int FDexterity;
+	int FVitality;
+	int FEnergy;
+	int FLeadership;
+	int FMaxPoint;
+	// --
 	CUSTOM_LOGO m_Logo[400];
 };
 extern User gObjUser;

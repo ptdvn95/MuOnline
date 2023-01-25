@@ -144,6 +144,8 @@ LRESULT Controller::Mouse(int Code, WPARAM wParam, LPARAM lParam)
 
 			g_ExWinQuestSystem.Button(wParam);
 
+			gInterface.EventFruitWindow_Main(wParam);
+
 			gResetSystem.EventResetWindow_Main(wParam);
 
 			gGrandResetSystem.EventGrandResetWindow_Main(wParam);
@@ -264,6 +266,14 @@ LRESULT Controller::Keyboard(int Code, WPARAM wParam, LPARAM lParam)
 		break;
 		case VK_ESCAPE:
 		{
+			if (gInterface.Data[eFruitMain].OnShow == true  && (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4))
+			{
+				gInterface.Data[eFruitMain].OnShow = false;
+
+				pSetCursorFocus = false;
+
+				return -1;
+			}
 
 			if (gInterface.Data[eCommand_MAIN].OnShow == true  && (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4))
 			{

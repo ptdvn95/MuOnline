@@ -705,9 +705,6 @@
     <ClInclude Include="ServerSelWin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FullViewMode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SmoothCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -1119,9 +1116,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ServerSelWin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FullViewMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SmoothCamera.cpp">

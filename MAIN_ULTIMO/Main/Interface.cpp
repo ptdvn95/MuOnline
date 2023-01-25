@@ -66,6 +66,9 @@ void Interface::RenderObjectSystem()
 	// 51522
 	//--
 
+	// Fruit Windows Close
+	this->BindObject(eFruitClose, 0x7EC5, 36, 29, -1, -1);
+
 	this->BindObject(eMenu_MAIN, 0x7A5A, 222, 340, 205, -1);
 	this->BindObject(eMenu_MAIN2, 0x7A5A, 222, 340, 205, -1);
 	this->BindObject(eMenu_CLOSE, 71521, 59, 28, -1, -1);
@@ -856,6 +859,9 @@ void Interface::LoadImages()
 		gCloak.LoadTexture();
 	}
 
+	pLoadImage("Custom\\Interface\\ui-dialog1_hr.tga", iNewuiDialogHr, GL_LINEAR, GL_REPEAT, 1, 0);
+	pLoadImage("Custom\\Interface\\ui_dialog_e.tga", iGfxDialoge, GL_LINEAR, GL_REPEAT, 1, 0);
+
 #if (ARCHIVEMENT == 1)
 	gAchievements.LoadImages();
 #endif
@@ -1314,6 +1320,8 @@ void Interface::Work()
 	// Draw Ranking Board
 	gRanking.Draw();
 
+	gInterface.DrawFruit();
+
 	// Draw Local and Server Time
 	// gInterface.DrawTimeUI();
 
@@ -1478,7 +1486,7 @@ void Interface::Work()
 		}
 		if (GetKeyState(VK_F6) & 0x4000) 
 		{
-			// gInterface.SwitchChatExpand();
+			gInterface.SwitchFruitSystem();
 		}
 		if (GetKeyState(VK_F7) & 0x4000)
 		{
@@ -1509,6 +1517,16 @@ void Interface::Work()
 		// When Press ESC
 		if (GetKeyState(VK_ESCAPE) < 0)
 		{
+			if (gInterface.Data[eFruitMain].OnShow == true)
+			{
+				gInterface.Data[eFruitMain].OnShow = false;
+
+				if (gProtect.m_MainInfo.CustomInterfaceType != 3 || gProtect.m_MainInfo.CustomInterfaceType != 4)
+				{
+					pSetCursorFocus = false;
+				}
+			}
+
 			if (gInterface.Data[eCommand_MAIN].OnShow == true)
 			{
 				gInterface.Data[eCommand_MAIN].OnShow = false;
@@ -3701,6 +3719,27 @@ void Interface::SwitchJewelsBank()
 	}
 }
 
+// Fruit Windows
+void Interface::SwitchFruitSystem()
+{
+	if ((GetTickCount() - gInterface.Data[eFruitMain].EventTick) < 200)
+	{
+		return;
+	}
+	gInterface.Data[eFruitMain].EventTick = GetTickCount();
+
+	if (gInterface.Data[eFruitMain].OnShow == true)
+	{
+		gInterface.CloseFruitWindow();
+		pSetCursorFocus = false;
+	}
+	else
+	{
+		CloseAllWindows();
+		gInterface.Data[eFruitMain].OnShow = true;
+	}
+}
+
 void Interface::OpenConfig(int type)
 {
 	if (type == 0)
@@ -3754,6 +3793,7 @@ void Interface::CloseAllWindows()
 	gInterface.LuckyWheelStateclose();
 	gInterface.PartySearchStateclose();
 	gInterface.CloseVipWindow();
+	gInterface.CloseFruitWindow();
 	gInterface.Data[eCommand_MAIN].OnShow = false;
 	gInterface.Data[eRankPANEL_MAIN].OnShow = false;
 	gInterface.Data[eEventTimePANEL_MAIN].OnShow = false;
@@ -5498,4 +5538,138 @@ __declspec(naked) void ItemTooltipRender()
 			JMP [Addr]
 		}
 	}
+}
+
+void Interface::DrawFruit()
+{
+	if (this->CheckWindow(CashShop) ||
+		this->CheckWindow(ChaosBox) ||
+		this->CheckWindow(FullMap) ||
+		this->CheckWindow(MoveList) ||
+		this->CheckWindow(SkillTree))
+		return;
+
+	if (!this->Data[eFruitMain].OnShow)
+	{
+		return;
+	}
+
+	float MainWidth = 230.0;
+	float MainHeight = 313.0;
+	float StartY = 80.0;
+	float StartX = (MAX_WIN_WIDTH / 2) - (MainWidth / 2);
+	float MainCenter = StartX + (MainWidth / 3);
+	float ButtonX = MainCenter - (29.0 / 2);
+
+	pDrawImage(iGfxDialoge, StartX + 50, StartY + 50, 150, 200, 1, 1, 1.0, 1.0, 1, 1, 0); //223 280
+	pDrawImage(iNewuiDialogHr, StartX + 50, StartY + 115, 145, 5, 1, 1, 1.0, 1.0, 1, 1, 0); //235 210
+
+	this->DrawFormat(eGold, StartX + 15, StartY + 63, 223, 3, gCustomMessage.GetMessage(87));
+	int TotalPoint;
+	TotalPoint = gObjUser.FStrength + gObjUser.FDexterity + gObjUser.FVitality + gObjUser.FEnergy + gObjUser.FLeadership;
+	glColor4f(0.0, 0.0, 0.0, 0.7);
+	float BarWidth = 130.1f * (TotalPoint / (TotalPoint + gObjUser.FMaxPoint * 1.0f));
+	pDrawBarForm((float)StartX + 60, (float)StartY + 82, 130, 10.0, 0, 0);
+	pDrawBarForm((float)StartX + 160, (float)StartY + 132, 30, 13.0, 0, 0);
+	pDrawBarForm((float)StartX + 160, (float)StartY + 152, 30, 13.0, 0, 0);
+	pDrawBarForm((float)StartX + 160, (float)StartY + 172, 30, 13.0, 0, 0);
+	pDrawBarForm((float)StartX + 160, (float)StartY + 192, 30, 13.0, 0, 0);
+	pDrawBarForm((float)StartX + 160, (float)StartY + 212, 30, 13.0, 0, 0);
+	glColor3f(2.0, 2.0, 0.0);
+	pDrawBarForm((float)StartX + 62, (float)StartY + 87, BarWidth, 6, 0, 0);
+	this->DrawItem2(StartX + 60, StartY + 125, 20, 20, ITEM(13, 15), SET_ITEMOPT_LEVEL(3), 0, 0, 0); //Str
+	this->DrawItem2(StartX + 60, StartY + 145, 20, 20, ITEM(13, 15), SET_ITEMOPT_LEVEL(2), 0, 0, 0); //Agi
+	this->DrawItem2(StartX + 60, StartY + 165, 20, 20, ITEM(13, 15), SET_ITEMOPT_LEVEL(1), 0, 0, 0); //Vit
+	this->DrawItem2(StartX + 60, StartY + 185, 20, 20, ITEM(13, 15), SET_ITEMOPT_LEVEL(0), 0, 0, 0); //Ene
+	this->DrawItem2(StartX + 60, StartY + 205, 20, 20, ITEM(13, 15), SET_ITEMOPT_LEVEL(4), 0, 0, 0); //Cmd
+	this->DrawFormat(eWhite, StartX +100, StartY + 100, 30, 5, gCustomMessage.GetMessage(88), TotalPoint, gObjUser.FMaxPoint);
+	this->DrawFormat(eWhite, StartX + 85, StartY + 135,  30, 5, gCustomMessage.GetMessage(89));
+	this->DrawFormat(eWhite, StartX + 85, StartY + 155,  30, 5, gCustomMessage.GetMessage(90));
+	this->DrawFormat(eWhite, StartX + 85, StartY + 175,  30, 5, gCustomMessage.GetMessage(91));
+	this->DrawFormat(eWhite, StartX + 85, StartY + 195,  30, 5, gCustomMessage.GetMessage(92));
+	this->DrawFormat(eWhite, StartX + 85, StartY + 215,  30, 5, gCustomMessage.GetMessage(93));
+
+	this->DrawFormat(eWhite, StartX + 175, StartY + 135,  10, 5, "%d", gObjUser.FStrength);
+	this->DrawFormat(eWhite, StartX + 175, StartY + 155,  10, 5, "%d", gObjUser.FDexterity);
+	this->DrawFormat(eWhite, StartX + 175, StartY + 175,  10, 5, "%d", gObjUser.FVitality);
+	this->DrawFormat(eWhite, StartX + 175, StartY + 195,  10, 5, "%d", gObjUser.FEnergy);
+	this->DrawFormat(eWhite, StartX + 175, StartY + 215,  10, 5, "%d", gObjUser.FLeadership);
+
+	this->DrawGUI(eFruitClose, StartX + 170, StartY + 52);
+	if (this->IsWorkZone(eFruitClose))
+	{
+		DWORD Color = eGray100;
+		// ----
+		if (this->Data[eFruitClose].OnClick)
+		{
+			Color = eGray150;
+		}
+		// ----
+		this->DrawColoredGUI(eFruitClose, this->Data[eFruitClose].X, this->Data[eFruitClose].Y, Color);
+	}
+	pSetCursorFocus = true;
+}
+
+void Interface::EventFruitWindow_Main(DWORD Event)
+{
+	DWORD CurrentTick = GetTickCount();
+
+	if (!gInterface.Data[eFruitMain].OnShow)
+	{
+		return;
+	}
+
+	if (this->IsWorkZone(eFruitClose))
+	{
+		DWORD Delay = (CurrentTick - this->Data[eFruitClose].EventTick);
+		// ----
+		if (Event == WM_LBUTTONDOWN)
+		{
+			this->Data[eFruitClose].OnClick = true;
+			pSetCursorFocus = true;
+			return;
+		}
+		// ----
+		this->Data[eFruitClose].OnClick = false;
+		pSetCursorFocus = false;
+		// ----
+		if (Delay < 500)
+		{
+			return;
+		}
+		// ----
+		this->Data[eFruitClose].EventTick = GetTickCount();
+		//Func
+		this->SwitchFruitSystem();
+	}
+}
+
+void Interface::DrawItem2(float PosX, float PosY, float Width, float Height, int ItemID, int Level, int Excl, int Anc, bool OnMouse)
+{
+	glMatrixMode(0x1701);
+	glPushMatrix();
+	glLoadIdentity();
+
+	sub_6363D0_Addr(0, 0, *(GLsizei*)MAIN_RESOLUTION_X, *(GLsizei*)MAIN_RESOLUTION_Y);
+
+	float v2 = *(float*)MAIN_RESOLUTION_X / *(float*)MAIN_RESOLUTION_Y;
+	sub_6358A0_Addr(1.0, v2, *(float*)0xE61E38, *(float*)0xE61E3C);
+
+	glMatrixMode(0x1700);
+	glPushMatrix();
+	glLoadIdentity();
+
+	sub_635830_Addr((LPVOID)0x87933A0);
+	sub_635DE0_Addr();
+	sub_635E40_Addr();
+
+	pDrawItemModel(PosX, PosY, Width, Height, ItemID, Level, Excl, Anc, OnMouse);
+
+	glMatrixMode(0x1700u);
+	glPopMatrix();
+	glMatrixMode(0x1701u);
+	glPopMatrix();
+
+	glColor3f(1, 1, 1);
+	pSetBlend(false);
 }
