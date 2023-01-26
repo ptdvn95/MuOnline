@@ -68,7 +68,7 @@ void CStatsAdvance::DrawInfo()
 	this->DrawLine(flDrawX, flDrawY, flWidth, "Phản Sát Thương:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.TotalDamageReflect);
 		
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Chí Mạng:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Tỉ Lệ Sát Thương Chí Mạng:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.CriticalDamageRate);
 	
 	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Chí Mạng (Quái Vật):");
@@ -77,7 +77,7 @@ void CStatsAdvance::DrawInfo()
 	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Chí Mạng (Người Chơi)");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eBlue, "%d", this->m_Data.CriticalDamagePVP);
 	
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Hoàn Hảo:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Tỉ Lệ Sát Thương Hoàn Hảo:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.ExellentDamageRate);
 	
 	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Hoàn Hảo (Quái Vật):");
@@ -86,10 +86,10 @@ void CStatsAdvance::DrawInfo()
 	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương Hoàn Hảo (Người Chơi):");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eAncient, "%d", this->m_Data.ExellentDamagePVP);
 	
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương X2:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Tỉ Lệ Sát Thương X2:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.DoubleDamageRate);
 	
-	this->DrawLine(flDrawX, flDrawY, flWidth, "Sát Thương X3:");
+	this->DrawLine(flDrawX, flDrawY, flWidth, "Tỉ Lệ Sát Thương X3:");
 	flDrawY = this->DrawLineR(flDrawX, flDrawY, flWidth, eGold, "%d%%", this->m_Data.TripleDamageRate);
 	
 	this->DrawLine(flDrawX, flDrawY, flWidth, "Giảm Sát Thương:");

@@ -25,6 +25,80 @@ CustomPet::~CustomPet()
 
 }
 
+int sub_959FA0(int a1, int a2, int a3)
+{
+	int result; // eax@1
+
+	lpViewObj Object = &*(ObjectPreview*)oUserPreviewStruct;
+
+	int DL = pGetCharClass(*(BYTE *)(oUserPreviewStruct + 19));
+	if (DL == 4)
+	{
+		if (!CC_MAP_RANGE(pMapNumber))
+		{
+			if (Object->WeaponSecondSlot == 7832)
+			{
+				*(float *)a3 = 0;
+				*(float *)(a3 + 4) = 0;
+				*(float *)(a3 + 8) = 0;
+				*(float *)(a3 + 12) = 0;
+				*(float *)(a3 + 16) = 0;
+				*(float *)(a3 + 20) = 0;
+				*(float *)(a3 + 24) = 0;
+				*(float *)(a3 + 28) = 0;
+				*(float *)(a3 + 32) = 0;
+				*(float *)(a3 + 36) = 0;
+				*(float *)(a3 + 40) = 0;
+				result = a2;
+				*(float *)(a3 + 44) = 0;
+				return result;
+			}
+		}
+	}
+
+	*(float *)a3 = *(float *)a1 * *(float *)a2
+		+ *(float *)(a1 + 4) * *(float *)(a2 + 16)
+		+ *(float *)(a1 + 8) * *(float *)(a2 + 32);
+	*(float *)(a3 + 4) = *(float *)a1 * *(float *)(a2 + 4)
+		+ *(float *)(a1 + 4) * *(float *)(a2 + 20)
+		+ *(float *)(a1 + 8) * *(float *)(a2 + 36);
+	*(float *)(a3 + 8) = *(float *)a1 * *(float *)(a2 + 8)
+		+ *(float *)(a1 + 4) * *(float *)(a2 + 24)
+		+ *(float *)(a1 + 8) * *(float *)(a2 + 40);
+	*(float *)(a3 + 12) = *(float *)a1 * *(float *)(a2 + 12)
+		+ *(float *)(a1 + 4) * *(float *)(a2 + 28)
+		+ *(float *)(a1 + 8) * *(float *)(a2 + 44)
+		+ *(float *)(a1 + 12);
+	*(float *)(a3 + 16) = *(float *)(a1 + 16) * *(float *)a2
+		+ *(float *)(a1 + 20) * *(float *)(a2 + 16)
+		+ *(float *)(a1 + 24) * *(float *)(a2 + 32);
+	*(float *)(a3 + 20) = *(float *)(a1 + 16) * *(float *)(a2 + 4)
+		+ *(float *)(a1 + 20) * *(float *)(a2 + 20)
+		+ *(float *)(a1 + 24) * *(float *)(a2 + 36);
+	*(float *)(a3 + 24) = *(float *)(a1 + 16) * *(float *)(a2 + 8)
+		+ *(float *)(a1 + 20) * *(float *)(a2 + 24)
+		+ *(float *)(a1 + 24) * *(float *)(a2 + 40);
+	*(float *)(a3 + 28) = *(float *)(a1 + 16) * *(float *)(a2 + 12)
+		+ *(float *)(a1 + 20) * *(float *)(a2 + 28)
+		+ *(float *)(a1 + 24) * *(float *)(a2 + 44)
+		+ *(float *)(a1 + 28);
+	*(float *)(a3 + 32) = *(float *)(a1 + 32) * *(float *)a2
+		+ *(float *)(a1 + 36) * *(float *)(a2 + 16)
+		+ *(float *)(a1 + 40) * *(float *)(a2 + 32);
+	*(float *)(a3 + 36) = *(float *)(a1 + 32) * *(float *)(a2 + 4)
+		+ *(float *)(a1 + 36) * *(float *)(a2 + 20)
+		+ *(float *)(a1 + 40) * *(float *)(a2 + 36);
+	*(float *)(a3 + 40) = *(float *)(a1 + 32) * *(float *)(a2 + 8)
+		+ *(float *)(a1 + 36) * *(float *)(a2 + 24)
+		+ *(float *)(a1 + 40) * *(float *)(a2 + 40);
+	result = a2;
+	*(float *)(a3 + 44) = *(float *)(a1 + 32) * *(float *)(a2 + 12)
+		+ *(float *)(a1 + 36) * *(float *)(a2 + 28)
+		+ *(float *)(a1 + 40) * *(float *)(a2 + 44)
+		+ *(float *)(a1 + 44);
+	return result;
+}
+
 char CustomPet::PetHPBar(int a1, int a2)
 {
 	lpViewObj Object = &*(ObjectPreview*)oUserPreviewStruct;
@@ -674,6 +748,8 @@ void CustomPet::Load()
 	SetCompleteHook(0xE8, 0x0058DCCC, &SetPetItemConvert);
 
 	SetCompleteHook(0xE8, 0x005C36C6, &HorseText);
+
+	SetCompleteHook(0xE8, 0x00566237, &sub_959FA0);
 }
 
 char SetPetItemConvert(int a1, int a2)

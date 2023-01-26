@@ -305,6 +305,8 @@ void User::ChangeCharInfo(LPVOID This)
 #else
 	gInterface.DrawText(eGold, 470, 58, 100, 1, "Level: %d", gObjUser.lpPlayer->Level);
 #endif
+	gInterface.DrawFormat(eGold, 585, 58, 100, 1, "Master Level: %d", pMasterLevel);
+
 	gInterface.DrawText(eGold, 530, 58, 100, 1, "Reset: %d", ViewReset);
 
 	gInterface.DrawFormat(eGold, 470, 76, 100, 1, "Add stats:");

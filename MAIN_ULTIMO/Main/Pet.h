@@ -75,6 +75,7 @@
 #define sub_5DBA10				((char(__cdecl*)(float a1, float a2, float a3)) 0x5DBA10)
 #define pObjectMaxBug			((int(__cdecl*)(int a1, unsigned __int8 a2, int a3, int a4)) 0x5EBBB0)
 #define sub_9CFB8D            ((int(*)()) 0x009CFB8D)
+#define CC_MAP_RANGE(x)				(((x)<18)?0:((x)>23)?(((x)==53)?1:0):1)
 
 #define MAX_LOOTOBJECT	1024 // 1000
 
