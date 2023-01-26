@@ -867,6 +867,12 @@ void DataServerProtocolCore(int index,BYTE head,BYTE* lpMsg,int size) // OK
 			case 0x17:
 				CharacterRanking((GDTop*)lpMsg, index);
 				break;
+			case 0x18:
+				FruitSystem((FRUIT_REQ_POINT*)lpMsg, index);
+				break;
+			case 0x19:
+				FruitSavePoint((FRUIT_SAVE_POINT*)lpMsg);
+				break;
 			}
 			break;
 	}
@@ -3770,4 +3776,48 @@ void GDCustomJewelBankInfoRecv(SDHP_CUSTOM_JEWELBANK_INFO_RECV* lpMsg,int index)
 		gQueryManager.Close();
 	}
 	gSocketManager.DataSend(index,(BYTE*)&pMsg,sizeof(pMsg));
+}
+
+void FruitSystem(FRUIT_REQ_POINT * lpMsg, int index)
+{
+	FRUIT_GET_POINT pMsg;
+	pMsg.h.set(0xD9, 0x05, sizeof(pMsg));
+	pMsg.Index = lpMsg->Index;
+	// ----
+	if (gQueryManager.ExecQuery("SELECT * FROM FruitSystem WHERE Name = '%s'", lpMsg->Name) == 0 || gQueryManager.Fetch() == SQL_NO_DATA)
+	{
+		gQueryManager.Close();
+		// ----
+		if (gQueryManager.ExecQuery("INSERT INTO FruitSystem (Name,Strength,Dexterity,Vitality,Energy,Leadership) VALUES ('%s',0,0,0,0,0)", lpMsg->Name) == 0)
+		{
+			gQueryManager.Close();
+		}
+		else
+		{
+			gQueryManager.Close();
+			// ----
+			pMsg.Strength = 0;
+			pMsg.Dexterity = 0;
+			pMsg.Vitality = 0;
+			pMsg.Energy = 0;
+			pMsg.Leadership = 0;
+			// ----
+		}
+	}
+	else
+	{
+		pMsg.Strength = gQueryManager.GetAsInteger("Strength");
+		pMsg.Dexterity = gQueryManager.GetAsInteger("Dexterity");
+		pMsg.Vitality = gQueryManager.GetAsInteger("Vitality");
+		pMsg.Energy = gQueryManager.GetAsInteger("Energy");
+		pMsg.Leadership = gQueryManager.GetAsInteger("Leadership");
+		gQueryManager.Close();
+	}
+	gSocketManager.DataSend(index, (BYTE*)&pMsg, sizeof(pMsg));
+}
+
+void FruitSavePoint(FRUIT_SAVE_POINT * lpMsg)
+{
+	gQueryManager.ExecQuery("UPDATE FruitSystem SET Strength = %d, Dexterity = %d, Vitality = %d, Energy = %d, Leadership = %d WHERE Name = '%s'", lpMsg->Strength, lpMsg->Dexterity, lpMsg->Vitality, lpMsg->Energy, lpMsg->Leadership, lpMsg->Name);
+	gQueryManager.Close();
 }

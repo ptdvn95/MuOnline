@@ -472,6 +472,15 @@ struct INTERFACE_STATE
 	DWORD type:10;
 };
 
+struct FRUIT_USER_DATA
+{
+	int	Strength;
+	int	Dexterity;
+	int	Vitality;
+	int	Energy;
+	int	Leadership;
+};
+
 struct OBJECTSTRUCT
 {
 	int Index;
@@ -1113,6 +1122,7 @@ struct OBJECTSTRUCT
 #if (ARCHIVEMENT == 1)
 	ACHIEVEMENTS_USER_DATA ach;
 #endif
+FRUIT_USER_DATA FruitData;
 };
 
 enum ClassNumber {

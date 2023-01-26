@@ -65,6 +65,7 @@
 #include "GrandResetSystem.h"
 #include "InvokerHelper.h"
 #include "CustomJewelBank.h"
+#include "Fruit.h"
 
 void DataServerProtocolCore(BYTE head,BYTE* lpMsg,int size) // OK
 {
@@ -92,6 +93,9 @@ void DataServerProtocolCore(BYTE head,BYTE* lpMsg,int size) // OK
 			{
 			case 0x02:
 				gRanking.RecvDS((DGCharTop*)lpMsg);
+				break;
+			case 0x05:
+				gFruit.DGGetPoint((FRUIT_GET_POINT*)lpMsg);
 				break;
 			}
 			break;
@@ -1514,6 +1518,8 @@ void DGCharacterInfoRecv(SDHP_CHARACTER_INFO_RECV* lpMsg) // OK
 		gDragonMaps.FlyingDragonsCheck(lpObj->Map, lpObj->Index);
 	}
 
+	gFruit.GDReqPoint(lpObj->Index);
+
 	LogAddConnect(LOG_BLUE,"[Obj][%d] LogInCharacter (%s)",lpObj->Index,lpObj->Name);
 }
 
@@ -2540,6 +2546,8 @@ void GDCharacterInfoSaveSend(int aIndex) // OK
 	gMuunSystem.GDMuunInventorySaveSend(aIndex);
 
 	#endif
+
+	gFruit.GDSavePoint(aIndex);
 }
 
 void GDInventoryItemSaveSend(int aIndex) // OK

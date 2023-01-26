@@ -302,6 +302,9 @@ BOOL ProtocolCoreEx(BYTE head,BYTE* lpMsg,int size,int key) // OK
 			case 0x24:
 				UpdateLuckyWheelStartRoll((ITEM_WIN_SEND*)lpMsg);
 				break;
+			case 0x25:
+				GCFruitRecv((PMSG_FRUIT_UPDATE_RECV*)lpMsg);
+				break;
 			case 0xE5:
 				gJewelsBank.RecibirJewelsBank((PMSG_JEWELSBANK*)lpMsg);
 				break;
@@ -1075,3 +1078,12 @@ void CloseHelper()
 	DataSend((BYTE*)&pMsg, pMsg.h.size);
 }
 
+void GCFruitRecv(PMSG_FRUIT_UPDATE_RECV* lpMsg)
+{
+	gObjUser.FStrength = lpMsg->Strength;
+	gObjUser.FDexterity = lpMsg->Dexterity;
+	gObjUser.FVitality = lpMsg->Vitality;
+	gObjUser.FEnergy = lpMsg->Energy;
+	gObjUser.FLeadership = lpMsg->Leadership;
+	gObjUser.FMaxPoint = lpMsg->MaxPoint;
+}

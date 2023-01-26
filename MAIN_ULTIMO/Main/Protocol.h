@@ -362,6 +362,17 @@ struct PMSG_CHARACTER_INFO_RECV
 	
 };
 
+struct PMSG_FRUIT_UPDATE_RECV
+{
+	PSBMSG_HEAD header;
+	int	Strength;
+	int	Dexterity;
+	int	Vitality;
+	int	Energy;
+	int	Leadership;
+	int MaxPoint;
+};
+
 struct PMSG_CHARACTER_REGEN_RECV
 {
 	PSBMSG_HEAD header; // C3:F3:04
@@ -853,3 +864,4 @@ void GCWarehouseInterfaceOpenRecv(PMSG_WAREHOUSEINTERFACE_RECV* lpMsg);
 #endif
 void UpdateLuckyWheel(ITEM_WIN_SEND * lpMsg);
 void UpdateLuckyWheelStartRoll(ITEM_WIN_SEND * lpMsg);
+void GCFruitRecv(PMSG_FRUIT_UPDATE_RECV* lpMsg);

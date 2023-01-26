@@ -5557,7 +5557,7 @@ void Interface::DrawFruit()
 	float MainWidth = 230.0;
 	float MainHeight = 313.0;
 	float StartY = 80.0;
-	float StartX = (MAX_WIN_WIDTH / 2) - (MainWidth / 2);
+	float StartX = (MAX_WIN_WIDTH / 4) - (MainWidth / 2);
 	float MainCenter = StartX + (MainWidth / 3);
 	float ButtonX = MainCenter - (29.0 / 2);
 
@@ -5576,13 +5576,13 @@ void Interface::DrawFruit()
 	pDrawBarForm((float)StartX + 160, (float)StartY + 192, 30, 13.0, 0, 0);
 	pDrawBarForm((float)StartX + 160, (float)StartY + 212, 30, 13.0, 0, 0);
 	glColor3f(2.0, 2.0, 0.0);
-	pDrawBarForm((float)StartX + 62, (float)StartY + 87, BarWidth, 6, 0, 0);
+	pDrawBarForm((float)StartX + 62, (float)StartY + 84, BarWidth, 6, 0, 0);
 	this->DrawItem2(StartX + 60, StartY + 125, 20, 20, ITEM(13, 15), SET_ITEMOPT_LEVEL(3), 0, 0, 0); //Str
 	this->DrawItem2(StartX + 60, StartY + 145, 20, 20, ITEM(13, 15), SET_ITEMOPT_LEVEL(2), 0, 0, 0); //Agi
 	this->DrawItem2(StartX + 60, StartY + 165, 20, 20, ITEM(13, 15), SET_ITEMOPT_LEVEL(1), 0, 0, 0); //Vit
 	this->DrawItem2(StartX + 60, StartY + 185, 20, 20, ITEM(13, 15), SET_ITEMOPT_LEVEL(0), 0, 0, 0); //Ene
 	this->DrawItem2(StartX + 60, StartY + 205, 20, 20, ITEM(13, 15), SET_ITEMOPT_LEVEL(4), 0, 0, 0); //Cmd
-	this->DrawFormat(eWhite, StartX +100, StartY + 100, 30, 5, gCustomMessage.GetMessage(88), TotalPoint, gObjUser.FMaxPoint);
+	this->DrawFormat(eWhite, StartX + 115, StartY + 100, 30, 5, gCustomMessage.GetMessage(88), TotalPoint, gObjUser.FMaxPoint);
 	this->DrawFormat(eWhite, StartX + 85, StartY + 135,  30, 5, gCustomMessage.GetMessage(89));
 	this->DrawFormat(eWhite, StartX + 85, StartY + 155,  30, 5, gCustomMessage.GetMessage(90));
 	this->DrawFormat(eWhite, StartX + 85, StartY + 175,  30, 5, gCustomMessage.GetMessage(91));

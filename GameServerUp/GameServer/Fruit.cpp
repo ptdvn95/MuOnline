@@ -10,6 +10,7 @@
 #include "ObjectManager.h"
 #include "ServerInfo.h"
 #include "Util.h"
+#include "GameMain.h"
 
 CFruit gFruit;
 //////////////////////////////////////////////////////////////////////
@@ -96,8 +97,9 @@ bool CFruit::UseFruitAddPoint(LPOBJ lpObj,int type) // OK
 			return 0;
 		}
 	}
+	int TotalPoint = lpObj->FruitData.Strength + lpObj->FruitData.Dexterity + lpObj->FruitData.Vitality + lpObj->FruitData.Energy + lpObj->FruitData.Leadership;
 
-	if(lpObj->FruitAddPoint >= this->GetMaxFruitPoint(lpObj))
+	if(TotalPoint >= gServerInfo.m_FruitMaxPointValue)
 	{
 		pMsg.result = 37;
 		DataSend(lpObj->Index,(BYTE*)&pMsg,pMsg.header.size);
@@ -109,19 +111,19 @@ bool CFruit::UseFruitAddPoint(LPOBJ lpObj,int type) // OK
 	switch(type)
 	{
 		case 0:
-			stat = &lpObj->Strength;
+			stat = &lpObj->FruitData.Strength;
 			break;
 		case 1:
-			stat = &lpObj->Dexterity;
+			stat = &lpObj->FruitData.Dexterity;
 			break;
 		case 2:
-			stat = &lpObj->Vitality;
+			stat = &lpObj->FruitData.Vitality;
 			break;
 		case 3:
-			stat = &lpObj->Energy;
+			stat = &lpObj->FruitData.Energy;
 			break;
 		case 4:
-			stat = &lpObj->Leadership;
+			stat = &lpObj->FruitData.Leadership;
 			break;
 		default:
 			pMsg.result = 33;
@@ -129,61 +131,31 @@ bool CFruit::UseFruitAddPoint(LPOBJ lpObj,int type) // OK
 			return 0;
 	}
 
-	if(stat == &lpObj->Leadership && (*stat) >= gServerInfo.m_MaxStatPointCMD[lpObj->AccountLevel]){
-
-		pMsg.result = 33;
-		DataSend(lpObj->Index,(BYTE*)&pMsg,pMsg.header.size);
-		return 0;
-	}
-	else if((*stat) >= gServerInfo.m_MaxStatPoint[lpObj->AccountLevel])
+	if((*stat) >= gServerInfo.m_MaxStatPoint[lpObj->AccountLevel])
 	{
 		pMsg.result = 33;
 		DataSend(lpObj->Index,(BYTE*)&pMsg,pMsg.header.size);
 		return 0;
 	}
 
-	int rate = 0;
+	if((GetLargeRand()%100) < gServerInfo.m_FruitAddPointSuccessRate[lpObj->AccountLevel])
+	{
+		// int amount = gServerInfo.m_FruitAddPointMin+(GetLargeRand()%((gServerInfo.m_FruitAddPointMax-gServerInfo.m_FruitAddPointMin)+1));
 
-	if(lpObj->FruitAddPoint <= 10)
-	{
-		rate = 100;
-	}
-	else if((lpObj->FruitAddPoint-10) < ((this->GetMaxFruitPoint(lpObj)*10)/100))
-	{
-		rate = 70;
-	}
-	else if((lpObj->FruitAddPoint-10) < ((this->GetMaxFruitPoint(lpObj)*30)/100))
-	{
-		rate = 60;
-	}
-	else if((lpObj->FruitAddPoint-10) < ((this->GetMaxFruitPoint(lpObj)*50)/100))
-	{
-		rate = 50;
-	}
-	else if((lpObj->FruitAddPoint-10) < ((this->GetMaxFruitPoint(lpObj)*80)/100))
-	{
-		rate = 40;
-	}
-	else
-	{
-		rate = 30;
-	}
+		// amount = (((lpObj->FruitAddPoint+amount)>this->GetMaxFruitPoint(lpObj))?(this->GetMaxFruitPoint(lpObj)-lpObj->FruitAddPoint):amount);
+		// //---
+		// if(stat == & lpObj->Leadership && ((*stat)+amount) > gServerInfo.m_MaxStatPointCMD[lpObj->AccountLevel]){
+		// 	amount = ((((*stat)+amount)>gServerInfo.m_MaxStatPointCMD[lpObj->AccountLevel])?(gServerInfo.m_MaxStatPointCMD[lpObj->AccountLevel]-(*stat)):amount);
+		// }else{
+		// 	amount = ((((*stat)+amount)>gServerInfo.m_MaxStatPoint[lpObj->AccountLevel])?(gServerInfo.m_MaxStatPoint[lpObj->AccountLevel]-(*stat)):amount);
+		// }
 
-	if((GetLargeRand()%100) < ((gServerInfo.m_FruitAddPointSuccessRate[lpObj->AccountLevel]==-1)?rate:gServerInfo.m_FruitAddPointSuccessRate[lpObj->AccountLevel]))
-	{
-		int amount = gServerInfo.m_FruitAddPointMin+(GetLargeRand()%((gServerInfo.m_FruitAddPointMax-gServerInfo.m_FruitAddPointMin)+1));
+		int amount = rand() % gServerInfo.m_FruitAddPointMax + gServerInfo.m_FruitAddPointMin; 
 
-		amount = (((lpObj->FruitAddPoint+amount)>this->GetMaxFruitPoint(lpObj))?(this->GetMaxFruitPoint(lpObj)-lpObj->FruitAddPoint):amount);
-		//---
-		if(stat == & lpObj->Leadership && ((*stat)+amount) > gServerInfo.m_MaxStatPointCMD[lpObj->AccountLevel]){
-			amount = ((((*stat)+amount)>gServerInfo.m_MaxStatPointCMD[lpObj->AccountLevel])?(gServerInfo.m_MaxStatPointCMD[lpObj->AccountLevel]-(*stat)):amount);
-		}else{
-			amount = ((((*stat)+amount)>gServerInfo.m_MaxStatPoint[lpObj->AccountLevel])?(gServerInfo.m_MaxStatPoint[lpObj->AccountLevel]-(*stat)):amount);
-		}
 		//---
 		(*stat) += amount;
 
-		lpObj->FruitAddPoint += amount;
+		// lpObj->FruitAddPoint += amount;
 
 		pMsg.result = 0;
 
@@ -204,6 +176,8 @@ bool CFruit::UseFruitAddPoint(LPOBJ lpObj,int type) // OK
 		DataSend(lpObj->Index,(BYTE*)&pMsg,pMsg.header.size);
 
 		gObjectManager.CharacterCalcAttribute(lpObj->Index);
+
+		this->GCFruitClientSend(lpObj->Index);
 	}
 	else
 	{
@@ -245,31 +219,31 @@ bool CFruit::UseFruitSubPoint(LPOBJ lpObj,int type) // OK
 		}
 	}
 
-	if(lpObj->FruitSubPoint >= this->GetMaxFruitPoint(lpObj))
-	{
-		pMsg.result = 37;
-		DataSend(lpObj->Index,(BYTE*)&pMsg,pMsg.header.size);
-		return 0;
-	}
+	// if(lpObj->FruitSubPoint >= this->GetMaxFruitPoint(lpObj))
+	// {
+	// 	pMsg.result = 37;
+	// 	DataSend(lpObj->Index,(BYTE*)&pMsg,pMsg.header.size);
+	// 	return 0;
+	// }
 
 	int* stat;
 
 	switch(type)
 	{
 		case 0:
-			stat = &lpObj->Strength;
+			stat = &lpObj->FruitData.Strength;
 			break;
 		case 1:
-			stat = &lpObj->Dexterity;
+			stat = &lpObj->FruitData.Dexterity;
 			break;
 		case 2:
-			stat = &lpObj->Vitality;
+			stat = &lpObj->FruitData.Vitality;
 			break;
 		case 3:
-			stat = &lpObj->Energy;
+			stat = &lpObj->FruitData.Energy;
 			break;
 		case 4:
-			stat = &lpObj->Leadership;
+			stat = &lpObj->FruitData.Leadership;
 			break;
 		default:
 			pMsg.result = 38;
@@ -277,53 +251,34 @@ bool CFruit::UseFruitSubPoint(LPOBJ lpObj,int type) // OK
 			return 0;
 	}
 
-	if((*stat) <= gDefaultClassInfo.GetCharacterDefaultStat(lpObj->Class,type))
+	if((*stat) <= 0)
 	{
 		pMsg.result = 38;
 		DataSend(lpObj->Index,(BYTE*)&pMsg,pMsg.header.size);
 		return 0;
 	}
 
-	int rate = 0;
+	if((GetLargeRand()%100) < gServerInfo.m_FruitSubPointSuccessRate[lpObj->AccountLevel])
+	{
+		// int amount = gServerInfo.m_FruitSubPointMin+(GetLargeRand()%((gServerInfo.m_FruitSubPointMax-gServerInfo.m_FruitSubPointMin)+1));
 
-	if(lpObj->FruitSubPoint <= 10)
-	{
-		rate = 100;
-	}
-	else if((lpObj->FruitSubPoint-10) < ((this->GetMaxFruitPoint(lpObj)*10)/100))
-	{
-		rate = 70;
-	}
-	else if((lpObj->FruitSubPoint-10) < ((this->GetMaxFruitPoint(lpObj)*30)/100))
-	{
-		rate = 60;
-	}
-	else if((lpObj->FruitSubPoint-10) < ((this->GetMaxFruitPoint(lpObj)*50)/100))
-	{
-		rate = 50;
-	}
-	else if((lpObj->FruitSubPoint-10) < ((this->GetMaxFruitPoint(lpObj)*80)/100))
-	{
-		rate = 40;
-	}
-	else
-	{
-		rate = 30;
-	}
+		// amount = (((lpObj->FruitSubPoint+amount)>this->GetMaxFruitPoint(lpObj))?(this->GetMaxFruitPoint(lpObj)-lpObj->FruitSubPoint):amount);
 
-	if((GetLargeRand()%100) < ((gServerInfo.m_FruitSubPointSuccessRate[lpObj->AccountLevel]==-1)?rate:gServerInfo.m_FruitSubPointSuccessRate[lpObj->AccountLevel]))
-	{
-		int amount = gServerInfo.m_FruitSubPointMin+(GetLargeRand()%((gServerInfo.m_FruitSubPointMax-gServerInfo.m_FruitSubPointMin)+1));
+		// amount = ((((*stat)-amount)<gDefaultClassInfo.GetCharacterDefaultStat(lpObj->Class,type))?((*stat)-gDefaultClassInfo.GetCharacterDefaultStat(lpObj->Class,type)):amount);
 
-		amount = (((lpObj->FruitSubPoint+amount)>this->GetMaxFruitPoint(lpObj))?(this->GetMaxFruitPoint(lpObj)-lpObj->FruitSubPoint):amount);
-
-		amount = ((((*stat)-amount)<gDefaultClassInfo.GetCharacterDefaultStat(lpObj->Class,type))?((*stat)-gDefaultClassInfo.GetCharacterDefaultStat(lpObj->Class,type)):amount);
+		int amount = rand() % gServerInfo.m_FruitSubPointMax + gServerInfo.m_FruitSubPointMin; 
 
 		(*stat) -= amount;
 
-		lpObj->LevelUpPoint += amount;
+		if((*stat) < 0)
+		{
+			amount = amount + *stat;
+			*stat = 0;
+		}
 
-		lpObj->FruitSubPoint += amount;
+		// lpObj->LevelUpPoint += amount;
+
+		// lpObj->FruitSubPoint += amount;
 
 		pMsg.result = 3;
 
@@ -344,6 +299,8 @@ bool CFruit::UseFruitSubPoint(LPOBJ lpObj,int type) // OK
 		DataSend(lpObj->Index,(BYTE*)&pMsg,pMsg.header.size);
 
 		gObjectManager.CharacterCalcAttribute(lpObj->Index);
+
+		this->GCFruitClientSend(lpObj->Index);
 	}
 	else
 	{
@@ -468,4 +425,107 @@ void CFruit::GCFruitResultSend(LPOBJ lpObj,int result,int value,int type) // OK
 	#endif
 
 	DataSend(lpObj->Index,(BYTE*)&pMsg,pMsg.header.size);
+}
+
+void CFruit::InitUser(LPOBJ lpObj)
+{
+	lpObj->FruitData.Strength	= 0;
+	lpObj->FruitData.Dexterity	= 0;
+	lpObj->FruitData.Vitality	= 0;
+	lpObj->FruitData.Energy		= 0;
+	lpObj->FruitData.Leadership	= 0;
+}
+
+void CFruit::GCFruitClientSend(int aIndex)
+{
+	//Send to Client
+	if (!gObjIsConnectedGP(aIndex))
+	{
+		return;
+	}
+
+	LPOBJ lpObj = &gObj[aIndex];
+
+	FRUIT_CLIENT_SEND pMsg;
+	pMsg.header.set(0xFB, 0x25, sizeof(pMsg));
+	// ----
+	pMsg.Strength = lpObj->FruitData.Strength;
+	pMsg.Dexterity = lpObj->FruitData.Dexterity;
+	pMsg.Vitality = lpObj->FruitData.Vitality;
+	pMsg.Energy = lpObj->FruitData.Energy;
+	pMsg.Leadership = lpObj->FruitData.Leadership;
+	pMsg.MaxPoint = gServerInfo.m_FruitMaxPointValue;
+	// ----
+	DataSend(aIndex, (LPBYTE)&pMsg, sizeof(pMsg));
+}
+
+void CFruit::GDSavePoint(int aIndex)
+{
+	if( !gObjIsConnected(aIndex) )
+	{
+		return;
+	}
+	// ----
+	LPOBJ lpUser = &gObj[aIndex];
+	// ----
+	FRUIT_SAVE_POINT pRequest;
+	pRequest.h.set(0xD9, 0x19, sizeof(pRequest));
+	memcpy(pRequest.Name, lpUser->Name, sizeof(lpUser->Name));
+	pRequest.Index	= aIndex;
+	pRequest.Strength		= lpUser->FruitData.Strength;
+	pRequest.Dexterity		= lpUser->FruitData.Dexterity;
+	pRequest.Vitality		= lpUser->FruitData.Vitality;
+	pRequest.Energy	= lpUser->FruitData.Energy;
+	pRequest.Leadership		= lpUser->FruitData.Leadership;
+	gDataServerConnection.DataSend((BYTE*)&pRequest,pRequest.h.size);
+}
+
+void CFruit::GDReqPoint(int aIndex)
+{
+	// ----
+	LPOBJ lpUser = &gObj[aIndex];
+	// ----
+	FRUIT_REQ_POINT pRequest;
+	pRequest.h.set(0xD9, 0x18, sizeof(pRequest));
+	memcpy(pRequest.Name, lpUser->Name, sizeof(lpUser->Name));
+	pRequest.Index = aIndex;
+	gDataServerConnection.DataSend((BYTE*)&pRequest,pRequest.h.size);
+}
+// -------------------------------------------------------------------------------
+
+void CFruit::DGGetPoint(FRUIT_GET_POINT * aRecv)
+{
+	// ----
+	LPOBJ lpUser = &gObj[aRecv->Index];
+	// ----
+	if( aRecv->Strength < 0 )
+	{
+		aRecv->Strength = 0;
+	}
+	if( aRecv->Dexterity < 0 )
+	{
+		aRecv->Dexterity = 0;
+	}
+	if (aRecv->Vitality < 0)
+	{
+		aRecv->Vitality = 0;
+	}
+	if (aRecv->Energy < 0)
+	{
+		aRecv->Energy= 0;
+	}
+	if( aRecv->Leadership < 0 )
+	{
+		aRecv->Leadership = 0;
+	}
+	// ----
+	lpUser->FruitData.Strength		= aRecv->Strength;
+	lpUser->FruitData.Dexterity		= aRecv->Dexterity;
+	lpUser->FruitData.Vitality		= aRecv->Vitality;
+	lpUser->FruitData.Energy	= aRecv->Energy;
+	lpUser->FruitData.Leadership	= aRecv->Leadership;
+
+	gObjectManager.CharacterCalcAttribute(lpUser->Index);
+
+	this->GCFruitClientSend(lpUser->Index);
 }

@@ -94,6 +94,7 @@
 #include "WindowsQuest.h"
 #include "InvokerHelper.h"
 #include "CustomJewelBank.h"
+#include "Fruit.h"
 
 CObjectManager gObjectManager;
 //////////////////////////////////////////////////////////////////////
@@ -3612,6 +3613,12 @@ void CObjectManager::CharacterCalcAttribute(int aIndex) // OK
 		lpObj->AddVitality = lpObj->EffectOption.AddVitality;
 		lpObj->AddEnergy = lpObj->EffectOption.AddEnergy;
 		lpObj->AddLeadership = lpObj->EffectOption.AddLeadership;
+
+		lpObj->AddStrength += lpObj->FruitData.Strength;
+		lpObj->AddDexterity += lpObj->FruitData.Dexterity;
+		lpObj->AddVitality += lpObj->FruitData.Vitality;
+		lpObj->AddEnergy += lpObj->FruitData.Energy;
+		lpObj->AddLeadership += lpObj->FruitData.Leadership;
 
 		gSetItemOption.CalcSetItemStat(lpObj);
 		gItemOption.CalcItemCommonOption(lpObj, 1);

@@ -3720,6 +3720,8 @@ void CServerInfo::ReadCommonInfo(char* section,char* path) // OK
 
 	this->m_FruitAddPointSuccessRate[3] = GetPrivateProfileInt(section,"FruitAddPointSuccessRate_AL3",0,path);
 
+	this->m_FruitMaxPointValue = GetPrivateProfileInt(section, "FruitMaxPointValue", 0, path);
+
 	this->m_FruitSubPointMin = GetPrivateProfileInt(section,"FruitSubPointMin",0,path);
 
 	this->m_FruitSubPointMax = GetPrivateProfileInt(section,"FruitSubPointMax",0,path);

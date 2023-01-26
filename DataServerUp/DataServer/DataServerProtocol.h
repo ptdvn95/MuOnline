@@ -598,6 +598,40 @@ struct DGCharTop
 };
 //----------------------------------------------------
 
+// -------------------------------------------------------------------------------
+struct FRUIT_REQ_POINT
+{
+	PSBMSG_HEAD	h;
+	// ----
+	WORD	Index;
+	char	Name[11];
+};
+// -------------------------------------------------------------------------------
+struct FRUIT_GET_POINT
+{
+	PSBMSG_HEAD	h;
+	// ----
+	WORD Index;
+	int	Strength;
+	int	Dexterity;
+	int	Vitality;
+	int	Energy;
+	int	Leadership;
+};
+
+struct FRUIT_SAVE_POINT
+{
+	PSBMSG_HEAD	h;
+	// ----
+	WORD	Index;
+	char	Name[11];
+	int	Strength;
+	int	Dexterity;
+	int	Vitality;
+	int	Energy;
+	int	Leadership;
+};
+//
 
 struct SDHP_CARESUME_RECV
 {
@@ -1136,3 +1170,5 @@ void DS_GDReqCsLoadTotalGuildInfo(BYTE *lpRecv, int aIndex);
 void DS_GDReqCastleNpcUpdate(BYTE *lpRecv, int aIndex);
 void GDCustomJewelBankRecv(SDHP_CUSTOM_JEWELBANK_RECV* lpMsg);
 void GDCustomJewelBankInfoRecv(SDHP_CUSTOM_JEWELBANK_INFO_RECV* lpMsg,int index);
+void FruitSavePoint(FRUIT_SAVE_POINT * lpMsg);
+void FruitSystem(FRUIT_REQ_POINT * lpMsg, int index);

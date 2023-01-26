@@ -271,6 +271,7 @@ public:
 	int m_FruitAddPointMin;
 	int m_FruitAddPointMax;
 	int m_FruitAddPointSuccessRate[MAX_ACCOUNT_LEVEL];
+	int m_FruitMaxPointValue;
 	int m_FruitSubPointMin;
 	int m_FruitSubPointMax;
 	int m_FruitSubPointSuccessRate[MAX_ACCOUNT_LEVEL];

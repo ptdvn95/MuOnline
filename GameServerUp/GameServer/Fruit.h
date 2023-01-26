@@ -28,6 +28,50 @@ struct PMSG_FRUIT_RESULT_SEND
 	#endif
 };
 
+struct FRUIT_REQ_POINT
+{
+	PSBMSG_HEAD	h;
+	// ----
+	WORD	Index;
+	char	Name[11];
+};
+
+struct FRUIT_GET_POINT
+{
+	PSBMSG_HEAD	h;
+	// ----
+	WORD Index;
+	int	Strength;
+	int	Dexterity;
+	int	Vitality;
+	int	Energy;
+	int	Leadership;
+};
+
+struct FRUIT_SAVE_POINT
+{
+	PSBMSG_HEAD	h;
+	// ----
+	WORD	Index;
+	char	Name[11];
+	int	Strength;
+	int	Dexterity;
+	int	Vitality;
+	int	Energy;
+	int	Leadership;
+};
+
+struct FRUIT_CLIENT_SEND
+{
+	PSBMSG_HEAD header;
+	int	Strength;
+	int	Dexterity;
+	int	Vitality;
+	int	Energy;
+	int	Leadership;
+	int MaxPoint;
+};
+
 //**********************************************//
 //**********************************************//
 //**********************************************//
@@ -43,6 +87,11 @@ public:
 	bool UseFruitSubPoint(LPOBJ lpObj,int type);
 	bool UseFruitResetPoint(LPOBJ lpObj,int type,int amount);
 	void GCFruitResultSend(LPOBJ lpObj,int result,int value,int type);
+	void InitUser(LPOBJ lpObj);
+	void GDSavePoint(int aIndex);
+	void GDReqPoint(int aIndex);
+	void DGGetPoint(FRUIT_GET_POINT * aRecv);
+	void GCFruitClientSend(int aIndex);
 private:
 	int m_NRMaxFruitPointTable[MAX_CHARACTER_LEVEL];
 	int m_MGMaxFruitPointTable[MAX_CHARACTER_LEVEL];
