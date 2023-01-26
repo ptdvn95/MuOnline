@@ -196,7 +196,7 @@ void InitCommon() // OK
 	// SetCompleteHook(0xE8,0x007C32F9,&FixHelperMouseClick); // S8
 
 	SetByte((PVOID)(0x81C03FA), 0x01); //-- Show all player's name
-	// SetCompleteHook(0xE8, 0x005BAFAB, &CRenderBoolean); // Show Guild Logo Name Player
+	SetCompleteHook(0xE8, 0x005BAFAB, &CRenderBoolean); // Show Guild Logo Name Player
 	SetFloat(0xD477AC,0.0); //Fix ItemStack in Itemtoolip/Shop
 	// SetCompleteHook(0xE9, 0x00856FAA, 0x00856FD2); // Remove (H) Baú Aberto
 	// SetCompleteHook(0xE9, 0x007D371E, 0x007D3725); // Remove botão (H)
@@ -540,7 +540,7 @@ void CRenderBoolean(int a1, int a2, char *a3)
 	if ( *(BYTE *)(result + 800) == 1 )
 	{
 		CreateGuildMark(*(WORD *)(result + 124), 1);
-		RenderBitmap(31740, a1 - 15, a2 + 2, 16.0, 16.0, 0.0, 0.0, 1.0, 1.0, 1, 1, 0.0);
+		RenderBitmap(31740, a1 - 7, a2, 8.0, 8.0, 0.0, 0.0, 1.0, 1.0, 1, 1, 0.0);
 	}
 	RenderBoolean(a1,a2,a3);
 
