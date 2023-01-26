@@ -3821,6 +3821,8 @@ void CServerInfo::ReadCommonInfo(char* section,char* path) // OK
 
 	this->m_PartyDisablePK	=  GetPrivateProfileInt(section,"PartyDisablePK",0,path);
 
+	this->m_PKDisableTrade	=  GetPrivateProfileInt(section,"PKDisableTrade",0,path);
+
 }
 
 void CServerInfo::ReadCustomInfo(char* section,char* path) // OK

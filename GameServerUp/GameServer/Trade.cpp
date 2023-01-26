@@ -342,6 +342,13 @@ void CTrade::CGTradeRequestRecv(PMSG_TRADE_REQUEST_RECV* lpMsg, int aIndex) // O
 		return;
 	}
 
+	//- Add PK disable trade option
+	if(gServerInfo.m_PKDisableTrade == 1 && lpObj->PKLevel >= 5)
+	{
+		gNotice.GCNoticeSend(lpObj->Index,1,0,0,0,0,0,gMessage.GetMessage(877));
+		return;
+	}
+
 	lpObj->Interface.use = 1;
 	lpObj->Interface.type = INTERFACE_TRADE;
 	lpObj->Interface.state = 0;

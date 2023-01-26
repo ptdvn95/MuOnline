@@ -1058,6 +1058,8 @@ public:
 	int m_CustomShopMessageBox;
 	//party pk
 	int m_PartyDisablePK;
+	//trade pk
+	int m_PKDisableTrade;
 	//Custom Quest 
 	int m_CustomNpcQuestSwitch;
 	//--
