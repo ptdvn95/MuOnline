@@ -79,6 +79,13 @@
 84        "Tìm kiếm cửa hàng"
 85        "Người dùng:"
 86        "Tên cửa hàng"
+87	  "Fruit System"
+88	  " %d / %d Point "
+89	  "Strength Fruit :"
+90	  "Agility Fruit :"
+91	  "Vitality Fruit :"
+92	  "Energy Fruit :"
+93	  "Command Fruit :"
 end
 
 1
@@ -162,6 +169,13 @@ end
 84        "Tìm kiếm cửa hàng"
 85        "Người dùng:"
 86        "Tên cửa hàng"
+87	  "Fruit System"
+88	  " %d / %d Point "
+89	  "Strength Fruit :"
+90	  "Agility Fruit :"
+91	  "Vitality Fruit :"
+92	  "Energy Fruit :"
+93	  "Command Fruit :"
 end
 
 2
@@ -246,4 +260,11 @@ end
 84        "Tìm kiếm cửa hàng"
 85        "Người dùng:"
 86        "Tên cửa hàng"
+87	  "Fruit System"
+88	  " %d / %d Point "
+89	  "Strength Fruit :"
+90	  "Agility Fruit :"
+91	  "Vitality Fruit :"
+92	  "Energy Fruit :"
+93	  "Command Fruit :"
 end
