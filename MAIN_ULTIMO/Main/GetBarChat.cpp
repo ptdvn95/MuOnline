@@ -345,6 +345,6 @@ void JCGenScaleLogo(int ImageID, float PosX, float PosY, float Width, float Heig
 
 void JCGetBarChat::Load()
 {
-	SetCompleteHook(0xE8, 0x005BAFAB, &subs_5985F0);
-	SetCompleteHook(0xE8, 0x007C5DB0, &JCGenScaleLogo);
+	// SetCompleteHook(0xE8, 0x005BAFAB, &subs_5985F0);
+	// SetCompleteHook(0xE8, 0x007C5DB0, &JCGenScaleLogo);
 }

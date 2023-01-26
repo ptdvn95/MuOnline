@@ -729,6 +729,12 @@
     <ClInclude Include="NewUIEnterBloodCastle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Bytes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SCharFrameHIght.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1137,6 +1143,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NewUIEnterBloodCastle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bytes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

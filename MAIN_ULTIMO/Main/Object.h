@@ -278,7 +278,7 @@ typedef struct	//648? 848!!
 	/*+76*/		float	Unknown76;
 	/*+80*/		float	Unknown80;
 	BYTE gap06[8];
-	/*+92*/		DWORD	Time; //Tempo de duração ?
+	/*+92*/		DWORD	Time; //Tempo de duraï¿½ï¿½o ?
 	/*+96*/		float	Scale;
 	/*+100*/	float	Unknown100;
 	/*+104*/	float	Unknown104;
@@ -692,6 +692,18 @@ typedef struct
 	/*+264*/	vec3_t Angle;
 } Object, * lpObject;
 #pragma pack(pop)
+
+//emoji
+enum eTextureIndex
+{
+	TEXTURE_START_INDEX = 100000,
+	TEXTURE_EMOJI_LIST1,
+	TEXTURE_EMOJI_LIST2,
+	TEXTURE_EMOJI_LIST3,
+	TEXTURE_EMOJI_LIST_BTN,
+	TEXTURE_EMOJI_LIST_ON,
+	TEXTURE_EMOJI_LIST_ARROW,
+};
 
 typedef struct
 {

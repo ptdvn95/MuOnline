@@ -43,6 +43,8 @@
 #include "ResetSystemPanel.h"
 #include "GrandResetSystem.h"
 #include "SmoothCamera.h"
+#include "Bytes.h"
+#include "SCharFrameHIght.h"
 
 Interface gInterface;
 
@@ -56,6 +58,7 @@ Interface::~Interface()
 
 void Interface::RenderObjectSystem()
 {
+	InitEncDec(); //Emoji
 	if (gProtect.m_MainInfo.MonitorMS == 1){
 		gInterface.lastReport = GetTickCount();
 		gInterface.frameCount = 0;
@@ -197,6 +200,12 @@ void Interface::RenderObjectSystem()
 	this->BindObject(eCamera3DInit, 31659, 17, 18, -1, -1);
 	this->BindObject(eCamera3DSwitch, 31659, 17, 18, -1, -1);
 	this->Data[eTIME].OnShow = true;
+
+	myheart::MUEmoji::Init(TEXTURE_EMOJI_LIST_ARROW, TEXTURE_EMOJI_LIST_ON, TEXTURE_EMOJI_LIST_BTN, 20, 14,	4, 0);
+	myheart::MUEmoji::AddTexture(TEXTURE_EMOJI_LIST1, 361);
+	myheart::MUEmoji::AddTexture(TEXTURE_EMOJI_LIST2, 309);
+	myheart::MUEmoji::AddTexture(TEXTURE_EMOJI_LIST3, 118);
+
 	if (gProtect.m_MainInfo.CustomInterfaceType == 3 || gProtect.m_MainInfo.CustomInterfaceType == 4)
 	{
 		this->BindObject(ButtonSettings, 51522, 19, 19, -1, -1);
@@ -520,6 +529,14 @@ void Interface::LoadImages()
 	pLoadImage("Custom\\Interface\\Next.tga", 0x7903, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Custom\\Interface\\Previous.tga", 0x7904, 0x2601, 0x2901, 1, 0);
 	pLoadImage("Custom\\Interface\\MU-logo.tga", 0x7905, 0x2601, 0x2901, 1, 0);
+
+	pLoadImage("Interface\\GFx\\emojis_f.tga", TEXTURE_EMOJI_LIST1, GL_LINEAR, GL_CLAMP, 1, 0);
+	pLoadImage("Interface\\GFx\\emojis_f2.tga", TEXTURE_EMOJI_LIST2, GL_LINEAR, GL_CLAMP, 1, 0);
+	pLoadImage("Interface\\GFx\\emojis_f3.tga", TEXTURE_EMOJI_LIST3, GL_LINEAR, GL_CLAMP, 1, 0);
+	pLoadImage("Interface\\GFx\\emoji_list_btn.tga", TEXTURE_EMOJI_LIST_BTN, GL_LINEAR, GL_CLAMP, 1, 0);
+	pLoadImage("Interface\\GFx\\newui_chat_emoji_on.jpg", TEXTURE_EMOJI_LIST_ON, GL_LINEAR, GL_CLAMP, 1, 0);
+	pLoadImage("Interface\\GFx\\btn_arrow.tga", TEXTURE_EMOJI_LIST_ARROW, GL_LINEAR, GL_CLAMP, 1, 0);
+	pLoadImage("Interface\\GFx\\newui_chat_back.jpg", 31279, GL_LINEAR, GL_CLAMP, 1, 0);
 
 	if (gProtect.m_MainInfo.CustomMenuType == 1)
 	{

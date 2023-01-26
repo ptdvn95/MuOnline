@@ -93,6 +93,7 @@
     <ClInclude Include="AutoLogin.h" />
     <ClInclude Include="base.h" />
     <ClInclude Include="BuffIcon.h" />
+    <ClInclude Include="Bytes.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="cape.h" />
     <ClInclude Include="CChatClassic.h" />
@@ -209,6 +210,7 @@
     <ClInclude Include="Ruud.h" />
     <ClInclude Include="SceneCreate.h" />
     <ClInclude Include="SCharacterS3.h" />
+    <ClInclude Include="SCharFrameHIght.h" />
     <ClInclude Include="SEASON3B.h" />
     <ClInclude Include="SelectChar.h" />
     <ClInclude Include="SeparateChat.h" />
@@ -247,6 +249,7 @@
     <ClCompile Include="Antilag.cpp" />
     <ClCompile Include="AutoLogin.cpp" />
     <ClCompile Include="BuffIcon.cpp" />
+    <ClCompile Include="Bytes.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="cape.cpp" />
     <ClCompile Include="CChatClassic.cpp" />
