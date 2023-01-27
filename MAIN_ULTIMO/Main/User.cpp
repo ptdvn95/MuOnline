@@ -44,15 +44,6 @@ void User::Refresh()
 	this->m_CursorY			= pCursorY;
 	this->m_MapNumber		= pMapNumber;
 
-	lpCharObj Character		= &*(ObjectCharacter*)oUserObjectStruct_;
-
-	if (Character->pEquipment[7].ItemID < 0)
-	{
-		//Reset pet view by yourself
-		sub_558630((int)&*lpViewPlayer, (int)&lpViewPlayer->m_Model, 0);
-		lpViewPlayer->WingsSlot = -1;
-	}
-
 	if( (lpPlayer->Class & 7) != 6 )
 	{
 		SetByte((PVOID)(0x00556C32 + 6), 2);
